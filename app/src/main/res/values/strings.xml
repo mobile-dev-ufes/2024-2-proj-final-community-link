@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">CommunityLink</string>
+    <string name="login_create_account_text">Não é cadastrado? Crie uma conta para utilizar o CommunityLink!</string>
+    <string name="login">Login</string>
+    <string name="forgot_password">Esqueci minha senha</string>
+    <string name="password">Senha</string>
+    <string name="email">E-mail</string>
+    <string name="create_new_account">Criar nova conta</string>
+</resources>
