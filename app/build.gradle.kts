@@ -1,12 +1,14 @@
 plugins {
+    //id("com.android.application")
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    id("com.google.gms.google-services")
 }
 
 android {
     namespace = "ufes.grad.mobile.communitylink"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "ufes.grad.mobile.communitylink"
@@ -68,4 +70,7 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.analytics)
+    implementation(libs.firebase.common.ktx)
 }
