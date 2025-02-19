@@ -6,4 +6,12 @@
     <string name="password">Senha</string>
     <string name="email">E-mail</string>
     <string name="create_new_account">Criar nova conta</string>
+    <string name="register_text">Preencha todos os dados abaixo para criar a sua conta.</string>
+    <string name="name">Nome</string>
+    <string name="sex">Sexo</string>
+    <string name="repeat_password">Repita sua senha</string>
+    <string name="date">Data de Nascimento</string>
+    <string name="address">Endereço</string>
+    <string name="phone">Telefone</string>
+    <string name="cpf">CPF</string>
 </resources>
