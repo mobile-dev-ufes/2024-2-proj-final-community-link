@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "814778413654",
+    "project_id": "community-link-462f6",
+    "storage_bucket": "community-link-462f6.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:814778413654:android:d316dac02971e3a2bc01f7",
+        "android_client_info": {
+          "package_name": "ufes.grad.mobile.communitylink"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMKwYaL4gbioXtGidEXpUI0O4TiBy_QRg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
