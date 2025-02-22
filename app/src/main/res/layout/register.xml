@@ -8,337 +8,180 @@
     android:background="@color/brown"
     android:clipToPadding="false"
     android:orientation="vertical"
-    android:padding="40dp"
+    android:paddingHorizontal="40dp"
     tools:context=".view.SignupActivity">
 
-    <ImageView
-        android:id="@+id/icon"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_gravity="center"
-        app:layout_constraintBottom_toTopOf="@+id/title"
-        app:layout_constraintLeft_toLeftOf="@id/main"
-        app:layout_constraintRight_toRightOf="@id/main"
-        app:layout_constraintTop_toTopOf="@id/main" />
-
-    <TextView
-        android:id="@+id/title"
+    <ScrollView
+        android:paddingVertical="40dp"
+        android:clipToPadding="false"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/app_name"
-        android:textSize="40sp"
-        app:layout_constraintBottom_toTopOf="@id/register_text"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toTopOf="@+id/main"
         app:layout_constraintLeft_toLeftOf="@id/main"
         app:layout_constraintRight_toRightOf="@id/main"
-        app:layout_constraintTop_toBottomOf="@id/icon" />
+        app:layout_constraintTop_toTopOf="@id/main">
 
-    <TextView
-        android:id="@+id/register_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/register_text"
-        app:layout_constraintLeft_toLeftOf="@id/main"
-        app:layout_constraintRight_toRightOf="@id/main"
-        app:layout_constraintBottom_toTopOf="@id/name_text"
-        app:layout_constraintTop_toBottomOf="@id/title" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/name_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="6dp"
-        android:text="@string/name"
-        android:textSize="16sp"
-        app:layout_constraintLeft_toLeftOf="@id/main"
-        app:layout_constraintRight_toRightOf="@id/main"
-        app:layout_constraintBottom_toTopOf="@id/name"
-        app:layout_constraintTop_toBottomOf="@id/register_text" />
+            <ufes.grad.mobile.communitylink.components.CommunityLinkTitle
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@+id/content"
+                app:layout_constraintLeft_toLeftOf="@id/main"
+                app:layout_constraintRight_toRightOf="@id/main"
+                app:layout_constraintTop_toTopOf="@id/main" />
 
-    <EditText
-        android:id="@+id/name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/edit_text_layout"
-        android:hint="@string/name"
-        android:paddingHorizontal="20dp"
-        android:paddingVertical="10dp"
-        android:textColorHint="@color/gray"
-        android:textSize="16sp"
-        app:layout_constraintLeft_toLeftOf="@id/main"
-        app:layout_constraintRight_toRightOf="@id/main"
-        app:layout_constraintBottom_toTopOf="@id/email_text"
-        app:layout_constraintTop_toBottomOf="@id/name_text" />
+            <TextView
+                android:id="@+id/register_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/register_text"
+                app:layout_constraintBottom_toTopOf="@id/name"
+                app:layout_constraintLeft_toLeftOf="@id/main"
+                app:layout_constraintRight_toRightOf="@id/main"
+                app:layout_constraintTop_toBottomOf="@id/title" />
 
-    <TextView
-        android:id="@+id/email_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="6dp"
-        android:text="@string/email"
-        android:textSize="16sp"
-        app:layout_constraintLeft_toLeftOf="@id/main"
-        app:layout_constraintRight_toRightOf="@id/main"
-        app:layout_constraintBottom_toTopOf="@id/email"
-        app:layout_constraintTop_toBottomOf="@id/name" />
+            <ufes.grad.mobile.communitylink.components.FormsLayout
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@id/email"
+                app:layout_constraintLeft_toLeftOf="@id/main"
+                app:layout_constraintRight_toRightOf="@id/main"
+                app:layout_constraintTop_toBottomOf="@id/register_text"
+                app:texts="@string/name" />
 
-    <EditText
-        android:id="@+id/email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/edit_text_layout"
-        android:hint="@string/email"
-        android:paddingHorizontal="20dp"
-        android:paddingVertical="10dp"
-        android:textColorHint="@color/gray"
-        android:textSize="16sp"
-        app:layout_constraintLeft_toLeftOf="@id/main"
-        app:layout_constraintRight_toRightOf="@id/main"
-        app:layout_constraintBottom_toTopOf="@id/separator"
-        app:layout_constraintTop_toBottomOf="@id/email_text" />
+            <ufes.grad.mobile.communitylink.components.FormsLayout
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@id/separator"
+                app:layout_constraintLeft_toLeftOf="@id/main"
+                app:layout_constraintRight_toRightOf="@id/main"
+                app:layout_constraintTop_toBottomOf="@id/name"
+                app:texts="@string/email" />
 
-    <View
-        android:id="@+id/separator"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginHorizontal="60dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="20dp"
-        android:background="@color/black"
-        app:layout_constraintLeft_toLeftOf="@id/main"
-        app:layout_constraintRight_toRightOf="@id/main"
-        app:layout_constraintTop_toBottomOf="@id/email"
-        app:layout_constraintBottom_toTopOf="@id/sex_text"/>
+            <View
+                android:id="@+id/separator"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="60dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
+                android:background="@color/black"
+                app:layout_constraintBottom_toTopOf="@id/sex"
+                app:layout_constraintLeft_toLeftOf="@id/main"
+                app:layout_constraintRight_toRightOf="@id/main"
+                app:layout_constraintTop_toBottomOf="@id/email" />
 
-    <TextView
-        android:id="@+id/sex_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="6dp"
-        android:text="@string/sex"
-        android:textSize="16sp"
-        app:layout_constraintLeft_toLeftOf="@id/main"
-        app:layout_constraintRight_toRightOf="@id/main"
-        app:layout_constraintBottom_toTopOf="@id/sex"
-        app:layout_constraintTop_toBottomOf="@id/separator" />
+            <ufes.grad.mobile.communitylink.components.FormsLayout
+                android:id="@+id/sex"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@id/date"
+                app:layout_constraintLeft_toLeftOf="@id/main"
+                app:layout_constraintRight_toRightOf="@id/main"
+                app:layout_constraintTop_toBottomOf="@id/separator"
+                app:texts="@string/sex" />
 
-    <EditText
-        android:id="@+id/sex"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/edit_text_layout"
-        android:hint="@string/sex"
-        android:paddingHorizontal="20dp"
-        android:paddingVertical="10dp"
-        android:textColorHint="@color/gray"
-        android:textSize="16sp"
-        app:layout_constraintLeft_toLeftOf="@id/main"
-        app:layout_constraintRight_toRightOf="@id/main"
-        app:layout_constraintBottom_toTopOf="@id/date_text"
-        app:layout_constraintTop_toBottomOf="@id/sex_text" />
+            <ufes.grad.mobile.communitylink.components.FormsLayout
+                android:id="@+id/date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@id/address"
+                app:layout_constraintLeft_toLeftOf="@id/main"
+                app:layout_constraintRight_toRightOf="@id/main"
+                app:layout_constraintTop_toBottomOf="@id/sex"
+                app:texts="@string/date" />
 
-    <TextView
-        android:id="@+id/date_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="6dp"
-        android:text="@string/date"
-        android:textSize="16sp"
-        app:layout_constraintLeft_toLeftOf="@id/main"
-        app:layout_constraintRight_toRightOf="@id/main"
-        app:layout_constraintBottom_toTopOf="@id/date"
-        app:layout_constraintTop_toBottomOf="@id/sex" />
+            <ufes.grad.mobile.communitylink.components.FormsLayout
+                android:id="@+id/address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@id/phone"
+                app:layout_constraintLeft_toLeftOf="@id/main"
+                app:layout_constraintRight_toRightOf="@id/main"
+                app:layout_constraintTop_toBottomOf="@id/date"
+                app:texts="@string/address" />
 
-    <EditText
-        android:id="@+id/date"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/edit_text_layout"
-        android:hint="@string/date"
-        android:paddingHorizontal="20dp"
-        android:paddingVertical="10dp"
-        android:textColorHint="@color/gray"
-        android:textSize="16sp"
-        app:layout_constraintLeft_toLeftOf="@id/main"
-        app:layout_constraintRight_toRightOf="@id/main"
-        app:layout_constraintBottom_toTopOf="@id/address_text"
-        app:layout_constraintTop_toBottomOf="@id/date_text" />
+            <ufes.grad.mobile.communitylink.components.FormsLayout
+                android:id="@+id/phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@id/cpf"
+                app:layout_constraintLeft_toLeftOf="@id/main"
+                app:layout_constraintRight_toRightOf="@id/main"
+                app:layout_constraintTop_toBottomOf="@id/address"
+                app:texts="@string/phone" />
 
-    <TextView
-        android:id="@+id/address_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="6dp"
-        android:text="@string/address"
-        android:textSize="16sp"
-        app:layout_constraintLeft_toLeftOf="@id/main"
-        app:layout_constraintRight_toRightOf="@id/main"
-        app:layout_constraintBottom_toTopOf="@id/address"
-        app:layout_constraintTop_toBottomOf="@id/date" />
+            <ufes.grad.mobile.communitylink.components.FormsLayout
+                android:id="@+id/cpf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@id/separator_2"
+                app:layout_constraintLeft_toLeftOf="@id/main"
+                app:layout_constraintRight_toRightOf="@id/main"
+                app:layout_constraintTop_toBottomOf="@id/phone"
+                app:texts="@string/cpf" />
 
-    <EditText
-        android:id="@+id/address"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/edit_text_layout"
-        android:hint="@string/address"
-        android:paddingHorizontal="20dp"
-        android:paddingVertical="10dp"
-        android:textColorHint="@color/gray"
-        android:textSize="16sp"
-        app:layout_constraintLeft_toLeftOf="@id/main"
-        app:layout_constraintRight_toRightOf="@id/main"
-        app:layout_constraintBottom_toTopOf="@id/phone_text"
-        app:layout_constraintTop_toBottomOf="@id/address_text" />
+            <View
+                android:id="@+id/separator_2"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="60dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
+                android:background="@color/black"
+                app:layout_constraintBottom_toTopOf="@+id/password_text"
+                app:layout_constraintLeft_toLeftOf="@id/main"
+                app:layout_constraintRight_toRightOf="@id/main"
+                app:layout_constraintTop_toBottomOf="@id/cpf" />
 
-    <TextView
-        android:id="@+id/phone_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity=""
-        android:paddingBottom="6dp"
-        android:text="@string/phone"
-        android:textSize="16sp"
-        app:layout_constraintLeft_toLeftOf="@id/main"
-        app:layout_constraintRight_toRightOf="@id/main"
-        app:layout_constraintBottom_toTopOf="@id/phone"
-        app:layout_constraintTop_toBottomOf="@id/address" />
+            <ufes.grad.mobile.communitylink.components.FormsLayout
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@id/repeat"
+                app:layout_constraintLeft_toLeftOf="@id/main"
+                app:layout_constraintRight_toRightOf="@id/main"
+                app:layout_constraintTop_toBottomOf="@id/separator_2"
+                app:texts="@string/password" />
 
-    <EditText
-        android:id="@+id/phone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/edit_text_layout"
-        android:hint="@string/phone"
-        android:paddingHorizontal="20dp"
-        android:paddingVertical="10dp"
-        android:textColorHint="@color/gray"
-        android:textSize="16sp"
-        app:layout_constraintLeft_toLeftOf="@id/main"
-        app:layout_constraintRight_toRightOf="@id/main"
-        app:layout_constraintBottom_toTopOf="@id/cpf_text"
-        app:layout_constraintTop_toBottomOf="@id/phone_text" />
+            <ufes.grad.mobile.communitylink.components.FormsLayout
+                android:id="@+id/repeat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@id/create_button"
+                app:layout_constraintLeft_toLeftOf="@id/main"
+                app:layout_constraintRight_toRightOf="@id/main"
+                app:layout_constraintTop_toBottomOf="@id/password"
+                app:texts="@string/repeat_password" />
 
-    <TextView
-        android:id="@+id/cpf_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity=""
-        android:paddingBottom="6dp"
-        android:text="@string/cpf"
-        android:textSize="16sp"
-        app:layout_constraintLeft_toLeftOf="@id/main"
-        app:layout_constraintRight_toRightOf="@id/main"
-        app:layout_constraintBottom_toTopOf="@id/cpf"
-        app:layout_constraintTop_toBottomOf="@id/phone" />
+            <Button
+                android:id="@+id/create_button"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginVertical="20dp"
+                android:background="@drawable/button_layout"
+                android:backgroundTint="@color/black"
+                android:elevation="20dp"
+                android:paddingHorizontal="40dp"
+                android:text="@string/create_new_account"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="@id/main"
+                app:layout_constraintLeft_toLeftOf="@id/main"
+                app:layout_constraintRight_toRightOf="@id/main"
+                app:layout_constraintTop_toBottomOf="@id/repeat" />
 
-    <EditText
-        android:id="@+id/cpf"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/edit_text_layout"
-        android:hint="@string/cpf"
-        android:paddingHorizontal="20dp"
-        android:paddingVertical="10dp"
-        android:textColorHint="@color/gray"
-        android:textSize="16sp"
-        app:layout_constraintLeft_toLeftOf="@id/main"
-        app:layout_constraintRight_toRightOf="@id/main"
-        app:layout_constraintBottom_toTopOf="@id/separator_2"
-        app:layout_constraintTop_toBottomOf="@id/cpf_text" />
+        </LinearLayout>
 
-    <View
-        android:id="@+id/separator_2"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginHorizontal="60dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="20dp"
-        android:background="@color/black"
-        app:layout_constraintLeft_toLeftOf="@id/main"
-        app:layout_constraintRight_toRightOf="@id/main"
-        app:layout_constraintBottom_toTopOf="@+id/password_text"
-        app:layout_constraintTop_toBottomOf="@id/cpf" />
-
-    <TextView
-        android:id="@+id/password_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="6dp"
-        android:text="@string/password"
-        android:textSize="16sp"
-        app:layout_constraintLeft_toLeftOf="@id/main"
-        app:layout_constraintRight_toRightOf="@id/main"
-        app:layout_constraintBottom_toTopOf="@id/password"
-        app:layout_constraintTop_toBottomOf="@id/separator_2" />
-
-    <EditText
-        android:id="@+id/password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/edit_text_layout"
-        android:hint="@string/password"
-        android:paddingHorizontal="20dp"
-        android:paddingVertical="10dp"
-        android:textColorHint="@color/gray"
-        android:textSize="16sp"
-        app:layout_constraintLeft_toLeftOf="@id/main"
-        app:layout_constraintRight_toRightOf="@id/main"
-        app:layout_constraintBottom_toTopOf="@id/repeat_text"
-        app:layout_constraintTop_toBottomOf="@id/password_text" />
-
-    <TextView
-        android:id="@+id/repeat_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="6dp"
-        android:text="@string/repeat_password"
-        android:textSize="16sp"
-        app:layout_constraintLeft_toLeftOf="@id/main"
-        app:layout_constraintRight_toRightOf="@id/main"
-        app:layout_constraintBottom_toTopOf="@id/repeat"
-        app:layout_constraintTop_toBottomOf="@id/password" />
-
-    <EditText
-        android:id="@+id/repeat"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/edit_text_layout"
-        android:hint="@string/repeat_password"
-        android:paddingHorizontal="20dp"
-        android:paddingVertical="10dp"
-        android:textColorHint="@color/gray"
-        android:textSize="16sp"
-        app:layout_constraintLeft_toLeftOf="@id/main"
-        app:layout_constraintRight_toRightOf="@id/main"
-        app:layout_constraintBottom_toTopOf="@id/create_button"
-        app:layout_constraintTop_toBottomOf="@id/repeat_text" />
-
-    <Button
-        android:id="@+id/create_button"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_gravity="center"
-        android:layout_marginVertical="20dp"
-        android:background="@drawable/button_layout"
-        android:backgroundTint="@color/black"
-        android:elevation="20dp"
-        android:paddingHorizontal="40dp"
-        android:text="@string/create_new_account"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="@id/main"
-        app:layout_constraintLeft_toLeftOf="@id/main"
-        app:layout_constraintRight_toRightOf="@id/main"
-        app:layout_constraintTop_toBottomOf="@id/repeat" />
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,29 +11,15 @@
     android:padding="40dp"
     tools:context=".view.SignupActivity">
 
-    <ImageView
-        android:id="@+id/icon"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_gravity="center"
-        android:src="@drawable/community_link"
-        app:layout_constraintBottom_toTopOf="@+id/title"
-        app:layout_constraintLeft_toLeftOf="@id/main"
-        app:layout_constraintRight_toRightOf="@id/main"
-        app:layout_constraintTop_toTopOf="@id/main" />
-
-    <TextView
+    <ufes.grad.mobile.communitylink.components.CommunityLinkTitle
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
-        android:gravity="center"
-        android:text="@string/app_name"
-        android:textSize="40sp"
         app:layout_constraintBottom_toTopOf="@+id/content"
         app:layout_constraintLeft_toLeftOf="@id/main"
         app:layout_constraintRight_toRightOf="@id/main"
-        app:layout_constraintTop_toBottomOf="@id/icon" />
+        app:layout_constraintTop_toTopOf="@id/main" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/content"
@@ -58,7 +44,7 @@
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@+id/email"
+            app:layout_constraintBottom_toTopOf="@+id/password_button"
             app:layout_constraintLeft_toLeftOf="@id/content"
             app:layout_constraintRight_toRightOf="@id/content"
             app:layout_constraintTop_toTopOf="@id/content"
@@ -69,7 +55,6 @@
             android:layout_width="wrap_content"
             android:layout_height="32dp"
             android:layout_gravity="center"
-            android:layout_marginTop="20dp"
             android:background="@drawable/button_layout"
             android:backgroundTint="@color/blue"
             android:text="@string/forgot_password"

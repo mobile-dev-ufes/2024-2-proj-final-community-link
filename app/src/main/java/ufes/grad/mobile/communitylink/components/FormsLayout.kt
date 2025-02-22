@@ -1,9 +1,6 @@
 package ufes.grad.mobile.communitylink.components
 
 import android.content.Context
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
 import android.util.AttributeSet
 import android.widget.EditText
 import android.widget.LinearLayout
@@ -28,15 +25,6 @@ class FormsLayout(context: Context, attrs: AttributeSet) : LinearLayout(context,
         customAttributesStyle.recycle()
         titleText.text = text
         editText.hint = text
-    }
-
-    override fun onDraw(canvas: Canvas) {
-        super.onDraw(canvas)
-        val paint = Paint()
-        paint.color = Color.RED
-        canvas.drawRect(0f, 0f, width.toFloat(), height.toFloat(), paint) // Desenha um retângulo vermelho
-        titleText.draw(canvas)
-        editText.draw(canvas)
     }
 
 }
