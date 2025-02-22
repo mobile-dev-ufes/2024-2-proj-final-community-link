@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_manager"
+    app:startDestination="@id/dashboardFragment">
+    <fragment
+        android:id="@+id/dashboardFragment"
+        tools:layout="@layout/fragment_dashboard"
+        android:name="ufes.grad.mobile.communitylink.fragments.DashboardFragment"
+        android:label="DashboardFragment" >
+        <action
+            android:id="@+id/action_dashboardFragment_to_exploreFragment"
+            app:destination="@id/exploreFragment"
+            app:enterAnim="@android:anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/exploreFragment"
+        tools:layout="@layout/fragment_explore"
+        android:name="ufes.grad.mobile.communitylink.fragments.ExploreFragment"
+        android:label="SearchFragment" >
+        <action
+            android:id="@+id/action_exploreFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment"
+            app:enterAnim="@android:anim/slide_in_left" />
+    </fragment>
+</navigation>

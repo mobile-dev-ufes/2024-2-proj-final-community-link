@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import ufes.grad.mobile.communitylink.R
 
 
-class SearchFragment : Fragment() {
+class ExploreFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,7 +20,7 @@ class SearchFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search, container, false)
+        return inflater.inflate(R.layout.fragment_explore, container, false)
     }
 
 

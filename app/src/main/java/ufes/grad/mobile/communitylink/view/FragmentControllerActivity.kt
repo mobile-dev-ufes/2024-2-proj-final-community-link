@@ -2,27 +2,26 @@ package ufes.grad.mobile.communitylink.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.commit
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupWithNavController
 import ufes.grad.mobile.communitylink.R
-import ufes.grad.mobile.communitylink.fragments.DashboardFragment
+import ufes.grad.mobile.communitylink.databinding.FragmentControllerBinding
 
 class FragmentControllerActivity : AppCompatActivity() {
+    private lateinit var binding: FragmentControllerBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.main_fragment_controller)
-
-        supportFragmentManager.commit {
-            setReorderingAllowed(true)
-            add(R.id.fragment_container_view, DashboardFragment())
-        }
+        setContentView(R.layout.fragment_controller)
+        setBottomDrawer()
     }
 
-    fun setBotoomDrawer(){
-//        val navHostFrag = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
-//        val navController = navHostFrag.navController
-//        binding.navigationDrawer.setupWithNavController(navController)
-//        binding.bottomNavMenu.setupWithNavController(navController)
-//        val appBarConfiguration = AppBarConfiguration(navController.graph, binding.drawerLayout)
-//        binding.toolbar.setupWithNavController(navController, appBarConfiguration)
+    fun setBottomDrawer(){
+        val navHostFrag = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+        val navController = navHostFrag.navController
+
+        binding.bottomNavMenu.setupWithNavController(navController)
+        val appBarConfiguration = AppBarConfiguration(navController.graph, binding.drawerLayout)
+        binding.toolbar.setupWithNavController(navController, appBarConfiguration)
     }
 }
