@@ -1,4 +1,7 @@
 package ufes.grad.mobile.communitylink.viewmodel
 
-class SignupVM {
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
+
+class SignupVM(application: Application): AndroidViewModel(application)  {
 }

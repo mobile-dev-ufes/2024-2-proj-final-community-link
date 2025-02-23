@@ -1,4 +1,7 @@
 package ufes.grad.mobile.communitylink.viewmodel
 
-class LoginVM {
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
+
+class LoginVM(application: Application): AndroidViewModel(application) {
 }
