@@ -13,6 +13,9 @@
         android:theme="@style/Theme.CommunityLink"
         tools:targetApi="31">
         <activity
+            android:name=".ForgotPassword"
+            android:exported="false" />
+        <activity
             android:name=".view.FragmentControllerActivity"
             android:exported="false" />
         <activity
@@ -21,7 +24,6 @@
         <activity
             android:name=".view.LoginActivity"
             android:exported="true"
-            android:label="@string/app_name"
             android:theme="@style/Theme.CommunityLink">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

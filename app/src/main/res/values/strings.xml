@@ -19,4 +19,13 @@
     <string name="dashboard">Dashboard</string>
     <string name="explorar">Explorar</string>
     <string name="perfil">Perfil</string>
+    <string name="redefine_password_text_1">Insira seu e-mail para receber o código de redefinição de senha.</string>
+    <string name="redefine_password_text_2">Insira o código recebido para redefinir sua senha.</string>
+    <string name="send_email">Enviar e-mail</string>
+    <string name="check_code">Verificar código</string>
+    <string name="redefine_password_text_3">Insira e confirme a sua nova senha.</string>
+    <string name="new_password">Nova senha</string>
+    <string name="confirm_password">Confirmar senha</string>
+    <string name="redefine_password">Redefinir senha</string>
+    <string name="code">Código</string>
 </resources>
