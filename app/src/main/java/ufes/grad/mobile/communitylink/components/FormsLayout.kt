@@ -9,8 +9,8 @@ import ufes.grad.mobile.communitylink.R
 
 class FormsLayout(context: Context, attrs: AttributeSet) : LinearLayout(context, attrs) {
 
-    private var titleText: TextView
-    private var editText: EditText
+    var titleText: TextView
+    var editText: EditText
 
     init {
         inflate(context, R.layout.forms_layout, this)
