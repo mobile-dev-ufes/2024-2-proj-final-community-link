@@ -17,9 +17,9 @@ class LoginVM(application: Application): AndroidViewModel(application) {
         return auth.signInWithEmailAndPassword(email, password).addOnFailureListener {
             var msg = "Houve algum problema no login, tente novamente"
             if (it is FirebaseAuthInvalidUserException) {
-                msg = "Este usuário não existe"
+                msg = "Email ou senha incorretos"
             } else if (it is FirebaseAuthInvalidCredentialsException) {
-                msg = "O usuário existe mas a senha está incorreta"
+                msg = "Email ou senha incorretos"
             } else if (it is FirebaseNetworkException) {
                 msg = "Falha ao conectar com a internet"
             }

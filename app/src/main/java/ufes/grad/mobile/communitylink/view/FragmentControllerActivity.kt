@@ -13,7 +13,7 @@ class FragmentControllerActivity :  AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = FragmentControllerBinding.inflate(layoutInflater)
-        setContentView(R.layout.fragment_controller)
+        setContentView(binding.root)
         setBottomDrawer()
     }
 
@@ -22,7 +22,5 @@ class FragmentControllerActivity :  AppCompatActivity() {
         val navController = navHostFrag.navController
 
         binding.bottomNavMenu.setupWithNavController(navController)
-        val appBarConfiguration = AppBarConfiguration(navController.graph, binding.drawerLayout)
-        binding.toolbar.setupWithNavController(navController, appBarConfiguration)
     }
 }
