@@ -27,4 +27,10 @@
     <string name="confirm_password">Confirmar senha</string>
     <string name="redefine_password">Redefinir senha</string>
     <string name="code">Código</string>
+    <string name="preencha_todos_os_campos">Preencha todos os campos!</string>
+    <string name="verifique_email">Verifique seu endereço de e-mail para continuar</string>
+    <string name="login_error_0">Houve algum problema no login, tente novamente</string>
+    <string name="login_error_1">Email ou senha incorretos</string>
+    <string name="internet_error">Falha ao conectar a internet</string>
+    <string name="cadastro_realizado">Cadastro realizado com sucesso</string>
 </resources>

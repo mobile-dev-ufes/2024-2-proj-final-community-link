@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import ufes.grad.mobile.communitylink.R
 import ufes.grad.mobile.communitylink.databinding.LoginBinding
+import ufes.grad.mobile.communitylink.utils.Utilities
 import ufes.grad.mobile.communitylink.viewmodel.LoginVM
 
 class LoginActivity :  AppCompatActivity(), View.OnClickListener {
@@ -21,6 +22,11 @@ class LoginActivity :  AppCompatActivity(), View.OnClickListener {
         loginVM = ViewModelProvider(this)[LoginVM::class.java]
         binding.loginButton.setOnClickListener(this)
         binding.registerButton.setOnClickListener(this)
+
+        if (loginVM.userLogedIn() or false) { TODO("MUDAR AQUII ESSE FALSE PARA LOGAR DIRETO")
+            startActivity(Intent(this, FragmentControllerActivity::class.java))
+            finish()
+        }
     }
 
     override fun onClick(v: View) {
@@ -28,11 +34,13 @@ class LoginActivity :  AppCompatActivity(), View.OnClickListener {
             R.id.login_button -> {
                 val email = binding.email.editText.text.toString()
                 val password = binding.password.editText.text.toString()
-                if (email.isEmpty() or password.isEmpty())
-                    return
-                loginVM.loginUser(email, password).addOnSuccessListener{
-                    startActivity(Intent(this, FragmentControllerActivity::class.java))
-                    finish()
+                try {
+                    loginVM.loginUser(email, password).addOnSuccessListener {
+                        startActivity(Intent(this, FragmentControllerActivity::class.java))
+                        finish()
+                    }
+                } catch(e: Exception) {
+                    Utilities.notify(application, getString(R.string.preencha_todos_os_campos))
                 }
             }
             R.id.register_button -> {
