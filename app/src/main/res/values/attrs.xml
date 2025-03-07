@@ -3,4 +3,17 @@
     <declare-styleable name="FormsLayout">
         <attr name="texts" format="string"/>
     </declare-styleable>
+    <declare-styleable name="TagLayout">
+        <attr name="color" format="color"/>
+        <attr name="text" format="string"/>
+    </declare-styleable>
+    <declare-styleable name="DashboardCardLayout">
+        <attr name="tag_color" format="color"/>
+        <attr name="tag_text" format="string"/>
+        <attr name="project_text" format="string"/>
+        <attr name="lower_text" format="string"/>
+        <attr name="date_text" format="string"/>
+        <attr name="title_text" format="string"/>
+        <attr name="description_text" format="string"/>
+    </declare-styleable>
 </resources>

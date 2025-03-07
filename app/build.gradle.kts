@@ -30,16 +30,6 @@ android {
         }
     }
 
-//    sourceSets {
-//        main {
-//            res.srcDirs = [
-//                "src/main/res",
-//                "src/main/res/layouts",
-//                "src/main/res/layouts/login"
-//            ]
-//        }
-//    }
-
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
@@ -76,8 +66,8 @@ dependencies {
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.analytics)
     implementation(libs.firebase.common.ktx)
-    implementation (libs.androidx.navigation.fragment.ktx)
-    implementation (libs.androidx.navigation.ui.ktx)
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.androidx.fragment.ktx)
     implementation(libs.firebase.auth.ktx)
     implementation(libs.firebase.firestore)

@@ -5,17 +5,7 @@
     android:id="@+id/background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.LoginActivity">
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/background"
-        app:layout_constraintBottom_toBottomOf="@id/background"
-        app:layout_constraintLeft_toLeftOf="@id/background"
-        app:layout_constraintRight_toRightOf="@id/background"
-        app:layout_constraintTop_toTopOf="@id/background" />
+    tools:context=".view.LoginFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main"
@@ -71,7 +61,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="32dp"
                 android:layout_gravity="center"
-                android:background="@drawable/button_layout"
+                android:background="@drawable/style_button"
                 android:backgroundTint="@color/blue"
                 android:text="@string/forgot_password"
                 android:textColor="@color/white"
@@ -86,7 +76,7 @@
                 android:layout_height="40dp"
                 android:layout_gravity="center"
                 android:layout_marginVertical="20dp"
-                android:background="@drawable/button_layout"
+                android:background="@drawable/style_button"
                 android:backgroundTint="@color/black"
                 android:elevation="20dp"
                 android:paddingHorizontal="40dp"
@@ -128,7 +118,7 @@
                 android:layout_height="40dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/button_layout"
+                android:background="@drawable/style_button"
                 android:backgroundTint="@color/purple"
                 android:elevation="20dp"
                 android:text="@string/create_new_account"

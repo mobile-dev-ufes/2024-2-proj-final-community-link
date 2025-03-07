@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/dashboardFragment"
         tools:layout="@layout/fragment_dashboard"
-        android:name="ufes.grad.mobile.communitylink.fragments.DashboardFragment"
+        android:name="ufes.grad.mobile.communitylink.view.DashboardFragment"
         android:label="DashboardFragment" >
         <action
             android:id="@+id/action_dashboardFragment_to_exploreFragment"
@@ -21,7 +21,7 @@
     <fragment
         android:id="@+id/exploreFragment"
         tools:layout="@layout/fragment_explore"
-        android:name="ufes.grad.mobile.communitylink.fragments.ExploreFragment"
+        android:name="ufes.grad.mobile.communitylink.view.ExploreFragment"
         android:label="SearchFragment" >
         <action
             android:id="@+id/action_exploreFragment_to_dashboardFragment"
@@ -34,7 +34,7 @@
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="ufes.grad.mobile.communitylink.fragments.ProfileFragment"
+        android:name="ufes.grad.mobile.communitylink.view.ProfileFragment"
         tools:layout="@layout/fragment_profile"
         android:label="ProfileFragment" >
         <action

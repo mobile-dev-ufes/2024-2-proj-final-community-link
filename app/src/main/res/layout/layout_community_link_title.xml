@@ -8,7 +8,7 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_gravity="center"
-        android:src="@drawable/community_link"/>
+        android:src="@drawable/ic_community_link"/>
 
     <TextView
         android:id="@+id/title"

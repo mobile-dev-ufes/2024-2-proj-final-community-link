@@ -2,20 +2,20 @@ package ufes.grad.mobile.communitylink.components
 
 import android.content.Context
 import android.util.AttributeSet
-import android.widget.EditText
+import android.view.LayoutInflater
 import android.widget.LinearLayout
-import android.widget.TextView
 import ufes.grad.mobile.communitylink.R
+import ufes.grad.mobile.communitylink.databinding.LayoutFormsBinding
 
 class FormsLayout(context: Context, attrs: AttributeSet) : LinearLayout(context, attrs) {
 
-    var titleText: TextView
-    var editText: EditText
+    private var binding: LayoutFormsBinding =
+        LayoutFormsBinding.inflate(LayoutInflater.from(context), this, true)
+
+    var titleText = binding.formsTitleText
+    var editText = binding.formsEditText
 
     init {
-        inflate(context, R.layout.forms_layout, this)
-        titleText = findViewById<TextView>(R.id.forms_title_text)
-        editText = findViewById<EditText>(R.id.forms_edit_text)
         setAttributes(context, attrs)
     }
 
@@ -23,8 +23,8 @@ class FormsLayout(context: Context, attrs: AttributeSet) : LinearLayout(context,
         val customAttributesStyle = context.obtainStyledAttributes(attrs, R.styleable.FormsLayout)
         val text = customAttributesStyle.getString(R.styleable.FormsLayout_texts)
         customAttributesStyle.recycle()
-        titleText.text = text
-        editText.hint = text
+        binding.formsTitleText.text = text
+        binding.formsEditText.hint = text
     }
 
 }

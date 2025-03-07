@@ -33,4 +33,5 @@
     <string name="login_error_1">Email ou senha incorretos</string>
     <string name="internet_error">Falha ao conectar a internet</string>
     <string name="cadastro_realizado">Cadastro realizado com sucesso</string>
+    <string name="pesquisar">Pesquisar...</string>
 </resources>
