@@ -20,8 +20,9 @@
         android:background="@drawable/edit_text_style"
         android:hint="hint"
         android:paddingHorizontal="20dp"
-        android:paddingVertical="10dp"
+        android:paddingVertical="14dp"
+        android:textColor="@color/black"
         android:textColorHint="@color/gray"
         android:textSize="14sp" />
-    
+
 </LinearLayout>

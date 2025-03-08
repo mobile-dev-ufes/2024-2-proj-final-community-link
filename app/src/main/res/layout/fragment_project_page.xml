@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+    android:gravity="center|top"
+    android:orientation="vertical"
+    android:padding="@dimen/border"
+    tools:context=".view.ProjectPageFragment">
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/ic_profile" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_slab_bold"
+        android:paddingVertical="10dp"
+        android:text="Nome do Projeto"
+        android:textSize="24sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lineHeight="24sp"
+        android:text="Descrição...\nEndereço: ...\nCNPJ: XX.XXX.XXX/XXXX-XX" />
+
+    <ufes.grad.mobile.communitylink.components.SeparatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/style_button"
+        android:backgroundTint="@color/black"
+        android:text="Realizar doação"
+        android:textColor="@color/white" />
+
+    <ufes.grad.mobile.communitylink.components.SeparatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ufes.grad.mobile.communitylink.components.IconButtonLayout
+        android:id="@+id/members_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="20dp"
+        app:button_icon="@drawable/ic_profile"
+        app:button_text="Membros" />
+
+    <ufes.grad.mobile.communitylink.components.IconButtonLayout
+        android:id="@+id/actions_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="20dp"
+        app:button_icon="@drawable/ic_zap"
+        app:button_text="Ações" />
+
+    <ufes.grad.mobile.communitylink.components.IconButtonLayout
+        android:id="@+id/donations_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="20dp"
+        app:button_icon="@drawable/ic_archive"
+        app:button_text="Doações para o Projeto" />
+
+</LinearLayout>

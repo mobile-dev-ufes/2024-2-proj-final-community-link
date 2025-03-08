@@ -1,9 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/background"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="@dimen/border"
+    android:clipToPadding="false"
+    android:scrollbars="none">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center|top"
+        android:orientation="vertical">
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/style_tag"
+            android:backgroundTint="@color/black"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="10dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <ImageView
+                android:id="@+id/profile_icon"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_profile"
+                app:tint="@color/white" />
+
+            <TextView
+                android:id="@+id/profile_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:text="@string/meu_perfil"
+                android:textColor="@color/white"
+                android:textSize="24sp" />
+
+        </LinearLayout>
+
+        <ufes.grad.mobile.communitylink.components.SeparatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <ufes.grad.mobile.communitylink.components.IconButtonLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="20dp"
+            app:button_icon="@drawable/ic_archive"
+            app:button_text="Meus Projetos" />
+
+        <ufes.grad.mobile.communitylink.components.IconButtonLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="20dp"
+            app:button_icon="@drawable/ic_clipboard"
+            app:button_text="Minhas Ações" />
+
+        <ufes.grad.mobile.communitylink.components.IconButtonLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="20dp"
+            app:button_icon="@drawable/ic_zap"
+            app:button_text="Eventos e Doações" />
+
+        <ufes.grad.mobile.communitylink.components.IconButtonLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            app:button_icon="@drawable/ic_calendar"
+            app:button_text="Ações Pendentes" />
+
+        <ufes.grad.mobile.communitylink.components.SeparatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <ufes.grad.mobile.communitylink.components.FormsLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:texts="@string/name" />
+
+        <ufes.grad.mobile.communitylink.components.FormsLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:texts="@string/email" />
+
+        <ufes.grad.mobile.communitylink.components.FormsLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:texts="@string/cpf" />
+
+        <ufes.grad.mobile.communitylink.components.FormsLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:texts="@string/phone" />
+
+        <ufes.grad.mobile.communitylink.components.FormsLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:texts="@string/sex" />
+
+        <ufes.grad.mobile.communitylink.components.FormsLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:texts="@string/sex" />
+
+        <ufes.grad.mobile.communitylink.components.FormsLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:texts="@string/date" />
+
+        <ufes.grad.mobile.communitylink.components.FormsLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:texts="@string/address" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/style_button"
+            android:backgroundTint="@color/black"
+            android:text="@string/confirm_changes"
+            android:textColor="@color/white" />
+
+        <ufes.grad.mobile.communitylink.components.SeparatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/style_button"
+            android:backgroundTint="@color/black"
+            android:text="@string/logout"
+            android:textColor="@color/white" />
+
+        <ufes.grad.mobile.communitylink.components.SeparatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/style_button"
+            android:backgroundTint="@color/red"
+            android:text="@string/delete_user"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+</ScrollView>

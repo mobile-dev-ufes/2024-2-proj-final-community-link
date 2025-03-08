@@ -1,19 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="FormsLayout">
-        <attr name="texts" format="string"/>
+        <attr name="texts" format="string" />
     </declare-styleable>
-    <declare-styleable name="TagLayout">
-        <attr name="color" format="color"/>
-        <attr name="text" format="string"/>
+    <declare-styleable name="InfoCardLayout">
+        <attr name="tag_type" format="enum">
+            <enum name="DEFAULT" value="0" />
+            <enum name="DONATION" value="1" />
+            <enum name="EVENT" value="2" />
+            <enum name="FILLED" value="3" />
+            <enum name="EMPTY" value="4" />
+        </attr>
+        <attr name="project_text" format="string" />
+        <attr name="lower_text" format="string" />
+        <attr name="date_text" format="string" />
+        <attr name="title_text" format="string" />
+        <attr name="description_text" format="string" />
     </declare-styleable>
-    <declare-styleable name="DashboardCardLayout">
-        <attr name="tag_color" format="color"/>
-        <attr name="tag_text" format="string"/>
-        <attr name="project_text" format="string"/>
-        <attr name="lower_text" format="string"/>
-        <attr name="date_text" format="string"/>
-        <attr name="title_text" format="string"/>
-        <attr name="description_text" format="string"/>
+    <declare-styleable name="IconButtonLayout">
+        <attr name="button_icon" format="reference" />
+        <attr name="button_text" format="string" />
+    </declare-styleable>
+    <declare-styleable name="MemberCardLayout">
+        <attr name="member_name" format="string" />
+        <attr name="member_status" format="string" />
+    </declare-styleable>
+    <declare-styleable name="ProjectCardLayout">
+        <attr name="project_name" format="string" />
+        <attr name="project_description" format="string" />
+        <attr name="project_icon" format="reference" />
+    </declare-styleable>
+    <declare-styleable name="SearchBarLayout">
+        <attr name="fix_top" format="boolean" />
+    </declare-styleable>
+    <declare-styleable name="DonationCardLayout">
+        <attr name="donation_name" format="string" />
+        <attr name="donation_date" format="string" />
+        <attr name="donation_pending" format="boolean" />
     </declare-styleable>
 </resources>

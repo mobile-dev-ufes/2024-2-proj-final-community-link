@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:clipToPadding="false"
     android:padding="@dimen/border"
-    tools:context=".view.DashboardFragment">
+    tools:context=".view.ProjectActionsListFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,9 +16,8 @@
         <ufes.grad.mobile.communitylink.components.InfoCardLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:description_text="Descrição do evento"
-            app:tag_type="EVENT"
-            app:title_text="Evento" />
+            app:description_text="@string/address"
+            app:title_text="@string/address" />
 
     </LinearLayout>
 

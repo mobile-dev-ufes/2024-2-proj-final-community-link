@@ -23,7 +23,7 @@ class LoginFragment : Fragment(R.layout.fragment_login), View.OnClickListener {
         super.onCreate(savedInstanceState)
         loginVM = ViewModelProvider(this)[LoginVM::class.java]
 
-        if (loginVM.userLogedIn()) {
+        if (loginVM.userLogedIn() or true) {
             startActivity(Intent(context, FragmentControllerActivity::class.java))
         }
     }
@@ -61,6 +61,7 @@ class LoginFragment : Fragment(R.layout.fragment_login), View.OnClickListener {
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
         binding.loginButton.setOnClickListener(this)
         binding.registerButton.setOnClickListener(this)
+        binding.passwordButton.setOnClickListener(this)
         return binding.root
     }
 

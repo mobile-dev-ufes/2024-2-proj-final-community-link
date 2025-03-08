@@ -1,17 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/border"
+    android:paddingBottom="@dimen/border"
     tools:context=".view.ExploreFragment">
 
     <ufes.grad.mobile.communitylink.components.SearchBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        app:fix_top="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ufes.grad.mobile.communitylink.components.InfoCardLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:description_text="@string/placeholder"
+                app:title_text="@string/placeholder" />
+
+            <ufes.grad.mobile.communitylink.components.ProjectCardLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:project_description="@string/placeholder"
+                app:project_name="@string/placeholder" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

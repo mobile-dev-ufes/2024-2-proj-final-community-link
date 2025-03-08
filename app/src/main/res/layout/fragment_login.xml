@@ -1,133 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:clipToPadding="false"
+    android:orientation="vertical"
+    android:padding="@dimen/border"
     tools:context=".view.LoginFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/main"
+    <ufes.grad.mobile.communitylink.components.CommunityLinkTitle
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="40dp"
-        app:layout_constraintBottom_toBottomOf="@id/background"
-        app:layout_constraintLeft_toLeftOf="@id/background"
-        app:layout_constraintRight_toRightOf="@id/background"
-        app:layout_constraintTop_toTopOf="@id/background" >
+        android:layout_height="wrap_content" />
 
-        <ufes.grad.mobile.communitylink.components.CommunityLinkTitle
-            android:id="@+id/title"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ufes.grad.mobile.communitylink.components.FormsLayout
+            android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="40dp"
-            app:layout_constraintBottom_toTopOf="@id/content"
-            app:layout_constraintLeft_toLeftOf="@id/main"
-            app:layout_constraintRight_toRightOf="@id/main"
-            app:layout_constraintTop_toTopOf="@id/main" />
+            app:texts="@string/email" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/content"
+        <ufes.grad.mobile.communitylink.components.FormsLayout
+            android:id="@+id/password"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="@id/main"
-            app:layout_constraintLeft_toLeftOf="@id/main"
-            app:layout_constraintRight_toRightOf="@id/main"
-            app:layout_constraintTop_toBottomOf="@id/title">
+            android:layout_height="wrap_content"
+            app:texts="@string/password" />
 
-            <ufes.grad.mobile.communitylink.components.FormsLayout
-                android:id="@+id/email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toTopOf="@id/password"
-                app:layout_constraintLeft_toLeftOf="@id/content"
-                app:layout_constraintRight_toRightOf="@id/content"
-                app:layout_constraintTop_toTopOf="@id/content"
-                app:texts="@string/email" />
+        <Button
+            android:id="@+id/password_button"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:layout_gravity="center"
+            android:background="@drawable/style_button"
+            android:backgroundTint="@color/blue"
+            android:text="@string/forgot_password"
+            android:textColor="@color/white" />
 
-            <ufes.grad.mobile.communitylink.components.FormsLayout
-                android:id="@+id/password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toTopOf="@+id/password_button"
-                app:layout_constraintLeft_toLeftOf="@id/content"
-                app:layout_constraintRight_toRightOf="@id/content"
-                app:layout_constraintTop_toTopOf="@id/content"
-                app:texts="@string/password" />
+        <Button
+            android:id="@+id/login_button"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/style_button"
+            android:backgroundTint="@color/black"
+            android:elevation="20dp"
+            android:paddingHorizontal="40dp"
+            android:text="@string/login"
+            android:textColor="@color/white" />
 
-            <Button
-                android:id="@+id/password_button"
-                android:layout_width="wrap_content"
-                android:layout_height="32dp"
-                android:layout_gravity="center"
-                android:background="@drawable/style_button"
-                android:backgroundTint="@color/blue"
-                android:text="@string/forgot_password"
-                android:textColor="@color/white"
-                app:layout_constraintBottom_toTopOf="@id/login_button"
-                app:layout_constraintLeft_toLeftOf="@id/content"
-                app:layout_constraintRight_toRightOf="@id/content"
-                app:layout_constraintTop_toBottomOf="@id/password" />
+        <ufes.grad.mobile.communitylink.components.SeparatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-            <Button
-                android:id="@+id/login_button"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_gravity="center"
-                android:layout_marginVertical="20dp"
-                android:background="@drawable/style_button"
-                android:backgroundTint="@color/black"
-                android:elevation="20dp"
-                android:paddingHorizontal="40dp"
-                android:text="@string/login"
-                android:textColor="@color/white"
-                app:layout_constraintBottom_toTopOf="@id/separator"
-                app:layout_constraintLeft_toLeftOf="@id/content"
-                app:layout_constraintRight_toRightOf="@id/content"
-                app:layout_constraintTop_toBottomOf="@id/password_button" />
+        <TextView
+            android:id="@+id/register_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/login_create_account_text"
+            android:textSize="16sp" />
 
-            <View
-                android:id="@+id/separator"
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_marginHorizontal="60dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="20dp"
-                android:background="@color/black"
-                app:layout_constraintBottom_toTopOf="@id/register_text"
-                app:layout_constraintLeft_toLeftOf="@id/content"
-                app:layout_constraintRight_toRightOf="@id/content"
-                app:layout_constraintTop_toBottomOf="@id/login_button" />
+        <Button
+            android:id="@+id/register_button"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/style_button"
+            android:backgroundTint="@color/purple"
+            android:elevation="20dp"
+            android:text="@string/create_new_account"
+            android:textColor="@color/white" />
 
-            <TextView
-                android:id="@+id/register_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/login_create_account_text"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toTopOf="@id/register_button"
-                app:layout_constraintLeft_toLeftOf="@id/content"
-                app:layout_constraintRight_toRightOf="@id/content"
-                app:layout_constraintTop_toBottomOf="@id/separator" />
+    </LinearLayout>
 
-            <Button
-                android:id="@+id/register_button"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/style_button"
-                android:backgroundTint="@color/purple"
-                android:elevation="20dp"
-                android:text="@string/create_new_account"
-                android:textColor="@color/white"
-                app:layout_constraintLeft_toLeftOf="@id/content"
-                app:layout_constraintRight_toRightOf="@id/content"
-                app:layout_constraintTop_toBottomOf="@id/register_text" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

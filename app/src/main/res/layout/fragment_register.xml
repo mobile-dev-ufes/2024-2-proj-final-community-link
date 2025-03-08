@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/background"
@@ -7,179 +7,168 @@
     android:layout_height="match_parent"
     android:clipToPadding="false"
     android:orientation="vertical"
+    android:padding="@dimen/border"
+    android:scrollbars="none"
     tools:context=".view.SignupFragment">
 
-    <ScrollView
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clipToPadding="false"
-        android:padding="40dp"
-        android:scrollbars="none"
-        app:layout_constraintBottom_toTopOf="@+id/background"
-        app:layout_constraintLeft_toLeftOf="@id/background"
-        app:layout_constraintRight_toRightOf="@id/background"
-        app:layout_constraintTop_toTopOf="@id/background">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/main"
+        <ufes.grad.mobile.communitylink.components.CommunityLinkTitle
+            android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            app:layout_constraintBottom_toTopOf="@+id/register_text"
+            app:layout_constraintLeft_toLeftOf="@id/main"
+            app:layout_constraintRight_toRightOf="@id/main"
+            app:layout_constraintTop_toTopOf="@id/main" />
 
-            <ufes.grad.mobile.communitylink.components.CommunityLinkTitle
-                android:id="@+id/title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toTopOf="@+id/register_text"
-                app:layout_constraintLeft_toLeftOf="@id/main"
-                app:layout_constraintRight_toRightOf="@id/main"
-                app:layout_constraintTop_toTopOf="@id/main" />
+        <TextView
+            android:id="@+id/register_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/register_text"
+            app:layout_constraintBottom_toTopOf="@id/name"
+            app:layout_constraintLeft_toLeftOf="@id/main"
+            app:layout_constraintRight_toRightOf="@id/main"
+            app:layout_constraintTop_toBottomOf="@id/title" />
 
-            <TextView
-                android:id="@+id/register_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/register_text"
-                app:layout_constraintBottom_toTopOf="@id/name"
-                app:layout_constraintLeft_toLeftOf="@id/main"
-                app:layout_constraintRight_toRightOf="@id/main"
-                app:layout_constraintTop_toBottomOf="@id/title" />
+        <ufes.grad.mobile.communitylink.components.FormsLayout
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@id/email"
+            app:layout_constraintLeft_toLeftOf="@id/main"
+            app:layout_constraintRight_toRightOf="@id/main"
+            app:layout_constraintTop_toBottomOf="@id/register_text"
+            app:texts="@string/name" />
 
-            <ufes.grad.mobile.communitylink.components.FormsLayout
-                android:id="@+id/name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toTopOf="@id/email"
-                app:layout_constraintLeft_toLeftOf="@id/main"
-                app:layout_constraintRight_toRightOf="@id/main"
-                app:layout_constraintTop_toBottomOf="@id/register_text"
-                app:texts="@string/name" />
+        <ufes.grad.mobile.communitylink.components.FormsLayout
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@id/separator"
+            app:layout_constraintLeft_toLeftOf="@id/main"
+            app:layout_constraintRight_toRightOf="@id/main"
+            app:layout_constraintTop_toBottomOf="@id/name"
+            app:texts="@string/email" />
 
-            <ufes.grad.mobile.communitylink.components.FormsLayout
-                android:id="@+id/email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toTopOf="@id/separator"
-                app:layout_constraintLeft_toLeftOf="@id/main"
-                app:layout_constraintRight_toRightOf="@id/main"
-                app:layout_constraintTop_toBottomOf="@id/name"
-                app:texts="@string/email" />
+        <View
+            android:id="@+id/separator"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="60dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:background="@color/black"
+            app:layout_constraintBottom_toTopOf="@id/sex"
+            app:layout_constraintLeft_toLeftOf="@id/main"
+            app:layout_constraintRight_toRightOf="@id/main"
+            app:layout_constraintTop_toBottomOf="@id/email" />
 
-            <View
-                android:id="@+id/separator"
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_marginHorizontal="60dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="20dp"
-                android:background="@color/black"
-                app:layout_constraintBottom_toTopOf="@id/sex"
-                app:layout_constraintLeft_toLeftOf="@id/main"
-                app:layout_constraintRight_toRightOf="@id/main"
-                app:layout_constraintTop_toBottomOf="@id/email" />
+        <ufes.grad.mobile.communitylink.components.FormsLayout
+            android:id="@+id/sex"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@id/date"
+            app:layout_constraintLeft_toLeftOf="@id/main"
+            app:layout_constraintRight_toRightOf="@id/main"
+            app:layout_constraintTop_toBottomOf="@id/separator"
+            app:texts="@string/sex" />
 
-            <ufes.grad.mobile.communitylink.components.FormsLayout
-                android:id="@+id/sex"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toTopOf="@id/date"
-                app:layout_constraintLeft_toLeftOf="@id/main"
-                app:layout_constraintRight_toRightOf="@id/main"
-                app:layout_constraintTop_toBottomOf="@id/separator"
-                app:texts="@string/sex" />
+        <ufes.grad.mobile.communitylink.components.FormsLayout
+            android:id="@+id/date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@id/address"
+            app:layout_constraintLeft_toLeftOf="@id/main"
+            app:layout_constraintRight_toRightOf="@id/main"
+            app:layout_constraintTop_toBottomOf="@id/sex"
+            app:texts="@string/date" />
 
-            <ufes.grad.mobile.communitylink.components.FormsLayout
-                android:id="@+id/date"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toTopOf="@id/address"
-                app:layout_constraintLeft_toLeftOf="@id/main"
-                app:layout_constraintRight_toRightOf="@id/main"
-                app:layout_constraintTop_toBottomOf="@id/sex"
-                app:texts="@string/date" />
+        <ufes.grad.mobile.communitylink.components.FormsLayout
+            android:id="@+id/address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@id/phone"
+            app:layout_constraintLeft_toLeftOf="@id/main"
+            app:layout_constraintRight_toRightOf="@id/main"
+            app:layout_constraintTop_toBottomOf="@id/date"
+            app:texts="@string/address" />
 
-            <ufes.grad.mobile.communitylink.components.FormsLayout
-                android:id="@+id/address"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toTopOf="@id/phone"
-                app:layout_constraintLeft_toLeftOf="@id/main"
-                app:layout_constraintRight_toRightOf="@id/main"
-                app:layout_constraintTop_toBottomOf="@id/date"
-                app:texts="@string/address" />
+        <ufes.grad.mobile.communitylink.components.FormsLayout
+            android:id="@+id/phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@id/cpf"
+            app:layout_constraintLeft_toLeftOf="@id/main"
+            app:layout_constraintRight_toRightOf="@id/main"
+            app:layout_constraintTop_toBottomOf="@id/address"
+            app:texts="@string/phone" />
 
-            <ufes.grad.mobile.communitylink.components.FormsLayout
-                android:id="@+id/phone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toTopOf="@id/cpf"
-                app:layout_constraintLeft_toLeftOf="@id/main"
-                app:layout_constraintRight_toRightOf="@id/main"
-                app:layout_constraintTop_toBottomOf="@id/address"
-                app:texts="@string/phone" />
+        <ufes.grad.mobile.communitylink.components.FormsLayout
+            android:id="@+id/cpf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@id/separator_2"
+            app:layout_constraintLeft_toLeftOf="@id/main"
+            app:layout_constraintRight_toRightOf="@id/main"
+            app:layout_constraintTop_toBottomOf="@id/phone"
+            app:texts="@string/cpf" />
 
-            <ufes.grad.mobile.communitylink.components.FormsLayout
-                android:id="@+id/cpf"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toTopOf="@id/separator_2"
-                app:layout_constraintLeft_toLeftOf="@id/main"
-                app:layout_constraintRight_toRightOf="@id/main"
-                app:layout_constraintTop_toBottomOf="@id/phone"
-                app:texts="@string/cpf" />
+        <View
+            android:id="@+id/separator_2"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="60dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:background="@color/black"
+            app:layout_constraintBottom_toTopOf="@+id/password"
+            app:layout_constraintLeft_toLeftOf="@id/main"
+            app:layout_constraintRight_toRightOf="@id/main"
+            app:layout_constraintTop_toBottomOf="@id/cpf" />
 
-            <View
-                android:id="@+id/separator_2"
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_marginHorizontal="60dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="20dp"
-                android:background="@color/black"
-                app:layout_constraintBottom_toTopOf="@+id/password"
-                app:layout_constraintLeft_toLeftOf="@id/main"
-                app:layout_constraintRight_toRightOf="@id/main"
-                app:layout_constraintTop_toBottomOf="@id/cpf" />
+        <ufes.grad.mobile.communitylink.components.FormsLayout
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@id/repeat"
+            app:layout_constraintLeft_toLeftOf="@id/main"
+            app:layout_constraintRight_toRightOf="@id/main"
+            app:layout_constraintTop_toBottomOf="@id/separator_2"
+            app:texts="@string/password" />
 
-            <ufes.grad.mobile.communitylink.components.FormsLayout
-                android:id="@+id/password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toTopOf="@id/repeat"
-                app:layout_constraintLeft_toLeftOf="@id/main"
-                app:layout_constraintRight_toRightOf="@id/main"
-                app:layout_constraintTop_toBottomOf="@id/separator_2"
-                app:texts="@string/password" />
+        <ufes.grad.mobile.communitylink.components.FormsLayout
+            android:id="@+id/repeat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@id/create_button"
+            app:layout_constraintLeft_toLeftOf="@id/main"
+            app:layout_constraintRight_toRightOf="@id/main"
+            app:layout_constraintTop_toBottomOf="@id/password"
+            app:texts="@string/repeat_password" />
 
-            <ufes.grad.mobile.communitylink.components.FormsLayout
-                android:id="@+id/repeat"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toTopOf="@id/create_button"
-                app:layout_constraintLeft_toLeftOf="@id/main"
-                app:layout_constraintRight_toRightOf="@id/main"
-                app:layout_constraintTop_toBottomOf="@id/password"
-                app:texts="@string/repeat_password" />
+        <Button
+            android:id="@+id/create_button"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginVertical="20dp"
+            android:background="@drawable/style_button"
+            android:backgroundTint="@color/black"
+            android:elevation="20dp"
+            android:paddingHorizontal="40dp"
+            android:text="@string/create_new_account"
+            android:textColor="@color/white"
+            app:layout_constraintLeft_toLeftOf="@id/main"
+            app:layout_constraintRight_toRightOf="@id/main"
+            app:layout_constraintTop_toBottomOf="@id/repeat" />
 
-            <Button
-                android:id="@+id/create_button"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_gravity="center"
-                android:layout_marginVertical="20dp"
-                android:background="@drawable/style_button"
-                android:backgroundTint="@color/black"
-                android:elevation="20dp"
-                android:paddingHorizontal="40dp"
-                android:text="@string/create_new_account"
-                android:textColor="@color/white"
-                app:layout_constraintLeft_toLeftOf="@id/main"
-                app:layout_constraintRight_toRightOf="@id/main"
-                app:layout_constraintTop_toBottomOf="@id/repeat" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </ScrollView>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

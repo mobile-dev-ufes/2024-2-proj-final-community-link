@@ -34,4 +34,15 @@
     <string name="internet_error">Falha ao conectar a internet</string>
     <string name="cadastro_realizado">Cadastro realizado com sucesso</string>
     <string name="pesquisar">Pesquisar...</string>
+    <string name="meu_perfil">Meu Perfil</string>
+    <string name="confirm_changes">Confirmar alterações</string>
+    <string name="logout">Logout</string>
+    <string name="delete_user">Excluir usuário</string>
+    <string name="donation">Doação</string>
+    <string name="event">Evento</string>
+    <string name="filled">Preenchida</string>
+    <string name="available">Disponível</string>
+    <string name="placeholder">placeholder</string>
+    <string name="pending">Pendente</string>
+    <string name="received">Recebida</string>
 </resources>

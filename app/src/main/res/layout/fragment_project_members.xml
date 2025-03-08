@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+    android:orientation="vertical"
+    android:padding="@dimen/border"
+    tools:context=".view.ProjectMembersFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/style_button"
+        android:backgroundTint="@color/black"
+        android:gravity="center"
+        android:paddingVertical="10dp"
+        android:text="Responsáveis"
+        android:textColor="@color/white"
+        android:textSize="24sp" />
+
+    <ufes.grad.mobile.communitylink.components.MemberCardLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:member_name="@string/placeholder" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/style_button"
+        android:backgroundTint="@color/black"
+        android:gravity="center"
+        android:paddingVertical="10dp"
+        android:text="Membros"
+        android:textColor="@color/white"
+        android:textSize="24sp" />
+
+    <ufes.grad.mobile.communitylink.components.MemberCardLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:member_name="@string/placeholder"
+        app:member_status="Ativo" />
+
+</LinearLayout>

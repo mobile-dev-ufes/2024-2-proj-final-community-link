@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:maxHeight="200dp">
+    android:maxHeight="200dp"
+    android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/project_info"
@@ -11,11 +12,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="horizontal"
-        android:paddingVertical="12dp"
-        app:layout_constraintBottom_toTopOf="@id/content"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:paddingVertical="12dp">
 
         <ImageView
             android:layout_width="40dp"
@@ -56,8 +53,8 @@
         android:background="@drawable/style_dashboard_card"
         android:backgroundTint="@color/white"
         android:orientation="vertical"
-        android:paddingTop="10dp"
         android:paddingHorizontal="16dp"
+        android:paddingTop="10dp"
         android:paddingBottom="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -68,9 +65,7 @@
             android:id="@+id/tag"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:color="@color/black"
-            app:text="placeholder"
-            android:paddingBottom="8dp"/>
+            android:paddingBottom="8dp" />
 
         <TextView
             android:id="@+id/date_text"
@@ -102,4 +97,4 @@
 
     </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
