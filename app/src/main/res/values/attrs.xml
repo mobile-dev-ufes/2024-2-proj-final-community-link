@@ -38,4 +38,8 @@
         <attr name="donation_date" format="string" />
         <attr name="donation_pending" format="boolean" />
     </declare-styleable>
+    <declare-styleable name="SimplePostLayout">
+        <attr name="post_title" format="string" />
+        <attr name="post_date" format="string" />
+    </declare-styleable>
 </resources>

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/background_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -31,7 +30,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/project_profile"
-            android:background="@drawable/circle_mask"
+            android:background="@drawable/mask_circle"
             android:clipToOutline="true"
             android:layout_marginEnd="10dp"/>
 
@@ -68,7 +67,8 @@
             android:layout_height="wrap_content"
             android:text="Descrição..."
             android:textSize="14sp"
-            android:textAlignment="center"/>
+            android:textAlignment="center"
+            android:padding="5dp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -80,8 +80,43 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Locais:"
+            android:layout_marginTop="5dp"/>
 
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Conferir Vagas de Voluntário"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:background="@drawable/style_button"
+            android:backgroundTint="@color/black"
+            android:padding="12dp"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center"/>
+
+        <ufes.grad.mobile.communitylink.components.SeparatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"/>
     </LinearLayout>
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:scrollbars="none"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/main_info"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <ufes.grad.mobile.communitylink.components.SimplePostLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:post_title="Postagem..."
+            app:post_date="XX/XX/XXXX às XX:XX"/>
+
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

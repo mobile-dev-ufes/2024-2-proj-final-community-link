@@ -15,7 +15,7 @@
         android:layout_height="80dp"
         android:layout_marginTop="20dp"
         android:src="@drawable/project_profile"
-        android:background="@drawable/circle_mask"
+        android:background="@drawable/mask_circle"
         android:clipToOutline="true" />
 
     <TextView

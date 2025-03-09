@@ -12,7 +12,7 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:src="@drawable/project_profile"
-        android:background="@drawable/circle_mask"
+        android:background="@drawable/mask_circle"
         android:clipToOutline="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="W,1:1"
