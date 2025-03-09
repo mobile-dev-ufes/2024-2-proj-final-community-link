@@ -45,4 +45,7 @@
     <string name="placeholder">placeholder</string>
     <string name="pending">Pendente</string>
     <string name="received">Recebida</string>
+    <string name="new_password_successfully_confirmed">Nova senha confirmada com sucesso!</string>
+    <string name="Log_in">Fazer login</string>
+    <string name="new_account_successfully_registered">Nova conta cadastrada com sucesso!</string>
 </resources>
