@@ -15,27 +15,14 @@
         android:layout_height="wrap_content"
         android:paddingBottom="10dp" />
 
-    <LinearLayout
+    <Spinner
+        android:id="@+id/filter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:paddingBottom="10dp">
-
-        <CheckBox
-            android:id="@+id/received"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Recebidas" />
-
-        <CheckBox
-            android:id="@+id/pending"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Pendentes" />
-
-    </LinearLayout>
+        android:tooltipText="@string/placeholder"
+        android:layout_marginBottom="10dp"
+        android:spinnerMode="dropdown"
+        android:background="@android:drawable/btn_dropdown"/>
 
     <ScrollView
         android:layout_width="match_parent"

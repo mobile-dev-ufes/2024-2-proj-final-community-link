@@ -48,4 +48,17 @@
     <string name="new_password_successfully_confirmed">Nova senha confirmada com sucesso!</string>
     <string name="Log_in">Fazer login</string>
     <string name="new_account_successfully_registered">Nova conta cadastrada com sucesso!</string>
+    <string name="view_volunteer_slots">Ver vagas para voluntários</string>
+    <string name="make_donation">Realizar doação</string>
+    <string name="members">Membros</string>
+    <string name="actions">Ações</string>
+    <string name="project_donations">Doações para o Projeto</string>
+    <string name="goal">Meta</string>
+    <string name="goal_hit">Meta batida!</string>
+    <string name="to_be_confirmed">A ser confirmada.</string>
+    <string name="cancel_volunteer">Cancelar participação</string>
+    <string name="my_actions">Minhas Ações</string>
+    <string name="events_and_donations">Eventos e Doações</string>
+    <string name="pending_actions">Ações Pendentes</string>
+    <string name="my_projects">Meus Projetos</string>
 </resources>

@@ -15,10 +15,8 @@ class IconButtonLayout(context: Context, attrs: AttributeSet) :
 
     init {
         isClickable = true
-        setOnClickListener {
-            performClick()
-        }
         setAttributes(context, attrs)
+        setOnClickListener { performClick() }
     }
 
     private fun setAttributes(context: Context, attrs: AttributeSet) {

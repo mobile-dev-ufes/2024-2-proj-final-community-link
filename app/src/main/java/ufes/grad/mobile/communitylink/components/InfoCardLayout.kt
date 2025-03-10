@@ -26,18 +26,41 @@ class InfoCardLayout(context: Context, attrs: AttributeSet) :
         val title = customAttributesStyle.getString(R.styleable.InfoCardLayout_title_text)
         val description =
             customAttributesStyle.getString(R.styleable.InfoCardLayout_description_text)
+        val second_title =
+            customAttributesStyle.getString(R.styleable.InfoCardLayout_second_title_text)
+        val second_description =
+            customAttributesStyle.getString(R.styleable.InfoCardLayout_second_description_text)
+        val show_alert =
+            customAttributesStyle.getBoolean(R.styleable.InfoCardLayout_show_alert, false)
+        val show_button =
+            customAttributesStyle.getBoolean(R.styleable.InfoCardLayout_cancel_button, false)
         val tag = customAttributesStyle.getInt(R.styleable.InfoCardLayout_tag_type, 0)
 
         customAttributesStyle.recycle()
-        setValues(title!!, description!!, date, project, lower, tag)
+        setValues(
+            title!!,
+            description,
+            date,
+            project,
+            lower,
+            second_title,
+            second_description,
+            show_alert,
+            show_button,
+            tag
+        )
     }
 
     fun setValues(
         title: String,
-        description: String,
+        description: String? = null,
         date: String? = null,
         project_name: String? = null,
         lower_text: String? = null,
+        second_title: String? = null,
+        second_description: String? = null,
+        show_alert: Boolean = false,
+        cancel_button: Boolean = false,
         tag: Int = 0
     ) {
         if (project_name.isNullOrEmpty() || lower_text.isNullOrEmpty())
@@ -55,6 +78,24 @@ class InfoCardLayout(context: Context, attrs: AttributeSet) :
             binding.dateText.visibility = GONE
 
         binding.nameText.text = title
-        binding.descriptionText.text = description
+
+        if (!description.isNullOrEmpty())
+            binding.descriptionText.text = description
+        else
+            binding.descriptionText.visibility = GONE
+
+        if (!second_description.isNullOrEmpty())
+            binding.secondDescriptionText.text = second_description
+        else
+            binding.secondDescriptionText.visibility = GONE
+
+        if (!second_title.isNullOrEmpty())
+            binding.secondNameText.text = second_title
+        else
+            binding.secondNameText.visibility = GONE
+
+        binding.cancelButton.visibility = if (cancel_button) VISIBLE else GONE
+        binding.alertText.visibility = if (show_alert) VISIBLE else GONE
+
     }
 }

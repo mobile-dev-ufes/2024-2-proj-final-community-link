@@ -10,20 +10,26 @@
             <enum name="EVENT" value="2" />
             <enum name="FILLED" value="3" />
             <enum name="EMPTY" value="4" />
+            <enum name="GOAL" value="5" />
         </attr>
         <attr name="project_text" format="string" />
         <attr name="lower_text" format="string" />
         <attr name="date_text" format="string" />
         <attr name="title_text" format="string" />
         <attr name="description_text" format="string" />
+        <attr name="second_title_text" format="string" />
+        <attr name="second_description_text" format="string" />
+        <attr name="cancel_button" format="boolean"/>
+        <attr name="show_alert" format="boolean"/>
     </declare-styleable>
     <declare-styleable name="IconButtonLayout">
         <attr name="button_icon" format="reference" />
         <attr name="button_text" format="string" />
     </declare-styleable>
-    <declare-styleable name="MemberCardLayout">
-        <attr name="member_name" format="string" />
-        <attr name="member_status" format="string" />
+    <declare-styleable name="CommonCardLayout">
+        <attr name="card_upper_text" format="string" />
+        <attr name="card_lower_text" format="string" />
+        <attr name="card_image" format="reference" />
     </declare-styleable>
     <declare-styleable name="ProjectCardLayout">
         <attr name="project_name" format="string" />
@@ -38,8 +44,13 @@
         <attr name="donation_date" format="string" />
         <attr name="donation_pending" format="boolean" />
     </declare-styleable>
-    <declare-styleable name="SimplePostLayout">
-        <attr name="post_title" format="string" />
+    <declare-styleable name="PostLayout">
+        <attr name="post_text" format="string" />
         <attr name="post_date" format="string" />
+        <attr name="post_image" format="reference" />
+    </declare-styleable>
+    <declare-styleable name="ProjectTagLayout">
+        <attr name="project_tag_name" format="string" />
+        <attr name="project_tag_image" format="reference" />
     </declare-styleable>
 </resources>

@@ -41,7 +41,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/style_button"
         android:backgroundTint="@color/black"
-        android:text="Realizar doação"
+        android:text="@string/make_donation"
         android:textColor="@color/white" />
 
     <ufes.grad.mobile.communitylink.components.SeparatorLayout
@@ -54,7 +54,7 @@
         android:layout_height="wrap_content"
         android:paddingBottom="20dp"
         app:button_icon="@drawable/ic_profile"
-        app:button_text="Membros" />
+        app:button_text="@string/members" />
 
     <ufes.grad.mobile.communitylink.components.IconButtonLayout
         android:id="@+id/actions_button"
@@ -62,7 +62,7 @@
         android:layout_height="wrap_content"
         android:paddingBottom="20dp"
         app:button_icon="@drawable/ic_zap"
-        app:button_text="Ações" />
+        app:button_text="@string/actions" />
 
     <ufes.grad.mobile.communitylink.components.IconButtonLayout
         android:id="@+id/donations_button"
@@ -70,6 +70,6 @@
         android:layout_height="wrap_content"
         android:paddingBottom="20dp"
         app:button_icon="@drawable/ic_archive"
-        app:button_text="Doações para o Projeto" />
+        app:button_text="@string/project_donations" />
 
 </LinearLayout>

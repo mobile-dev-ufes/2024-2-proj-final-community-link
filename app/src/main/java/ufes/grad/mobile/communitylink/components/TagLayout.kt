@@ -10,7 +10,7 @@ import ufes.grad.mobile.communitylink.databinding.LayoutCardTagBinding
 
 class TagLayout(context: Context, attrs: AttributeSet) : ConstraintLayout(context, attrs) {
 
-    enum class TagType() { DEFAULT, DONATION, EVENT, FILLED, EMPTY }
+    enum class TagType() { DEFAULT, DONATION, EVENT, FILLED, EMPTY, GOAL }
 
     var type: TagType = TagType.DEFAULT
 
@@ -50,6 +50,11 @@ class TagLayout(context: Context, attrs: AttributeSet) : ConstraintLayout(contex
             TagType.EMPTY -> {
                 color = context.getColorStateList(R.color.green)
                 text = context.getString(R.string.available)
+            }
+
+            TagType.GOAL -> {
+                color = context.getColorStateList(R.color.green)
+                text = context.getString(R.string.goal)
             }
 
             TagType.DEFAULT -> {}

@@ -18,9 +18,9 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginEnd="10dp"
-            android:src="@drawable/project_profile"
             android:background="@drawable/mask_circle"
-            android:clipToOutline="true"/>
+            android:clipToOutline="true"
+            android:src="@drawable/project_profile" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -55,14 +55,11 @@
         android:layout_height="wrap_content"
         android:background="@drawable/style_dashboard_card"
         android:backgroundTint="@color/white"
+        android:gravity="center"
         android:orientation="vertical"
         android:paddingHorizontal="16dp"
         android:paddingTop="10dp"
-        android:paddingBottom="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/project_info">
+        android:paddingBottom="12dp">
 
         <ufes.grad.mobile.communitylink.components.TagLayout
             android:id="@+id/tag"
@@ -92,11 +89,51 @@
             android:id="@+id/description_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_slab_medium"
+            android:fontFamily="@font/roboto_slab_regular"
             android:paddingHorizontal="10dp"
             android:paddingBottom="10dp"
             android:text="Descrição..."
             android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/second_name_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_slab_bold"
+            android:paddingHorizontal="10dp"
+            android:text="Nome da Ação"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/second_description_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_slab_regular"
+            android:paddingHorizontal="10dp"
+            android:paddingBottom="10dp"
+            android:text="Descrição..."
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/cancel_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/style_button"
+            android:backgroundTint="@color/red"
+            android:text="@string/cancel_volunteer"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/alert_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_alert"
+            android:drawablePadding="10dp"
+            android:drawableTint="@color/gray"
+            android:gravity="center|start"
+            android:text="@string/to_be_confirmed"
+            android:textColor="@color/gray" />
 
     </LinearLayout>
 

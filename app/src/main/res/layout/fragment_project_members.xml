@@ -20,10 +20,10 @@
         android:textColor="@color/white"
         android:textSize="24sp" />
 
-    <ufes.grad.mobile.communitylink.components.MemberCardLayout
+    <ufes.grad.mobile.communitylink.components.CommonCardLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:member_name="@string/placeholder" />
+        app:card_upper_text="@string/placeholder" />
 
     <TextView
         android:layout_width="match_parent"
@@ -36,10 +36,10 @@
         android:textColor="@color/white"
         android:textSize="24sp" />
 
-    <ufes.grad.mobile.communitylink.components.MemberCardLayout
+    <ufes.grad.mobile.communitylink.components.CommonCardLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:member_name="@string/placeholder"
-        app:member_status="Ativo" />
+        app:card_lower_text="Ativo"
+        app:card_upper_text="@string/placeholder" />
 
 </LinearLayout>

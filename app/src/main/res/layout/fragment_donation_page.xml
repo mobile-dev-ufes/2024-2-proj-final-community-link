@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/background_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center|top"
+    android:orientation="vertical"
+    android:padding="@dimen/border"
+    tools:context=".view.DonationPageFragment">
+
+    <ufes.grad.mobile.communitylink.components.ProjectTagLayout
+        android:id="@+id/project_tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        app:project_tag_image="@drawable/ic_explore"
+        app:project_tag_name="@string/placeholder" />
+
+    <TextView
+        android:id="@+id/name_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nome da Ação de Doação"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/description_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="Descrição..."
+        android:textAlignment="center"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/dates_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Datas: XX/XX/XXXX até XX/XX/XXXX"
+        android:textSize="14sp" />
+
+    <Button
+        android:id="@+id/donation_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/style_button"
+        android:backgroundTint="@color/black"
+        android:padding="12dp"
+        android:text="@string/make_donation"
+        android:textColor="@color/white" />
+
+    <ufes.grad.mobile.communitylink.components.SeparatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ufes.grad.mobile.communitylink.components.PostLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                app:post_date="XX/XX/XXXX às XX:XX"
+                app:post_text="Postagem..." />
+
+            <ufes.grad.mobile.communitylink.components.PostLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                app:post_date="XX/XX/XXXX às XX:XX"
+                app:post_image="@drawable/ic_explore"
+                app:post_text="Postagem..." />
+
+            <ufes.grad.mobile.communitylink.components.InfoCardLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:tag_type="GOAL"
+                app:title_text="@string/goal_hit"
+                app:description_text="@string/placeholder"
+                app:date_text="@string/placeholder"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
