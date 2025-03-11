@@ -2,7 +2,7 @@ package ufes.grad.mobile.communitylink.model
 
 import java.util.Date
 
-class ActionModel (
+open class ActionModel (
     val id: String,
     val name: String,
     val descripton: String,

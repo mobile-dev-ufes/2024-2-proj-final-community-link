@@ -1,11 +1,13 @@
 package ufes.grad.mobile.communitylink.model
 
-class Donation (
-    val name: String,
-    val cpf: String,
-    val sex: String,
-    val dob: String,
-    val address: String,
-    val phone: String
+import android.media.Image
+
+open class Donation (
+    val id: Int,
+    val value: Float,
+    val objectName: String,
+    val status: String,
+    val date: String,
+    val confirmationImage: Image
 ) {
 }

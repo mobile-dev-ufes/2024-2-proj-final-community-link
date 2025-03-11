@@ -43,5 +43,38 @@
         <action
             android:id="@+id/action_profileFragment_to_exploreFragment"
             app:destination="@id/exploreFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_myProjectsFragment"
+            app:destination="@id/myProjectsFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_myActionsFragment"
+            app:destination="@id/myActionsFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_pendingActionsFragment"
+            app:destination="@id/pendingActionsFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/myProjectsFragment"
+        android:name="ufes.grad.mobile.communitylink.view.MyProjectsFragment"
+        android:label="fragment_my_projects"
+        tools:layout="@layout/fragment_my_projects" >
+        <action
+            android:id="@+id/action_myProjectsFragment_to_projectPageFragment"
+            app:destination="@id/projectPageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/myActionsFragment"
+        android:name="ufes.grad.mobile.communitylink.view.MyActionsFragment"
+        android:label="fragment_my_actions"
+        tools:layout="@layout/fragment_my_actions" />
+    <fragment
+        android:id="@+id/projectPageFragment"
+        android:name="ufes.grad.mobile.communitylink.view.ProjectPageFragment"
+        android:label="fragment_project_page"
+        tools:layout="@layout/fragment_project_page" />
+    <fragment
+        android:id="@+id/pendingActionsFragment"
+        android:name="ufes.grad.mobile.communitylink.view.PendingActionsFragment"
+        android:label="fragment_pending_actions"
+        tools:layout="@layout/fragment_pending_actions" />
 </navigation>

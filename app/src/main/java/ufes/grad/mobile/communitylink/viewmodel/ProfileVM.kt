@@ -57,10 +57,9 @@ class ProfileVM (application: Application): AndroidViewModel(application){
         auth.signOut()
     }
 
-    fun changeUserData(user: User, email: String) {
+    fun changeUserData(user: User) {
         val context = getApplication<Application>().applicationContext
         if (auth.currentUser != null) {
-            auth.currentUser?.updateEmail(email)
             val userMap = hashMapOf(
                 "name" to user.name,
                 "cpf" to user.cpf,

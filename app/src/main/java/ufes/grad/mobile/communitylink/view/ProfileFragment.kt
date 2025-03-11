@@ -1,10 +1,10 @@
 package ufes.grad.mobile.communitylink.view
 
 import android.os.Bundle
-import android.text.Editable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat.getColor
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -13,7 +13,6 @@ import ufes.grad.mobile.communitylink.databinding.FragmentProfileBinding
 import ufes.grad.mobile.communitylink.model.User
 import ufes.grad.mobile.communitylink.utils.Utilities
 import ufes.grad.mobile.communitylink.viewmodel.ProfileVM
-import ufes.grad.mobile.communitylink.viewmodel.SignupVM
 
 class ProfileFragment : Fragment(R.layout.fragment_profile), View.OnClickListener {
 
@@ -48,13 +47,16 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), View.OnClickListene
     private fun setObserver() {
         profileVM.userData().observe(viewLifecycleOwner,
             Observer { it ->
-            binding.name.editText.setText(it.get("name"))
-            binding.email.editText.setText(it.get("email"))
-            binding.cpf.editText.setText(it.get("cpf"))
-            binding.dob.editText.setText(it.get("dob"))
-            binding.addressForm.editText.setText(it.get("address"))
-            binding.phone.editText.setText(it.get("phone"))
-            binding.sex.editText.setText(it.get("sex"))
+                binding.name.editText.setText(it.get("name"))
+                binding.email.editText.setText(it.get("email"))
+                binding.email.editText.isEnabled = false
+                binding.email.editText.keyListener = null
+                binding.email.editText.setTextColor(getColor(requireContext(),R.color.gray_600))
+                binding.cpf.editText.setText(it.get("cpf"))
+                binding.dob.editText.setText(it.get("dob"))
+                binding.addressForm.editText.setText(it.get("address"))
+                binding.phone.editText.setText(it.get("phone"))
+                binding.sex.editText.setText(it.get("sex"))
         })
     }
 
@@ -103,10 +105,10 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), View.OnClickListene
                         binding.dob.editText.text.toString(),
                         binding.addressForm.editText.text.toString(),
                         binding.phone.editText.text.toString()
-                    ),
-                    binding.email.editText.text.toString()
+                    )
                 )
             }
+
         }
     }
 }
