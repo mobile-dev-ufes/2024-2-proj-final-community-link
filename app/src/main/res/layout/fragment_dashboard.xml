@@ -1,25 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.recyclerview.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/recycler_list_dashboard"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:clipToPadding="false"
     android:padding="@dimen/border"
-    tools:context=".view.DashboardFragment">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <ufes.grad.mobile.communitylink.components.InfoCardLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:description_text="Descrição do evento"
-            app:tag_type="EVENT"
-            app:title_text="Evento" />
-
-    </LinearLayout>
-
-</ScrollView>
+    tools:context=".view.DashboardFragment"/>
