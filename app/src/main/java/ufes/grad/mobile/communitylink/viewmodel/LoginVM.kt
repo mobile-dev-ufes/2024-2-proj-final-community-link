@@ -12,7 +12,7 @@ import ufes.grad.mobile.communitylink.utils.Utilities
 import ufes.grad.mobile.communitylink.R
 
 class LoginVM(application: Application): AndroidViewModel(application) {
-    private var auth = FirebaseAuth.getInstance()
+    private val auth = FirebaseAuth.getInstance()
 
     fun loginUser(email: String, password: String): Task<AuthResult?> {
         val app = getApplication<Application>()
@@ -27,6 +27,9 @@ class LoginVM(application: Application): AndroidViewModel(application) {
                     msg = app.getString(R.string.internet_error)
                 }
                 Utilities.notify(getApplication<Application>(), msg)
+                if (auth.currentUser?.isEmailVerified == false){
+                    auth.currentUser?.sendEmailVerification()
+                }
             }
         }
         throw IllegalArgumentException("Email ou senha faltando")

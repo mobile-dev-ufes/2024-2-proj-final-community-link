@@ -82,46 +82,49 @@
             android:layout_height="wrap_content" />
 
         <ufes.grad.mobile.communitylink.components.FormsLayout
+            android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:texts="@string/name" />
 
         <ufes.grad.mobile.communitylink.components.FormsLayout
+            android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:texts="@string/email" />
 
         <ufes.grad.mobile.communitylink.components.FormsLayout
+            android:id="@+id/cpf"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:texts="@string/cpf" />
 
         <ufes.grad.mobile.communitylink.components.FormsLayout
+            android:id="@+id/phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:texts="@string/phone" />
 
         <ufes.grad.mobile.communitylink.components.FormsLayout
+            android:id="@+id/sex"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:texts="@string/sex" />
 
         <ufes.grad.mobile.communitylink.components.FormsLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:texts="@string/sex" />
-
-        <ufes.grad.mobile.communitylink.components.FormsLayout
+            android:id="@+id/dob"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:texts="@string/date" />
 
         <ufes.grad.mobile.communitylink.components.FormsLayout
+            android:id="@+id/address_form"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:texts="@string/address" />
 
         <Button
+            android:id="@+id/confirm_alterations"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/style_button"
@@ -134,6 +137,7 @@
             android:layout_height="wrap_content" />
 
         <Button
+            android:id="@+id/logout_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/style_button"
@@ -146,6 +150,7 @@
             android:layout_height="wrap_content" />
 
         <Button
+            android:id="@+id/exclude_account"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/style_button"

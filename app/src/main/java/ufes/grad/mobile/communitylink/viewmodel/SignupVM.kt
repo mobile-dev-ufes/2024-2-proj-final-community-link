@@ -17,8 +17,8 @@ import ufes.grad.mobile.communitylink.utils.Utilities
 import ufes.grad.mobile.communitylink.R
 
 class SignupVM(application: Application): AndroidViewModel(application)  {
-    private var auth = FirebaseAuth.getInstance()
-    private var db = FirebaseFirestore.getInstance()
+    private val auth = FirebaseAuth.getInstance()
+    private val db = FirebaseFirestore.getInstance()
 
     fun registerNewUser(email: String, password: String, user: User): Task<AuthResult?> {
         if (email.isNotBlank() and password.isNotBlank()) {
