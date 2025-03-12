@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:clipToPadding="false"
     android:padding="@dimen/border"
-    tools:context=".view.PastActionsFragment">
+    tools:context=".view.EventsAndDonationsFragment">
 
     <LinearLayout
         android:layout_width="match_parent"

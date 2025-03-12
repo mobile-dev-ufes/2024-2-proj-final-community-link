@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.Toolbar
+import androidx.navigation.fragment.findNavController
 import ufes.grad.mobile.communitylink.R
 import ufes.grad.mobile.communitylink.databinding.FragmentMyProjectsBinding
 import ufes.grad.mobile.communitylink.utils.Utilities
@@ -29,7 +30,7 @@ class MyProjectsFragment : Fragment(R.layout.fragment_my_projects), View.OnClick
     override fun onClick(v: View) {
         when (v.id) {
             binding.createButton.id -> {
-                Utilities.loadFragment(requireActivity(), )
+                findNavController().navigate(R.id.eventsAndDonationsFragment)
             }
         }
     }
