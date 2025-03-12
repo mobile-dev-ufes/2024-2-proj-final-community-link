@@ -4,6 +4,7 @@
     android:layout_height="wrap_content"
     android:background="@drawable/style_dashboard_card"
     android:backgroundTint="@color/white"
+    android:gravity="center"
     android:orientation="vertical"
     android:padding="20dp">
 
@@ -15,8 +16,8 @@
             android:id="@+id/image"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:background="@drawable/mask_rounded_rectangle"
             android:layout_marginEnd="10dp"
+            android:background="@drawable/mask_rounded_rectangle"
             android:src="@drawable/project_profile" />
 
         <TextView
@@ -36,4 +37,15 @@
         android:text="XX/XX/XXXX às XX:XX"
         android:textColor="@color/gray"
         android:textSize="12sp" />
+
+    <Button
+        android:id="@+id/delete_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/style_button"
+        android:backgroundTint="@color/red"
+        android:text="@string/delete_post"
+        android:textColor="@color/white" />
+
 </LinearLayout>

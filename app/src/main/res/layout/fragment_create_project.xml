@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+    android:padding="@dimen/border"
+    android:scrollbars="none"
+    tools:context=".view.CreateProjectFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center|top"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/mask_circle"
+            android:clipToOutline="true"
+            android:src="@drawable/project_profile" />
+
+        <Button
+            android:id="@+id/image_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/style_button"
+            android:backgroundTint="@color/black"
+            android:text="Adicionar logotipo"
+            android:textColor="@color/white" />
+
+        <ufes.grad.mobile.communitylink.components.FormsLayout
+            android:id="@+id/name_forms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            app:forms_demand="true"
+            app:forms_title_text="@string/name" />
+
+        <ufes.grad.mobile.communitylink.components.FormsLayout
+            android:id="@+id/description_forms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            app:forms_demand="true"
+            app:forms_title_text="@string/description" />
+
+        <ufes.grad.mobile.communitylink.components.FormsLayout
+            android:id="@+id/tags_forms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            app:forms_hint_text="@string/tags"
+            app:forms_title_text="@string/tags_parenthesis" />
+
+        <ufes.grad.mobile.communitylink.components.FormsLayout
+            android:id="@+id/address_forms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            app:forms_title_text="@string/address" />
+
+        <ufes.grad.mobile.communitylink.components.FormsLayout
+            android:id="@+id/cnpj_forms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            app:forms_title_text="@string/cnpj" />
+
+        <ufes.grad.mobile.communitylink.components.FormsLayout
+            android:id="@+id/pix_forms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            app:forms_demand="true"
+            app:forms_title_text="@string/pix_key" />
+
+        <Button
+            android:id="@+id/create_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/style_button"
+            android:backgroundTint="@color/black"
+            android:text="Criar projeto"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+</ScrollView>

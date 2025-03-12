@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:clipToPadding="false"
+    android:gravity="center_horizontal"
     android:orientation="vertical"
     android:padding="@dimen/border"
     tools:context=".view.ProjectMembersFragment">
@@ -12,6 +13,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/style_button"
         android:backgroundTint="@color/black"
         android:gravity="center"
@@ -23,11 +25,13 @@
     <ufes.grad.mobile.communitylink.components.CommonCardLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
         app:card_upper_text="@string/placeholder" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/style_button"
         android:backgroundTint="@color/black"
         android:gravity="center"
@@ -36,9 +40,21 @@
         android:textColor="@color/white"
         android:textSize="24sp" />
 
+    <Button
+        android:id="@+id/add_member_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/style_button"
+        android:backgroundTint="@color/green"
+        android:drawableStart="@drawable/ic_plus"
+        android:drawablePadding="10dp"
+        android:text="Adicionar novo membro" />
+
     <ufes.grad.mobile.communitylink.components.CommonCardLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
         app:card_lower_text="Ativo"
         app:card_upper_text="@string/placeholder" />
 

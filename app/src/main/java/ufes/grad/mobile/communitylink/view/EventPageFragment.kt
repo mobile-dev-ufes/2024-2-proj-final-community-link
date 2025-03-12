@@ -14,6 +14,13 @@ class EventPageFragment : Fragment(R.layout.fragment_event_page), View.OnClickLi
     private var _binding: FragmentEventPageBinding? = null
     private val binding get() = _binding!!
 
+    private var edit: Boolean = false
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        edit = requireArguments().getBoolean("EDIT")
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -21,7 +28,23 @@ class EventPageFragment : Fragment(R.layout.fragment_event_page), View.OnClickLi
     ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
         _binding = FragmentEventPageBinding.inflate(inflater, container, false)
-        binding.volunteersButton.setOnClickListener(this)
+
+        if (edit) {
+            binding.pendingButton.setOnClickListener(this)
+            binding.manageButton.setOnClickListener(this)
+            binding.editButton.setOnClickListener(this)
+            binding.dateDropdown.setOnClickListener(this)
+            binding.createButton.setOnClickListener(this)
+            binding.volunteersButton.visibility = View.GONE
+        } else {
+            binding.volunteersButton.setOnClickListener(this)
+            binding.pendingButton.visibility = View.GONE
+            binding.manageButton.visibility = View.GONE
+            binding.editButton.visibility = View.GONE
+            binding.dateDropdown.visibility = View.GONE
+            binding.createButton.visibility = View.GONE
+        }
+
         return binding.root
     }
 

@@ -1,99 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/background_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center|top"
     android:orientation="vertical"
     android:padding="@dimen/border"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:scrollbars="none"
     tools:context=".view.EventPageFragment">
 
-    <ufes.grad.mobile.communitylink.components.ProjectTagLayout
-        android:id="@+id/project_tag"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        app:project_tag_image="@drawable/ic_explore"
-        app:project_tag_name="@string/placeholder" />
-
-    <TextView
-        android:id="@+id/name_text"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Nome da Ação de Evento"
-        android:textAlignment="center"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        android:gravity="center|top"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/description_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:text="Descrição..."
-        android:textAlignment="center"
-        android:textSize="14sp" />
+        <ufes.grad.mobile.communitylink.components.ProjectTagLayout
+            android:id="@+id/project_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:project_tag_image="@drawable/ic_explore"
+            app:project_tag_name="@string/placeholder" />
 
-    <TextView
-        android:id="@+id/dates_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Datas: XX/XX/XXXX até XX/XX/XXXX"
-        android:textSize="14sp" />
-
-    <TextView
-        android:id="@+id/places_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="Locais:" />
-
-    <Button
-        android:id="@+id/volunteers_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/style_button"
-        android:backgroundTint="@color/black"
-        android:padding="12dp"
-        android:text="@string/view_volunteer_slots"
-        android:textColor="@color/white" />
-
-    <ufes.grad.mobile.communitylink.components.SeparatorLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:scrollbars="none">
-
-        <LinearLayout
+        <TextView
+            android:id="@+id/name_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:text="Nome da Ação de Evento"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
-            <ufes.grad.mobile.communitylink.components.PostLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:post_date="XX/XX/XXXX às XX:XX"
-                app:post_text="Postagem..."
-                android:paddingBottom="10dp"/>
+        <TextView
+            android:id="@+id/description_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="Descrição..."
+            android:textAlignment="center"
+            android:textSize="14sp" />
 
-            <ufes.grad.mobile.communitylink.components.PostLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:post_date="XX/XX/XXXX às XX:XX"
-                app:post_text="Postagem..."
-                app:post_image="@drawable/ic_explore"
-                android:paddingBottom="10dp"/>
+        <TextView
+            android:id="@+id/dates_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Datas: XX/XX/XXXX até XX/XX/XXXX"
+            android:textSize="14sp" />
 
-        </LinearLayout>
+        <TextView
+            android:id="@+id/places_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            android:text="Locais:" />
 
-    </ScrollView>
+        <ufes.grad.mobile.communitylink.components.IconButtonLayout
+            android:id="@+id/volunteers_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/white"
+            app:button_icon="@drawable/ic_profile"
+            app:button_icon_size="24dp"
+            app:button_text="@string/view_volunteer_slots"
+            app:button_text_size="6sp" />
 
-</LinearLayout>
+        <ufes.grad.mobile.communitylink.components.IconButtonLayout
+            android:id="@+id/pending_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/white"
+            app:button_icon="@drawable/ic_profile"
+            app:button_icon_size="24dp"
+            app:button_text="Pedidos Pendentes"
+            app:button_text_size="6sp" />
+
+        <ufes.grad.mobile.communitylink.components.IconButtonLayout
+            android:id="@+id/manage_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/white"
+            app:button_icon="@drawable/ic_profile"
+            app:button_icon_size="24dp"
+            app:button_text="Gerenciar Vagas"
+            app:button_text_size="6sp" />
+
+        <ufes.grad.mobile.communitylink.components.IconButtonLayout
+            android:id="@+id/edit_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/white"
+            app:button_icon="@drawable/ic_profile"
+            app:button_icon_size="24dp"
+            app:button_text="Editar Ação"
+            app:button_text_size="6sp" />
+
+        <ufes.grad.mobile.communitylink.components.SeparatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Spinner
+            android:id="@+id/date_dropdown"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/style_edit_text"
+            android:backgroundTint="@color/white"
+            android:spinnerMode="dropdown"
+            tools:listitem="@layout/layout_spinner" />
+
+        <Button
+            android:id="@+id/create_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/style_button"
+            android:backgroundTint="@color/green"
+            android:drawableStart="@drawable/ic_plus"
+            android:drawablePadding="10dp"
+            android:text="Criar nova publicação"
+            android:textColor="@color/black" />
+
+        <ufes.grad.mobile.communitylink.components.PostLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            app:post_date="XX/XX/XXXX às XX:XX"
+            app:post_text="Postagem..." />
+
+        <ufes.grad.mobile.communitylink.components.PostLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            app:post_date="XX/XX/XXXX às XX:XX"
+            app:post_image="@drawable/ic_explore"
+            app:post_text="Postagem..." />
+
+    </LinearLayout>
+
+</ScrollView>

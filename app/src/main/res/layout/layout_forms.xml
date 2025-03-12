@@ -16,11 +16,10 @@
         android:id="@+id/forms_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/edit_text_style"
+        android:background="@drawable/style_edit_text"
         android:hint="hint"
         android:paddingHorizontal="20dp"
-        android:paddingVertical="14dp"
+        android:paddingVertical="12dp"
         android:textColor="@color/black"
         android:textColorHint="@color/gray"
         android:textSize="14sp" />

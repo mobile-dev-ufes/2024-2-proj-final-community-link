@@ -16,18 +16,22 @@
         android:layout_marginBottom="20dp"
         android:background="@drawable/style_button"
         android:backgroundTint="@color/green"
-        android:drawableLeft="@drawable/ic_plus"
+        android:drawableStart="@drawable/ic_plus"
         android:drawablePadding="10dp"
-        android:text="Cadastrar novo projeto" />
+        android:text="@string/create_new_project" />
 
     <Spinner
         android:id="@+id/filter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:background="@android:drawable/btn_dropdown"
+        android:background="@drawable/style_edit_text"
+        android:backgroundTint="@color/white"
         android:spinnerMode="dropdown"
-        android:tooltipText="@string/placeholder" />
+        tools:listitem="@layout/layout_spinner" />
+
+    <ufes.grad.mobile.communitylink.components.SeparatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -51,7 +55,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
-                app:card_image="@drawable/ic_explore"
                 app:card_lower_text="@string/placeholder"
                 app:card_upper_text="@string/placeholder" />
 

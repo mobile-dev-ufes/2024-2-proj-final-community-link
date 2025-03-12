@@ -9,6 +9,25 @@
     android:padding="@dimen/border"
     tools:context=".view.EventVolunteerSlotsFragment">
 
+    <Spinner
+        android:id="@+id/address_filter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/style_edit_text"
+        android:backgroundTint="@color/white"
+        android:spinnerMode="dropdown"
+        tools:listitem="@layout/layout_spinner" />
+
+    <Spinner
+        android:id="@+id/date_filter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/style_edit_text"
+        android:backgroundTint="@color/white"
+        android:spinnerMode="dropdown"
+        tools:listitem="@layout/layout_spinner" />
+
     <ufes.grad.mobile.communitylink.components.SeparatorLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

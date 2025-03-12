@@ -5,14 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.widget.Toolbar
 import ufes.grad.mobile.communitylink.R
-import ufes.grad.mobile.communitylink.databinding.FragmentMyProjectsBinding
+import ufes.grad.mobile.communitylink.databinding.FragmentEditProjectBinding
+import ufes.grad.mobile.communitylink.databinding.FragmentEventPageBinding
 import ufes.grad.mobile.communitylink.utils.Utilities
 
-class MyProjectsFragment : Fragment(R.layout.fragment_my_projects), View.OnClickListener {
+class EditProjectFragment : Fragment(R.layout.fragment_edit_project) {
 
-    private var _binding: FragmentMyProjectsBinding? = null
+    private var _binding: FragmentEditProjectBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -21,17 +21,8 @@ class MyProjectsFragment : Fragment(R.layout.fragment_my_projects), View.OnClick
         savedInstanceState: Bundle?
     ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
-        _binding = FragmentMyProjectsBinding.inflate(inflater, container, false)
-        binding.createButton.setOnClickListener(this)
+        _binding = FragmentEditProjectBinding.inflate(inflater, container, false)
         return binding.root
-    }
-
-    override fun onClick(v: View) {
-        when (v.id) {
-            binding.createButton.id -> {
-                Utilities.loadFragment(requireActivity(), )
-            }
-        }
     }
 
     override fun onDestroyView() {

@@ -24,10 +24,18 @@ class IconButtonLayout(context: Context, attrs: AttributeSet) :
             context.obtainStyledAttributes(attrs, R.styleable.IconButtonLayout)
         val icon = customAttributesStyle.getDrawable(R.styleable.IconButtonLayout_button_icon)
         val text = customAttributesStyle.getString(R.styleable.IconButtonLayout_button_text)
+        val text_size =
+            customAttributesStyle.getDimension(R.styleable.IconButtonLayout_button_text_size, 0.0f)
+        val icon_size =
+            customAttributesStyle.getDimension(R.styleable.IconButtonLayout_button_icon_size, 0.0f)
 
         customAttributesStyle.recycle()
 
         binding.icon.setImageDrawable(icon)
+        if (icon_size > 0.0f)
+            binding.icon.layoutParams = LayoutParams(icon_size.toInt(), icon_size.toInt())
         binding.text.text = text
+        if (text_size > 0.0f)
+            binding.text.textSize = text_size
     }
 }

@@ -21,10 +21,17 @@ class FormsLayout(context: Context, attrs: AttributeSet) : LinearLayout(context,
 
     private fun setAttributes(context: Context, attrs: AttributeSet) {
         val customAttributesStyle = context.obtainStyledAttributes(attrs, R.styleable.FormsLayout)
-        val text = customAttributesStyle.getString(R.styleable.FormsLayout_texts)
+        val title = customAttributesStyle.getString(R.styleable.FormsLayout_forms_title_text)
+        val hint = customAttributesStyle.getString(R.styleable.FormsLayout_forms_hint_text)
+        val demand = customAttributesStyle.getBoolean(R.styleable.FormsLayout_forms_demand, false)
+
         customAttributesStyle.recycle()
-        binding.formsTitleText.text = text
-        binding.formsEditText.hint = text
+        setValues(title!!, hint, demand)
+    }
+
+    fun setValues(title: String, hint: String? = null, demand: Boolean = false) {
+        binding.formsEditText.hint = if (!hint.isNullOrEmpty()) hint else title
+        binding.formsTitleText.text = if (demand) "$title*" else title
     }
 
 }

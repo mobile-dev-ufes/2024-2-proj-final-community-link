@@ -66,5 +66,23 @@
     <string name="user_has_no_data">Um erro ocorreu!</string>
     <string name="erro_update_user_data">Erro ao atualizar os dados, tente novamente!</string>
     <string name="success_updating_user_data">Sucesso ao atualizar seu dados!</string>
+    <string name="create_new_project">Cadastrar novo projeto</string>
+    <string name="description">Descrição</string>
+    <string name="tags_parenthesis">Tags (separe em vírgulas)*</string>
+    <string name="tags">Tags</string>
+    <string name="description_demanded">Descrição*</string>
+    <string name="cnpj">CNPJ</string>
+    <string name="pix_key">Chave PIX</string>
+    <string name="cnpj_hint">XX.XXX.XXX/XXXX-XX</string>
+    <string name="unchecked_project_text">O projeto ainda não foi aceito por um administrador. Clique no botão abaixo para requisitar a revisão.</string>
+    <string name="unrefreshed_project_text">As alterações serão aplicadas após a confirmação do administrador do sistema.</string>
+    <string name="request_revision">Requisitar revisão</string>
+    <string name="delete_project_text">Um projeto pode ser excluído somente se nenhum membro efetivo participou de ações do projeto.</string>
+    <string name="delete_project">Excluir projeto</string>
+    <string name="deactivate_project">Descontinuar projeto</string>
+    <string name="search">Pesquisar</string>
+    <string name="representatives">Representantes</string>
+    <string name="action_type">Tipo de ação</string>
+    <string name="delete_post">Excluir publicação</string>
     <string name="project">Projeto</string>
 </resources>

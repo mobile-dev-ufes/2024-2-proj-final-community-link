@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="FormsLayout">
-        <attr name="texts" format="string" />
+        <attr name="forms_hint_text" format="string" />
+        <attr name="forms_title_text" format="string" />
+        <attr name="forms_demand" format="boolean" />
     </declare-styleable>
     <declare-styleable name="InfoCardLayout">
         <attr name="tag_type" format="enum">
@@ -19,12 +21,14 @@
         <attr name="description_text" format="string" />
         <attr name="second_title_text" format="string" />
         <attr name="second_description_text" format="string" />
-        <attr name="cancel_button" format="boolean"/>
-        <attr name="show_alert" format="boolean"/>
+        <attr name="cancel_button" format="boolean" />
+        <attr name="show_alert" format="boolean" />
     </declare-styleable>
     <declare-styleable name="IconButtonLayout">
         <attr name="button_icon" format="reference" />
         <attr name="button_text" format="string" />
+        <attr name="button_text_size" format="dimension" />
+        <attr name="button_icon_size" format="dimension" />
     </declare-styleable>
     <declare-styleable name="CommonCardLayout">
         <attr name="card_upper_text" format="string" />

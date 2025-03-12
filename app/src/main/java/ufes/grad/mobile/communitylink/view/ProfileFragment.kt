@@ -52,13 +52,13 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), View.OnClickListene
                 binding.email.editText.setText(it.get("email"))
                 binding.email.editText.isEnabled = false
                 binding.email.editText.keyListener = null
-                binding.email.editText.setTextColor(getColor(requireContext(),R.color.gray_600))
+                binding.email.editText.setTextColor(getColor(requireContext(), R.color.gray_600))
                 binding.cpf.editText.setText(it.get("cpf"))
                 binding.dob.editText.setText(it.get("dob"))
                 binding.addressForm.editText.setText(it.get("address"))
                 binding.phone.editText.setText(it.get("phone"))
                 binding.sex.editText.setText(it.get("sex"))
-        })
+            })
     }
 
     override fun onDestroyView() {

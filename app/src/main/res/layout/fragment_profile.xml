@@ -85,48 +85,56 @@
             android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:texts="@string/name" />
+            android:layout_marginBottom="10dp"
+            app:forms_title_text="@string/name" />
 
         <ufes.grad.mobile.communitylink.components.FormsLayout
             android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:texts="@string/email" />
+            android:layout_marginBottom="10dp"
+            app:forms_title_text="@string/email" />
 
         <ufes.grad.mobile.communitylink.components.FormsLayout
             android:id="@+id/cpf"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:texts="@string/cpf" />
+            android:layout_marginBottom="10dp"
+            app:forms_title_text="@string/cpf" />
 
         <ufes.grad.mobile.communitylink.components.FormsLayout
             android:id="@+id/phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:texts="@string/phone" />
+            android:layout_marginBottom="10dp"
+            app:forms_title_text="@string/phone" />
 
         <ufes.grad.mobile.communitylink.components.FormsLayout
             android:id="@+id/sex"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:texts="@string/sex" />
+            android:layout_marginBottom="10dp"
+            app:forms_title_text="@string/sex" />
 
         <ufes.grad.mobile.communitylink.components.FormsLayout
             android:id="@+id/dob"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:texts="@string/date" />
+            android:layout_marginBottom="10dp"
+            app:forms_title_text="@string/date" />
 
         <ufes.grad.mobile.communitylink.components.FormsLayout
             android:id="@+id/address_form"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:texts="@string/address" />
+            android:layout_marginBottom="10dp"
+            app:forms_title_text="@string/address" />
 
         <Button
             android:id="@+id/confirm_alterations"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:background="@drawable/style_button"
             android:backgroundTint="@color/black"
             android:text="@string/confirm_changes"
