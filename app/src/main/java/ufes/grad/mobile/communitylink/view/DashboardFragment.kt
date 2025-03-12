@@ -8,12 +8,19 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import ufes.grad.mobile.communitylink.R
 import ufes.grad.mobile.communitylink.databinding.FragmentDashboardBinding
+import ufes.grad.mobile.communitylink.persistence.StaticData
 import ufes.grad.mobile.communitylink.view.adapter.ListInfoCardAdapter
 
 class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
 
     private var _binding: FragmentDashboardBinding? = null
     private val binding get() = _binding!!
+
+    val adapter: ListInfoCardAdapter = ListInfoCardAdapter()
+
+    init {
+        adapter.updateInfoCardList(StaticData.eventActions)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -24,7 +31,7 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
 
         binding.recyclerListDashboard.layoutManager = LinearLayoutManager(context)
-        binding.recyclerListDashboard.adapter = ListInfoCardAdapter()
+        binding.recyclerListDashboard.adapter = adapter
         return binding.root
     }
 

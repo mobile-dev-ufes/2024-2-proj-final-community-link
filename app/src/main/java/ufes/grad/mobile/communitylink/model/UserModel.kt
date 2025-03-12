@@ -19,6 +19,7 @@ class UserModel(
 
     fun toHashMap(): HashMap<String, Any> {
         return hashMapOf(
+            "id" to id,
             "name" to name,
             "cpf" to cpf,
             "sex" to sex,
