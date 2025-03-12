@@ -99,13 +99,13 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), View.OnClickListene
             binding.confirmAlterations.id -> {
                 //TODO("Abrir popup de confirmação")
                 profileVM.changeUserData(
-                    UserModel(
-                        binding.name.editText.text.toString(),
-                        binding.cpf.editText.text.toString(),
-                        binding.sex.editText.text.toString(),
-                        binding.dob.editText.text.toString(),
-                        binding.addressForm.editText.text.toString(),
-                        binding.phone.editText.text.toString()
+                    hashMapOf(
+                        "name" to binding.name.editText.text.toString(),
+                        "cpf" to binding.cpf.editText.text.toString(),
+                        "sex" to binding.sex.editText.text.toString(),
+                        "dob" to binding.dob.editText.text.toString(),
+                        "address" to binding.addressForm.editText.text.toString(),
+                        "phone" to binding.phone.editText.text.toString()
                     )
                 )
             }

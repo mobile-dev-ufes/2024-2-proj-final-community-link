@@ -12,9 +12,9 @@ class ListInfoCardViewHolder(private val binding: LayoutInfoCardBinding)
         private val dateFormatter = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
 
         fun bindVH(action: ActionModel) {
-            binding.projectText.text = action.project.projectData.name
+            binding.projectText.text = action.project.currentData.name
             binding.dateText.text = dateFormatter.format(action.initDate)
             binding.nameText.text = action.name
-            binding.descriptionText.text = action.descripton
+            binding.descriptionText.text = action.description
         }
 }

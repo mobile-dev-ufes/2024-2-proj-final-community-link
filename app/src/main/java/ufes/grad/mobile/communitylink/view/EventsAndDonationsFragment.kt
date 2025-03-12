@@ -6,11 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import ufes.grad.mobile.communitylink.R
-import ufes.grad.mobile.communitylink.databinding.FragmentPastActionsBinding
+import ufes.grad.mobile.communitylink.databinding.FragmentEventsAndDonationsBinding
 
 class EventsAndDonationsFragment : Fragment(R.layout.fragment_events_and_donations) {
 
-    private var _binding: FragmentPastActionsBinding? = null
+    private var _binding: FragmentEventsAndDonationsBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -19,7 +19,7 @@ class EventsAndDonationsFragment : Fragment(R.layout.fragment_events_and_donatio
         savedInstanceState: Bundle?
     ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
-        _binding = FragmentPastActionsBinding.inflate(inflater, container, false)
+        _binding = FragmentEventsAndDonationsBinding.inflate(inflater, container, false)
         return binding.root
     }
 

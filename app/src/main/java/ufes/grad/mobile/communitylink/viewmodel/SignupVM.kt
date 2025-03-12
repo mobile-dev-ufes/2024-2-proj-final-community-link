@@ -20,7 +20,7 @@ class SignupVM(application: Application): AndroidViewModel(application)  {
     private val auth = FirebaseAuth.getInstance()
     private val db = FirebaseFirestore.getInstance()
 
-    fun registerNewUser(email: String, password: String, user: UserModel): Task<AuthResult?> {
+    fun registerNewUser(email: String, password: String, user: HashMap<String, String>): Task<AuthResult?> {
         if (email.isNotBlank() and password.isNotBlank()) {
             return auth.createUserWithEmailAndPassword(email, password).addOnFailureListener {
                 var msg = "Houve algum problema no cadastro"
@@ -47,8 +47,7 @@ class SignupVM(application: Application): AndroidViewModel(application)  {
         throw IllegalArgumentException("Email e Senha são necessários")
     }
 
-    private fun saveUserData(user: UserModel){
-        val userMap = user.toHashMap()
+    private fun saveUserData(userMap: HashMap<String, String>){
         val currUserId = auth.currentUser?.uid
         if (currUserId != null) {
             db.collection("users").document(currUserId)

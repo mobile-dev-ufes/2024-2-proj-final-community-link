@@ -30,15 +30,16 @@ class SignupFragment : Fragment(R.layout.fragment_register), OnClickListener {
             R.id.create_button -> {
                 val email = binding.email.editText.text.toString()
                 val password = binding.password.editText.text.toString()
-                val name = binding.name.editText.text.toString()
-                val cpf = binding.cpf.editText.text.toString()
-                val address = binding.address.editText.text.toString()
-                val phone = binding.phone.editText.text.toString()
-                val sex = binding.sex.editText.text.toString()
-                val dob = binding.date.editText.text.toString()
+                val userMap = hashMapOf(
+                    "name" to binding.name.editText.text.toString(),
+                    "cpf" to binding.cpf.editText.text.toString(),
+                    "sex" to binding.sex.editText.text.toString(),
+                    "dob" to binding.date.editText.text.toString(),
+                    "address" to binding.address.editText.text.toString(),
+                    "phone" to binding.phone.editText.text.toString()
+                )
                 try {
-                    val user = UserModel(name, cpf, sex, dob, address, phone)
-                    signupVM.registerNewUser(email, password, user).addOnSuccessListener {
+                    signupVM.registerNewUser(email, password, userMap).addOnSuccessListener {
                         Utilities.loadFragment(requireActivity(), LoginFragment())
                     }
                 } catch (e: IllegalArgumentException) {

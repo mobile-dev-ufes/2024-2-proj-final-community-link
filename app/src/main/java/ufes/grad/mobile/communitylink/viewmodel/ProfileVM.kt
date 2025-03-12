@@ -57,19 +57,11 @@ class ProfileVM (application: Application): AndroidViewModel(application){
         auth.signOut()
     }
 
-    fun changeUserData(user: UserModel) {
+    fun changeUserData(newUserMap: HashMap<String, Any>) {
         val context = getApplication<Application>().applicationContext
         if (auth.currentUser != null) {
-            val userMap = hashMapOf(
-                "name" to user.name,
-                "cpf" to user.cpf,
-                "sex" to user.sex,
-                "dob" to user.dob,
-                "address" to user.address,
-                "phone" to user.phone,
-            )
             db.collection("users").document(auth.currentUser!!.uid)
-                .set(userMap)
+                .set(newUserMap)
                 .addOnSuccessListener {
                     Utilities.notify(context, context.getString(R.string.success_updating_user_data))
                 }
