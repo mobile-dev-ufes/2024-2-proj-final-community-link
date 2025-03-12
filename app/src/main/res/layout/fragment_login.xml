@@ -25,14 +25,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            app:forms_title_text="@string/email" />
+            app:forms_title_text="@string/email"
+            app:forms_input_type="textEmailAddress"/>
 
         <ufes.grad.mobile.communitylink.components.FormsLayout
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            app:forms_title_text="@string/password" />
+            app:forms_title_text="@string/password"
+            app:forms_input_type="textPassword"/>
 
         <Button
             android:id="@+id/password_button"

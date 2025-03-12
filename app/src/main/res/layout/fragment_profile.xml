@@ -93,21 +93,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            app:forms_title_text="@string/email" />
+            app:forms_title_text="@string/email"
+            app:forms_input_type="textEmailAddress"/>
 
         <ufes.grad.mobile.communitylink.components.FormsLayout
             android:id="@+id/cpf"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            app:forms_title_text="@string/cpf" />
+            app:forms_title_text="@string/cpf"
+            app:forms_input_type="number"/>
 
         <ufes.grad.mobile.communitylink.components.FormsLayout
             android:id="@+id/phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            app:forms_title_text="@string/phone" />
+            app:forms_title_text="@string/phone"
+            app:forms_input_type="phone"/>
 
         <ufes.grad.mobile.communitylink.components.FormsLayout
             android:id="@+id/sex"
@@ -121,7 +124,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            app:forms_title_text="@string/date" />
+            app:forms_title_text="@string/date"
+            app:forms_input_type="date"/>
 
         <ufes.grad.mobile.communitylink.components.FormsLayout
             android:id="@+id/address_form"
