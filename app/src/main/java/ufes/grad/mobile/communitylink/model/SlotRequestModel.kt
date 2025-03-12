@@ -5,7 +5,7 @@ import java.util.Date
 class SlotRequestModel(
     val id: String,
     val date: Date,
-    val selected: Boolean,
+    val isSelected: Boolean,
     val slot: VolunteerSlotModel,
     val user: UserModel
 ) {
@@ -14,7 +14,7 @@ class SlotRequestModel(
         return hashMapOf(
             "id" to id,
             "date" to date,
-            "selected" to selected,
+            "isSelected" to isSelected,
             "slot" to slot.id,
             "user" to user.id
         )

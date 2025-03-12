@@ -8,7 +8,8 @@ class MemberModel(
     val initDate: Date,
     val finishDate: Date,
     val isResponsible: Boolean,
-    val user: UserModel
+    val user: UserModel,
+    val project: ProjectModel
 ) {
 
     fun toHashMap(): HashMap<String, Any> {
@@ -18,7 +19,8 @@ class MemberModel(
             "initDate" to initDate,
             "finishDate" to finishDate,
             "isResponsible" to isResponsible,
-            "user" to user.id
+            "user" to user.id,
+            "project" to project.id
         )
     }
 }

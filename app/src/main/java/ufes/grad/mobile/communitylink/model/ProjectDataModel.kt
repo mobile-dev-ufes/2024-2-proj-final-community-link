@@ -12,7 +12,8 @@ class ProjectDataModel(
     val logo: String,
     val changeDate: Date,
     val underReview: Boolean,
-    val pixKey: String
+    val pixKey: String,
+    val project: ProjectModel
 ) {
 
     fun toHashMap(): HashMap<String, Any> {
@@ -27,6 +28,7 @@ class ProjectDataModel(
             "changeDate" to changeDate,
             "underReview" to underReview,
             "pixKey" to pixKey,
+            "project" to project.id
         )
     }
 }
