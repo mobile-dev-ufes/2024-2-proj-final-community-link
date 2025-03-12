@@ -3,6 +3,7 @@ package ufes.grad.mobile.communitylink.model
 import java.util.Date
 
 class ProjectDataModel(
+    val id: String,
     val name: String,
     val description: String,
     val tags: List<String>,
@@ -16,6 +17,7 @@ class ProjectDataModel(
 
     fun toHashMap(): HashMap<String, Any> {
         return hashMapOf(
+            "id" to id,
             "name" to name,
             "description" to description,
             "tags" to tags,

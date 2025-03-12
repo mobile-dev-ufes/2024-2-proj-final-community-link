@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import ufes.grad.mobile.communitylink.R
 import ufes.grad.mobile.communitylink.databinding.FragmentRegisterBinding
-import ufes.grad.mobile.communitylink.model.User
+import ufes.grad.mobile.communitylink.model.UserModel
 import ufes.grad.mobile.communitylink.utils.Utilities
 import ufes.grad.mobile.communitylink.viewmodel.SignupVM
 
@@ -37,7 +37,7 @@ class SignupFragment : Fragment(R.layout.fragment_register), OnClickListener {
                 val sex = binding.sex.editText.text.toString()
                 val dob = binding.date.editText.text.toString()
                 try {
-                    val user = User(name, cpf, sex, dob, address, phone)
+                    val user = UserModel(name, cpf, sex, dob, address, phone)
                     signupVM.registerNewUser(email, password, user).addOnSuccessListener {
                         Utilities.loadFragment(requireActivity(), LoginFragment())
                     }

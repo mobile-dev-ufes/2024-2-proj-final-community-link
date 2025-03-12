@@ -9,7 +9,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import ufes.grad.mobile.communitylink.utils.Utilities
 import ufes.grad.mobile.communitylink.R
-import ufes.grad.mobile.communitylink.model.User
+import ufes.grad.mobile.communitylink.model.UserModel
 
 class ProfileVM (application: Application): AndroidViewModel(application){
     private val auth = FirebaseAuth.getInstance()
@@ -57,7 +57,7 @@ class ProfileVM (application: Application): AndroidViewModel(application){
         auth.signOut()
     }
 
-    fun changeUserData(user: User) {
+    fun changeUserData(user: UserModel) {
         val context = getApplication<Application>().applicationContext
         if (auth.currentUser != null) {
             val userMap = hashMapOf(

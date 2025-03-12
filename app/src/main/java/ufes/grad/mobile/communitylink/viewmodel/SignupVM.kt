@@ -12,7 +12,7 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException
 import com.google.firebase.firestore.FirebaseFirestore
-import ufes.grad.mobile.communitylink.model.User
+import ufes.grad.mobile.communitylink.model.UserModel
 import ufes.grad.mobile.communitylink.utils.Utilities
 import ufes.grad.mobile.communitylink.R
 
@@ -20,7 +20,7 @@ class SignupVM(application: Application): AndroidViewModel(application)  {
     private val auth = FirebaseAuth.getInstance()
     private val db = FirebaseFirestore.getInstance()
 
-    fun registerNewUser(email: String, password: String, user: User): Task<AuthResult?> {
+    fun registerNewUser(email: String, password: String, user: UserModel): Task<AuthResult?> {
         if (email.isNotBlank() and password.isNotBlank()) {
             return auth.createUserWithEmailAndPassword(email, password).addOnFailureListener {
                 var msg = "Houve algum problema no cadastro"
@@ -47,7 +47,7 @@ class SignupVM(application: Application): AndroidViewModel(application)  {
         throw IllegalArgumentException("Email e Senha são necessários")
     }
 
-    private fun saveUserData(user: User){
+    private fun saveUserData(user: UserModel){
         val userMap = user.toHashMap()
         val currUserId = auth.currentUser?.uid
         if (currUserId != null) {

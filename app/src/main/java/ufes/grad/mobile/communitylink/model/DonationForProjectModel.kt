@@ -2,14 +2,14 @@ package ufes.grad.mobile.communitylink.model
 
 import java.util.Date
 
-class DonationForAction(
+class DonationForProjectModel (
     id: String,
     value: Float,
     objectName: String,
     status: DonationStatusEnum,
     date: Date,
     confirmationImage: String,
-    val action: ActionDonationModel
+    val project: ProjectModel
 ) : DonationModel(id, value, objectName, status, date, confirmationImage) {
 
     fun toHashMap(): HashMap<String, Any> {
@@ -20,7 +20,7 @@ class DonationForAction(
             "status" to status,
             "date" to date,
             "confirmationImage" to confirmationImage,
-            "action" to action.id
+            "project" to project.id
         )
     }
 }

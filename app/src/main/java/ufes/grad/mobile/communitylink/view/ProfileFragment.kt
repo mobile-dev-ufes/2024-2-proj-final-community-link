@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import ufes.grad.mobile.communitylink.R
 import ufes.grad.mobile.communitylink.databinding.FragmentProfileBinding
-import ufes.grad.mobile.communitylink.model.User
+import ufes.grad.mobile.communitylink.model.UserModel
 import ufes.grad.mobile.communitylink.utils.Utilities
 import ufes.grad.mobile.communitylink.viewmodel.ProfileVM
 
@@ -99,7 +99,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), View.OnClickListene
             binding.confirmAlterations.id -> {
                 //TODO("Abrir popup de confirmação")
                 profileVM.changeUserData(
-                    User(
+                    UserModel(
                         binding.name.editText.text.toString(),
                         binding.cpf.editText.text.toString(),
                         binding.sex.editText.text.toString(),
