@@ -5,17 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.Toolbar
 import ufes.grad.mobile.communitylink.R
 import ufes.grad.mobile.communitylink.databinding.FragmentMyProjectsBinding
+import ufes.grad.mobile.communitylink.utils.Utilities
 
 class MyProjectsFragment : Fragment(R.layout.fragment_my_projects), View.OnClickListener {
 
     private var _binding: FragmentMyProjectsBinding? = null
     private val binding get() = _binding!!
-
-    override fun onClick(v: View) {
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,9 +26,17 @@ class MyProjectsFragment : Fragment(R.layout.fragment_my_projects), View.OnClick
         return binding.root
     }
 
+    override fun onClick(v: View) {
+        when (v.id) {
+            binding.createButton.id -> {
+                //Utilities.loadFragment(requireActivity(), )
+                TODO()
+            }
+        }
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
-
 }

@@ -8,6 +8,7 @@ import androidx.core.content.ContextCompat.getColor
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import ufes.grad.mobile.communitylink.R
 import ufes.grad.mobile.communitylink.databinding.FragmentProfileBinding
 import ufes.grad.mobile.communitylink.model.User
@@ -68,19 +69,19 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), View.OnClickListene
     override fun onClick(v: View) {
         when (v.id) {
             binding.projectsButton.id -> {
-                Utilities.loadFragment(requireActivity(), MyProjectsFragment())
+                findNavController().navigate(R.id.myProjectsFragment)
             }
 
             binding.actionsButton.id -> {
-                Utilities.loadFragment(requireActivity(), MyActionsFragment())
+                findNavController().navigate(R.id.myActionsFragment)
             }
 
             binding.eventsButton.id -> {
-                Utilities.loadFragment(requireActivity(), PastActionsFragment())
+                findNavController().navigate(R.id.myActionsFragment)
             }
 
             binding.pendingButton.id -> {
-                Utilities.loadFragment(requireActivity(), PendingActionsFragment())
+                findNavController().navigate(R.id.pendingActionsFragment)
             }
 
             binding.logoutButton.id -> {

@@ -8,7 +8,7 @@
         android:id="@+id/dashboardFragment"
         tools:layout="@layout/fragment_dashboard"
         android:name="ufes.grad.mobile.communitylink.view.DashboardFragment"
-        android:label="DashboardFragment" >
+        android:label="@string/dashboard" >
         <action
             android:id="@+id/action_dashboardFragment_to_exploreFragment"
             app:destination="@id/exploreFragment"
@@ -36,7 +36,7 @@
         android:id="@+id/profileFragment"
         android:name="ufes.grad.mobile.communitylink.view.ProfileFragment"
         tools:layout="@layout/fragment_profile"
-        android:label="ProfileFragment" >
+        android:label="@string/perfil" >
         <action
             android:id="@+id/action_profileFragment_to_dashboardFragment"
             app:destination="@id/dashboardFragment" />
@@ -56,7 +56,7 @@
     <fragment
         android:id="@+id/myProjectsFragment"
         android:name="ufes.grad.mobile.communitylink.view.MyProjectsFragment"
-        android:label="fragment_my_projects"
+        android:label="@string/my_projects"
         tools:layout="@layout/fragment_my_projects" >
         <action
             android:id="@+id/action_myProjectsFragment_to_projectPageFragment"
@@ -65,16 +65,16 @@
     <fragment
         android:id="@+id/myActionsFragment"
         android:name="ufes.grad.mobile.communitylink.view.MyActionsFragment"
-        android:label="fragment_my_actions"
+        android:label="@string/my_actions"
         tools:layout="@layout/fragment_my_actions" />
     <fragment
         android:id="@+id/projectPageFragment"
         android:name="ufes.grad.mobile.communitylink.view.ProjectPageFragment"
-        android:label="fragment_project_page"
+        android:label="@string/project"
         tools:layout="@layout/fragment_project_page" />
     <fragment
         android:id="@+id/pendingActionsFragment"
         android:name="ufes.grad.mobile.communitylink.view.PendingActionsFragment"
-        android:label="fragment_pending_actions"
+        android:label="@string/pending_actions"
         tools:layout="@layout/fragment_pending_actions" />
 </navigation>
