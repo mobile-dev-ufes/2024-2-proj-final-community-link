@@ -77,7 +77,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), View.OnClickListene
             }
 
             binding.eventsButton.id -> {
-                findNavController().navigate(R.id.myActionsFragment)
+                findNavController().navigate(R.id.eventsAndDonationsFragment)
             }
 
             binding.pendingButton.id -> {

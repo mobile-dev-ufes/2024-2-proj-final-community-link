@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import ufes.grad.mobile.communitylink.R
 import ufes.grad.mobile.communitylink.databinding.FragmentPastActionsBinding
 
-class PastActionsFragment : Fragment(R.layout.fragment_past_actions) {
+class EventsAndDonationsFragment : Fragment(R.layout.fragment_events_and_donations) {
 
     private var _binding: FragmentPastActionsBinding? = null
     private val binding get() = _binding!!
