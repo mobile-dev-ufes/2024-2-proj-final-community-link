@@ -85,4 +85,6 @@
     <string name="action_type">Tipo de ação</string>
     <string name="delete_post">Excluir publicação</string>
     <string name="project">Projeto</string>
+    <string name="match_passwords">Senha e Senha Repetida diferentes!</string>
+    <string name="selecione_uma_data">Selecione uma Data</string>
 </resources>
