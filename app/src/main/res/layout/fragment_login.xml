@@ -7,7 +7,7 @@
     android:clipToPadding="false"
     android:orientation="vertical"
     android:padding="@dimen/border"
-    tools:context=".view.LoginFragment">
+    tools:context=".view.fragments.LoginFragment">
 
     <ufes.grad.mobile.communitylink.components.CommunityLinkTitle
         android:layout_width="match_parent"

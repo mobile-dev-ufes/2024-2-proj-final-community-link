@@ -1,4 +1,4 @@
-package ufes.grad.mobile.communitylink.view
+package ufes.grad.mobile.communitylink.view.fragments
 
 import android.content.Intent
 import android.os.Bundle
@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import ufes.grad.mobile.communitylink.R
 import ufes.grad.mobile.communitylink.databinding.FragmentLoginBinding
 import ufes.grad.mobile.communitylink.utils.Utilities
+import ufes.grad.mobile.communitylink.view.FragmentControllerActivity
 import ufes.grad.mobile.communitylink.viewmodel.LoginVM
 
 class LoginFragment : Fragment(R.layout.fragment_login), View.OnClickListener {

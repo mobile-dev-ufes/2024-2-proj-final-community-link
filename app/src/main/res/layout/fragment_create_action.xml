@@ -7,7 +7,7 @@
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:padding="@dimen/border"
-    tools:context=".view.CreateActionFragment">
+    tools:context=".view.fragments.CreateActionFragment">
 
     <ufes.grad.mobile.communitylink.components.FormsLayout
         android:id="@+id/name_forms"

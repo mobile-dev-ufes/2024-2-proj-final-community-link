@@ -1,4 +1,4 @@
-package ufes.grad.mobile.communitylink.view
+package ufes.grad.mobile.communitylink.view.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater

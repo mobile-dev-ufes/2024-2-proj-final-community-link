@@ -8,7 +8,7 @@
     android:gravity="center|top"
     android:orientation="vertical"
     android:padding="@dimen/border"
-    tools:context=".view.ProjectPageFragment">
+    tools:context=".view.fragments.ProjectPageFragment">
 
     <ImageView
         android:layout_width="80dp"

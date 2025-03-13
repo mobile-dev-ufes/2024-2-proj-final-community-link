@@ -1,4 +1,4 @@
-package ufes.grad.mobile.communitylink.view
+package ufes.grad.mobile.communitylink.view.fragments
 
 import android.app.DatePickerDialog
 import android.content.Intent
@@ -17,6 +17,7 @@ import java.util.Calendar
 import ufes.grad.mobile.communitylink.R
 import ufes.grad.mobile.communitylink.databinding.FragmentProfileBinding
 import ufes.grad.mobile.communitylink.utils.Utilities
+import ufes.grad.mobile.communitylink.view.LoginActivity
 import ufes.grad.mobile.communitylink.view.popups.BasePopup
 import ufes.grad.mobile.communitylink.view.popups.UserDataPopup
 import ufes.grad.mobile.communitylink.view.popups.UserDataPopup.UserPopupType

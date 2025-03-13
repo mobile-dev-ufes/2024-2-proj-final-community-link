@@ -7,7 +7,7 @@
     android:gravity="center|top"
     android:orientation="vertical"
     android:padding="@dimen/border"
-    tools:context=".view.SearchUsersFragment">
+    tools:context=".view.fragments.SearchUsersFragment">
 
     <ufes.grad.mobile.communitylink.components.FormsLayout
         android:id="@+id/name_forms"

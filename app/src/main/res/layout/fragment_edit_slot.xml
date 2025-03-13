@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:paddingHorizontal="@dimen/border"
     android:scrollbars="none"
-    tools:context=".view.EditSlotFragment">
+    tools:context=".view.fragments.EditSlotFragment">
 
     <LinearLayout
         android:layout_width="match_parent"

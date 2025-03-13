@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:clipToPadding="false"
     android:padding="@dimen/border"
-    tools:context=".view.PendingActionsFragment">
+    tools:context=".view.fragments.PendingActionsFragment">
 
     <LinearLayout
         android:layout_width="match_parent"

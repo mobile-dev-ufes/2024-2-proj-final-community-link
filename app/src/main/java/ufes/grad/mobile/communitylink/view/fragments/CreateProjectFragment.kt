@@ -1,4 +1,4 @@
-package ufes.grad.mobile.communitylink.view
+package ufes.grad.mobile.communitylink.view.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,11 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import ufes.grad.mobile.communitylink.R
-import ufes.grad.mobile.communitylink.databinding.FragmentCreateActionBinding
+import ufes.grad.mobile.communitylink.databinding.FragmentCreateProjectBinding
 
-class CreateActionFragment : Fragment(R.layout.fragment_create_action), View.OnClickListener {
+class CreateProjectFragment : Fragment(R.layout.fragment_create_project), View.OnClickListener {
 
-    private var _binding: FragmentCreateActionBinding? = null
+    private var _binding: FragmentCreateProjectBinding? = null
     private val binding
         get() = _binding!!
 
@@ -20,7 +20,7 @@ class CreateActionFragment : Fragment(R.layout.fragment_create_action), View.OnC
         savedInstanceState: Bundle?
     ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
-        _binding = FragmentCreateActionBinding.inflate(inflater, container, false)
+        _binding = FragmentCreateProjectBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -32,7 +32,7 @@ class CreateActionFragment : Fragment(R.layout.fragment_create_action), View.OnC
     override fun onClick(v: View) {
         when (v.id) {
             binding.createButton.id -> {
-                TODO("onClick 'CRIAR AÇÃO'")
+                TODO("onClick 'CRIAR PROJETO'")
             }
         }
     }

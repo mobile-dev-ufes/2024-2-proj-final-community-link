@@ -13,8 +13,16 @@ class ListInfoCardAdapter : GenericAdapter<ListInfoCardViewHolder>() {
         return ListInfoCardViewHolder(item)
     }
 
+    override fun onBindViewHolder(holder: ListInfoCardViewHolder, position: Int) {
+        super.onBindViewHolder(holder, position)
+        holder.itemView.setOnClickListener {
+            onClickListener?.onClick(position, list[position])
+        }
+    }
+
     fun updateInfoCardList(list_: List<ActionModel>) {
         list = list_
         //        notifyDatasetChanged()
     }
+
 }

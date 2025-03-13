@@ -1,4 +1,4 @@
-package ufes.grad.mobile.communitylink.view
+package ufes.grad.mobile.communitylink.view.fragments
 
 import android.app.DatePickerDialog
 import android.os.Bundle
@@ -135,7 +135,6 @@ class SignupFragment : Fragment(R.layout.fragment_register), OnClickListener {
         if (binding.sex.editText.text.toString().isEmpty()) {
             binding.sex.editText.setHintTextColor(getColor(requireContext(), R.color.red))
         }
-        Utilities.notify(requireContext(), binding.buttonDate.text.toString())
         if (binding.buttonDate.text.toString() == getString(R.string.selecione_uma_data)) {
             binding.buttonDate.setTextColor(getColor(requireContext(), R.color.red))
         }

@@ -1,4 +1,4 @@
-package ufes.grad.mobile.communitylink.view
+package ufes.grad.mobile.communitylink.view.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,11 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import ufes.grad.mobile.communitylink.R
-import ufes.grad.mobile.communitylink.databinding.FragmentProjectDonationListBinding
+import ufes.grad.mobile.communitylink.databinding.FragmentEventVolunteerSlotsBinding
 
-class ProjectDonationListFragment : Fragment(R.layout.fragment_project_donation_list) {
+class EventVolunteerSlotsFragment :
+    Fragment(R.layout.fragment_event_volunteer_slots), View.OnClickListener {
 
-    private var _binding: FragmentProjectDonationListBinding? = null
+    private var _binding: FragmentEventVolunteerSlotsBinding? = null
     private val binding
         get() = _binding!!
 
@@ -20,7 +21,7 @@ class ProjectDonationListFragment : Fragment(R.layout.fragment_project_donation_
         savedInstanceState: Bundle?
     ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
-        _binding = FragmentProjectDonationListBinding.inflate(inflater, container, false)
+        _binding = FragmentEventVolunteerSlotsBinding.inflate(inflater, container, false)
         // TODO("Add recycle view")
         return binding.root
     }
@@ -28,5 +29,13 @@ class ProjectDonationListFragment : Fragment(R.layout.fragment_project_donation_
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onClick(v: View) {
+        when (v.id) {
+            binding.createButton.id -> {
+                TODO("Add navigation")
+            }
+        }
     }
 }

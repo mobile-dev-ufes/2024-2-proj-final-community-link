@@ -21,7 +21,7 @@
         android:id="@+id/fragment_container_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:name="ufes.grad.mobile.communitylink.view.LoginFragment"
+        android:name="ufes.grad.mobile.communitylink.view.fragments.LoginFragment"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

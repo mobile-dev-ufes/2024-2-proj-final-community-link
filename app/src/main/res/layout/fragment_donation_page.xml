@@ -8,7 +8,7 @@
     android:gravity="center|top"
     android:orientation="vertical"
     android:padding="@dimen/border"
-    tools:context=".view.DonationPageFragment">
+    tools:context=".view.fragments.DonationPageFragment">
 
     <ufes.grad.mobile.communitylink.components.ProjectTagLayout
         android:id="@+id/project_tag"

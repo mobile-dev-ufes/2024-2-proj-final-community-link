@@ -6,6 +6,7 @@ plugins {
     id("com.google.gms.google-services")
     kotlin("plugin.serialization") version "2.1.0"
     id("com.ncorti.ktfmt.gradle") version ("0.18.0")
+    id("androidx.navigation.safeargs")
 }
 
 android {

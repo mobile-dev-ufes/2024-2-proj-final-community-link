@@ -7,7 +7,7 @@
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:padding="@dimen/border"
-    tools:context=".view.MyProjectsFragment">
+    tools:context=".view.fragments.MyProjectsFragment">
 
     <Button
         android:id="@+id/create_button"

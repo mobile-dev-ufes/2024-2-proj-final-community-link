@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:paddingHorizontal="@dimen/border"
     android:paddingBottom="@dimen/border"
-    tools:context=".view.ExploreFragment">
+    tools:context=".view.fragments.ExploreFragment">
 
     <ufes.grad.mobile.communitylink.components.SearchBarLayout
         android:layout_width="match_parent"

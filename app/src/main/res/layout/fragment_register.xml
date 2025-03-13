@@ -8,7 +8,7 @@
     android:clipToPadding="false"
     android:padding="@dimen/border"
     android:scrollbars="none"
-    tools:context=".view.SignupFragment">
+    tools:context=".view.fragments.SignupFragment">
 
     <LinearLayout
         android:id="@+id/main"

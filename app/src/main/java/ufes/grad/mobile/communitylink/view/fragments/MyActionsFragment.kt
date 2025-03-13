@@ -1,4 +1,4 @@
-package ufes.grad.mobile.communitylink.view
+package ufes.grad.mobile.communitylink.view.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,12 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import ufes.grad.mobile.communitylink.R
-import ufes.grad.mobile.communitylink.databinding.FragmentEventVolunteerSlotsBinding
+import ufes.grad.mobile.communitylink.databinding.FragmentMyActionsBinding
 
-class EventVolunteerSlotsFragment :
-    Fragment(R.layout.fragment_event_volunteer_slots), View.OnClickListener {
+class MyActionsFragment : Fragment(R.layout.fragment_my_actions) {
 
-    private var _binding: FragmentEventVolunteerSlotsBinding? = null
+    private var _binding: FragmentMyActionsBinding? = null
     private val binding
         get() = _binding!!
 
@@ -21,7 +20,7 @@ class EventVolunteerSlotsFragment :
         savedInstanceState: Bundle?
     ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
-        _binding = FragmentEventVolunteerSlotsBinding.inflate(inflater, container, false)
+        _binding = FragmentMyActionsBinding.inflate(inflater, container, false)
         // TODO("Add recycle view")
         return binding.root
     }
@@ -29,13 +28,5 @@ class EventVolunteerSlotsFragment :
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    override fun onClick(v: View) {
-        when (v.id) {
-            binding.createButton.id -> {
-                TODO("Add navigation")
-            }
-        }
     }
 }

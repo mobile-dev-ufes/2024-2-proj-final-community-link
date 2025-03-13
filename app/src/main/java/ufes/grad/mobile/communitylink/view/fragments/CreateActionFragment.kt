@@ -1,4 +1,4 @@
-package ufes.grad.mobile.communitylink.view
+package ufes.grad.mobile.communitylink.view.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,11 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import ufes.grad.mobile.communitylink.R
-import ufes.grad.mobile.communitylink.databinding.FragmentSearchUsersBinding
+import ufes.grad.mobile.communitylink.databinding.FragmentCreateActionBinding
 
-class SearchUsersFragment : Fragment(R.layout.fragment_search_users), View.OnClickListener {
+class CreateActionFragment : Fragment(R.layout.fragment_create_action), View.OnClickListener {
 
-    private var _binding: FragmentSearchUsersBinding? = null
+    private var _binding: FragmentCreateActionBinding? = null
     private val binding
         get() = _binding!!
 
@@ -20,8 +20,7 @@ class SearchUsersFragment : Fragment(R.layout.fragment_search_users), View.OnCli
         savedInstanceState: Bundle?
     ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
-        _binding = FragmentSearchUsersBinding.inflate(inflater, container, false)
-        // TODO("Make functional")
+        _binding = FragmentCreateActionBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -32,8 +31,8 @@ class SearchUsersFragment : Fragment(R.layout.fragment_search_users), View.OnCli
 
     override fun onClick(v: View) {
         when (v.id) {
-            binding.searchButton.id -> {
-                TODO("Make functional")
+            binding.createButton.id -> {
+                TODO("onClick 'CRIAR AÇÃO'")
             }
         }
     }

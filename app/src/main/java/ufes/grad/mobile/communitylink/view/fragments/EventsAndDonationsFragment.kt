@@ -1,4 +1,4 @@
-package ufes.grad.mobile.communitylink.view
+package ufes.grad.mobile.communitylink.view.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,11 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import ufes.grad.mobile.communitylink.R
-import ufes.grad.mobile.communitylink.databinding.FragmentProjectActionsListBinding
+import ufes.grad.mobile.communitylink.databinding.FragmentEventsAndDonationsBinding
 
-class ProjectActionsListFragment : Fragment(R.layout.fragment_project_actions_list) {
+class EventsAndDonationsFragment : Fragment(R.layout.fragment_events_and_donations) {
 
-    private var _binding: FragmentProjectActionsListBinding? = null
+    private var _binding: FragmentEventsAndDonationsBinding? = null
     private val binding
         get() = _binding!!
 
@@ -20,7 +20,7 @@ class ProjectActionsListFragment : Fragment(R.layout.fragment_project_actions_li
         savedInstanceState: Bundle?
     ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
-        _binding = FragmentProjectActionsListBinding.inflate(inflater, container, false)
+        _binding = FragmentEventsAndDonationsBinding.inflate(inflater, container, false)
         // TODO("Add recycle view")
         return binding.root
     }
