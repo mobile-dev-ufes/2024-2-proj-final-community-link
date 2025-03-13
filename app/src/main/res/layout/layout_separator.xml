@@ -5,7 +5,7 @@
     android:layout_height="wrap_content">
 
     <View
-        android:id="@+id/separator_2"
+        android:id="@+id/separator"
         android:layout_width="0dp"
         android:layout_height="1dp"
         android:layout_marginHorizontal="60dp"

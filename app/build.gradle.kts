@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     id("com.google.gms.google-services")
+    id("com.ncorti.ktfmt.gradle") version ("0.18.0")
 }
 
 android {
@@ -74,4 +75,11 @@ dependencies {
     implementation(libs.androidx.fragment.ktx)
     implementation(libs.firebase.auth.ktx)
     implementation(libs.firebase.firestore)
+}
+
+allprojects {
+    apply(plugin = "com.ncorti.ktfmt.gradle")
+    ktfmt {
+        kotlinLangStyle()
+    }
 }

@@ -27,18 +27,22 @@ class FragmentControllerActivity : AppCompatActivity() {
         binding.bottomNavMenu.setupWithNavController(navController)
 
         // Define fragments principais
-        val appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.exploreFragment, R.id.dashboardFragment, R.id.profileFragment)
-        )
+        val appBarConfiguration =
+            AppBarConfiguration(
+                setOf(R.id.exploreFragment, R.id.dashboardFragment, R.id.profileFragment)
+            )
 
         binding.toolbar.setupWithNavController(navController, appBarConfiguration)
 
         // muda visibilidade dinamicamente
         navController.addOnDestinationChangedListener { _, destination, _ ->
             binding.toolbar.visibility =
-                if (destination.id in
-                    setOf(R.id.dashboardFragment, R.id.exploreFragment, R.id.profileFragment))
-                View.GONE else View.VISIBLE
+                if (
+                    destination.id in
+                        setOf(R.id.dashboardFragment, R.id.exploreFragment, R.id.profileFragment)
+                )
+                    View.GONE
+                else View.VISIBLE
         }
     }
 }

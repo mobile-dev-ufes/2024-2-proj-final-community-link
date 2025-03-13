@@ -33,9 +33,6 @@ class ProjectCardLayout(context: Context, attrs: AttributeSet) : ConstraintLayou
         binding.name.text = name
         binding.description.text = description
 
-        if (icon != null)
-            binding.image.setImageDrawable(icon)
-        else
-            binding.image.visibility = GONE
+        if (icon != null) binding.image.setImageDrawable(icon) else binding.image.visibility = GONE
     }
 }

@@ -2,7 +2,7 @@ package ufes.grad.mobile.communitylink.model
 
 import java.util.Date
 
-abstract class ActionModel (
+abstract class ActionModel(
     val id: String,
     val name: String,
     val description: String,
@@ -14,5 +14,4 @@ abstract class ActionModel (
     val project: ProjectModel,
     val primaryRepresentative: UserModel,
     val secondaryRepresentative: UserModel?
-) {
-}
+) : BaseModel() {}

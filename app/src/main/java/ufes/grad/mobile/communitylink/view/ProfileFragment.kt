@@ -11,14 +11,18 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import ufes.grad.mobile.communitylink.R
 import ufes.grad.mobile.communitylink.databinding.FragmentProfileBinding
-import ufes.grad.mobile.communitylink.model.UserModel
 import ufes.grad.mobile.communitylink.utils.Utilities
+import ufes.grad.mobile.communitylink.view.popups.BasePopup
+import ufes.grad.mobile.communitylink.view.popups.UserDataPopup
+import ufes.grad.mobile.communitylink.view.popups.UserDataPopup.UserPopupType
 import ufes.grad.mobile.communitylink.viewmodel.ProfileVM
 
 class ProfileFragment : Fragment(R.layout.fragment_profile), View.OnClickListener {
 
     private var _binding: FragmentProfileBinding? = null
-    private val binding get() = _binding!!
+    private val binding
+        get() = _binding!!
+
     private lateinit var profileVM: ProfileVM
 
     override fun onCreateView(
@@ -46,19 +50,25 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), View.OnClickListene
     }
 
     private fun setObserver() {
-        profileVM.userData().observe(viewLifecycleOwner,
-            Observer { it ->
-                binding.name.editText.setText(it.get("name"))
-                binding.email.editText.setText(it.get("email"))
-                binding.email.editText.isEnabled = false
-                binding.email.editText.keyListener = null
-                binding.email.editText.setTextColor(getColor(requireContext(), R.color.gray_600))
-                binding.cpf.editText.setText(it.get("cpf"))
-                binding.dob.editText.setText(it.get("dob"))
-                binding.addressForm.editText.setText(it.get("address"))
-                binding.phone.editText.setText(it.get("phone"))
-                binding.sex.editText.setText(it.get("sex"))
-            })
+        profileVM
+            .userData()
+            .observe(
+                viewLifecycleOwner,
+                Observer { it ->
+                    binding.name.editText.setText(it.get("name"))
+                    binding.email.editText.setText(it.get("email"))
+                    binding.email.editText.isEnabled = false
+                    binding.email.editText.keyListener = null
+                    binding.email.editText.setTextColor(
+                        getColor(requireContext(), R.color.gray_600)
+                    )
+                    binding.cpf.editText.setText(it.get("cpf"))
+                    binding.dob.editText.setText(it.get("dob"))
+                    binding.addressForm.editText.setText(it.get("address"))
+                    binding.phone.editText.setText(it.get("phone"))
+                    binding.sex.editText.setText(it.get("sex"))
+                }
+            )
     }
 
     override fun onDestroyView() {
@@ -71,45 +81,44 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), View.OnClickListene
             binding.projectsButton.id -> {
                 findNavController().navigate(R.id.myProjectsFragment)
             }
-
             binding.actionsButton.id -> {
                 findNavController().navigate(R.id.myActionsFragment)
             }
-
             binding.eventsButton.id -> {
                 findNavController().navigate(R.id.eventsAndDonationsFragment)
             }
-
             binding.pendingButton.id -> {
                 findNavController().navigate(R.id.pendingActionsFragment)
             }
-
             binding.logoutButton.id -> {
                 TODO("NÃO FUNCIONANDO AINDA")
                 profileVM.logout()
                 Utilities.loadFragment(LoginActivity(), LoginFragment())
                 requireActivity().finish()
             }
-
             binding.excludeAccount.id -> {
-                TODO("ABRE O POPUP PRA CONFIRMAR")
-                requireActivity().finish()
+                val popup = BasePopup(BasePopup.PopupType.TWO_BUTTON, R.layout.popup_delete_user)
+                // TODO("Make popup functional")
+                popup.onConfirm = { Utilities.notify(context, "Deletou usuário") }
+                popup.onCancel = { Utilities.notify(context, "Não deletou") }
+                popup.show(childFragmentManager, "")
+                //                requireActivity().finish()
             }
-
             binding.confirmAlterations.id -> {
-                //TODO("Abrir popup de confirmação")
-                profileVM.changeUserData(
-                    hashMapOf(
-                        "name" to binding.name.editText.text.toString(),
-                        "cpf" to binding.cpf.editText.text.toString(),
-                        "sex" to binding.sex.editText.text.toString(),
-                        "dob" to binding.dob.editText.text.toString(),
-                        "address" to binding.addressForm.editText.text.toString(),
-                        "phone" to binding.phone.editText.text.toString()
-                    )
-                )
+                val popup = UserDataPopup(null, UserPopupType.USER_DATA_UPDATE)
+                // TODO("Make popup functional")
+                popup.show(childFragmentManager, "")
+                //                profileVM.changeUserData(
+                //                    hashMapOf(
+                //                        "name" to binding.name.editText.text.toString(),
+                //                        "cpf" to binding.cpf.editText.text.toString(),
+                //                        "sex" to binding.sex.editText.text.toString(),
+                //                        "dob" to binding.dob.editText.text.toString(),
+                //                        "address" to binding.addressForm.editText.text.toString(),
+                //                        "phone" to binding.phone.editText.text.toString()
+                //                    )
+                //                )
             }
-
         }
     }
 }

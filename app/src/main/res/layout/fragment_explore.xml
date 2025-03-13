@@ -31,6 +31,7 @@
             android:orientation="vertical">
 
             <ufes.grad.mobile.communitylink.components.InfoCardLayout
+                android:id="@+id/test"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:description_text="@string/placeholder"

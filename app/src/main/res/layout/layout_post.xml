@@ -23,7 +23,7 @@
         <TextView
             android:id="@+id/post"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="Postagem..."
             android:textSize="16sp" />
 
@@ -34,6 +34,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:maxLines="1"
         android:text="XX/XX/XXXX às XX:XX"
         android:textColor="@color/gray"
         android:textSize="12sp" />

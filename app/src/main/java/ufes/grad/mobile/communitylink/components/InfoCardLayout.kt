@@ -7,8 +7,7 @@ import android.widget.LinearLayout
 import ufes.grad.mobile.communitylink.R
 import ufes.grad.mobile.communitylink.databinding.LayoutInfoCardBinding
 
-class InfoCardLayout(context: Context, attrs: AttributeSet) :
-    LinearLayout(context, attrs) {
+class InfoCardLayout(context: Context, attrs: AttributeSet) : LinearLayout(context, attrs) {
 
     private var binding: LayoutInfoCardBinding =
         LayoutInfoCardBinding.inflate(LayoutInflater.from(context), this, true)
@@ -72,30 +71,22 @@ class InfoCardLayout(context: Context, attrs: AttributeSet) :
 
         binding.tag.setType(tag)
 
-        if (!date.isNullOrEmpty())
-            binding.dateText.text = date
-        else
-            binding.dateText.visibility = GONE
+        if (!date.isNullOrEmpty()) binding.dateText.text = date
+        else binding.dateText.visibility = GONE
 
         binding.nameText.text = title
 
-        if (!description.isNullOrEmpty())
-            binding.descriptionText.text = description
-        else
-            binding.descriptionText.visibility = GONE
+        if (!description.isNullOrEmpty()) binding.descriptionText.text = description
+        else binding.descriptionText.visibility = GONE
 
         if (!second_description.isNullOrEmpty())
             binding.secondDescriptionText.text = second_description
-        else
-            binding.secondDescriptionText.visibility = GONE
+        else binding.secondDescriptionText.visibility = GONE
 
-        if (!second_title.isNullOrEmpty())
-            binding.secondNameText.text = second_title
-        else
-            binding.secondNameText.visibility = GONE
+        if (!second_title.isNullOrEmpty()) binding.secondNameText.text = second_title
+        else binding.secondNameText.visibility = GONE
 
         binding.cancelButton.visibility = if (cancel_button) VISIBLE else GONE
         binding.alertText.visibility = if (show_alert) VISIBLE else GONE
-
     }
 }

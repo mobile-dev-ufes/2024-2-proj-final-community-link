@@ -2,7 +2,7 @@ package ufes.grad.mobile.communitylink.model
 
 import java.util.Date
 
-class DonationForProjectModel (
+class DonationForProjectModel(
     id: String,
     value: Float,
     objectName: String,

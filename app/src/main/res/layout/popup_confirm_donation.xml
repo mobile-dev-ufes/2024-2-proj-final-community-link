@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/PopupTitleStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/confirm_donation" />
+
+    <TextView
+        style="@style/PopupTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/confirm_donation_top_popup_content" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/style_button"
+        android:backgroundTint="@color/white"
+        android:drawableStart="@drawable/ic_plus"
+        android:drawablePadding="10dp"
+        android:drawableTint="@color/purple"
+        android:text="@string/attach_image"
+        android:textColor="@color/purple"
+        android:textSize="16sp" />
+
+    <ufes.grad.mobile.communitylink.components.SeparatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:separator_color="@color/white" />
+
+    <TextView
+        style="@style/PopupTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/confirm_donation_bottom_popup_content" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/style_button"
+        android:backgroundTint="@color/white"
+        android:text="@string/i_didnt_receive_this_donation"
+        android:textColor="@color/purple"
+        android:textSize="16sp" />
+
+</LinearLayout>

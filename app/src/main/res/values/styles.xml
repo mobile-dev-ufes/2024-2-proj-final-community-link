@@ -3,4 +3,20 @@
     <style name="Widget.Theme.CommunityLink.MyView" parent="">
         <item name="android:background">@color/gray_400</item>
     </style>
+
+    <style name="PopupTextStyle">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:lineSpacingMultiplier">0.8</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="PopupTitleStyle">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:layout_marginBottom">20dp</item>
+        <item name="android:lineSpacingMultiplier">0.8</item>
+        <item name="android:textAlignment">center</item>
+    </style>
 </resources>

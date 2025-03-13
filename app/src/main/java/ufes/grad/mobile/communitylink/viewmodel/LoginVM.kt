@@ -8,10 +8,10 @@ import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthInvalidUserException
-import ufes.grad.mobile.communitylink.utils.Utilities
 import ufes.grad.mobile.communitylink.R
+import ufes.grad.mobile.communitylink.utils.Utilities
 
-class LoginVM(application: Application): AndroidViewModel(application) {
+class LoginVM(application: Application) : AndroidViewModel(application) {
     private val auth = FirebaseAuth.getInstance()
 
     fun loginUser(email: String, password: String): Task<AuthResult?> {
@@ -27,7 +27,7 @@ class LoginVM(application: Application): AndroidViewModel(application) {
                     msg = app.getString(R.string.internet_error)
                 }
                 Utilities.notify(getApplication<Application>(), msg)
-                if (auth.currentUser?.isEmailVerified == false){
+                if (auth.currentUser?.isEmailVerified == false) {
                     auth.currentUser?.sendEmailVerification()
                 }
             }

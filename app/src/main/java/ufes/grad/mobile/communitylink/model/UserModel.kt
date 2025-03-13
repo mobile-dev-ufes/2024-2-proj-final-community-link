@@ -15,7 +15,7 @@ class UserModel(
     val memberTo: List<MemberModel>,
     val slotRequests: List<SlotRequestModel>,
     val donations: List<DonationModel>
-) {
+) : BaseModel() {
 
     fun toHashMap(): HashMap<String, Any> {
         return hashMapOf(

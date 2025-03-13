@@ -1,17 +1,18 @@
 package ufes.grad.mobile.communitylink.view
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import ufes.grad.mobile.communitylink.R
 import ufes.grad.mobile.communitylink.databinding.FragmentSearchUsersBinding
 
 class SearchUsersFragment : Fragment(R.layout.fragment_search_users), View.OnClickListener {
 
     private var _binding: FragmentSearchUsersBinding? = null
-    private val binding get() = _binding!!
+    private val binding
+        get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -20,6 +21,7 @@ class SearchUsersFragment : Fragment(R.layout.fragment_search_users), View.OnCli
     ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
         _binding = FragmentSearchUsersBinding.inflate(inflater, container, false)
+        // TODO("Make functional")
         return binding.root
     }
 
@@ -29,7 +31,10 @@ class SearchUsersFragment : Fragment(R.layout.fragment_search_users), View.OnCli
     }
 
     override fun onClick(v: View) {
-
+        when (v.id) {
+            binding.searchButton.id -> {
+                TODO("Make functional")
+            }
+        }
     }
-
 }

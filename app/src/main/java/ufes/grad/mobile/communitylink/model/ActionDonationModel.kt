@@ -2,7 +2,7 @@ package ufes.grad.mobile.communitylink.model
 
 import java.util.Date
 
-class ActionDonationModel (
+class ActionDonationModel(
     id: String,
     name: String,
     description: String,
@@ -16,8 +16,20 @@ class ActionDonationModel (
     secondaryRepresentative: UserModel?,
     var goal: GoalModel,
     var donations: List<DonationForAction>
-) : ActionModel(id, name, description, tags, initDate, finishDate, status,
-        posts, project, primaryRepresentative, secondaryRepresentative) {
+) :
+    ActionModel(
+        id,
+        name,
+        description,
+        tags,
+        initDate,
+        finishDate,
+        status,
+        posts,
+        project,
+        primaryRepresentative,
+        secondaryRepresentative
+    ) {
 
     fun toHashMap(): HashMap<String, Any?> {
         return hashMapOf(

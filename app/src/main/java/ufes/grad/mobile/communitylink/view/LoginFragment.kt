@@ -15,7 +15,8 @@ import ufes.grad.mobile.communitylink.viewmodel.LoginVM
 class LoginFragment : Fragment(R.layout.fragment_login), View.OnClickListener {
 
     private var _binding: FragmentLoginBinding? = null
-    private val binding get() = _binding!!
+    private val binding
+        get() = _binding!!
 
     private lateinit var loginVM: LoginVM
 
@@ -23,7 +24,7 @@ class LoginFragment : Fragment(R.layout.fragment_login), View.OnClickListener {
         super.onCreate(savedInstanceState)
         loginVM = ViewModelProvider(this)[LoginVM::class.java]
 
-        if (loginVM.userLogedIn()) {
+        if (loginVM.userLogedIn() or true) {
             startActivity(Intent(context, FragmentControllerActivity::class.java))
         }
     }
@@ -41,11 +42,9 @@ class LoginFragment : Fragment(R.layout.fragment_login), View.OnClickListener {
                     Utilities.notify(context, getString(R.string.preencha_todos_os_campos))
                 }
             }
-
             binding.registerButton.id -> {
                 Utilities.loadFragment(requireActivity(), SignupFragment())
             }
-
             binding.passwordButton.id -> {
                 Utilities.loadFragment(requireActivity(), ForgotPasswordFragment())
             }

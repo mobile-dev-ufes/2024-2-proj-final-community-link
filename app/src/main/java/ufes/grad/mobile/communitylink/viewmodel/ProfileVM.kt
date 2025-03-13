@@ -7,11 +7,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import ufes.grad.mobile.communitylink.utils.Utilities
 import ufes.grad.mobile.communitylink.R
-import ufes.grad.mobile.communitylink.model.UserModel
+import ufes.grad.mobile.communitylink.utils.Utilities
 
-class ProfileVM (application: Application): AndroidViewModel(application){
+class ProfileVM(application: Application) : AndroidViewModel(application) {
     private val auth = FirebaseAuth.getInstance()
     private val db = FirebaseFirestore.getInstance()
     private var userData = MutableLiveData<HashMap<String, String>>()
@@ -20,22 +19,24 @@ class ProfileVM (application: Application): AndroidViewModel(application){
         val context = getApplication<Application>().applicationContext
         Log.d("USERDATA", "GETTING USER DATA")
         if (auth.currentUser != null) {
-            db.collection("users").document(auth.currentUser!!.uid)
+            db.collection("users")
+                .document(auth.currentUser!!.uid)
                 .get()
                 .addOnSuccessListener { document ->
                     if (document != null && document.exists()) {
                         Log.d("USERDATA", "Document Retrieved: ${document.data}")
 
                         // Create a new HashMap and assign it to LiveData
-                        val newUserData = hashMapOf(
-                            "name" to (document.getString("name") ?: ""),
-                            "cpf" to (document.getString("cpf") ?: ""),
-                            "sex" to (document.getString("sex") ?: ""),
-                            "dob" to (document.getString("dob") ?: ""),
-                            "address" to (document.getString("address") ?: ""),
-                            "phone" to (document.getString("phone") ?: ""),
-                            "email" to (auth.currentUser?.email ?: "")
-                        )
+                        val newUserData =
+                            hashMapOf(
+                                "name" to (document.getString("name") ?: ""),
+                                "cpf" to (document.getString("cpf") ?: ""),
+                                "sex" to (document.getString("sex") ?: ""),
+                                "dob" to (document.getString("dob") ?: ""),
+                                "address" to (document.getString("address") ?: ""),
+                                "phone" to (document.getString("phone") ?: ""),
+                                "email" to (auth.currentUser?.email ?: "")
+                            )
                         userData.postValue(newUserData)
                     } else {
                         Utilities.notify(context, context.getString(R.string.user_has_no_data))
@@ -60,10 +61,14 @@ class ProfileVM (application: Application): AndroidViewModel(application){
     fun changeUserData(newUserMap: HashMap<String, Any>) {
         val context = getApplication<Application>().applicationContext
         if (auth.currentUser != null) {
-            db.collection("users").document(auth.currentUser!!.uid)
+            db.collection("users")
+                .document(auth.currentUser!!.uid)
                 .set(newUserMap)
                 .addOnSuccessListener {
-                    Utilities.notify(context, context.getString(R.string.success_updating_user_data))
+                    Utilities.notify(
+                        context,
+                        context.getString(R.string.success_updating_user_data)
+                    )
                 }
                 .addOnFailureListener {
                     Utilities.notify(context, context.getString(R.string.erro_update_user_data))

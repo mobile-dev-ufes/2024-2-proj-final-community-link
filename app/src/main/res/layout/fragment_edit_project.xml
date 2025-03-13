@@ -32,39 +32,43 @@
                 android:src="@drawable/project_profile" />
 
             <ufes.grad.mobile.communitylink.components.FormsLayout
+                android:id="@+id/name_forms"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:forms_margin="false"
                 app:forms_title_text="@string/name" />
 
         </LinearLayout>
 
         <ufes.grad.mobile.communitylink.components.FormsLayout
+            android:id="@+id/description_forms"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
+            app:forms_box_size="80dp"
             app:forms_title_text="@string/description" />
 
         <ufes.grad.mobile.communitylink.components.FormsLayout
+            android:id="@+id/tags_forms"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             app:forms_hint_text="@string/tags"
             app:forms_title_text="@string/tags_parenthesis" />
 
         <ufes.grad.mobile.communitylink.components.FormsLayout
+            android:id="@+id/cnpj_forms"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             app:forms_hint_text="@string/cnpj_hint"
             app:forms_title_text="@string/cnpj" />
 
         <ufes.grad.mobile.communitylink.components.FormsLayout
+            android:id="@+id/pix_forms"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             app:forms_title_text="@string/pix_key" />
 
         <TextView
+            android:id="@+id/alert_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="10dp"
@@ -74,6 +78,7 @@
             android:text="@string/unrefreshed_project_text" />
 
         <Button
+            android:id="@+id/request_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/style_button"
@@ -86,31 +91,35 @@
             android:layout_height="wrap_content" />
 
         <ufes.grad.mobile.communitylink.components.IconButtonLayout
+            android:id="@+id/members_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             app:button_icon="@drawable/ic_profile"
-            app:button_text="Gerenciar Membros" />
+            app:button_text="@string/manage_members" />
 
         <ufes.grad.mobile.communitylink.components.IconButtonLayout
+            android:id="@+id/donations_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             app:button_icon="@drawable/ic_archive"
-            app:button_text="Gerenciar Doações Diretas" />
+            app:button_text="@string/manage_direct_donations" />
 
         <ufes.grad.mobile.communitylink.components.IconButtonLayout
+            android:id="@+id/actions_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             app:button_icon="@drawable/ic_zap"
-            app:button_text="Gerenciar Ações" />
+            app:button_text="@string/manage_actions" />
 
         <ufes.grad.mobile.communitylink.components.SeparatorLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <Button
+            android:id="@+id/deactivate_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/style_button"
@@ -132,6 +141,7 @@
             android:text="@string/delete_project_text" />
 
         <Button
+            android:id="@+id/delete_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/style_button"

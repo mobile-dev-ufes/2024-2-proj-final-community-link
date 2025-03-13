@@ -8,7 +8,7 @@ class SlotRequestModel(
     val isSelected: Boolean,
     val slot: VolunteerSlotModel,
     val user: UserModel
-) {
+) : BaseModel() {
 
     fun toHashMap(): HashMap<String, Any> {
         return hashMapOf(

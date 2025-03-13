@@ -13,9 +13,11 @@ class Utilities {
         }
 
         fun loadFragment(fragmentActivity: FragmentActivity, fragment: Fragment) {
-            fragmentActivity.supportFragmentManager.beginTransaction()
+            fragmentActivity.supportFragmentManager
+                .beginTransaction()
                 .replace(R.id.fragment_container_view, fragment, null)
-                .addToBackStack(null).commit()
+                .addToBackStack(null)
+                .commit()
         }
     }
 }

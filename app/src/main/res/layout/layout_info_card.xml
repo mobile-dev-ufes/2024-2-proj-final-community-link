@@ -33,6 +33,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_slab_bold"
+                android:maxLines="1"
                 android:paddingBottom="2dp"
                 android:text="Project Y"
                 android:textSize="16sp" />
@@ -42,6 +43,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_slab_regular"
+                android:maxLines="1"
                 android:text="divulgou uma nova ação"
                 android:textSize="12sp" />
 
@@ -53,13 +55,13 @@
         android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/style_dashboard_card"
         android:backgroundTint="@color/white"
         android:gravity="center"
         android:orientation="vertical"
-        android:paddingHorizontal="16dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="12dp">
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="10dp">
 
         <ufes.grad.mobile.communitylink.components.TagLayout
             android:id="@+id/tag"
@@ -72,6 +74,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_slab_regular"
+            android:maxLines="1"
             android:paddingHorizontal="10dp"
             android:text="XX/XX/XXXX"
             android:textSize="12sp" />
@@ -81,6 +84,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_slab_bold"
+            android:maxLines="1"
             android:paddingHorizontal="10dp"
             android:text="Nome da Ação"
             android:textSize="18sp" />
@@ -90,6 +94,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_slab_regular"
+            android:maxLines="3"
             android:paddingHorizontal="10dp"
             android:paddingBottom="10dp"
             android:text="Descrição..."
@@ -100,6 +105,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_slab_bold"
+            android:maxLines="1"
             android:paddingHorizontal="10dp"
             android:text="Nome da Ação"
             android:textSize="18sp" />
@@ -109,6 +115,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_slab_regular"
+            android:maxLines="3"
             android:paddingHorizontal="10dp"
             android:paddingBottom="10dp"
             android:text="Descrição..."
@@ -132,6 +139,7 @@
             android:drawablePadding="10dp"
             android:drawableTint="@color/gray"
             android:gravity="center|start"
+            android:maxLines="1"
             android:text="@string/to_be_confirmed"
             android:textColor="@color/gray" />
 

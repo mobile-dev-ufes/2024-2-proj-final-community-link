@@ -8,7 +8,7 @@ class PostModel(
     val date: Date,
     val media: String,
     val action: ActionModel
-) {
+) : BaseModel() {
 
     fun toHashMap(): HashMap<String, Any> {
         return hashMapOf(

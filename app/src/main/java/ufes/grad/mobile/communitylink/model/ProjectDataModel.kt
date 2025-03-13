@@ -13,7 +13,7 @@ class ProjectDataModel(
     val changeDate: Date,
     val underReview: Boolean,
     val pixKey: String
-) {
+) : BaseModel() {
 
     fun toHashMap(): HashMap<String, Any> {
         return hashMapOf(

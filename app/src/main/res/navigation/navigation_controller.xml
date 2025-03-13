@@ -69,6 +69,7 @@
             android:id="@+id/action_myProjectsFragment_to_createProjectFragment"
             app:destination="@id/createProjectFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/myActionsFragment"
         android:name="ufes.grad.mobile.communitylink.view.MyActionsFragment"

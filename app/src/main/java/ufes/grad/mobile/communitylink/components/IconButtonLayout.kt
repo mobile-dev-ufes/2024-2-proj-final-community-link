@@ -7,8 +7,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import ufes.grad.mobile.communitylink.R
 import ufes.grad.mobile.communitylink.databinding.LayoutIconButtonBinding
 
-class IconButtonLayout(context: Context, attrs: AttributeSet) :
-    ConstraintLayout(context, attrs) {
+class IconButtonLayout(context: Context, attrs: AttributeSet) : ConstraintLayout(context, attrs) {
 
     private var binding: LayoutIconButtonBinding =
         LayoutIconButtonBinding.inflate(LayoutInflater.from(context), this, true)
@@ -35,7 +34,6 @@ class IconButtonLayout(context: Context, attrs: AttributeSet) :
         if (icon_size > 0.0f)
             binding.icon.layoutParams = LayoutParams(icon_size.toInt(), icon_size.toInt())
         binding.text.text = text
-        if (text_size > 0.0f)
-            binding.text.textSize = text_size
+        if (text_size > 0.0f) binding.text.textSize = text_size
     }
 }

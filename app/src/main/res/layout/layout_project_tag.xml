@@ -5,6 +5,7 @@
     android:background="@drawable/style_project_tag"
     android:backgroundTint="@color/black"
     android:gravity="center|start"
+    android:maxWidth="90pt"
     android:orientation="horizontal"
     android:paddingHorizontal="20dp"
     android:paddingVertical="10dp">
@@ -22,6 +23,7 @@
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:maxLines="1"
         android:text="@string/placeholder"
         android:textAlignment="center"
         android:textColor="@color/white"

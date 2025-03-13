@@ -12,7 +12,7 @@ class VolunteerSlotModel(
     val status: ParticipationStatusEnum,
     val action: ActionEventModel,
     val slots: List<SlotRequestModel>
-) {
+) : BaseModel() {
 
     fun toHashMap(): HashMap<String, Any> {
         return hashMapOf(

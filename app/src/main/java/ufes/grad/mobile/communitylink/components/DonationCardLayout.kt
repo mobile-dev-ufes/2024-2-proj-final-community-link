@@ -7,8 +7,7 @@ import android.widget.LinearLayout
 import ufes.grad.mobile.communitylink.R
 import ufes.grad.mobile.communitylink.databinding.LayoutDonationCardBinding
 
-class DonationCardLayout(context: Context, attrs: AttributeSet) :
-    LinearLayout(context, attrs) {
+class DonationCardLayout(context: Context, attrs: AttributeSet) : LinearLayout(context, attrs) {
 
     private var binding: LayoutDonationCardBinding =
         LayoutDonationCardBinding.inflate(LayoutInflater.from(context), this, true)
@@ -33,8 +32,7 @@ class DonationCardLayout(context: Context, attrs: AttributeSet) :
         binding.name.text = name
         binding.date.text = date
         binding.status.text =
-            if (is_pending) context.getString(R.string.pending) else context.getString(
-                R.string.received
-            )
+            if (is_pending) context.getString(R.string.pending)
+            else context.getString(R.string.received)
     }
 }

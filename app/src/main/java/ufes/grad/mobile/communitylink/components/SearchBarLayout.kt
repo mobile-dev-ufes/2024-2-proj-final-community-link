@@ -26,16 +26,16 @@ class SearchBarLayout(context: Context, attrs: AttributeSet) : ConstraintLayout(
     }
 
     fun setValues(is_top: Boolean) {
-        val style = ResourcesCompat.getDrawable(
-            resources,
-            (if (!is_top) R.drawable.style_tag else R.drawable.style_search_bar),
-            null
-        )
+        val style =
+            ResourcesCompat.getDrawable(
+                resources,
+                (if (!is_top) R.drawable.style_tag else R.drawable.style_search_bar),
+                null
+            )
         binding.main.background = (style)
     }
 
     fun toggleX(state: Boolean) {
         binding.xParent.visibility = if (state) GONE else VISIBLE
     }
-
 }

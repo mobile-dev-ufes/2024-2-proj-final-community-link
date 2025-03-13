@@ -8,7 +8,7 @@ class ProjectModel(
     val actions: List<ActionModel>,
     val members: List<MemberModel>,
     val donations: List<DonationForProjectModel>
-) {
+) : BaseModel() {
 
     fun toHashMap(): HashMap<String, Any?> {
         return hashMapOf(

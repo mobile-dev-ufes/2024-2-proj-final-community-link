@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="FormsLayout">
-        <attr name="forms_hint_text" format="string" />
         <attr name="forms_title_text" format="string" />
+        <attr name="forms_title_color" format="color" />
+        <attr name="forms_hint_text" format="string" />
+        <attr name="forms_box_size" format="dimension" />
         <attr name="forms_demand" format="boolean" />
+        <attr name="forms_margin" format="boolean" />
         <attr name="forms_input_type" format="enum">
             <enum name="date" value="14" />
             <enum name="datetime" value="4" />
@@ -65,5 +68,8 @@
     <declare-styleable name="ProjectTagLayout">
         <attr name="project_tag_name" format="string" />
         <attr name="project_tag_image" format="reference" />
+    </declare-styleable>
+    <declare-styleable name="SeparatorLayout">
+        <attr name="separator_color" format="color" />
     </declare-styleable>
 </resources>

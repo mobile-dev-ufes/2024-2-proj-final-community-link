@@ -11,7 +11,8 @@ import ufes.grad.mobile.communitylink.databinding.FragmentForgotPasswordBinding
 class ForgotPasswordFragment : Fragment(R.layout.fragment_forgot_password) {
 
     private var _binding: FragmentForgotPasswordBinding? = null
-    private val binding get() = _binding!!
+    private val binding
+        get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,

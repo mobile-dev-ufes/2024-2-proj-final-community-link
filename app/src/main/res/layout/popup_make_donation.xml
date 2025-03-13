@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/PopupTitleStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/make_donation" />
+
+    <TextView
+        style="@style/PopupTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/make_donation_object" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <ufes.grad.mobile.communitylink.components.FormsLayout
+            android:id="@+id/quantity_forms"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="1"
+            app:forms_title_color="@color/white"
+            app:forms_title_text="@string/qtd" />
+
+        <ufes.grad.mobile.communitylink.components.FormsLayout
+            android:id="@+id/object_forms"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            app:forms_title_color="@color/white"
+            app:forms_title_text="@string/object" />
+
+    </LinearLayout>
+
+    <TextView
+        style="@style/PopupTextStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp"
+        android:text="Local de entrega: XXXXXXX"
+        android:textAlignment="textStart" />
+
+    <ufes.grad.mobile.communitylink.components.SeparatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:separator_color="@color/white" />
+
+    <TextView
+        style="@style/PopupTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/make_donation_monetary_value" />
+
+
+    <ufes.grad.mobile.communitylink.components.FormsLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        app:forms_hint_text="@string/monetary_value_hint"
+        app:forms_title_color="@color/white"
+        app:forms_title_text="@string/monetary_value" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/style_button"
+        android:backgroundTint="@color/white"
+        android:text="@string/copy_pix_key"
+        android:textColor="@color/purple"
+        android:textSize="16sp" />
+
+</LinearLayout>

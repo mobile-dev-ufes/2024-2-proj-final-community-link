@@ -10,7 +10,7 @@ class MemberModel(
     val isResponsible: Boolean,
     val user: UserModel,
     val project: ProjectModel
-) {
+) : BaseModel() {
 
     fun toHashMap(): HashMap<String, Any> {
         return hashMapOf(

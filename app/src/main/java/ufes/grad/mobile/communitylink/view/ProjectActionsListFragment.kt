@@ -11,7 +11,8 @@ import ufes.grad.mobile.communitylink.databinding.FragmentProjectActionsListBind
 class ProjectActionsListFragment : Fragment(R.layout.fragment_project_actions_list) {
 
     private var _binding: FragmentProjectActionsListBinding? = null
-    private val binding get() = _binding!!
+    private val binding
+        get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -20,6 +21,7 @@ class ProjectActionsListFragment : Fragment(R.layout.fragment_project_actions_li
     ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
         _binding = FragmentProjectActionsListBinding.inflate(inflater, container, false)
+        // TODO("Add recycle view")
         return binding.root
     }
 
@@ -27,5 +29,4 @@ class ProjectActionsListFragment : Fragment(R.layout.fragment_project_actions_li
         super.onDestroyView()
         _binding = null
     }
-
 }

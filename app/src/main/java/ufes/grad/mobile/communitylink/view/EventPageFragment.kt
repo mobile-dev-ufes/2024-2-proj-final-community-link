@@ -7,12 +7,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import ufes.grad.mobile.communitylink.R
 import ufes.grad.mobile.communitylink.databinding.FragmentEventPageBinding
-import ufes.grad.mobile.communitylink.utils.Utilities
+import ufes.grad.mobile.communitylink.view.popups.PostPopup
 
 class EventPageFragment : Fragment(R.layout.fragment_event_page), View.OnClickListener {
 
     private var _binding: FragmentEventPageBinding? = null
-    private val binding get() = _binding!!
+    private val binding
+        get() = _binding!!
 
     private var edit: Boolean = false
 
@@ -56,7 +57,21 @@ class EventPageFragment : Fragment(R.layout.fragment_event_page), View.OnClickLi
     override fun onClick(v: View) {
         when (v.id) {
             binding.volunteersButton.id -> {
-                Utilities.loadFragment(requireActivity(), ProjectMembersFragment())
+                TODO("Add navigation")
+            }
+            binding.createButton.id -> {
+                val popup = PostPopup(PostPopup.PostMode.NEW)
+                //                TODO("Make popup functional")
+                popup.show(childFragmentManager, "")
+            }
+            binding.pendingButton.id -> {
+                TODO("Add navigation")
+            }
+            binding.editButton.id -> {
+                TODO("Add navigation")
+            }
+            binding.manageButton.id -> {
+                TODO("Add navigation")
             }
         }
     }

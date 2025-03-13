@@ -21,7 +21,8 @@ class ProjectTagLayout(context: Context, attrs: AttributeSet) : LinearLayout(con
         val customAttributesStyle =
             context.obtainStyledAttributes(attrs, R.styleable.ProjectTagLayout)
         val text = customAttributesStyle.getString(R.styleable.ProjectTagLayout_project_tag_name)
-        val image = customAttributesStyle.getDrawable(R.styleable.ProjectTagLayout_project_tag_image)
+        val image =
+            customAttributesStyle.getDrawable(R.styleable.ProjectTagLayout_project_tag_image)
 
         customAttributesStyle.recycle()
 
@@ -30,9 +31,7 @@ class ProjectTagLayout(context: Context, attrs: AttributeSet) : LinearLayout(con
 
     fun setValues(text: String, image: Drawable? = null) {
         binding.name.text = text
-        if (image == null)
-            binding.image.visibility = GONE
-        else
-            binding.image.setImageDrawable(image)
+        if (image == null) binding.image.visibility = GONE
+        else binding.image.setImageDrawable(image)
     }
 }

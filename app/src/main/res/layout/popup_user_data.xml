@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/title_text"
+        style="@style/PopupTitleStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/confirm_changes_question" />
+
+    <TextView
+        android:id="@+id/name_text"
+        style="@style/PopupTextStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/placeholder"
+        android:textAlignment="textStart" />
+
+    <TextView
+        android:id="@+id/email_text"
+        style="@style/PopupTextStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/placeholder"
+        android:textAlignment="textStart" />
+
+    <TextView
+        android:id="@+id/cpf_text"
+        style="@style/PopupTextStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/placeholder"
+        android:textAlignment="textStart" />
+
+    <TextView
+        android:id="@+id/phone_text"
+        style="@style/PopupTextStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/placeholder"
+        android:textAlignment="textStart" />
+
+    <TextView
+        android:id="@+id/sex_text"
+        style="@style/PopupTextStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/placeholder"
+        android:textAlignment="textStart" />
+
+    <TextView
+        android:id="@+id/date_text"
+        style="@style/PopupTextStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/placeholder"
+        android:textAlignment="textStart" />
+
+    <TextView
+        android:id="@+id/address_text"
+        style="@style/PopupTextStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/placeholder"
+        android:textAlignment="textStart" />
+
+</LinearLayout>

@@ -52,24 +52,27 @@
         android:textSize="14dp" />
 
     <ufes.grad.mobile.communitylink.components.CommonCardLayout
+        android:id="@+id/first_representative"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         app:card_upper_text="@string/placeholder" />
 
     <ufes.grad.mobile.communitylink.components.CommonCardLayout
+        android:id="@+id/second_representative"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         app:card_upper_text="@string/placeholder" />
 
     <Button
+        android:id="@+id/create_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/style_button"
         android:backgroundTint="@color/black"
         android:paddingHorizontal="30dp"
-        android:text="Criar ação"
+        android:text="@string/create_action"
         android:textColor="@color/white" />
 
 </LinearLayout>

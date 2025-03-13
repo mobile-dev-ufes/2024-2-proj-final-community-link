@@ -18,8 +18,7 @@ class PostLayout(context: Context, attrs: AttributeSet) : LinearLayout(context, 
     }
 
     private fun setAttributes(context: Context, attrs: AttributeSet) {
-        val customAttributesStyle =
-            context.obtainStyledAttributes(attrs, R.styleable.PostLayout)
+        val customAttributesStyle = context.obtainStyledAttributes(attrs, R.styleable.PostLayout)
         val text = customAttributesStyle.getString(R.styleable.PostLayout_post_text)
         val date = customAttributesStyle.getString(R.styleable.PostLayout_post_date)
         val image = customAttributesStyle.getDrawable(R.styleable.PostLayout_post_image)
@@ -32,9 +31,7 @@ class PostLayout(context: Context, attrs: AttributeSet) : LinearLayout(context, 
     fun setValues(text: String, date: String, image: Drawable? = null) {
         binding.post.text = text
         binding.date.text = date
-        if (image == null)
-            binding.image.visibility = GONE
-        else
-            binding.image.setImageDrawable(image)
+        if (image == null) binding.image.visibility = GONE
+        else binding.image.setImageDrawable(image)
     }
 }

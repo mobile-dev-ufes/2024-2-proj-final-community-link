@@ -9,14 +9,14 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import ufes.grad.mobile.communitylink.R
 import ufes.grad.mobile.communitylink.databinding.FragmentRegisterBinding
-import ufes.grad.mobile.communitylink.model.UserModel
 import ufes.grad.mobile.communitylink.utils.Utilities
 import ufes.grad.mobile.communitylink.viewmodel.SignupVM
 
 class SignupFragment : Fragment(R.layout.fragment_register), OnClickListener {
 
     private var _binding: FragmentRegisterBinding? = null
-    private val binding get() = _binding!!
+    private val binding
+        get() = _binding!!
 
     private lateinit var signupVM: SignupVM
 
@@ -30,14 +30,15 @@ class SignupFragment : Fragment(R.layout.fragment_register), OnClickListener {
             R.id.create_button -> {
                 val email = binding.email.editText.text.toString()
                 val password = binding.password.editText.text.toString()
-                val userMap = hashMapOf(
-                    "name" to binding.name.editText.text.toString(),
-                    "cpf" to binding.cpf.editText.text.toString(),
-                    "sex" to binding.sex.editText.text.toString(),
-                    "dob" to binding.date.editText.text.toString(),
-                    "address" to binding.address.editText.text.toString(),
-                    "phone" to binding.phone.editText.text.toString()
-                )
+                val userMap =
+                    hashMapOf(
+                        "name" to binding.name.editText.text.toString(),
+                        "cpf" to binding.cpf.editText.text.toString(),
+                        "sex" to binding.sex.editText.text.toString(),
+                        "dob" to binding.date.editText.text.toString(),
+                        "address" to binding.address.editText.text.toString(),
+                        "phone" to binding.phone.editText.text.toString()
+                    )
                 try {
                     signupVM.registerNewUser(email, password, userMap).addOnSuccessListener {
                         Utilities.loadFragment(requireActivity(), LoginFragment())

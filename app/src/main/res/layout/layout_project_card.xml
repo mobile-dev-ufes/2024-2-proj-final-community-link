@@ -11,9 +11,9 @@
         android:id="@+id/image"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:src="@drawable/project_profile"
         android:background="@drawable/mask_circle"
         android:clipToOutline="true"
+        android:src="@drawable/project_profile"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="W,1:1"
         app:layout_constraintEnd_toStartOf="@id/content"
@@ -37,6 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_slab_bold"
+            android:maxLines="1"
             android:text="Nome do projeto"
             android:textSize="20sp" />
 
@@ -45,6 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_slab_regular"
+            android:maxLines="3"
             android:text="descrição do projeto" />
 
     </LinearLayout>

@@ -14,7 +14,8 @@ import ufes.grad.mobile.communitylink.view.adapter.ListInfoCardAdapter
 class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
 
     private var _binding: FragmentDashboardBinding? = null
-    private val binding get() = _binding!!
+    private val binding
+        get() = _binding!!
 
     val adapter: ListInfoCardAdapter = ListInfoCardAdapter()
 

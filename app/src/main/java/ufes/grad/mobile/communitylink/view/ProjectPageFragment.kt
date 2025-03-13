@@ -1,18 +1,18 @@
 package ufes.grad.mobile.communitylink.view
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import ufes.grad.mobile.communitylink.R
 import ufes.grad.mobile.communitylink.databinding.FragmentProjectPageBinding
-import ufes.grad.mobile.communitylink.utils.Utilities
 
 class ProjectPageFragment : Fragment(R.layout.fragment_project_page), View.OnClickListener {
 
     private var _binding: FragmentProjectPageBinding? = null
-    private val binding get() = _binding!!
+    private val binding
+        get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -24,6 +24,7 @@ class ProjectPageFragment : Fragment(R.layout.fragment_project_page), View.OnCli
         binding.actionsButton.setOnClickListener(this)
         binding.membersButton.setOnClickListener(this)
         binding.donationsButton.setOnClickListener(this)
+        binding.donationButton.setOnClickListener(this)
         return binding.root
     }
 
@@ -35,15 +36,16 @@ class ProjectPageFragment : Fragment(R.layout.fragment_project_page), View.OnCli
     override fun onClick(v: View) {
         when (v.id) {
             binding.membersButton.id -> {
-                Utilities.loadFragment(requireActivity(), ProjectMembersFragment())
+                // TODO("Add navigation")
             }
-
             binding.actionsButton.id -> {
-                Utilities.loadFragment(requireActivity(), ProjectActionsListFragment())
+                // TODO("Add navigation")
             }
-
             binding.donationsButton.id -> {
-                Utilities.loadFragment(requireActivity(), ProjectDonationListFragment())
+                // TODO("Add navigation")
+            }
+            binding.donationButton.id -> {
+                // TODO("Add navigation")
             }
         }
     }

@@ -8,8 +8,7 @@ import android.widget.LinearLayout
 import ufes.grad.mobile.communitylink.R
 import ufes.grad.mobile.communitylink.databinding.LayoutCommonCardBinding
 
-class CommonCardLayout(context: Context, attrs: AttributeSet) :
-    LinearLayout(context, attrs) {
+class CommonCardLayout(context: Context, attrs: AttributeSet) : LinearLayout(context, attrs) {
 
     private var binding: LayoutCommonCardBinding =
         LayoutCommonCardBinding.inflate(LayoutInflater.from(context), this, true)
@@ -27,20 +26,17 @@ class CommonCardLayout(context: Context, attrs: AttributeSet) :
 
         customAttributesStyle.recycle()
 
-        setValues(name!!, status, image)
+        setValues(name, status, image)
     }
 
-    fun setValues(name: String, status: String? = null, image: Drawable? = null) {
-        binding.nameText.text = name
+    fun setValues(name: String? = null, status: String? = null, image: Drawable? = null) {
+        if (!name.isNullOrEmpty()) binding.nameText.text = name
+        else binding.nameText.visibility = GONE
 
-        if (!status.isNullOrEmpty())
-            binding.statusText.text = status
-        else
-            binding.statusText.visibility = GONE
+        if (!status.isNullOrEmpty()) binding.statusText.text = status
+        else binding.statusText.visibility = GONE
 
-        if (image == null)
-            binding.image.visibility = GONE
-        else
-            binding.image.setImageDrawable(image)
+        if (image == null) binding.image.visibility = GONE
+        else binding.image.setImageDrawable(image)
     }
 }

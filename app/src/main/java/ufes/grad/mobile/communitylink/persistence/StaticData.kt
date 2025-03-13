@@ -1,12 +1,12 @@
 package ufes.grad.mobile.communitylink.persistence
 
+import java.util.Date
 import ufes.grad.mobile.communitylink.model.ActionEventModel
 import ufes.grad.mobile.communitylink.model.ActionModel
 import ufes.grad.mobile.communitylink.model.ProjectDataModel
 import ufes.grad.mobile.communitylink.model.ProjectModel
 import ufes.grad.mobile.communitylink.model.ProjectStatusEnum
 import ufes.grad.mobile.communitylink.model.UserModel
-import java.util.Date
 
 object StaticData {
     val projectDataList = mutableListOf<ProjectDataModel>()
@@ -16,65 +16,73 @@ object StaticData {
 
     init {
         for (i in 0..4) {
-            projectDataList.add(ProjectDataModel(
-                "0$i",
-                "Projeto $i",
-                "Descrição do Projeto",
-                listOf(),
-                "",
-                "",
-                "",
-                Date(),
-                false,
-                ""
-            ))
+            projectDataList.add(
+                ProjectDataModel(
+                    "0$i",
+                    "Projeto $i",
+                    "Descrição do Projeto",
+                    listOf(),
+                    "",
+                    "",
+                    "",
+                    Date(),
+                    false,
+                    ""
+                )
+            )
         }
 
         for (i in 0..4) {
-            projects.add(ProjectModel(
-                "0$i",
-                ProjectStatusEnum.ACCEPTED,
-                projectDataList[i],
-                null,
-                listOf(),
-                listOf(),
-                listOf()
-            ))
+            projects.add(
+                ProjectModel(
+                    "0$i",
+                    ProjectStatusEnum.ACCEPTED,
+                    projectDataList[i],
+                    null,
+                    listOf(),
+                    listOf(),
+                    listOf()
+                )
+            )
         }
 
         for (i in 0..4) {
-            users.add(UserModel(
-                "0$i",
-                "Usuário $i",
-                "",
-                "",
-                Date(),
-                "",
-                "",
-                listOf(),
-                listOf(),
-                listOf(),
-                listOf(),
-                listOf()
-            ))
+            users.add(
+                UserModel(
+                    "0$i",
+                    "Usuário $i",
+                    "",
+                    "",
+                    Date(),
+                    "",
+                    "",
+                    listOf(),
+                    listOf(),
+                    listOf(),
+                    listOf(),
+                    listOf()
+                )
+            )
         }
 
         for (i in 0..4) {
-            eventActions.add(ActionEventModel(
-                "0$i",
-                "Evento $i",
-                "Descrição do Evento $i",
-                listOf(),
-                Date(),
-                Date(),
-                true,
-                listOf(),
-                projects[i],
-                users[i],
-                null,
-                listOf(),
-                listOf()
-            ))
+            eventActions.add(
+                ActionEventModel(
+                    "0$i",
+                    "Evento $i",
+                    "Descrição do Evento $i",
+                    listOf(),
+                    Date(),
+                    Date(),
+                    true,
+                    listOf(),
+                    projects[i],
+                    users[i],
+                    null,
+                    listOf(),
+                    listOf()
+                )
+            )
         }
     }
 }
