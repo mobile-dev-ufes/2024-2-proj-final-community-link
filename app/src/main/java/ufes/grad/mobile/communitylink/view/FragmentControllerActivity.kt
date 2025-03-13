@@ -3,8 +3,10 @@ package ufes.grad.mobile.communitylink.view
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import ufes.grad.mobile.communitylink.R
 import ufes.grad.mobile.communitylink.databinding.ActivityDashboardBinding

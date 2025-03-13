@@ -30,7 +30,7 @@ class MyProjectsFragment : Fragment(R.layout.fragment_my_projects), View.OnClick
     override fun onClick(v: View) {
         when (v.id) {
             binding.createButton.id -> {
-                findNavController().navigate(R.id.eventsAndDonationsFragment)
+                findNavController().navigate(R.id.createProjectFragment)
             }
         }
     }

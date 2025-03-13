@@ -2,6 +2,8 @@ package ufes.grad.mobile.communitylink.view
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.InputType
+import android.text.method.PasswordTransformationMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -46,7 +48,7 @@ class LoginFragment : Fragment(R.layout.fragment_login), View.OnClickListener {
                 Utilities.loadFragment(requireActivity(), SignupFragment())
             }
 
-            binding.passwordButton.id -> {
+            binding.forgotPasswordButton.id -> {
                 Utilities.loadFragment(requireActivity(), ForgotPasswordFragment())
             }
         }
@@ -61,7 +63,10 @@ class LoginFragment : Fragment(R.layout.fragment_login), View.OnClickListener {
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
         binding.loginButton.setOnClickListener(this)
         binding.registerButton.setOnClickListener(this)
-        binding.passwordButton.setOnClickListener(this)
+        binding.forgotPasswordButton.setOnClickListener(this)
+        binding.email.editText.inputType = InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
+        binding.password.editText.inputType = InputType.TYPE_TEXT_VARIATION_PASSWORD
+        binding.password.editText.transformationMethod = PasswordTransformationMethod()
         return binding.root
     }
 
