@@ -14,9 +14,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import java.util.Calendar
 import ufes.grad.mobile.communitylink.R
+import ufes.grad.mobile.communitylink.data.model.UserModel
 import ufes.grad.mobile.communitylink.databinding.FragmentRegisterBinding
 import ufes.grad.mobile.communitylink.utils.Utilities
 import ufes.grad.mobile.communitylink.viewmodel.SignupVM
+import java.util.Date
 
 class SignupFragment : Fragment(R.layout.fragment_register), OnClickListener {
 
@@ -43,17 +45,19 @@ class SignupFragment : Fragment(R.layout.fragment_register), OnClickListener {
                     binding.repeat.editText.setTextColor(getColor(requireContext(), R.color.red))
                     return
                 }
-                val userMap =
-                    hashMapOf(
-                        "name" to binding.name.editText.text.toString(),
-                        "cpf" to binding.cpf.editText.text.toString(),
-                        "sex" to binding.sex.editText.text.toString(),
-                        "dob" to binding.buttonDate.text.toString(),
-                        "address" to binding.address.editText.text.toString(),
-                        "phone" to binding.phone.editText.text.toString()
-                    )
+
+                val user = UserModel(
+                    name = binding.name.editText.text.toString(),
+                    email = binding.email.editText.text.toString(),
+                    cpf = binding.cpf.editText.text.toString(),
+                    sex = binding.sex.editText.text.toString(),
+                    dob = binding.buttonDate.text.toString(),
+                    address = binding.address.editText.text.toString(),
+                    phone = binding.phone.editText.text.toString()
+                )
+
                 try {
-                    signupVM.registerNewUser(email, password, userMap).addOnSuccessListener {
+                    signupVM.registerNewUser(email, password, user).addOnSuccessListener {
                         Utilities.loadFragment(requireActivity(), LoginFragment())
                     }
                 } catch (e: IllegalArgumentException) {

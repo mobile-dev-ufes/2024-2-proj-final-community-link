@@ -53,14 +53,9 @@ object StaticData {
                     "Usuário $i",
                     "",
                     "",
-                    Date(),
                     "",
                     "",
-                    listOf(),
-                    listOf(),
-                    listOf(),
-                    listOf(),
-                    listOf()
+                    ""
                 )
             )
         }

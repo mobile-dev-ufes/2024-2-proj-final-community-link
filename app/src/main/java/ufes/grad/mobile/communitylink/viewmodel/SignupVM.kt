@@ -4,6 +4,7 @@ import android.app.Application
 import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.viewModelScope
 import com.google.android.gms.tasks.Task
 import com.google.firebase.FirebaseNetworkException
 import com.google.firebase.auth.AuthResult
@@ -11,18 +12,19 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException
-import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.launch
 import ufes.grad.mobile.communitylink.R
+import ufes.grad.mobile.communitylink.data.dao.UserDAO
+import ufes.grad.mobile.communitylink.data.model.UserModel
 import ufes.grad.mobile.communitylink.utils.Utilities
 
 class SignupVM(application: Application) : AndroidViewModel(application) {
     private val auth = FirebaseAuth.getInstance()
-    private val db = FirebaseFirestore.getInstance()
 
     fun registerNewUser(
         email: String,
         password: String,
-        user: HashMap<String, String>
+        user: UserModel
     ): Task<AuthResult?> {
         if (email.isNotBlank() and password.isNotBlank()) {
             return auth
@@ -55,17 +57,20 @@ class SignupVM(application: Application) : AndroidViewModel(application) {
         throw IllegalArgumentException("Email e Senha são necessários")
     }
 
-    private fun saveUserData(userMap: HashMap<String, String>) {
+    private fun saveUserData(user: UserModel) {
         val currUserId = auth.currentUser?.uid
         if (currUserId != null) {
-            db.collection("users")
-                .document(currUserId)
-                .set(userMap)
-                .addOnSuccessListener { Log.d("Firebase", "Salvo com sucesso") }
-                .addOnFailureListener {
-                    Log.d("Firebase", "Problema ao salvar: ", it)
+            user.id = currUserId
+
+            viewModelScope.launch {
+                if (UserDAO.insert(user)) {
+                    Log.d("Firebase", "Salvo com sucesso")
+                }
+                else {
+                    Log.d("Firebase", "Problema ao salvar")
                     throw Exception("Erro ao criar usuario")
                 }
+            }
         }
     }
 }

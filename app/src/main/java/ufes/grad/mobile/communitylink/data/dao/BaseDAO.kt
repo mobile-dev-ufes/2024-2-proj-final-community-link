@@ -7,7 +7,7 @@ import ufes.grad.mobile.communitylink.data.model.BaseModel
 abstract class BaseDAO {
     abstract fun getCollection(): CollectionReference
 
-    suspend fun insert(model: BaseModel): Boolean {
+    open suspend fun insert(model: BaseModel): Boolean {
         return try {
             model.id = getCollection().add(model).await().id
             true

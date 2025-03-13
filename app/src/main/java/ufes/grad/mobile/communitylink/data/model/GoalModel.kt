@@ -11,4 +11,5 @@ data class GoalModel(
     val actualQuantity: Float,
     @Serializable(with = ActionDonationSerializer::class)
     private val actionDonation: ActionDonationModel
-) : BaseModel {}
+) : BaseModel {
+}

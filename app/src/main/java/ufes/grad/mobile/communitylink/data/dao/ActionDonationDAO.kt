@@ -3,6 +3,7 @@ package ufes.grad.mobile.communitylink.data.dao
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
+import ufes.grad.mobile.communitylink.data.model.ActionDonationModel
 import ufes.grad.mobile.communitylink.data.model.DonationForActionModel
 
 object ActionDonationDAO : BaseDAO() {
@@ -12,8 +13,8 @@ object ActionDonationDAO : BaseDAO() {
         return db.collection("actionDonation")
     }
 
-    suspend fun findById(id: String): ActionDonationDAO? {
-        return findById(id, ActionDonationDAO::class.java)
+    suspend fun findById(id: String): ActionDonationModel? {
+        return findById(id, ActionDonationModel::class.java)
     }
 
     suspend fun getDonations(id: String): MutableList<String>? {

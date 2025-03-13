@@ -1,11 +1,11 @@
 package ufes.grad.mobile.communitylink.data.model
 
-import java.util.Date
 import kotlinx.serialization.Contextual
 import kotlinx.serialization.Serializable
 import ufes.grad.mobile.communitylink.data.serializer.GoalSerializer
 import ufes.grad.mobile.communitylink.data.serializer.ProjectSerializer
 import ufes.grad.mobile.communitylink.data.serializer.UserSerializer
+import java.util.Date
 
 @Serializable
 class ActionDonationModel(
@@ -21,4 +21,5 @@ class ActionDonationModel(
     @Serializable(with = UserSerializer::class) override val secondaryRepresentative: UserModel?,
     @Serializable(with = GoalSerializer::class) val goal: GoalModel,
     //    val donations: List<DonationForAction>
-) : ActionModel {}
+) : ActionModel {
+}

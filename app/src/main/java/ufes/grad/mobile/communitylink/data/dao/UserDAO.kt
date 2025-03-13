@@ -2,6 +2,8 @@ package ufes.grad.mobile.communitylink.data.dao
 
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
+import ufes.grad.mobile.communitylink.data.model.BaseModel
+import ufes.grad.mobile.communitylink.data.model.UserModel
 
 object UserDAO : BaseDAO() {
 
@@ -10,7 +12,11 @@ object UserDAO : BaseDAO() {
         return db.collection("users")
     }
 
-    suspend fun findById(id: String): UserDAO? {
-        return findById(id, UserDAO::class.java)
+    override suspend fun insert(model: BaseModel): Boolean {
+        return update(model)
+    }
+
+    suspend fun findById(id: String): UserModel? {
+        return findById(id, UserModel::class.java)
     }
 }

@@ -15,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import java.util.Calendar
 import ufes.grad.mobile.communitylink.R
+import ufes.grad.mobile.communitylink.data.model.UserModel
 import ufes.grad.mobile.communitylink.databinding.FragmentProfileBinding
 import ufes.grad.mobile.communitylink.utils.Utilities
 import ufes.grad.mobile.communitylink.view.LoginActivity
@@ -141,13 +142,13 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), View.OnClickListene
                 // TODO("Make popup functional")
                 popup.show(childFragmentManager, "")
                 profileVM.changeUserData(
-                    hashMapOf(
-                        "name" to binding.name.editText.text.toString(),
-                        "cpf" to binding.cpf.editText.text.toString(),
-                        "sex" to binding.sex.editText.text.toString(),
-                        "dob" to binding.buttonDate.text.toString(),
-                        "address" to binding.addressForm.editText.text.toString(),
-                        "phone" to binding.phone.editText.text.toString()
+                    UserModel(
+                        name = binding.name.editText.text.toString(),
+                        cpf = binding.cpf.editText.text.toString(),
+                        sex = binding.sex.editText.text.toString(),
+                        dob = binding.buttonDate.text.toString(),
+                        address = binding.addressForm.editText.text.toString(),
+                        phone = binding.phone.editText.text.toString()
                     )
                 )
             }
