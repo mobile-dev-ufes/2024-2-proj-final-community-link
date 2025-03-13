@@ -1,9 +1,9 @@
-package ufes.grad.mobile.communitylink.model
+package ufes.grad.mobile.communitylink.data.model
 
 import java.util.Date
 
 class UserModel(
-    val id: String,
+    override var id: String,
     val name: String,
     val cpf: String,
     val sex: String,
@@ -15,7 +15,7 @@ class UserModel(
     val memberTo: List<MemberModel>,
     val slotRequests: List<SlotRequestModel>,
     val donations: List<DonationModel>
-) : BaseModel() {
+) : BaseModel {
 
     fun toHashMap(): HashMap<String, Any> {
         return hashMapOf(

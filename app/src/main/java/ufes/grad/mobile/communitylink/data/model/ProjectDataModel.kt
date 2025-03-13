@@ -1,9 +1,9 @@
-package ufes.grad.mobile.communitylink.model
+package ufes.grad.mobile.communitylink.data.model
 
 import java.util.Date
 
 class ProjectDataModel(
-    val id: String,
+    override var id: String,
     val name: String,
     val description: String,
     val tags: List<String>,
@@ -13,7 +13,7 @@ class ProjectDataModel(
     val changeDate: Date,
     val underReview: Boolean,
     val pixKey: String
-) : BaseModel() {
+) : BaseModel {
 
     fun toHashMap(): HashMap<String, Any> {
         return hashMapOf(

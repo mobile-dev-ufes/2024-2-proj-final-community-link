@@ -1,7 +1,7 @@
 package ufes.grad.mobile.communitylink.view.viewHolder
 
+import ufes.grad.mobile.communitylink.data.model.BaseModel
 import ufes.grad.mobile.communitylink.databinding.LayoutCommonCardBinding
-import ufes.grad.mobile.communitylink.model.BaseModel
 
 class ListCommonCardViewHolder(private val binding: LayoutCommonCardBinding) :
     GenericViewHolder(binding) {

@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import ufes.grad.mobile.communitylink.R
+import ufes.grad.mobile.communitylink.data.model.UserModel
 import ufes.grad.mobile.communitylink.databinding.PopupUserDataBinding
-import ufes.grad.mobile.communitylink.model.UserModel
 
 class UserDataPopup(private val user: UserModel?, private val mode: UserPopupType) :
     BasePopup(PopupType.TWO_BUTTON, R.layout.popup_user_data) {

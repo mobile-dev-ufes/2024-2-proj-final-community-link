@@ -1,14 +1,14 @@
-package ufes.grad.mobile.communitylink.model
+package ufes.grad.mobile.communitylink.data.model
 
 import java.util.Date
 
 class PostModel(
-    val id: String,
+    override var id: String,
     val text: String,
     val date: Date,
     val media: String,
     val action: ActionModel
-) : BaseModel() {
+) : BaseModel {
 
     fun toHashMap(): HashMap<String, Any> {
         return hashMapOf(

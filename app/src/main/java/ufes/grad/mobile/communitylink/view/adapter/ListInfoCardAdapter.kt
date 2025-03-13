@@ -2,8 +2,8 @@ package ufes.grad.mobile.communitylink.view.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import ufes.grad.mobile.communitylink.data.model.ActionModel
 import ufes.grad.mobile.communitylink.databinding.LayoutInfoCardBinding
-import ufes.grad.mobile.communitylink.model.ActionModel
 import ufes.grad.mobile.communitylink.view.viewHolder.ListInfoCardViewHolder
 
 class ListInfoCardAdapter : GenericAdapter<ListInfoCardViewHolder>() {

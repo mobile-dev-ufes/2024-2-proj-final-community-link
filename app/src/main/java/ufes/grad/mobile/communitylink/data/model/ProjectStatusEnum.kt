@@ -1,4 +1,4 @@
-package ufes.grad.mobile.communitylink.model
+package ufes.grad.mobile.communitylink.data.model
 
 enum class ProjectStatusEnum {
     ACCEPTED,

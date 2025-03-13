@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     id("com.google.gms.google-services")
+    kotlin("plugin.serialization") version "2.1.0"
     id("com.ncorti.ktfmt.gradle") version ("0.18.0")
 }
 
@@ -75,6 +76,7 @@ dependencies {
     implementation(libs.androidx.fragment.ktx)
     implementation(libs.firebase.auth.ktx)
     implementation(libs.firebase.firestore)
+    implementation(libs.kotlinx.serialization.json)
 }
 
 allprojects {

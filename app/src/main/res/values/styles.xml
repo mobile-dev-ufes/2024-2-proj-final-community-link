@@ -4,6 +4,11 @@
         <item name="android:background">@color/gray_400</item>
     </style>
 
+    <style name="ToolbarThemeWhite" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textColorSecondary">@color/white</item>
+    </style>
+
     <style name="PopupTextStyle">
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">16sp</item>

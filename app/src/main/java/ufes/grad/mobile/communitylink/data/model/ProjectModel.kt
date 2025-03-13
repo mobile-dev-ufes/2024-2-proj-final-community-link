@@ -1,14 +1,14 @@
-package ufes.grad.mobile.communitylink.model
+package ufes.grad.mobile.communitylink.data.model
 
 class ProjectModel(
-    val id: String,
+    override var id: String,
     val status: ProjectStatusEnum,
     val currentData: ProjectDataModel,
     val pendingData: ProjectDataModel?,
     val actions: List<ActionModel>,
     val members: List<MemberModel>,
     val donations: List<DonationForProjectModel>
-) : BaseModel() {
+) : BaseModel {
 
     fun toHashMap(): HashMap<String, Any?> {
         return hashMapOf(

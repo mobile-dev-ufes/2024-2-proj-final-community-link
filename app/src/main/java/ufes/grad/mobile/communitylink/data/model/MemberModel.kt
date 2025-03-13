@@ -1,16 +1,16 @@
-package ufes.grad.mobile.communitylink.model
+package ufes.grad.mobile.communitylink.data.model
 
 import java.util.Date
 
 class MemberModel(
-    val id: String,
+    override var id: String,
     val isActive: Boolean,
     val initDate: Date,
     val finishDate: Date,
     val isResponsible: Boolean,
     val user: UserModel,
     val project: ProjectModel
-) : BaseModel() {
+) : BaseModel {
 
     fun toHashMap(): HashMap<String, Any> {
         return hashMapOf(

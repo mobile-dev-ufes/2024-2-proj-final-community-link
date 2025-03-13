@@ -1,12 +1,12 @@
-package ufes.grad.mobile.communitylink.persistence
+package ufes.grad.mobile.communitylink.data.database
 
 import java.util.Date
-import ufes.grad.mobile.communitylink.model.ActionEventModel
-import ufes.grad.mobile.communitylink.model.ActionModel
-import ufes.grad.mobile.communitylink.model.ProjectDataModel
-import ufes.grad.mobile.communitylink.model.ProjectModel
-import ufes.grad.mobile.communitylink.model.ProjectStatusEnum
-import ufes.grad.mobile.communitylink.model.UserModel
+import ufes.grad.mobile.communitylink.data.model.ActionEventModel
+import ufes.grad.mobile.communitylink.data.model.ActionModel
+import ufes.grad.mobile.communitylink.data.model.ProjectDataModel
+import ufes.grad.mobile.communitylink.data.model.ProjectModel
+import ufes.grad.mobile.communitylink.data.model.ProjectStatusEnum
+import ufes.grad.mobile.communitylink.data.model.UserModel
 
 object StaticData {
     val projectDataList = mutableListOf<ProjectDataModel>()
@@ -75,11 +75,9 @@ object StaticData {
                     Date(),
                     Date(),
                     true,
-                    listOf(),
                     projects[i],
                     users[i],
                     null,
-                    listOf(),
                     listOf()
                 )
             )

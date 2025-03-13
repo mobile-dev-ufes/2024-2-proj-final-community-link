@@ -1,9 +1,9 @@
-package ufes.grad.mobile.communitylink.model
+package ufes.grad.mobile.communitylink.data.model
 
 import java.util.Date
 
 class VolunteerSlotModel(
-    val id: String,
+    override var id: String,
     val position: String,
     val initDate: Date,
     val finishDate: Date,
@@ -12,7 +12,7 @@ class VolunteerSlotModel(
     val status: ParticipationStatusEnum,
     val action: ActionEventModel,
     val slots: List<SlotRequestModel>
-) : BaseModel() {
+) : BaseModel {
 
     fun toHashMap(): HashMap<String, Any> {
         return hashMapOf(

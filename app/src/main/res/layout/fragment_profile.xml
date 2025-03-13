@@ -119,13 +119,32 @@
             android:layout_marginBottom="10dp"
             app:forms_title_text="@string/sex" />
 
-        <ufes.grad.mobile.communitylink.components.FormsLayout
-            android:id="@+id/dob"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:layout_marginBottom="10dp"
-            app:forms_title_text="@string/date"
-            app:forms_input_type="date"/>
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/date"
+                android:paddingBottom="6dp"
+                android:textSize="14sp"/>
+            <Button
+                android:id="@+id/buttonDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:background="@drawable/style_edit_text"
+                android:text="@string/selecione_uma_data"
+                android:textColor="@color/gray_400"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="12dp"
+                android:textAllCaps="false"
+                android:textSize="14sp"
+                />
+        </LinearLayout>
 
         <ufes.grad.mobile.communitylink.components.FormsLayout
             android:id="@+id/address_form"

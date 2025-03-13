@@ -54,12 +54,33 @@
             android:layout_marginBottom="10dp"
             app:forms_title_text="@string/sex" />
 
-        <ufes.grad.mobile.communitylink.components.FormsLayout
-            android:id="@+id/date"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:layout_marginBottom="10dp"
-            app:forms_title_text="@string/date" />
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/date"
+                android:paddingBottom="6dp"
+                android:textSize="14sp"/>
+            <Button
+                android:id="@+id/buttonDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:background="@drawable/style_edit_text"
+                android:text="@string/selecione_uma_data"
+                android:textColor="@color/gray_400"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="12dp"
+                android:textAllCaps="false"
+                android:textSize="14sp"
+                />
+        </LinearLayout>
+
 
         <ufes.grad.mobile.communitylink.components.FormsLayout
             android:id="@+id/address"
@@ -73,14 +94,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            app:forms_title_text="@string/phone" />
+            app:forms_title_text="@string/phone"
+            app:forms_maximum_lenght="11"
+            />
 
         <ufes.grad.mobile.communitylink.components.FormsLayout
             android:id="@+id/cpf"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            app:forms_title_text="@string/cpf" />
+            app:forms_title_text="@string/cpf"
+            app:forms_maximum_lenght="11"
+            />
 
         <ufes.grad.mobile.communitylink.components.SeparatorLayout
             android:layout_width="match_parent"

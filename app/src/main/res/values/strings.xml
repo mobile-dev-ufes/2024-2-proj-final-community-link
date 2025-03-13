@@ -85,6 +85,8 @@
     <string name="action_type">Tipo de ação</string>
     <string name="delete_post">Excluir publicação</string>
     <string name="project">Projeto</string>
+    <string name="match_passwords">Senha e Senha Repetida diferentes!</string>
+    <string name="selecione_uma_data">Selecione uma Data</string>
     <string name="delete_goal_content_popup">Você realmente deseja excluir a meta?</string>
     <string name="make_donation_monetary_value">Se deseja doar um valor monetário:</string>
     <string name="make_donation_object">Se deseja doar objetos:</string>
