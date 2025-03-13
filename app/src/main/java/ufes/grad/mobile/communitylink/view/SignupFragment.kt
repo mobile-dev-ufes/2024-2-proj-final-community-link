@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import ufes.grad.mobile.communitylink.R
 import ufes.grad.mobile.communitylink.databinding.FragmentRegisterBinding
-import ufes.grad.mobile.communitylink.model.UserModel
+import ufes.grad.mobile.communitylink.data.model.UserModel
 import ufes.grad.mobile.communitylink.utils.Utilities
 import ufes.grad.mobile.communitylink.viewmodel.SignupVM
 

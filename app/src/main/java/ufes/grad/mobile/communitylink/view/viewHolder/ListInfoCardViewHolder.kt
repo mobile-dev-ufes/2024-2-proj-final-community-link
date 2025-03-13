@@ -2,7 +2,7 @@ package ufes.grad.mobile.communitylink.view.viewHolder
 
 import androidx.recyclerview.widget.RecyclerView
 import ufes.grad.mobile.communitylink.databinding.LayoutInfoCardBinding
-import ufes.grad.mobile.communitylink.model.ActionModel
+import ufes.grad.mobile.communitylink.data.model.ActionModel
 import java.text.SimpleDateFormat
 import java.util.Locale
 

@@ -9,7 +9,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import ufes.grad.mobile.communitylink.utils.Utilities
 import ufes.grad.mobile.communitylink.R
-import ufes.grad.mobile.communitylink.model.UserModel
+import ufes.grad.mobile.communitylink.data.model.UserModel
 
 class ProfileVM (application: Application): AndroidViewModel(application){
     private val auth = FirebaseAuth.getInstance()

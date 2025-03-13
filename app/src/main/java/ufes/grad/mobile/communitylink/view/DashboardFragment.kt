@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import ufes.grad.mobile.communitylink.R
 import ufes.grad.mobile.communitylink.databinding.FragmentDashboardBinding
-import ufes.grad.mobile.communitylink.persistence.StaticData
+import ufes.grad.mobile.communitylink.data.database.StaticData
 import ufes.grad.mobile.communitylink.view.adapter.ListInfoCardAdapter
 
 class DashboardFragment : Fragment(R.layout.fragment_dashboard) {

@@ -2,7 +2,7 @@ package ufes.grad.mobile.communitylink
 
 import org.junit.Test
 import org.junit.Assert.assertThrows
-import ufes.grad.mobile.communitylink.model.UserModel
+import ufes.grad.mobile.communitylink.data.model.UserModel
 
 class UserModelUnitTest {
     @Test

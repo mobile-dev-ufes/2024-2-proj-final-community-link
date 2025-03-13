@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ufes.grad.mobile.communitylink.databinding.LayoutInfoCardBinding
-import ufes.grad.mobile.communitylink.model.ActionModel
+import ufes.grad.mobile.communitylink.data.model.ActionModel
 import ufes.grad.mobile.communitylink.view.viewHolder.ListInfoCardViewHolder
 
 class ListInfoCardAdapter : RecyclerView.Adapter<ListInfoCardViewHolder>() {
