@@ -1,6 +1,8 @@
 package ufes.grad.mobile.communitylink.view
 
+import android.content.Intent
 import android.os.Bundle
+import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -37,6 +39,9 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), View.OnClickListene
         binding.excludeAccount.setOnClickListener(this)
         profileVM = ViewModelProvider(this)[ProfileVM::class.java]
         setObserver()
+        binding.cpf.editText.inputType = InputType.TYPE_CLASS_NUMBER
+        binding.phone.editText.inputType = InputType.TYPE_CLASS_PHONE
+        binding.dob.editText.inputType = InputType.TYPE_DATETIME_VARIATION_DATE
         return binding.root
     }
 
@@ -85,14 +90,13 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), View.OnClickListene
             }
 
             binding.logoutButton.id -> {
-                TODO("NÃO FUNCIONANDO AINDA")
                 profileVM.logout()
-                Utilities.loadFragment(LoginActivity(), LoginFragment())
+                startActivity(Intent(context, LoginActivity::class.java))
                 requireActivity().finish()
             }
 
             binding.excludeAccount.id -> {
-                TODO("ABRE O POPUP PRA CONFIRMAR")
+                startActivity(Intent(context, LoginActivity::class.java))
                 requireActivity().finish()
             }
 

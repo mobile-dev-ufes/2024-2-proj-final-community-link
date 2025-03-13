@@ -3,4 +3,9 @@
     <style name="Widget.Theme.CommunityLink.MyView" parent="">
         <item name="android:background">@color/gray_400</item>
     </style>
+
+    <style name="ToolbarThemeWhite" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textColorSecondary">@color/white</item>
+    </style>
 </resources>

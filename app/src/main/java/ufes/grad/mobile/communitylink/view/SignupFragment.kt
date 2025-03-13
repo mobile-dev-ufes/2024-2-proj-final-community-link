@@ -1,10 +1,15 @@
 package ufes.grad.mobile.communitylink.view
 
 import android.os.Bundle
+import android.service.autofill.DateTransformation
+import android.text.InputType
+import android.text.method.PasswordTransformationMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnClickListener
 import android.view.ViewGroup
+import androidx.compose.foundation.text.input.InputTransformation
+import androidx.compose.ui.input.InputMode
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import ufes.grad.mobile.communitylink.R
@@ -57,6 +62,11 @@ class SignupFragment : Fragment(R.layout.fragment_register), OnClickListener {
         super.onCreateView(inflater, container, savedInstanceState)
         _binding = FragmentRegisterBinding.inflate(inflater, container, false)
         binding.createButton.setOnClickListener(this)
+        binding.date.editText.inputType = InputType.TYPE_DATETIME_VARIATION_DATE
+        binding.phone.editText.inputType = InputType.TYPE_CLASS_PHONE
+        binding.cpf.editText.inputType = InputType.TYPE_CLASS_NUMBER
+        binding.password.editText.transformationMethod = PasswordTransformationMethod()
+        binding.repeat.editText.transformationMethod = PasswordTransformationMethod()
         return binding.root
     }
 
