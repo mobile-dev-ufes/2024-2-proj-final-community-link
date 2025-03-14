@@ -5,7 +5,7 @@ import kotlinx.coroutines.tasks.await
 import ufes.grad.mobile.communitylink.data.model.BaseModel
 
 abstract class BaseDAO {
-    abstract fun getCollection(): CollectionReference
+    protected abstract fun getCollection(): CollectionReference
 
     open suspend fun insert(model: BaseModel): Boolean {
         return try {
@@ -16,7 +16,7 @@ abstract class BaseDAO {
         }
     }
 
-    suspend fun update(model: BaseModel): Boolean {
+    open suspend fun update(model: BaseModel): Boolean {
         return try {
             getCollection().document(model.id).set(model).await()
             true
@@ -25,7 +25,7 @@ abstract class BaseDAO {
         }
     }
 
-    suspend fun delete(model: BaseModel): Boolean {
+    open suspend fun delete(model: BaseModel): Boolean {
         return try {
             getCollection().document(model.id).delete().await()
             true
@@ -42,4 +42,6 @@ abstract class BaseDAO {
             null
         }
     }
+
+    abstract suspend fun findById(id: String): BaseModel?
 }

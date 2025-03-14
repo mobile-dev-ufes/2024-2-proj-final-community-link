@@ -16,7 +16,7 @@ object UserDAO : BaseDAO() {
         return update(model)
     }
 
-    suspend fun findById(id: String): UserModel? {
+    override suspend fun findById(id: String): UserModel? {
         return findById(id, UserModel::class.java)
     }
 }

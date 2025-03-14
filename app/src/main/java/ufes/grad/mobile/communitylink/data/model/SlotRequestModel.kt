@@ -1,22 +1,18 @@
 package ufes.grad.mobile.communitylink.data.model
 
-import java.util.Date
+import kotlinx.serialization.Serializable
+import ufes.grad.mobile.communitylink.data.serializer.UserSerializer
+import ufes.grad.mobile.communitylink.data.serializer.VolunteerSlotSerializer
 
+@Serializable
 class SlotRequestModel(
-    override var id: String,
-    val date: Date,
-    val isSelected: Boolean,
-    val slot: VolunteerSlotModel,
-    val user: UserModel
-) : BaseModel {
+    override var id: String = "",
+    val date: String,
+    val isSelected: Boolean = false,
 
-    fun toHashMap(): HashMap<String, Any> {
-        return hashMapOf(
-            "id" to id,
-            "date" to date,
-            "isSelected" to isSelected,
-            "slot" to slot.id,
-            "user" to user.id
-        )
-    }
-}
+    @Serializable(with = VolunteerSlotSerializer::class)
+    val slot: VolunteerSlotModel = VolunteerSlotModel(),
+
+    @Serializable(with = UserSerializer::class)
+    val user: UserModel = UserModel()
+) : BaseModel {}

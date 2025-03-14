@@ -11,7 +11,7 @@ object GoalDAO : BaseDAO() {
         return db.collection("goal")
     }
 
-    suspend fun findById(id: String): GoalModel? {
+    override suspend fun findById(id: String): GoalModel? {
         return findById(id, GoalModel::class.java)
     }
 }

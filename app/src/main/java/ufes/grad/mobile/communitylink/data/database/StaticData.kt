@@ -7,8 +7,12 @@ import ufes.grad.mobile.communitylink.data.model.ProjectDataModel
 import ufes.grad.mobile.communitylink.data.model.ProjectModel
 import ufes.grad.mobile.communitylink.data.model.ProjectStatusEnum
 import ufes.grad.mobile.communitylink.data.model.UserModel
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 object StaticData {
+    private val dateFormatter = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+
     val projectDataList = mutableListOf<ProjectDataModel>()
     val projects = mutableListOf<ProjectModel>()
     val users = mutableListOf<UserModel>()
@@ -25,7 +29,7 @@ object StaticData {
                     "",
                     "",
                     "",
-                    Date(),
+                    dateFormatter.format(Date()),
                     false,
                     ""
                 )
@@ -67,13 +71,12 @@ object StaticData {
                     "Evento $i",
                     "Descrição do Evento $i",
                     listOf(),
-                    Date(),
-                    Date(),
+                    dateFormatter.format(Date()),
+                    dateFormatter.format(Date()),
                     true,
+                    emptyList(),
                     projects[i],
                     users[i],
-                    null,
-                    listOf()
                 )
             )
         }

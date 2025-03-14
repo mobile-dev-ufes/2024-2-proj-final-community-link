@@ -1,16 +1,12 @@
 package ufes.grad.mobile.communitylink.view.viewHolder
 
 import android.view.View.GONE
-import java.text.SimpleDateFormat
-import java.util.Locale
 import ufes.grad.mobile.communitylink.data.model.ActionModel
 import ufes.grad.mobile.communitylink.data.model.BaseModel
 import ufes.grad.mobile.communitylink.databinding.LayoutInfoCardBinding
 
 class ListInfoCardViewHolder(private val binding: LayoutInfoCardBinding) :
     GenericViewHolder(binding) {
-
-    private val dateFormatter = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
 
     override fun <T> bindVH(model_: BaseModel) {
         val action: ActionModel? = model_ as? ActionModel
@@ -19,7 +15,7 @@ class ListInfoCardViewHolder(private val binding: LayoutInfoCardBinding) :
         setValues(
             action.name,
             action.description,
-            dateFormatter.format(action.initDate),
+            action.initDate,
             action.project.currentData.name
         )
     }
@@ -28,11 +24,11 @@ class ListInfoCardViewHolder(private val binding: LayoutInfoCardBinding) :
         title: String,
         description: String? = null,
         date: String? = null,
-        project_name: String? = null,
+        projectName: String? = null,
         tag: Int = 0
     ) {
-        if (project_name.isNullOrEmpty()) binding.projectInfo.visibility = GONE
-        else binding.projectText.text = project_name
+        if (projectName.isNullOrEmpty()) binding.projectInfo.visibility = GONE
+        else binding.projectText.text = projectName
 
         binding.tag.setType(tag)
 
