@@ -113,11 +113,11 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), View.OnClickListene
         when (v.id) {
             binding.projectsButton.id -> {
                 // TODO("Add navigation args")
-                findNavController().navigate(R.id.myProjectsFragment)
+                findNavController().navigate(R.id.createProjectFragment)
             }
             binding.actionsButton.id -> {
                 // TODO("Add navigation args")
-                findNavController().navigate(R.id.myActionsFragment)
+                findNavController().navigate(R.id.createActionFragment)
             }
             binding.eventsButton.id -> {
                 // TODO("Add navigation args")

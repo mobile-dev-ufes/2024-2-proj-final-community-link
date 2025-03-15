@@ -180,4 +180,10 @@
     <string name="active">Ativo</string>
     <string name="responsible_singular">Responsável</string>
     <string name="former">Egresso</string>
+    <string name="project_name">Project Y</string>
+    <string name="shared_new_action">divulgou uma nova ação</string>
+    <string name="error_save_user_data">Erro ao salvar dados, tente novamente!</string>
+    <string name="error_save_project_data">Erro ao salvar dados do Projeto</string>
+    <string name="sucess_saving_project_data">Sucesso ao criar Projeto!</string>
+    <string name="error_creating_action">Erro ao criar ação</string>
 </resources>

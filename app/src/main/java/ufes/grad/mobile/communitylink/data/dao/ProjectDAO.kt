@@ -8,7 +8,7 @@ object ProjectDAO : BaseDAO() {
 
     override fun getCollection(): CollectionReference {
         val db = FirebaseFirestore.getInstance()
-        return db.collection("project")
+        return db.collection("projects")
     }
 
     override suspend fun findById(id: String): ProjectModel? {

@@ -27,7 +27,7 @@ class LoginFragment : Fragment(R.layout.fragment_login), View.OnClickListener {
         super.onCreate(savedInstanceState)
         loginVM = ViewModelProvider(this)[LoginVM::class.java]
 
-        if (loginVM.userLogedIn() or true) {
+        if (loginVM.userLogedIn()) {
             startActivity(Intent(context, FragmentControllerActivity::class.java))
         }
     }
