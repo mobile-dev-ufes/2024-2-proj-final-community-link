@@ -7,7 +7,7 @@
         <attr name="forms_box_size" format="dimension" />
         <attr name="forms_demand" format="boolean" />
         <attr name="forms_margin" format="boolean" />
-        <attr name="forms_maximum_lenght" format="integer"/>
+        <attr name="forms_maximum_lenght" format="integer" />
         <attr name="forms_input_type" format="integer">
             <enum name="date" value="14" />
             <enum name="datetime" value="4" />
@@ -72,5 +72,15 @@
     </declare-styleable>
     <declare-styleable name="SeparatorLayout">
         <attr name="separator_color" format="color" />
+    </declare-styleable>
+    <declare-styleable name="GoalPostLayout">
+        <attr name="goal_post_type" format="enum">
+            <enum name="HIT" value="0" />
+            <enum name="MODIFIED" value="1" />
+            <enum name="NEW" value="2" />
+        </attr>
+        <attr name="goal_post_description" format="string" />
+        <attr name="goal_post_footnote" format="string" />
+        <attr name="goal_post_date" format="string" />
     </declare-styleable>
 </resources>

@@ -21,11 +21,7 @@ import ufes.grad.mobile.communitylink.utils.Utilities
 class SignupVM(application: Application) : AndroidViewModel(application) {
     private val auth = FirebaseAuth.getInstance()
 
-    fun registerNewUser(
-        email: String,
-        password: String,
-        user: UserModel
-    ): Task<AuthResult?> {
+    fun registerNewUser(email: String, password: String, user: UserModel): Task<AuthResult?> {
         if (email.isNotBlank() and password.isNotBlank()) {
             return auth
                 .createUserWithEmailAndPassword(email, password)
@@ -65,8 +61,7 @@ class SignupVM(application: Application) : AndroidViewModel(application) {
             viewModelScope.launch {
                 if (UserDAO.insert(user)) {
                     Log.d("Firebase", "Salvo com sucesso")
-                }
-                else {
+                } else {
                     Log.d("Firebase", "Problema ao salvar")
                     throw Exception("Erro ao criar usuario")
                 }

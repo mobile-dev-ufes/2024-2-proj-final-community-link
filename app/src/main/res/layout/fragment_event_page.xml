@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/background_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:clipToPadding="false"
     android:padding="@dimen/border"
     android:scrollbars="none"
     tools:context=".view.fragments.EventPageFragment">
@@ -16,7 +17,7 @@
         android:gravity="center|top"
         android:orientation="vertical">
 
-        <ufes.grad.mobile.communitylink.components.ProjectTagLayout
+        <ufes.grad.mobile.communitylink.ui.components.ProjectTagLayout
             android:id="@+id/project_tag"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -57,7 +58,7 @@
             android:layout_marginBottom="10dp"
             android:text="Locais:" />
 
-        <ufes.grad.mobile.communitylink.components.IconButtonLayout
+        <ufes.grad.mobile.communitylink.ui.components.IconButtonLayout
             android:id="@+id/volunteers_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -68,7 +69,7 @@
             app:button_text="@string/view_volunteer_slots"
             app:button_text_size="6sp" />
 
-        <ufes.grad.mobile.communitylink.components.IconButtonLayout
+        <ufes.grad.mobile.communitylink.ui.components.IconButtonLayout
             android:id="@+id/pending_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -79,7 +80,7 @@
             app:button_text="@string/pending_requests"
             app:button_text_size="6sp" />
 
-        <ufes.grad.mobile.communitylink.components.IconButtonLayout
+        <ufes.grad.mobile.communitylink.ui.components.IconButtonLayout
             android:id="@+id/manage_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -90,7 +91,7 @@
             app:button_text="@string/manage_slots"
             app:button_text_size="6sp" />
 
-        <ufes.grad.mobile.communitylink.components.IconButtonLayout
+        <ufes.grad.mobile.communitylink.ui.components.IconButtonLayout
             android:id="@+id/edit_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -101,7 +102,7 @@
             app:button_text="@string/edit_action"
             app:button_text_size="6sp" />
 
-        <ufes.grad.mobile.communitylink.components.SeparatorLayout
+        <ufes.grad.mobile.communitylink.ui.components.SeparatorLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -127,21 +128,13 @@
             android:text="@string/post"
             android:textColor="@color/black" />
 
-        <ufes.grad.mobile.communitylink.components.PostLayout
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_list"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="10dp"
-            app:post_date="XX/XX/XXXX às XX:XX"
-            app:post_text="Postagem..." />
-
-        <ufes.grad.mobile.communitylink.components.PostLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="10dp"
-            app:post_date="XX/XX/XXXX às XX:XX"
-            app:post_image="@drawable/ic_explore"
-            app:post_text="Postagem..." />
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:clipToPadding="false" />
 
     </LinearLayout>
 
-</ScrollView>
+</androidx.core.widget.NestedScrollView>

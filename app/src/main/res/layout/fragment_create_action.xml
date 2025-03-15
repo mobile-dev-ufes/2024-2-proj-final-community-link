@@ -9,21 +9,21 @@
     android:padding="@dimen/border"
     tools:context=".view.fragments.CreateActionFragment">
 
-    <ufes.grad.mobile.communitylink.components.FormsLayout
+    <ufes.grad.mobile.communitylink.ui.components.FormsLayout
         android:id="@+id/name_forms"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         app:forms_title_text="@string/name" />
 
-    <ufes.grad.mobile.communitylink.components.FormsLayout
+    <ufes.grad.mobile.communitylink.ui.components.FormsLayout
         android:id="@+id/description_forms"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         app:forms_title_text="@string/description" />
 
-    <ufes.grad.mobile.communitylink.components.FormsLayout
+    <ufes.grad.mobile.communitylink.ui.components.FormsLayout
         android:id="@+id/tags_forms"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -51,14 +51,14 @@
         android:text="@string/representatives"
         android:textSize="14dp" />
 
-    <ufes.grad.mobile.communitylink.components.CommonCardLayout
+    <ufes.grad.mobile.communitylink.ui.components.CommonCardLayout
         android:id="@+id/first_representative"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         app:card_upper_text="@string/placeholder" />
 
-    <ufes.grad.mobile.communitylink.components.CommonCardLayout
+    <ufes.grad.mobile.communitylink.ui.components.CommonCardLayout
         android:id="@+id/second_representative"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

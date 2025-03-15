@@ -14,7 +14,7 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <ufes.grad.mobile.communitylink.components.FormsLayout
+        <ufes.grad.mobile.communitylink.ui.components.FormsLayout
             android:id="@+id/name_forms"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -33,14 +33,14 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-            <ufes.grad.mobile.communitylink.components.FormsLayout
+            <ufes.grad.mobile.communitylink.ui.components.FormsLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
                 android:layout_weight="1"
                 app:forms_title_text="@string/start" />
 
-            <ufes.grad.mobile.communitylink.components.FormsLayout
+            <ufes.grad.mobile.communitylink.ui.components.FormsLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -49,7 +49,7 @@
 
         </LinearLayout>
 
-        <ufes.grad.mobile.communitylink.components.FormsLayout
+        <ufes.grad.mobile.communitylink.ui.components.FormsLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:forms_title_text="@string/place" />
@@ -64,7 +64,7 @@
             android:text="@string/confirm_changes"
             android:textColor="@color/white" />
 
-        <ufes.grad.mobile.communitylink.components.SeparatorLayout
+        <ufes.grad.mobile.communitylink.ui.components.SeparatorLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -75,12 +75,12 @@
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
-            <ufes.grad.mobile.communitylink.components.FormsLayout
+            <ufes.grad.mobile.communitylink.ui.components.FormsLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:forms_title_text="@string/punctuality" />
 
-            <ufes.grad.mobile.communitylink.components.FormsLayout
+            <ufes.grad.mobile.communitylink.ui.components.FormsLayout
                 android:id="@+id/notes_forms"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -106,7 +106,7 @@
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
-            <ufes.grad.mobile.communitylink.components.SeparatorLayout
+            <ufes.grad.mobile.communitylink.ui.components.SeparatorLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -128,7 +128,7 @@
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
-            <ufes.grad.mobile.communitylink.components.SeparatorLayout
+            <ufes.grad.mobile.communitylink.ui.components.SeparatorLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 

@@ -29,37 +29,14 @@
         android:spinnerMode="dropdown"
         tools:listitem="@layout/layout_spinner" />
 
-    <ufes.grad.mobile.communitylink.components.SeparatorLayout
+    <ufes.grad.mobile.communitylink.ui.components.SeparatorLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <ScrollView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_list"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <ufes.grad.mobile.communitylink.components.CommonCardLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                app:card_image="@drawable/ic_explore"
-                app:card_lower_text="@string/placeholder"
-                app:card_upper_text="@string/placeholder" />
-
-            <ufes.grad.mobile.communitylink.components.CommonCardLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                app:card_lower_text="@string/placeholder"
-                app:card_upper_text="@string/placeholder" />
-
-        </LinearLayout>
-
-    </ScrollView>
+        android:layout_height="match_parent"
+        android:clipToPadding="true" />
 
 </LinearLayout>

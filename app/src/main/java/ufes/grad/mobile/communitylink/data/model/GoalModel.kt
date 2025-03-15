@@ -9,7 +9,6 @@ data class GoalModel(
     val description: String = "",
     val minimalQuantity: Float = 0.0f,
     val actualQuantity: Float = 0.0f,
-
     @Serializable(with = ActionSerializer::class)
     private val actionDonation: ActionDonationModel = ActionDonationModel()
 ) : BaseModel {}

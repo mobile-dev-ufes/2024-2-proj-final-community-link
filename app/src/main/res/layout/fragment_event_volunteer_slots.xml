@@ -61,35 +61,14 @@
 
     </LinearLayout>
 
-    <ufes.grad.mobile.communitylink.components.SeparatorLayout
+    <ufes.grad.mobile.communitylink.ui.components.SeparatorLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <ScrollView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <ufes.grad.mobile.communitylink.components.InfoCardLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:description_text="@string/placeholder"
-                app:tag_type="FILLED"
-                app:title_text="@string/placeholder" />
-
-            <ufes.grad.mobile.communitylink.components.InfoCardLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:description_text="@string/placeholder"
-                app:tag_type="EMPTY"
-                app:title_text="@string/placeholder" />
-
-        </LinearLayout>
-
-    </ScrollView>
+        android:layout_height="match_parent"
+        android:clipToPadding="true" />
 
 </LinearLayout>

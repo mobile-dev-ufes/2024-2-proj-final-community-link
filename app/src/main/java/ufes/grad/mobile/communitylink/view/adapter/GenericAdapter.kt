@@ -5,9 +5,10 @@ import androidx.recyclerview.widget.RecyclerView
 import ufes.grad.mobile.communitylink.data.model.BaseModel
 import ufes.grad.mobile.communitylink.view.viewHolder.GenericViewHolder
 
-open class GenericAdapter<T : GenericViewHolder> : RecyclerView.Adapter<T>() {
+open class GenericAdapter<T : GenericViewHolder>() : RecyclerView.Adapter<T>() {
 
-    var onClickListener: OnClickListener? = null
+    var onItemClickListener: (Int) -> Unit = {}
+
     var list: List<BaseModel> = listOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): T {
@@ -18,13 +19,12 @@ open class GenericAdapter<T : GenericViewHolder> : RecyclerView.Adapter<T>() {
         holder.bindVH<T>(list[position])
     }
 
-
     override fun getItemCount(): Int {
         return list.count()
     }
 
-
-    interface OnClickListener {
-        fun onClick(position: Int, model: BaseModel)
+    fun updateList(list_: List<BaseModel>) {
+        list = list_
+        // notifyDatasetChanged()
     }
 }

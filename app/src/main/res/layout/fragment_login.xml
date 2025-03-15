@@ -9,7 +9,7 @@
     android:padding="@dimen/border"
     tools:context=".view.fragments.LoginFragment">
 
-    <ufes.grad.mobile.communitylink.components.CommunityLinkTitle
+    <ufes.grad.mobile.communitylink.ui.components.CommunityLinkTitle
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
@@ -20,7 +20,7 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <ufes.grad.mobile.communitylink.components.FormsLayout
+        <ufes.grad.mobile.communitylink.ui.components.FormsLayout
             android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -28,7 +28,7 @@
             app:forms_title_text="@string/email"
             app:forms_input_type="textEmailAddress"/>
 
-        <ufes.grad.mobile.communitylink.components.FormsLayout
+        <ufes.grad.mobile.communitylink.ui.components.FormsLayout
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -59,7 +59,7 @@
             android:text="@string/login"
             android:textColor="@color/white" />
 
-        <ufes.grad.mobile.communitylink.components.SeparatorLayout
+        <ufes.grad.mobile.communitylink.ui.components.SeparatorLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 

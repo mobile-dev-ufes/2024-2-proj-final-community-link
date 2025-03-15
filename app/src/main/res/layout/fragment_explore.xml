@@ -6,45 +6,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingHorizontal="@dimen/border"
-    android:paddingBottom="@dimen/border"
+    android:paddingHorizontal="10dp"
     tools:context=".view.fragments.ExploreFragment">
 
-    <ufes.grad.mobile.communitylink.components.SearchBarLayout
+    <ufes.grad.mobile.communitylink.ui.components.SearchBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        app:fix_top="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:fix_top="true" />
 
-    <ScrollView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_list"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:clipToPadding="false">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <ufes.grad.mobile.communitylink.components.InfoCardLayout
-                android:id="@+id/test"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:description_text="@string/placeholder"
-                app:title_text="@string/placeholder" />
-
-            <ufes.grad.mobile.communitylink.components.ProjectCardLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:project_description="@string/placeholder"
-                app:project_name="@string/placeholder" />
-
-        </LinearLayout>
-
-    </ScrollView>
+        android:paddingHorizontal="10dp" />
 
 </LinearLayout>

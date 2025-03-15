@@ -15,13 +15,7 @@ class ManageGoalFragment : Fragment(R.layout.fragment_manage_goal), View.OnClick
     private val binding
         get() = _binding!!
 
-    /** Determines if the goal exists or is going to be created. */
     private var exists: Boolean = false
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        exists = requireArguments().getBoolean("EXISTS")
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,6 +24,10 @@ class ManageGoalFragment : Fragment(R.layout.fragment_manage_goal), View.OnClick
     ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
         _binding = FragmentManageGoalBinding.inflate(inflater, container, false)
+
+        // TODO("Add args")
+        // nesse caso, não precisa ser um booleano
+        // mandar um id já é o suficiente, aí se ele for nulo, quer dizer que devemos criar
 
         if (exists) {
             binding.confirmButton.text = getString(R.string.create_new_goal)
@@ -47,14 +45,17 @@ class ManageGoalFragment : Fragment(R.layout.fragment_manage_goal), View.OnClick
         when (v.id) {
             binding.confirmButton.id -> {
                 if (exists) {
-                    TODO("Atualizar meta")
+                    // TODO("Update goal")
                 } else {
-                    TODO("Criar meta")
+                    // TODO("Create goal")
                 }
             }
             binding.deleteButton.id -> {
                 val popup = BasePopup(BasePopup.PopupType.TWO_BUTTON, R.layout.popup_delete_goal)
-                // TODO("Make popup functional")
+                popup.onConfirm =
+                    {
+                        // TODO("Delete goal")
+                    }
                 popup.show(childFragmentManager, "")
             }
         }

@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:text="@string/post" />
 
-    <ufes.grad.mobile.communitylink.components.FormsLayout
+    <ufes.grad.mobile.communitylink.ui.components.FormsLayout
         android:id="@+id/content_forms"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

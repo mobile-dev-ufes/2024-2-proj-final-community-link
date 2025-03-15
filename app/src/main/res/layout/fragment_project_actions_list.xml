@@ -21,17 +21,10 @@
         android:text="@string/action"
         android:textColor="@color/black" />
 
-    <LinearLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_list"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <ufes.grad.mobile.communitylink.components.InfoCardLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:description_text="@string/address"
-            app:title_text="@string/address" />
-
-    </LinearLayout>
+        android:layout_height="match_parent"
+        android:clipToPadding="true" />
 
 </LinearLayout>

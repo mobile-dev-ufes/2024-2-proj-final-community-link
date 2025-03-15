@@ -49,9 +49,11 @@ class ProfileVM(application: Application) : AndroidViewModel(application) {
             viewModelScope.launch {
                 user.id = auth.currentUser!!.uid
                 if (UserDAO.update(user)) {
-                    Utilities.notify(context, context.getString(R.string.success_updating_user_data))
-                }
-                else {
+                    Utilities.notify(
+                        context,
+                        context.getString(R.string.success_updating_user_data)
+                    )
+                } else {
                     Utilities.notify(context, context.getString(R.string.erro_update_user_data))
                 }
             }

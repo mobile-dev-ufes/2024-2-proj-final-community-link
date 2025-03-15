@@ -13,12 +13,8 @@ class VolunteerSlotModel(
     val place: String = "",
     val notes: String = "",
     val status: ParticipationStatusEnum = ParticipationStatusEnum.ON_TIME,
-
-    @Serializable(with = ActionSerializer::class)
-    val action: ActionEventModel = ActionEventModel(),
-
-    val slots: List<
-        @Serializable(with = SlotRequestSerializer::class)
-        SlotRequestModel
-    > = emptyList()
+    @Serializable(with = ActionSerializer::class) val action: ActionEventModel = ActionEventModel(),
+    @Serializable(with = SlotRequestSerializer::class) val filledBy: SlotRequestModel? = null,
+    val slots: List<@Serializable(with = SlotRequestSerializer::class) SlotRequestModel> =
+        emptyList()
 ) : BaseModel {}

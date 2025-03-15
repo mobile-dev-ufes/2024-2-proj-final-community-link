@@ -32,7 +32,10 @@ class CreateProjectFragment : Fragment(R.layout.fragment_create_project), View.O
     override fun onClick(v: View) {
         when (v.id) {
             binding.createButton.id -> {
-                TODO("onClick 'CRIAR PROJETO'")
+                TODO("Get data and create new project")
+                // (por favor, ao criar os dados, botem eles no pendingData do ProjectModel e
+                // coloquem o campo request em false, o usuário deve solicitar a revisão na página
+                // do projeto)
             }
         }
     }

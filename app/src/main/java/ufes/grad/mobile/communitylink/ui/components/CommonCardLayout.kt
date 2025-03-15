@@ -1,4 +1,4 @@
-package ufes.grad.mobile.communitylink.components
+package ufes.grad.mobile.communitylink.ui.components
 
 import android.content.Context
 import android.graphics.drawable.Drawable
@@ -14,7 +14,9 @@ class CommonCardLayout(context: Context, attrs: AttributeSet) : LinearLayout(con
         LayoutCommonCardBinding.inflate(LayoutInflater.from(context), this, true)
 
     init {
+        isClickable = true
         setAttributes(context, attrs)
+        setOnClickListener { performClick() }
     }
 
     private fun setAttributes(context: Context, attrs: AttributeSet) {

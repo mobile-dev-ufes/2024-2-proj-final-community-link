@@ -11,7 +11,5 @@ class DonationForProjectModel(
     override val status: DonationStatusEnum = DonationStatusEnum.PENDING,
     override val date: String = "",
     override val confirmationImage: String = "",
-
-    @Serializable(with = ProjectSerializer::class)
-    val project: ProjectModel = ProjectModel()
+    @Serializable(with = ProjectSerializer::class) val project: ProjectModel = ProjectModel()
 ) : DonationModel {}

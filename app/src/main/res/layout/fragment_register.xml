@@ -17,7 +17,7 @@
         android:gravity="center|top"
         android:orientation="vertical">
 
-        <ufes.grad.mobile.communitylink.components.CommunityLinkTitle
+        <ufes.grad.mobile.communitylink.ui.components.CommunityLinkTitle
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -29,25 +29,25 @@
             android:gravity="center"
             android:text="@string/register_text" />
 
-        <ufes.grad.mobile.communitylink.components.FormsLayout
+        <ufes.grad.mobile.communitylink.ui.components.FormsLayout
             android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             app:forms_title_text="@string/name" />
 
-        <ufes.grad.mobile.communitylink.components.FormsLayout
+        <ufes.grad.mobile.communitylink.ui.components.FormsLayout
             android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             app:forms_title_text="@string/email" />
 
-        <ufes.grad.mobile.communitylink.components.SeparatorLayout
+        <ufes.grad.mobile.communitylink.ui.components.SeparatorLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <ufes.grad.mobile.communitylink.components.FormsLayout
+        <ufes.grad.mobile.communitylink.ui.components.FormsLayout
             android:id="@+id/sex"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -57,68 +57,67 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_marginBottom="10dp"
-            >
+            android:orientation="vertical">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/date"
                 android:paddingBottom="6dp"
-                android:textSize="14sp"/>
+                android:text="@string/date_of_birth"
+                android:textSize="14sp" />
+
             <Button
                 android:id="@+id/buttonDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
+                android:layout_marginBottom="10dp"
                 android:background="@drawable/style_edit_text"
-                android:text="@string/selecione_uma_data"
-                android:textColor="@color/gray_400"
+                android:gravity="center_vertical"
                 android:paddingHorizontal="20dp"
                 android:paddingVertical="12dp"
+                android:text="@string/selecione_uma_data"
                 android:textAllCaps="false"
-                android:textSize="14sp"
-                />
+                android:textColor="@color/gray_400"
+                android:textSize="14sp" />
         </LinearLayout>
 
 
-        <ufes.grad.mobile.communitylink.components.FormsLayout
+        <ufes.grad.mobile.communitylink.ui.components.FormsLayout
             android:id="@+id/address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             app:forms_title_text="@string/address" />
 
-        <ufes.grad.mobile.communitylink.components.FormsLayout
+        <ufes.grad.mobile.communitylink.ui.components.FormsLayout
             android:id="@+id/phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            app:forms_title_text="@string/phone"
             app:forms_maximum_lenght="11"
-            />
+            app:forms_title_text="@string/phone" />
 
-        <ufes.grad.mobile.communitylink.components.FormsLayout
+        <ufes.grad.mobile.communitylink.ui.components.FormsLayout
             android:id="@+id/cpf"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            app:forms_title_text="@string/cpf"
             app:forms_maximum_lenght="11"
-            />
+            app:forms_title_text="@string/cpf" />
 
-        <ufes.grad.mobile.communitylink.components.SeparatorLayout
+        <ufes.grad.mobile.communitylink.ui.components.SeparatorLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <ufes.grad.mobile.communitylink.components.FormsLayout
+        <ufes.grad.mobile.communitylink.ui.components.FormsLayout
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             app:forms_title_text="@string/password" />
 
-        <ufes.grad.mobile.communitylink.components.FormsLayout
+        <ufes.grad.mobile.communitylink.ui.components.FormsLayout
             android:id="@+id/repeat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

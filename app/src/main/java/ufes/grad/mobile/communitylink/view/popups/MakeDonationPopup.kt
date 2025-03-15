@@ -21,6 +21,9 @@ class MakeDonationPopup :
     ): View? {
         val root = super.onCreateView(inflater, container, savedInstanceState)
         _binding = PopupMakeDonationBinding.inflate(inflater, container, false)
+
+        // TODO("Implement all of 'make donation'")
+
         return root
     }
 

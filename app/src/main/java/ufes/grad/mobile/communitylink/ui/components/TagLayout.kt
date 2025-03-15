@@ -1,4 +1,4 @@
-package ufes.grad.mobile.communitylink.components
+package ufes.grad.mobile.communitylink.ui.components
 
 import android.content.Context
 import android.content.res.ColorStateList
@@ -19,13 +19,11 @@ class TagLayout(context: Context, attrs: AttributeSet) : ConstraintLayout(contex
         GOAL
     }
 
-    var type: TagType = TagType.DEFAULT
-
     private var binding: LayoutCardTagBinding =
         LayoutCardTagBinding.inflate(LayoutInflater.from(context), this, true)
 
     init {
-        setType(0)
+        setType(TagType.DEFAULT)
     }
 
     private fun setValues(text: String, color: ColorStateList) {
@@ -33,12 +31,10 @@ class TagLayout(context: Context, attrs: AttributeSet) : ConstraintLayout(contex
         binding.text.text = text
     }
 
-    fun setType(type: Int) {
-        this.type = TagType.entries.toTypedArray()[type]
+    fun setType(type: TagType) {
         var color = context.getColorStateList(R.color.black)
         var text = context.getString(R.string.placeholder)
-
-        when (this.type) {
+        when (type) {
             TagType.DONATION -> {
                 color = context.getColorStateList(R.color.purple)
                 text = context.getString(R.string.donation)

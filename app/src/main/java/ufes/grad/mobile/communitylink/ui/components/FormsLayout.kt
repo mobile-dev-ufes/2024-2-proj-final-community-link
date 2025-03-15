@@ -1,4 +1,4 @@
-package ufes.grad.mobile.communitylink.components
+package ufes.grad.mobile.communitylink.ui.components
 
 import android.content.Context
 import android.text.InputFilter

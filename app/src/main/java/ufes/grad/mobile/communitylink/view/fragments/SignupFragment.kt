@@ -45,15 +45,16 @@ class SignupFragment : Fragment(R.layout.fragment_register), OnClickListener {
                     return
                 }
 
-                val user = UserModel(
-                    name = binding.name.editText.text.toString().trim(),
-                    email = binding.email.editText.text.toString().trim(),
-                    cpf = binding.cpf.editText.text.toString(),
-                    sex = binding.sex.editText.text.toString().trim(),
-                    dob = binding.buttonDate.text.toString(),
-                    address = binding.address.editText.text.toString().trim(),
-                    phone = binding.phone.editText.text.toString()
-                )
+                val user =
+                    UserModel(
+                        name = binding.name.editText.text.toString().trim(),
+                        email = binding.email.editText.text.toString().trim(),
+                        cpf = binding.cpf.editText.text.toString(),
+                        sex = binding.sex.editText.text.toString().trim(),
+                        dob = binding.buttonDate.text.toString(),
+                        address = binding.address.editText.text.toString().trim(),
+                        phone = binding.phone.editText.text.toString()
+                    )
 
                 try {
                     signupVM.registerNewUser(email, password, user).addOnSuccessListener {

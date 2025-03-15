@@ -9,21 +9,21 @@
     android:padding="@dimen/border"
     tools:context=".view.fragments.SearchUsersFragment">
 
-    <ufes.grad.mobile.communitylink.components.FormsLayout
+    <ufes.grad.mobile.communitylink.ui.components.FormsLayout
         android:id="@+id/name_forms"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         app:forms_title_text="@string/name" />
 
-    <ufes.grad.mobile.communitylink.components.FormsLayout
+    <ufes.grad.mobile.communitylink.ui.components.FormsLayout
         android:id="@+id/cpf_forms"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         app:forms_title_text="@string/cpf" />
 
-    <ufes.grad.mobile.communitylink.components.FormsLayout
+    <ufes.grad.mobile.communitylink.ui.components.FormsLayout
         android:id="@+id/email_forms"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -41,27 +41,14 @@
         android:text="@string/search"
         android:textColor="@color/white" />
 
-    <ufes.grad.mobile.communitylink.components.SeparatorLayout
+    <ufes.grad.mobile.communitylink.ui.components.SeparatorLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <ScrollView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_list"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <ufes.grad.mobile.communitylink.components.CommonCardLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:card_upper_text="@string/placeholder" />
-
-        </LinearLayout>
-
-    </ScrollView>
-
+        android:layout_height="match_parent"
+        android:clipToPadding="true" />
 
 </LinearLayout>

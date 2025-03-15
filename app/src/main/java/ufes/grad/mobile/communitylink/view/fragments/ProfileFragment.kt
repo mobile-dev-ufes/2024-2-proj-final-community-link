@@ -17,7 +17,6 @@ import java.util.Calendar
 import ufes.grad.mobile.communitylink.R
 import ufes.grad.mobile.communitylink.data.model.UserModel
 import ufes.grad.mobile.communitylink.databinding.FragmentProfileBinding
-import ufes.grad.mobile.communitylink.utils.Utilities
 import ufes.grad.mobile.communitylink.view.LoginActivity
 import ufes.grad.mobile.communitylink.view.popups.BasePopup
 import ufes.grad.mobile.communitylink.view.popups.UserDataPopup
@@ -113,15 +112,19 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), View.OnClickListene
     override fun onClick(v: View) {
         when (v.id) {
             binding.projectsButton.id -> {
+                // TODO("Add navigation args")
                 findNavController().navigate(R.id.myProjectsFragment)
             }
             binding.actionsButton.id -> {
+                // TODO("Add navigation args")
                 findNavController().navigate(R.id.myActionsFragment)
             }
             binding.eventsButton.id -> {
+                // TODO("Add navigation args")
                 findNavController().navigate(R.id.eventsAndDonationsFragment)
             }
             binding.pendingButton.id -> {
+                // TODO("Add navigation args")
                 findNavController().navigate(R.id.pendingActionsFragment)
             }
             binding.logoutButton.id -> {
@@ -130,16 +133,20 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), View.OnClickListene
                 requireActivity().finish()
             }
             binding.excludeAccount.id -> {
-                requireActivity().finish()
                 val popup = BasePopup(BasePopup.PopupType.TWO_BUTTON, R.layout.popup_delete_user)
-                // TODO("Make popup functional")
-                popup.onConfirm = { startActivity(Intent(context, LoginActivity::class.java)) }
-                popup.onCancel = { Utilities.notify(context, "Não deletou") }
+                popup.onConfirm = {
+                    // TODO("Delete user")
+                    startActivity(Intent(context, LoginActivity::class.java))
+                }
                 popup.show(childFragmentManager, "")
+                requireActivity().finish()
             }
             binding.confirmAlterations.id -> {
                 val popup = UserDataPopup(null, UserPopupType.USER_DATA_UPDATE)
-                // TODO("Make popup functional")
+                popup.onConfirm =
+                    {
+                        // TODO("Update user data")
+                    }
                 popup.show(childFragmentManager, "")
                 profileVM.changeUserData(
                     UserModel(

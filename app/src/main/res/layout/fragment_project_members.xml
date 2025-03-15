@@ -1,71 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:clipToPadding="false"
-    android:gravity="center_horizontal"
-    android:orientation="vertical"
-    android:padding="@dimen/border"
-    tools:context=".view.fragments.ProjectMembersFragment">
+    android:layout_height="match_parent">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/style_button"
-        android:backgroundTint="@color/black"
-        android:gravity="center"
-        android:paddingVertical="10dp"
-        android:text="Responsáveis"
-        android:textColor="@color/white"
-        android:textSize="24sp" />
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="@dimen/border"
+        tools:context=".view.fragments.ProjectMembersFragment">
 
-    <ufes.grad.mobile.communitylink.components.CommonCardLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        app:card_upper_text="@string/placeholder" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/style_button"
+            android:backgroundTint="@color/black"
+            android:gravity="center"
+            android:paddingVertical="10dp"
+            android:text="@string/responsible"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_list_responsible"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_list_responsible"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/style_button"
-        android:backgroundTint="@color/black"
-        android:gravity="center"
-        android:paddingVertical="10dp"
-        android:text="Membros"
-        android:textColor="@color/white"
-        android:textSize="24sp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/style_button"
+            android:backgroundTint="@color/black"
+            android:gravity="center"
+            android:paddingVertical="10dp"
+            android:text="@string/members"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
 
-    <Button
-        android:id="@+id/add_member_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/style_button"
-        android:backgroundTint="@color/green"
-        android:drawableStart="@drawable/ic_plus"
-        android:drawablePadding="10dp"
-        android:text="Adicionar novo membro" />
+        <Button
+            android:id="@+id/add_member_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/style_button"
+            android:backgroundTint="@color/green"
+            android:drawableStart="@drawable/ic_plus"
+            android:drawablePadding="10dp"
+            android:text="@string/member" />
 
-    <ufes.grad.mobile.communitylink.components.CommonCardLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        app:card_lower_text="Ativo"
-        app:card_upper_text="@string/placeholder" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_list_members"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_list_members"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-</LinearLayout>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

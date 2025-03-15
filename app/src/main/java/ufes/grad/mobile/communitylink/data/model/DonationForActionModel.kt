@@ -11,7 +11,6 @@ class DonationForActionModel(
     override val status: DonationStatusEnum = DonationStatusEnum.PENDING,
     override val date: String = "",
     override val confirmationImage: String = "",
-
     @Serializable(with = ActionSerializer::class)
     val action: ActionDonationModel = ActionDonationModel()
 ) : DonationModel {}

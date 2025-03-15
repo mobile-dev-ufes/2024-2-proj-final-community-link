@@ -32,11 +32,11 @@
         android:lineHeight="24sp"
         android:text="Descrição...\nEndereço: ...\nCNPJ: XX.XXX.XXX/XXXX-XX" />
 
-    <ufes.grad.mobile.communitylink.components.SeparatorLayout
+    <ufes.grad.mobile.communitylink.ui.components.SeparatorLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <ufes.grad.mobile.communitylink.components.IconButtonLayout
+    <ufes.grad.mobile.communitylink.ui.components.IconButtonLayout
         android:id="@+id/donation_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -47,7 +47,7 @@
         app:button_text="@string/make_donation"
         app:button_text_size="6sp" />
 
-    <ufes.grad.mobile.communitylink.components.IconButtonLayout
+    <ufes.grad.mobile.communitylink.ui.components.IconButtonLayout
         android:id="@+id/members_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -57,7 +57,7 @@
         app:button_text="@string/members"
         app:button_text_size="6sp" />
 
-    <ufes.grad.mobile.communitylink.components.IconButtonLayout
+    <ufes.grad.mobile.communitylink.ui.components.IconButtonLayout
         android:id="@+id/actions_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -67,7 +67,7 @@
         app:button_text="@string/actions"
         app:button_text_size="6sp" />
 
-    <ufes.grad.mobile.communitylink.components.IconButtonLayout
+    <ufes.grad.mobile.communitylink.ui.components.IconButtonLayout
         android:id="@+id/donations_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

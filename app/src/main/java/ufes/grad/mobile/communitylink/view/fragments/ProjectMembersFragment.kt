@@ -5,10 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import ufes.grad.mobile.communitylink.R
+import ufes.grad.mobile.communitylink.data.database.StaticData
 import ufes.grad.mobile.communitylink.databinding.FragmentProjectMembersBinding
 import ufes.grad.mobile.communitylink.view.adapter.ListCommonCardAdapter
+import ufes.grad.mobile.communitylink.view.popups.UserDataPopup
 
 class ProjectMembersFragment : Fragment(R.layout.fragment_project_members), View.OnClickListener {
 
@@ -17,6 +20,14 @@ class ProjectMembersFragment : Fragment(R.layout.fragment_project_members), View
         get() = _binding!!
 
     private var edit: Boolean = false
+
+    private val members_adapter: ListCommonCardAdapter = ListCommonCardAdapter()
+    private val responsible_adapter: ListCommonCardAdapter = ListCommonCardAdapter()
+
+    init {
+        responsible_adapter.updateList(StaticData.users)
+        members_adapter.updateList(StaticData.users)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,20 +42,35 @@ class ProjectMembersFragment : Fragment(R.layout.fragment_project_members), View
             binding.addMemberButton.visibility = View.GONE
         }
 
-        // TODO("Add recycle view")
+        val popup_type =
+            if (edit) UserDataPopup.UserPopupType.ADD_USER_AS_MEMBER
+            else UserDataPopup.UserPopupType.VIEW_DATA
+
+        responsible_adapter.onItemClickListener = {
+            val popup = UserDataPopup(null, popup_type)
+            popup.onConfirm =
+                {
+                    // TODO("Remove member from project")
+                }
+            popup.show(childFragmentManager, "")
+        }
 
         binding.recyclerListResponsible.layoutManager = LinearLayoutManager(context)
-        binding.recyclerListResponsible.adapter = ListCommonCardAdapter()
+        binding.recyclerListResponsible.adapter = responsible_adapter
+
+        members_adapter.onItemClickListener = {
+            val popup = UserDataPopup(null, popup_type)
+            popup.onConfirm =
+                {
+                    // TODO("Remove member from project")
+                }
+            popup.show(childFragmentManager, "")
+        }
 
         binding.recyclerListMembers.layoutManager = LinearLayoutManager(context)
-        binding.recyclerListMembers.adapter = ListCommonCardAdapter()
+        binding.recyclerListMembers.adapter = members_adapter
 
         return binding.root
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        edit = requireArguments().getBoolean("EDIT")
     }
 
     override fun onDestroyView() {
@@ -55,7 +81,7 @@ class ProjectMembersFragment : Fragment(R.layout.fragment_project_members), View
     override fun onClick(v: View) {
         when (v.id) {
             binding.addMemberButton.id -> {
-                // TODO("Add navigation")
+                findNavController().navigate(R.id.searchUsersFragment)
             }
         }
     }

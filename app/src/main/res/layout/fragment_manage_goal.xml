@@ -9,7 +9,7 @@
     android:paddingHorizontal="@dimen/border"
     tools:context=".view.fragments.ManageGoalFragment">
 
-    <ufes.grad.mobile.communitylink.components.FormsLayout
+    <ufes.grad.mobile.communitylink.ui.components.FormsLayout
         android:id="@+id/description_forms"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -29,7 +29,7 @@
         android:layout_marginBottom="20dp"
         android:orientation="horizontal">
 
-        <ufes.grad.mobile.communitylink.components.FormsLayout
+        <ufes.grad.mobile.communitylink.ui.components.FormsLayout
             android:id="@+id/current_forms"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -38,7 +38,7 @@
             app:forms_input_type="number"
             app:forms_title_text="Atual" />
 
-        <ufes.grad.mobile.communitylink.components.FormsLayout
+        <ufes.grad.mobile.communitylink.ui.components.FormsLayout
             android:id="@+id/minimum_forms"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -58,7 +58,7 @@
         android:text="@string/confirm_changes"
         android:textColor="@color/white" />
 
-    <ufes.grad.mobile.communitylink.components.SeparatorLayout
+    <ufes.grad.mobile.communitylink.ui.components.SeparatorLayout
         android:id="@+id/separator"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

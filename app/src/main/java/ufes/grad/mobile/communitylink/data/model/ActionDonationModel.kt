@@ -16,26 +16,14 @@ class ActionDonationModel(
     override val initDate: String = "",
     override val finishDate: String = "",
     override val status: Boolean = false,
-
-    override val posts: List<
-        @Serializable(with = PostSerializer::class)
-        PostModel
-    > = emptyList(),
-
+    override val posts: List<@Serializable(with = PostSerializer::class) PostModel> = emptyList(),
     @Serializable(with = ProjectSerializer::class)
     override val project: ProjectModel = ProjectModel(),
-
     @Serializable(with = UserSerializer::class)
     override val primaryRepresentative: UserModel = UserModel(),
-
     @Serializable(with = UserSerializer::class)
     override val secondaryRepresentative: UserModel? = null,
-
-    @Serializable(with = GoalSerializer::class)
-    val goal: GoalModel = GoalModel(),
-
-    val donations: List<
-        @Serializable(with = DonationSerializer::class)
-        DonationForActionModel
-    > = emptyList()
+    val goal: List<@Serializable(with = GoalSerializer::class) GoalModel> = emptyList(),
+    val donations: List<@Serializable(with = DonationSerializer::class) DonationForActionModel> =
+        emptyList()
 ) : ActionModel {}

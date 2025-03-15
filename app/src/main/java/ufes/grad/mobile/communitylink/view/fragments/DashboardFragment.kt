@@ -9,9 +9,11 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import ufes.grad.mobile.communitylink.R
 import ufes.grad.mobile.communitylink.data.database.StaticData
-import ufes.grad.mobile.communitylink.data.model.BaseModel
+import ufes.grad.mobile.communitylink.data.model.ActionDonationModel
+import ufes.grad.mobile.communitylink.data.model.ActionEventModel
+import ufes.grad.mobile.communitylink.data.model.GoalModel
+import ufes.grad.mobile.communitylink.data.model.PostModel
 import ufes.grad.mobile.communitylink.databinding.FragmentDashboardBinding
-import ufes.grad.mobile.communitylink.view.adapter.GenericAdapter
 import ufes.grad.mobile.communitylink.view.adapter.ListInfoCardAdapter
 
 class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
@@ -20,10 +22,10 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
     private val binding
         get() = _binding!!
 
-    val adapter: ListInfoCardAdapter = ListInfoCardAdapter()
+    private var adapter: ListInfoCardAdapter = ListInfoCardAdapter()
 
     init {
-        adapter.updateInfoCardList(StaticData.eventActions)
+        adapter.updateList(StaticData.eventActions + StaticData.donationActions)
     }
 
     override fun onCreateView(
@@ -34,17 +36,32 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
         super.onCreateView(inflater, container, savedInstanceState)
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
 
+        adapter.onItemClickListener = { position ->
+            val item = adapter.list[position]
+            when (item) {
+                is ActionDonationModel,
+                is GoalModel -> {
+                    // TODO("Add args")
+                    findNavController().navigate(R.id.donationPageFragment)
+                }
+                is ActionEventModel -> {
+                    val action =
+                        DashboardFragmentDirections.actionDashboardFragmentToEventPageFragment()
+                    action.id = item.id
+                    findNavController().navigate(action)
+                }
+                is PostModel -> {
+                    // TODO("Add args")
+                    if (item.action is ActionEventModel)
+                        findNavController().navigate(R.id.eventPageFragment)
+                    else findNavController().navigate(R.id.donationPageFragment)
+                }
+            }
+        }
+
         binding.recyclerListDashboard.layoutManager = LinearLayoutManager(context)
         binding.recyclerListDashboard.adapter = adapter
 
-        adapter.onClickListener = (object :
-            GenericAdapter.OnClickListener {
-            override fun onClick(position: Int, model: BaseModel) {
-                val action = DashboardFragmentDirections.actionDashboardFragmentToEventPageFragment()
-                action.id = model.id
-                findNavController().navigate(action)
-            }
-        })
         return binding.root
     }
 

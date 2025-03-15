@@ -27,7 +27,7 @@ class LoginFragment : Fragment(R.layout.fragment_login), View.OnClickListener {
         super.onCreate(savedInstanceState)
         loginVM = ViewModelProvider(this)[LoginVM::class.java]
 
-        if (loginVM.userLogedIn()) {
+        if (loginVM.userLogedIn() or true) {
             startActivity(Intent(context, FragmentControllerActivity::class.java))
         }
     }
@@ -44,12 +44,14 @@ class LoginFragment : Fragment(R.layout.fragment_login), View.OnClickListener {
                 } catch (e: Exception) {
                     Utilities.notify(context, getString(R.string.preencha_todos_os_campos))
                     if (binding.email.editText.text.toString().isBlank()) {
-                        binding.email.editText.
-                        setHintTextColor(requireContext().getColor(R.color.red))
+                        binding.email.editText.setHintTextColor(
+                            requireContext().getColor(R.color.red)
+                        )
                     }
                     if (binding.email.editText.text.toString().isBlank()) {
-                        binding.password.editText.
-                        setHintTextColor(requireContext().getColor(R.color.red))
+                        binding.password.editText.setHintTextColor(
+                            requireContext().getColor(R.color.red)
+                        )
                     }
                 }
             }

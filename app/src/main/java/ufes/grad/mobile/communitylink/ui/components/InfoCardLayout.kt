@@ -1,4 +1,4 @@
-package ufes.grad.mobile.communitylink.components
+package ufes.grad.mobile.communitylink.ui.components
 
 import android.content.Context
 import android.util.AttributeSet
@@ -33,7 +33,7 @@ class InfoCardLayout(context: Context, attrs: AttributeSet) : LinearLayout(conte
             customAttributesStyle.getBoolean(R.styleable.InfoCardLayout_show_alert, false)
         val show_button =
             customAttributesStyle.getBoolean(R.styleable.InfoCardLayout_cancel_button, false)
-        val tag = customAttributesStyle.getInt(R.styleable.InfoCardLayout_tag_type, 0)
+        val tag_type = customAttributesStyle.getInt(R.styleable.InfoCardLayout_tag_type, 0)
 
         customAttributesStyle.recycle()
         setValues(
@@ -46,7 +46,7 @@ class InfoCardLayout(context: Context, attrs: AttributeSet) : LinearLayout(conte
             second_description,
             show_alert,
             show_button,
-            tag
+            TagLayout.TagType.entries.toTypedArray()[tag_type]
         )
     }
 
@@ -60,7 +60,7 @@ class InfoCardLayout(context: Context, attrs: AttributeSet) : LinearLayout(conte
         second_description: String? = null,
         show_alert: Boolean = false,
         cancel_button: Boolean = false,
-        tag: Int = 0
+        tag_type: TagLayout.TagType = TagLayout.TagType.DEFAULT
     ) {
         if (project_name.isNullOrEmpty() || lower_text.isNullOrEmpty())
             binding.projectInfo.visibility = GONE
@@ -69,7 +69,7 @@ class InfoCardLayout(context: Context, attrs: AttributeSet) : LinearLayout(conte
             binding.lowerText.text = lower_text
         }
 
-        binding.tag.setType(tag)
+        binding.tag.setType(tag_type)
 
         if (!date.isNullOrEmpty()) binding.dateText.text = date
         else binding.dateText.visibility = GONE

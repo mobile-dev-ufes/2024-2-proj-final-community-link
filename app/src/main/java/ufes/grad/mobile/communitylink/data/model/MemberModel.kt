@@ -11,10 +11,6 @@ class MemberModel(
     val initDate: String = "",
     val finishDate: String = "",
     val isResponsible: Boolean = false,
-
-    @Serializable(with = UserSerializer::class)
-    val user: UserModel = UserModel(),
-
-    @Serializable(with = ProjectSerializer::class)
-    val project: ProjectModel = ProjectModel()
+    @Serializable(with = UserSerializer::class) val user: UserModel = UserModel(),
+    @Serializable(with = ProjectSerializer::class) val project: ProjectModel = ProjectModel()
 ) : BaseModel {}

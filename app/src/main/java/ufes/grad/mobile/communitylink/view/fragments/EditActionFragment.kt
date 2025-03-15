@@ -23,7 +23,7 @@ class EditActionFragment : Fragment(R.layout.fragment_edit_action), View.OnClick
     ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
         _binding = FragmentEditActionBinding.inflate(inflater, container, false)
-        //        TODO("Get action model")
+        // TODO("Get action model")
         return binding.root
     }
 
@@ -39,12 +39,12 @@ class EditActionFragment : Fragment(R.layout.fragment_edit_action), View.OnClick
             }
             binding.primaryRepresentative.id -> {
                 val popup = UserDataPopup(null, UserPopupType.USER_DATA_UPDATE)
-                //                TODO("Make popup functional")
+                // TODO("Make popup functional")
                 popup.show(childFragmentManager, "")
             }
             binding.secondaryRepresentative.id -> {
                 val popup = UserDataPopup(null, UserPopupType.USER_DATA_UPDATE)
-                //                TODO("Make popup functional")
+                // TODO("Make popup functional")
                 popup.show(childFragmentManager, "")
             }
         }

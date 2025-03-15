@@ -1,8 +1,6 @@
 package ufes.grad.mobile.communitylink.view.fragments
 
 import android.os.Bundle
-import android.text.InputType
-import android.text.method.PasswordTransformationMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnClickListener
@@ -13,13 +11,13 @@ import ufes.grad.mobile.communitylink.R
 import ufes.grad.mobile.communitylink.databinding.FragmentForgotPasswordBinding
 import ufes.grad.mobile.communitylink.utils.Utilities
 import ufes.grad.mobile.communitylink.viewmodel.ForgotPasswordVM
-import ufes.grad.mobile.communitylink.viewmodel.SignupVM
 
-class ForgotPasswordFragment : Fragment(R.layout.fragment_forgot_password), OnClickListener{
+class ForgotPasswordFragment : Fragment(R.layout.fragment_forgot_password), OnClickListener {
 
     private var _binding: FragmentForgotPasswordBinding? = null
     private val binding
         get() = _binding!!
+
     private lateinit var forgotPasswordVM: ForgotPasswordVM
 
     override fun onCreateView(
@@ -41,7 +39,7 @@ class ForgotPasswordFragment : Fragment(R.layout.fragment_forgot_password), OnCl
     }
 
     override fun onClick(p0: View?) {
-        when (p0?.id){
+        when (p0?.id) {
             R.id.email_button -> {
                 if (binding.email.editText.text.toString().isBlank()) {
                     binding.email.editText.setHintTextColor(requireContext().getColor(R.color.red))

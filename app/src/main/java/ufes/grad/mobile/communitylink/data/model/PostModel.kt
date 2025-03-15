@@ -9,7 +9,5 @@ class PostModel(
     val text: String = "",
     val date: String = "",
     val media: String = "",
-
-    @Serializable(with = ActionSerializer::class)
-    val action: ActionModel = ActionDonationModel()
+    @Serializable(with = ActionSerializer::class) val action: ActionModel = ActionDonationModel()
 ) : BaseModel {}

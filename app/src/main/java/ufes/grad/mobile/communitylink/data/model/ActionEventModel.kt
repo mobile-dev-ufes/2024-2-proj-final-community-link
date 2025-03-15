@@ -15,25 +15,15 @@ class ActionEventModel(
     override val initDate: String = "",
     override val finishDate: String = "",
     override val status: Boolean = false,
-
-    override val posts: List<
-        @Serializable(with = PostSerializer::class)
-        PostModel
-    > = emptyList(),
-
+    override val posts: List<@Serializable(with = PostSerializer::class) PostModel> = emptyList(),
     @Serializable(with = ProjectSerializer::class)
     override val project: ProjectModel = ProjectModel(),
-
     @Serializable(with = UserSerializer::class)
     override val primaryRepresentative: UserModel = UserModel(),
-
     @Serializable(with = UserSerializer::class)
     override val secondaryRepresentative: UserModel? = null,
-
     val places: List<String> = emptyList(),
-
-    val volunteerSlots: List<
-        @Serializable(with = VolunteerSlotSerializer::class)
-        VolunteerSlotModel
-    > = emptyList()
+    val volunteerSlots:
+        List<@Serializable(with = VolunteerSlotSerializer::class) VolunteerSlotModel> =
+        emptyList()
 ) : ActionModel {}

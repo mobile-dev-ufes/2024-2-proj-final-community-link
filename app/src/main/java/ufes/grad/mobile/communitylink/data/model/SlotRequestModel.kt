@@ -9,10 +9,7 @@ class SlotRequestModel(
     override var id: String = "",
     val date: String,
     val isSelected: Boolean = false,
-
     @Serializable(with = VolunteerSlotSerializer::class)
     val slot: VolunteerSlotModel = VolunteerSlotModel(),
-
-    @Serializable(with = UserSerializer::class)
-    val user: UserModel = UserModel()
+    @Serializable(with = UserSerializer::class) val user: UserModel = UserModel()
 ) : BaseModel {}

@@ -32,7 +32,9 @@ class CreateActionFragment : Fragment(R.layout.fragment_create_action), View.OnC
     override fun onClick(v: View) {
         when (v.id) {
             binding.createButton.id -> {
-                TODO("onClick 'CRIAR AÇÃO'")
+                TODO("Create and register action")
+                // A ação que acabou de ser criada deve ser ativada primeiro, ou seja, o campo
+                // status deve estar false
             }
         }
     }
