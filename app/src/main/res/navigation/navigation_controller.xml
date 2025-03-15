@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_dashboardFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_eventPageFragment"
+            app:destination="@id/eventPageFragment" />
     </fragment>
 
     <fragment
@@ -90,12 +93,26 @@
         android:name="ufes.grad.mobile.communitylink.view.fragments.CreateProjectFragment"
         android:label="@string/create_new_project"
         tools:layout="@layout/fragment_create_project" />
-
     <fragment
         android:id="@+id/pendingActionsFragment"
         android:name="ufes.grad.mobile.communitylink.view.fragments.PendingActionsFragment"
         android:label="@string/pending_actions"
         tools:layout="@layout/fragment_pending_actions" />
-
-
+    <fragment
+        android:id="@+id/eventPageFragment"
+        android:name="ufes.grad.mobile.communitylink.view.fragments.EventPageFragment"
+        android:label="@string/event"
+        tools:layout="@layout/fragment_event_page" >
+        <action
+            android:id="@+id/action_eventPageFragment_to_projectPageFragment"
+            app:destination="@id/projectPageFragment" />
+        <argument
+            android:name="id"
+            app:argType="string"
+            android:defaultValue='""' />
+        <argument
+            android:name="edit"
+            app:argType="boolean"
+            android:defaultValue="false" />
+    </fragment>
 </navigation>

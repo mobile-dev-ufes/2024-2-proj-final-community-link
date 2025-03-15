@@ -35,7 +35,7 @@ class LoginFragment : Fragment(R.layout.fragment_login), View.OnClickListener {
     override fun onClick(v: View) {
         when (v.id) {
             binding.loginButton.id -> {
-                val email = binding.email.editText.text.toString()
+                val email = binding.email.editText.text.toString().trim()
                 val password = binding.password.editText.text.toString()
                 try {
                     loginVM.loginUser(email, password).addOnSuccessListener {
@@ -43,6 +43,14 @@ class LoginFragment : Fragment(R.layout.fragment_login), View.OnClickListener {
                     }
                 } catch (e: Exception) {
                     Utilities.notify(context, getString(R.string.preencha_todos_os_campos))
+                    if (binding.email.editText.text.toString().isBlank()) {
+                        binding.email.editText.
+                        setHintTextColor(requireContext().getColor(R.color.red))
+                    }
+                    if (binding.email.editText.text.toString().isBlank()) {
+                        binding.password.editText.
+                        setHintTextColor(requireContext().getColor(R.color.red))
+                    }
                 }
             }
             binding.registerButton.id -> {

@@ -17,7 +17,7 @@ class LoginVM(application: Application) : AndroidViewModel(application) {
     fun loginUser(email: String, password: String): Task<AuthResult?> {
         val app = getApplication<Application>()
         if (email.isNotBlank() and password.isNotBlank()) {
-            return auth.signInWithEmailAndPassword(email, password).addOnFailureListener {
+            return auth.signInWithEmailAndPassword(email.trim(), password).addOnFailureListener {
                 var msg = app.getString(R.string.login_error_0)
                 if (it is FirebaseAuthInvalidUserException) {
                     msg = app.getString(R.string.login_error_1)

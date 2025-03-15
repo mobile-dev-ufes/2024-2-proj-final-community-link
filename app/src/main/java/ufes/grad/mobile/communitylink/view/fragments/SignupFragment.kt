@@ -18,7 +18,6 @@ import ufes.grad.mobile.communitylink.data.model.UserModel
 import ufes.grad.mobile.communitylink.databinding.FragmentRegisterBinding
 import ufes.grad.mobile.communitylink.utils.Utilities
 import ufes.grad.mobile.communitylink.viewmodel.SignupVM
-import java.util.Date
 
 class SignupFragment : Fragment(R.layout.fragment_register), OnClickListener {
 
@@ -36,7 +35,7 @@ class SignupFragment : Fragment(R.layout.fragment_register), OnClickListener {
     override fun onClick(v: View) {
         when (v.id) {
             R.id.create_button -> {
-                val email = binding.email.editText.text.toString()
+                val email = binding.email.editText.text.toString().trim()
                 val password = binding.password.editText.text.toString()
                 val confirmPassword = binding.repeat.editText.text.toString()
                 if (password != confirmPassword) {
@@ -47,12 +46,12 @@ class SignupFragment : Fragment(R.layout.fragment_register), OnClickListener {
                 }
 
                 val user = UserModel(
-                    name = binding.name.editText.text.toString(),
-                    email = binding.email.editText.text.toString(),
+                    name = binding.name.editText.text.toString().trim(),
+                    email = binding.email.editText.text.toString().trim(),
                     cpf = binding.cpf.editText.text.toString(),
-                    sex = binding.sex.editText.text.toString(),
+                    sex = binding.sex.editText.text.toString().trim(),
                     dob = binding.buttonDate.text.toString(),
-                    address = binding.address.editText.text.toString(),
+                    address = binding.address.editText.text.toString().trim(),
                     phone = binding.phone.editText.text.toString()
                 )
 
@@ -60,7 +59,7 @@ class SignupFragment : Fragment(R.layout.fragment_register), OnClickListener {
                     signupVM.registerNewUser(email, password, user).addOnSuccessListener {
                         Utilities.loadFragment(requireActivity(), LoginFragment())
                     }
-                } catch (e: IllegalArgumentException) {
+                } catch (_: IllegalArgumentException) {
                     Utilities.notify(context, getString(R.string.preencha_todos_os_campos))
                     showMissingFields()
                 }

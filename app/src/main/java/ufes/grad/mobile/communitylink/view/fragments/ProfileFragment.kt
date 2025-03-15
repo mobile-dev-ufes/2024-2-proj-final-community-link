@@ -148,7 +148,8 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), View.OnClickListene
                         sex = binding.sex.editText.text.toString(),
                         dob = binding.buttonDate.text.toString(),
                         address = binding.addressForm.editText.text.toString(),
-                        phone = binding.phone.editText.text.toString()
+                        phone = binding.phone.editText.text.toString(),
+                        email = binding.email.editText.text.toString(),
                     )
                 )
             }

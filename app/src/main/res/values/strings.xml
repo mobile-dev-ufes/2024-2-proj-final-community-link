@@ -14,19 +14,11 @@
     <string name="address">Endereço</string>
     <string name="phone">Telefone</string>
     <string name="cpf">CPF</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="dashboard">Dashboard</string>
     <string name="explorar">Explorar</string>
     <string name="perfil">Perfil</string>
-    <string name="redefine_password_text_1">Insira seu e-mail para receber o código de redefinição de senha.</string>
-    <string name="redefine_password_text_2">Insira o código recebido para redefinir sua senha.</string>
+    <string name="redefine_password_text_1">Insira seu e-mail para receber o link de redefinição de senha.</string>
     <string name="send_email">Enviar e-mail</string>
-    <string name="check_code">Verificar código</string>
-    <string name="redefine_password_text_3">Insira e confirme a sua nova senha.</string>
-    <string name="new_password">Nova senha</string>
-    <string name="confirm_password">Confirmar senha</string>
-    <string name="redefine_password">Redefinir senha</string>
-    <string name="code">Código</string>
     <string name="preencha_todos_os_campos">Preencha todos os campos!</string>
     <string name="verifique_email">Verifique seu endereço de e-mail para continuar</string>
     <string name="login_error_0">Houve algum problema no login, tente novamente</string>
@@ -89,7 +81,6 @@
     <string name="selecione_uma_data">Selecione uma Data</string>
     <string name="delete_goal_content_popup">Você realmente deseja excluir a meta?</string>
     <string name="make_donation_monetary_value">Se deseja doar um valor monetário:</string>
-    <string name="make_donation_object">Se deseja doar objetos:</string>
     <string name="qtd">Qtd.</string>
     <string name="object">Objeto</string>
     <string name="monetary_value_hint">R$ X.XXXX,XX</string>
@@ -163,4 +154,6 @@
     <string name="end_date">Data de fim</string>
     <string name="start_date">Data de início</string>
     <string name="volunteer_slot">Vaga de voluntário</string>
+    <string name="email_sent">E-mail enviado com sucesso!</string>
+    <string name="make_donation_object">Se deseja doar um objeto:</string>
 </resources>

@@ -40,7 +40,9 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
         adapter.onClickListener = (object :
             GenericAdapter.OnClickListener {
             override fun onClick(position: Int, model: BaseModel) {
-                findNavController().navigate(R.id.projectPageFragment)
+                val action = DashboardFragmentDirections.actionDashboardFragmentToEventPageFragment()
+                action.id = model.id
+                findNavController().navigate(action)
             }
         })
         return binding.root
