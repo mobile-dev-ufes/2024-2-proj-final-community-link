@@ -14,4 +14,20 @@ class ProjectDataModel(
     val changeDate: String = "",
     val underReview: Boolean = false,
     val pixKey: String = "",
-) : BaseModel {}
+) : BaseModel {
+
+    override fun toMap(): Map<String, Any?> {
+        return mapOf(
+            "id" to id,
+            "name" to name,
+            "description" to description,
+            "tags" to tags,
+            "address" to address,
+            "CNPJ" to CNPJ,
+            "logo" to logo,
+            "changeDate" to changeDate,
+            "underReview" to underReview,
+            "pixKey" to pixKey,
+        )
+    }
+}

@@ -15,7 +15,7 @@ open class BaseSerializer(val dao: BaseDAO) : KSerializer<BaseModel> {
         PrimitiveSerialDescriptor("BaseModel", PrimitiveKind.STRING)
 
     override fun serialize(encoder: Encoder, value: BaseModel) {
-        encoder.encodeString(value.id)
+        throw IllegalStateException("Esta função não deve ser chamada neste ponto.")
     }
 
     override fun deserialize(decoder: Decoder): BaseModel {

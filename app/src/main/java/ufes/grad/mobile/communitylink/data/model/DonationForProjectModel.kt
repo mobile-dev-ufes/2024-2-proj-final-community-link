@@ -11,5 +11,20 @@ class DonationForProjectModel(
     override val status: DonationStatusEnum = DonationStatusEnum.PENDING,
     override val date: String = "",
     override val confirmationImage: String = "",
-    @Serializable(with = ProjectSerializer::class) val project: ProjectModel = ProjectModel()
-) : DonationModel {}
+
+    @Serializable(with = ProjectSerializer::class)
+    val project: ProjectModel = ProjectModel()
+) : DonationModel {
+
+    override fun toMap(): Map<String, Any?> {
+        return mapOf(
+            "id" to id,
+            "value" to value,
+            "objectName" to objectName,
+            "status" to status,
+            "date" to date,
+            "confirmationImage" to confirmationImage,
+            "project" to project.id
+        )
+    }
+}

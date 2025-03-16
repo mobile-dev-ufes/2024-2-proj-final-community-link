@@ -13,8 +13,31 @@ class VolunteerSlotModel(
     val place: String = "",
     val notes: String = "",
     val status: ParticipationStatusEnum = ParticipationStatusEnum.ON_TIME,
-    @Serializable(with = ActionSerializer::class) val action: ActionEventModel = ActionEventModel(),
-    @Serializable(with = SlotRequestSerializer::class) val filledBy: SlotRequestModel? = null,
-    val slots: List<@Serializable(with = SlotRequestSerializer::class) SlotRequestModel> =
-        emptyList()
-) : BaseModel {}
+
+    @Serializable(with = ActionSerializer::class)
+    val action: ActionEventModel = ActionEventModel(),
+
+    @Serializable(with = SlotRequestSerializer::class)
+    val filledBy: SlotRequestModel? = null,
+
+    val slots: List<
+        @Serializable(with = SlotRequestSerializer::class)
+        SlotRequestModel
+    > = emptyList()
+) : BaseModel {
+
+    override fun toMap(): Map<String, Any?> {
+        return mapOf(
+            "id" to id,
+            "position" to position,
+            "initDate" to initDate,
+            "finishDate" to finishDate,
+            "place" to place,
+            "notes" to notes,
+            "status" to status,
+            "action" to action.id,
+            "filledBy" to filledBy?.id,
+            "slots" to slots.map { it.id }
+        )
+    }
+}

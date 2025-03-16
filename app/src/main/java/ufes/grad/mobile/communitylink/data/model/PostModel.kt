@@ -9,5 +9,18 @@ class PostModel(
     val text: String = "",
     val date: String = "",
     val media: String = "",
-    @Serializable(with = ActionSerializer::class) val action: ActionModel = ActionDonationModel()
-) : BaseModel {}
+
+    @Serializable(with = ActionSerializer::class)
+    val action: ActionModel = ActionDonationModel()
+) : BaseModel {
+
+    override fun toMap(): Map<String, Any?> {
+        return mapOf(
+            "id" to id,
+            "text" to text,
+            "date" to date,
+            "media" to media,
+            "action" to action.id
+        )
+    }
+}

@@ -3,6 +3,7 @@ package ufes.grad.mobile.communitylink.data.dao
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
 import ufes.grad.mobile.communitylink.data.model.DonationForProjectModel
+import ufes.grad.mobile.communitylink.data.serializer.JsonManager
 
 object DonationForProjectDAO : BaseDAO() {
 
@@ -12,6 +13,6 @@ object DonationForProjectDAO : BaseDAO() {
     }
 
     override suspend fun findById(id: String): DonationForProjectModel? {
-        return findById(id, DonationForProjectModel::class.java)
+        return findById(id, JsonManager::decode)
     }
 }

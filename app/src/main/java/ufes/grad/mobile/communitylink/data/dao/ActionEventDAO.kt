@@ -3,6 +3,7 @@ package ufes.grad.mobile.communitylink.data.dao
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
 import ufes.grad.mobile.communitylink.data.model.ActionEventModel
+import ufes.grad.mobile.communitylink.data.serializer.JsonManager
 
 object ActionEventDAO : BaseDAO() {
 
@@ -12,6 +13,6 @@ object ActionEventDAO : BaseDAO() {
     }
 
     override suspend fun findById(id: String): ActionEventModel? {
-        return findById(id, ActionEventModel::class.java)
+        return findById(id, JsonManager::decode)
     }
 }

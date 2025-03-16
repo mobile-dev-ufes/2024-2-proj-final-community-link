@@ -3,6 +3,7 @@ package ufes.grad.mobile.communitylink.data.dao
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
 import ufes.grad.mobile.communitylink.data.model.SlotRequestModel
+import ufes.grad.mobile.communitylink.data.serializer.JsonManager
 
 object SlotRequestDAO : BaseDAO() {
 
@@ -12,6 +13,6 @@ object SlotRequestDAO : BaseDAO() {
     }
 
     override suspend fun findById(id: String): SlotRequestModel? {
-        return findById(id, SlotRequestModel::class.java)
+        return findById(id, JsonManager::decode)
     }
 }

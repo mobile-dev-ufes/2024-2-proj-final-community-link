@@ -3,6 +3,7 @@ package ufes.grad.mobile.communitylink.data.dao
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
 import ufes.grad.mobile.communitylink.data.model.MemberModel
+import ufes.grad.mobile.communitylink.data.serializer.JsonManager
 
 object MemberDAO : BaseDAO() {
 
@@ -12,6 +13,6 @@ object MemberDAO : BaseDAO() {
     }
 
     override suspend fun findById(id: String): MemberModel? {
-        return findById(id, MemberModel::class.java)
+        return findById(id, JsonManager::decode)
     }
 }

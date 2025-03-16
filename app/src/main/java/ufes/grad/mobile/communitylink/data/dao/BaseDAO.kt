@@ -1,6 +1,7 @@
 package ufes.grad.mobile.communitylink.data.dao
 
 import com.google.firebase.firestore.CollectionReference
+import com.google.firebase.firestore.DocumentSnapshot
 import kotlinx.coroutines.tasks.await
 import ufes.grad.mobile.communitylink.data.model.BaseModel
 
@@ -9,7 +10,8 @@ abstract class BaseDAO {
 
     open suspend fun insert(model: BaseModel): Boolean {
         return try {
-            model.id = getCollection().add(model).await().id
+            model.id = getCollection().add(model.toMap()).await().id
+            update(model)
             true
         } catch (e: Exception) {
             false
@@ -18,7 +20,7 @@ abstract class BaseDAO {
 
     open suspend fun update(model: BaseModel): Boolean {
         return try {
-            getCollection().document(model.id).set(model).await()
+            getCollection().document(model.id).set(model.toMap()).await()
             true
         } catch (e: Exception) {
             false
@@ -34,10 +36,10 @@ abstract class BaseDAO {
         }
     }
 
-    protected suspend fun <T> findById(id: String, clazz: Class<T>): T? {
+    protected open suspend fun <T> findById(id: String, decode: (DocumentSnapshot) -> T): T? {
         return try {
-            val model = getCollection().document(id).get().await()
-            model.toObject(clazz)
+            val document = getCollection().document(id).get().await()
+            decode(document)
         } catch (e: Exception) {
             null
         }
