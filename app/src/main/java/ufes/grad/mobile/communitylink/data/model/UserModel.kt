@@ -9,38 +9,38 @@ import ufes.grad.mobile.communitylink.data.serializer.SlotRequestSerializer
 @Serializable
 class UserModel(
     override var id: String = "",
-    val name: String = "",
-    val email: String = "",
-    val cpf: String = "",
-    val sex: String = "",
-    val dob: String = "",
-    val address: String = "",
-    val phone: String = "",
+    var name: String = "",
+    var email: String = "",
+    var cpf: String = "",
+    var sex: String = "",
+    var dob: String = "",
+    var address: String = "",
+    var phone: String = "",
 
-    val primaryRepresentative: List<
+    val primaryRepresentative: MutableList<
         @Serializable(with = ActionSerializer::class)
         ActionModel
-    > = emptyList(),
+    > = mutableListOf(),
 
-    val secondaryRepresentative: List<
+    val secondaryRepresentative: MutableList<
         @Serializable(with = ActionSerializer::class)
         ActionModel
-    > = emptyList(),
+    > = mutableListOf(),
 
-    val memberTo: List<
+    val memberTo: MutableList<
         @Serializable(with = MemberSerializer::class)
         MemberModel
-    > = emptyList(),
+    > = mutableListOf(),
 
-    val slotRequests: List<
+    val slotRequests: MutableList<
         @Serializable(with = SlotRequestSerializer::class)
         SlotRequestModel
-    > = emptyList(),
+    > = mutableListOf(),
 
-    val donations: List<
+    val donations: MutableList<
         @Serializable(with = DonationSerializer::class)
         DonationModel
-    > = emptyList()
+    > = mutableListOf()
 ) : BaseModel {
 
     override fun toMap(): Map<String, Any?> {

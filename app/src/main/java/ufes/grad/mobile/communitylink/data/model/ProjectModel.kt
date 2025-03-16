@@ -9,28 +9,28 @@ import ufes.grad.mobile.communitylink.data.serializer.ProjectDataSerializer
 @Serializable
 class ProjectModel(
     override var id: String = "",
-    val status: ProjectStatusEnum = ProjectStatusEnum.ACCEPTED,
+    var status: ProjectStatusEnum = ProjectStatusEnum.PENDING,
 
     @Serializable(with = ProjectDataSerializer::class)
-    val currentData: ProjectDataModel = ProjectDataModel(),
+    var currentData: ProjectDataModel = ProjectDataModel(),
 
     @Serializable(with = ProjectDataSerializer::class)
-    val pendingData: ProjectDataModel? = null,
+    var pendingData: ProjectDataModel? = null,
 
-    val actions: List<
+    val actions: MutableList<
         @Serializable(with = ActionSerializer::class)
         ActionModel
-    > = emptyList(),
+    > = mutableListOf(),
 
-    val members: List<
+    val members: MutableList<
         @Serializable(with = MemberSerializer::class)
         MemberModel
-    > = emptyList(),
+    > = mutableListOf(),
 
-    val donations: List<
+    val donations: MutableList<
         @Serializable(with = DonationSerializer::class)
         DonationForProjectModel
-    > = emptyList()
+    > = mutableListOf()
 ) : BaseModel {
 
     override fun toMap(): Map<String, Any?> {
