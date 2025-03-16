@@ -11,8 +11,11 @@ import androidx.fragment.app.DialogFragment
 import ufes.grad.mobile.communitylink.R
 import ufes.grad.mobile.communitylink.databinding.PopupBaseBinding
 
-open class BasePopup(var type: PopupType, private val layout: Int) :
-    DialogFragment(), View.OnClickListener {
+open class BasePopup(
+    var type: PopupType,
+    private val layout: Int,
+    private val is_purple: Boolean = true
+) : DialogFragment(), View.OnClickListener {
 
     /**
      * Possible types of popup lower buttons:
@@ -30,10 +33,14 @@ open class BasePopup(var type: PopupType, private val layout: Int) :
     private val binding
         get() = _binding!!
 
-    init {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         setCancelable(false)
         dialog?.window?.requestFeature(Window.FEATURE_NO_TITLE)
         dialog?.setCanceledOnTouchOutside(true)
+        val params = dialog?.window?.attributes
+        params?.width = (resources.displayMetrics.widthPixels * 0.9).toInt()
+        dialog?.window?.attributes = params
     }
 
     private fun setupDoubleButtons() {
@@ -53,14 +60,19 @@ open class BasePopup(var type: PopupType, private val layout: Int) :
 
     /** Sets the possible button combinations for a popup. */
     fun setupPopupButtons() {
+        if (!is_purple) {
+            binding.closeButton.setTextColor(requireContext().getColor(R.color.blue))
+            binding.cancelButton.setTextColor(requireContext().getColor(R.color.blue))
+        }
+
         when (type) {
             PopupType.ONE_BUTTON -> {
                 binding.closeButton.setOnClickListener(this)
                 binding.buttonParent.visibility = GONE
+                binding.closeButton.visibility = VISIBLE
             }
             PopupType.TWO_BUTTON -> {
                 binding.closeButton.visibility = GONE
-
                 setupDoubleButtons()
             }
             PopupType.REMOVE_BUTTON -> {
@@ -68,7 +80,6 @@ open class BasePopup(var type: PopupType, private val layout: Int) :
                 binding.confirmButton.setBackgroundColor(requireContext().getColor(R.color.red))
                 binding.confirmButton.text = getString(R.string.remove)
                 binding.cancelButton.text = getString(R.string.close)
-
                 setupDoubleButtons()
             }
         }
@@ -97,26 +108,29 @@ open class BasePopup(var type: PopupType, private val layout: Int) :
 
     /** Method executed when the 'Confirm' button is pressed on the popup'. */
     var onConfirm: () -> Any = {}
+    var onConfirmDismiss: Boolean = true
 
     /** Method executed when the 'Cancel' button is pressed on the popup'. */
     var onCancel: () -> Any = {}
+    var onCancelDismiss: Boolean = true
 
     /** Method executed when the 'Close' button is pressed on the popup'. */
     var onClose: () -> Any = {}
+    var onCloseDismiss: Boolean = true
 
     override fun onClick(v: View) {
         when (v.id) {
             binding.confirmButton.id -> {
                 onConfirm()
-                dismiss()
+                if (onConfirmDismiss) dismiss()
             }
             binding.cancelButton.id -> {
                 onCancel()
-                dismiss()
+                if (onCancelDismiss) dismiss()
             }
             binding.closeButton.id -> {
                 onClose()
-                dismiss()
+                if (onCloseDismiss) dismiss()
             }
         }
     }

@@ -7,12 +7,15 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.auth.FirebaseAuth
 import ufes.grad.mobile.communitylink.R
 import ufes.grad.mobile.communitylink.data.database.StaticData
 import ufes.grad.mobile.communitylink.data.model.ActionDonationModel
 import ufes.grad.mobile.communitylink.data.model.ActionEventModel
+import ufes.grad.mobile.communitylink.data.model.ActionModel
 import ufes.grad.mobile.communitylink.data.model.GoalModel
 import ufes.grad.mobile.communitylink.data.model.PostModel
+import ufes.grad.mobile.communitylink.data.model.UserModel
 import ufes.grad.mobile.communitylink.databinding.FragmentDashboardBinding
 import ufes.grad.mobile.communitylink.view.adapter.ListInfoCardAdapter
 
@@ -24,7 +27,10 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
 
     private var adapter: ListInfoCardAdapter = ListInfoCardAdapter()
 
-    init {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        // TODO("Get from BD")
         adapter.updateList(StaticData.eventActions + StaticData.donationActions)
     }
 
@@ -36,33 +42,87 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
         super.onCreateView(inflater, container, savedInstanceState)
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
 
+        setupAdapter()
+
+        return binding.root
+    }
+
+    fun setupAdapter() {
         adapter.onItemClickListener = { position ->
             val item = adapter.list[position]
+            // TODO("Get user model")
+            val userId = FirebaseAuth.getInstance().currentUser?.uid
+            val user: UserModel? = null
+
             when (item) {
                 is ActionDonationModel,
                 is GoalModel -> {
-                    // TODO("Add args")
-                    findNavController().navigate(R.id.donationPageFragment)
+                    val donation =
+                        DashboardFragmentDirections.actionDashboardFragmentToDonationPageFragment()
+                    donation.id = item.id
+
+                    val action: ActionModel =
+                        if (item is GoalModel) item.actionDonation
+                        else (item as ActionDonationModel)
+                    donation.edit =
+                        action.primaryRepresentative.id == user?.id ||
+                            action.secondaryRepresentative?.id == user?.id
+
+                    findNavController().navigate(donation)
                 }
                 is ActionEventModel -> {
                     val action =
                         DashboardFragmentDirections.actionDashboardFragmentToEventPageFragment()
                     action.id = item.id
+                    action.edit =
+                        item.primaryRepresentative.id == user?.id ||
+                            item.secondaryRepresentative?.id == user?.id
                     findNavController().navigate(action)
                 }
                 is PostModel -> {
-                    // TODO("Add args")
-                    if (item.action is ActionEventModel)
-                        findNavController().navigate(R.id.eventPageFragment)
-                    else findNavController().navigate(R.id.donationPageFragment)
+                    if (item.action is ActionEventModel) {
+                        val action =
+                            DashboardFragmentDirections.actionDashboardFragmentToEventPageFragment()
+                        action.id = item.id
+                        action.edit =
+                            item.action.primaryRepresentative.id == user?.id ||
+                                item.action.secondaryRepresentative?.id == user?.id
+                        findNavController().navigate(action)
+                    } else {
+                        val donation =
+                            DashboardFragmentDirections
+                                .actionDashboardFragmentToDonationPageFragment()
+                        donation.id = item.id
+                        donation.edit =
+                            item.action.primaryRepresentative.id == user?.id ||
+                                item.action.secondaryRepresentative?.id == user?.id
+                        findNavController().navigate(donation)
+                    }
                 }
             }
         }
 
+        adapter.onProjectClickListener = { position ->
+            val item = adapter.list[position]
+            val project = DashboardFragmentDirections.actionDashboardFragmentToProjectPageFragment()
+
+            when (item) {
+                is ActionDonationModel,
+                is ActionEventModel -> {
+                    project.id = item.project.id
+                }
+                is GoalModel -> {
+                    project.id = item.actionDonation.project.id
+                }
+                is PostModel -> {
+                    project.id = item.action.project.id
+                }
+            }
+            findNavController().navigate(project)
+        }
+
         binding.recyclerListDashboard.layoutManager = LinearLayoutManager(context)
         binding.recyclerListDashboard.adapter = adapter
-
-        return binding.root
     }
 
     override fun onDestroyView() {

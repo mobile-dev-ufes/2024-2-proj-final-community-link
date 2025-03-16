@@ -9,33 +9,23 @@ import ufes.grad.mobile.communitylink.data.serializer.VolunteerSlotSerializer
 @Serializable
 class ActionEventModel(
     override var id: String = "",
-    override val name: String = "",
-    override val description: String = "",
-    override val tags: List<String> = emptyList(),
-    override val initDate: String = "",
-    override val finishDate: String = "",
-    override val status: Boolean = false,
-
-    override val posts: List<
-        @Serializable(with = PostSerializer::class)
-        PostModel
-    > = emptyList(),
-
+    override var name: String = "",
+    override var description: String = "",
+    override var tags: List<String> = emptyList(),
+    override var initDate: String = "",
+    override var finishDate: String = "",
+    override var status: Boolean = false,
+    override var posts: List<@Serializable(with = PostSerializer::class) PostModel> = emptyList(),
     @Serializable(with = ProjectSerializer::class)
-    override val project: ProjectModel = ProjectModel(),
-
+    override var project: ProjectModel = ProjectModel(),
     @Serializable(with = UserSerializer::class)
-    override val primaryRepresentative: UserModel = UserModel(),
-
+    override var primaryRepresentative: UserModel = UserModel(),
     @Serializable(with = UserSerializer::class)
-    override val secondaryRepresentative: UserModel? = null,
-
-    val places: List<String> = emptyList(),
-
-    val volunteerSlots: List<
-        @Serializable(with = VolunteerSlotSerializer::class)
-        VolunteerSlotModel
-    > = emptyList()
+    override var secondaryRepresentative: UserModel? = null,
+    var places: List<String> = emptyList(),
+    var volunteerSlots:
+        List<@Serializable(with = VolunteerSlotSerializer::class) VolunteerSlotModel> =
+        emptyList()
 ) : ActionModel {
 
     override fun toMap(): Map<String, Any?> {

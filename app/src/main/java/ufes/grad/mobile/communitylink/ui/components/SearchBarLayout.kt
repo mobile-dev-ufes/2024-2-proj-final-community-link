@@ -3,6 +3,8 @@ package ufes.grad.mobile.communitylink.ui.components
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.widget.EditText
+import android.widget.ImageButton
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.res.ResourcesCompat
 import ufes.grad.mobile.communitylink.R
@@ -10,6 +12,9 @@ import ufes.grad.mobile.communitylink.databinding.LayoutSearchBarBinding
 
 class SearchBarLayout(context: Context, attrs: AttributeSet) : ConstraintLayout(context, attrs) {
     private var binding = LayoutSearchBarBinding.inflate(LayoutInflater.from(context), this, true)
+
+    val clearButton: ImageButton = binding.x
+    val editText: EditText = binding.text
 
     init {
         setAttributes(context, attrs)
@@ -33,9 +38,5 @@ class SearchBarLayout(context: Context, attrs: AttributeSet) : ConstraintLayout(
                 null
             )
         binding.main.background = (style)
-    }
-
-    fun toggleX(state: Boolean) {
-        binding.xParent.visibility = if (state) GONE else VISIBLE
     }
 }

@@ -17,15 +17,14 @@ class ListInfoCardViewHolder(
     private val binding_: LayoutInfoCardBinding,
     private val onItemClickListener: (Int) -> Unit,
     private val onButtonClickListener: (Int) -> Unit,
+    private val onProjectClickListener: (Int) -> Unit,
     private val content: ListInfoCardAdapter.InfoCardContent
 ) : GenericViewHolder(binding_) {
 
     init {
         binding_.cancelButton.setOnClickListener { onButtonClickListener(adapterPosition) }
-        //        binding_.background.setOnClickListener {
-        //            onItemClickListener(adapterPosition)
-        //        }
-        itemView.setOnClickListener { onItemClickListener(adapterPosition) }
+        binding_.content.setOnClickListener { onItemClickListener(adapterPosition) }
+        binding_.projectInfo.setOnClickListener { onProjectClickListener(adapterPosition) }
     }
 
     override fun <T> bindVH(model_: BaseModel) {
@@ -68,7 +67,6 @@ class ListInfoCardViewHolder(
 
         binding.projectText.text = model.actionDonation.project.currentData.name
         // TODO("Set project image")
-        //
         // binding.projectImage.setImageDrawable(model.actionDonation.project.currentData.logo)
 
         // TODO("Set lower text represent what the project is doing")
@@ -102,6 +100,8 @@ class ListInfoCardViewHolder(
         binding.dateText.text = model.initDate
         binding.nameText.text = model.name
         binding.descriptionText.text = model.description
+
+        binding.postImage.visibility = GONE
 
         if (content != ListInfoCardAdapter.InfoCardContent.PAST) {
             binding.secondDescriptionText.visibility = GONE

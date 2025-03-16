@@ -32,7 +32,7 @@ class FormsLayout(context: Context, attrs: AttributeSet) : LinearLayout(context,
         val hint = customAttributesStyle.getString(R.styleable.FormsLayout_forms_hint_text)
         val demand = customAttributesStyle.getBoolean(R.styleable.FormsLayout_forms_demand, false)
         val max_length =
-            customAttributesStyle.getInt(R.styleable.FormsLayout_forms_maximum_lenght, 140)
+            customAttributesStyle.getInt(R.styleable.FormsLayout_forms_maximum_length, 140)
         val input_type = customAttributesStyle.getInt(R.styleable.FormsLayout_forms_input_type, 1)
         val box_size =
             customAttributesStyle.getDimension(R.styleable.FormsLayout_forms_box_size, 0.0f)
@@ -50,7 +50,7 @@ class FormsLayout(context: Context, attrs: AttributeSet) : LinearLayout(context,
         max_length: Int,
         title_color: Int,
         box_size: Float = 0.0f,
-        margin: Boolean
+        margin: Boolean = true
     ) {
         titleText.setTextColor(title_color)
         titleText.text = if (demand) "$title*" else title

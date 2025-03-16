@@ -11,12 +11,14 @@ object JsonManager {
     val json = Json { ignoreUnknownKeys = true }
 
     inline fun <reified T> decode(document: DocumentSnapshot): T {
-        val data: Map<String, JsonElement>? = document.data?.mapValues { entry ->
-            when (val value = entry.value) {
-                is List<*> -> JsonArray(value.filterIsInstance<String>().map { JsonPrimitive(it) })
-                else -> JsonPrimitive(value?.toString())
+        val data: Map<String, JsonElement>? =
+            document.data?.mapValues { entry ->
+                when (val value = entry.value) {
+                    is List<*> ->
+                        JsonArray(value.filterIsInstance<String>().map { JsonPrimitive(it) })
+                    else -> JsonPrimitive(value?.toString())
+                }
             }
-        }
         return json.decodeFromString<T>(json.encodeToString(data))
     }
 }

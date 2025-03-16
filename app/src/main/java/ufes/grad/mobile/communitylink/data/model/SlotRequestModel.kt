@@ -7,14 +7,11 @@ import ufes.grad.mobile.communitylink.data.serializer.VolunteerSlotSerializer
 @Serializable
 class SlotRequestModel(
     override var id: String = "",
-    val date: String,
-    val isSelected: Boolean = false,
-
+    var date: String,
+    var isSelected: Boolean = false,
     @Serializable(with = VolunteerSlotSerializer::class)
-    val slot: VolunteerSlotModel = VolunteerSlotModel(),
-
-    @Serializable(with = UserSerializer::class)
-    val user: UserModel = UserModel()
+    var slot: VolunteerSlotModel = VolunteerSlotModel(),
+    @Serializable(with = UserSerializer::class) var user: UserModel = UserModel()
 ) : BaseModel {
 
     override fun toMap(): Map<String, Any?> {

@@ -55,6 +55,12 @@
             app:forms_title_text="@string/tags_parenthesis" />
 
         <ufes.grad.mobile.communitylink.ui.components.FormsLayout
+            android:id="@+id/address_forms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:forms_title_text="@string/address" />
+
+        <ufes.grad.mobile.communitylink.ui.components.FormsLayout
             android:id="@+id/cnpj_forms"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

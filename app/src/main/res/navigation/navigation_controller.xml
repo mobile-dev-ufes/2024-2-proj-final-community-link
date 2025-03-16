@@ -17,8 +17,14 @@
             android:id="@+id/action_dashboardFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
         <action
+            android:id="@+id/action_dashboardFragment_to_projectPageFragment"
+            app:destination="@id/projectPageFragment" />
+        <action
             android:id="@+id/action_dashboardFragment_to_eventPageFragment"
             app:destination="@id/eventPageFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_donationPageFragment"
+            app:destination="@id/donationPageFragment" />
     </fragment>
 
     <fragment
@@ -33,6 +39,15 @@
         <action
             android:id="@+id/action_exploreFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_exploreFragment_to_projectPageFragment"
+            app:destination="@id/projectPageFragment" />
+        <action
+            android:id="@+id/action_exploreFragment_to_eventPageFragment"
+            app:destination="@id/eventPageFragment" />
+        <action
+            android:id="@+id/action_exploreFragment_to_donationPageFragment"
+            app:destination="@id/donationPageFragment" />
     </fragment>
 
     <fragment
@@ -94,6 +109,10 @@
         android:name="ufes.grad.mobile.communitylink.view.fragments.EventsAndDonationsFragment"
         android:label="@string/events_and_donations"
         tools:layout="@layout/fragment_events_and_donations">
+        <argument
+            android:name="id"
+            android:defaultValue="''"
+            app:argType="string" />
         <action
             android:id="@+id/action_eventsAndDonationsFragment_to_eventPageFragment"
             app:destination="@id/eventPageFragment" />
@@ -107,6 +126,10 @@
         android:name="ufes.grad.mobile.communitylink.view.fragments.ProjectPageFragment"
         android:label="@string/project"
         tools:layout="@layout/fragment_project_page">
+        <argument
+            android:name="id"
+            android:defaultValue='""'
+            app:argType="string" />
         <action
             android:id="@+id/actions_projectPageFragment_to_projectMembersFragment"
             app:destination="@id/projectMembersFragment" />
@@ -141,19 +164,41 @@
         android:id="@+id/createActionFragment"
         android:name="ufes.grad.mobile.communitylink.view.fragments.CreateActionFragment"
         android:label="@string/create_action"
-        tools:layout="@layout/fragment_create_action" />
+        tools:layout="@layout/fragment_create_action">
+        <argument
+            android:name="project_id"
+            android:defaultValue="''"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_createActionFragment_to_searchUsersFragment"
+            app:destination="@id/searchUsersFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/donationPageFragment"
         android:name="ufes.grad.mobile.communitylink.view.fragments.DonationPageFragment"
         android:label="@string/donation_page"
         tools:layout="@layout/fragment_donation_page">
+        <argument
+            android:name="id"
+            android:defaultValue="''"
+            app:argType="string" />
+        <argument
+            android:name="edit"
+            android:defaultValue="false"
+            app:argType="boolean" />
         <action
             android:id="@+id/action_donationPageFragment_to_donationListFragment"
             app:destination="@id/donationListFragment" />
         <action
             android:id="@+id/action_donationPageFragment_to_projectPageFragment"
             app:destination="@id/projectPageFragment" />
+        <action
+            android:id="@+id/action_donationPageFragment_to_manageGoalsFragment"
+            app:destination="@id/manageGoalsFragment" />
+        <action
+            android:id="@+id/action_donationPageFragment_to_manageGoalFragment"
+            app:destination="@id/manageGoalFragment" />
         <action
             android:id="@+id/action_donationPageFragment_to_editProjectFragment"
             app:destination="@id/editProjectFragment" />
@@ -163,28 +208,48 @@
         android:id="@+id/editActionFragment"
         android:name="ufes.grad.mobile.communitylink.view.fragments.EditActionFragment"
         android:label="@string/edit_action"
-        tools:layout="@layout/fragment_edit_action" />
+        tools:layout="@layout/fragment_edit_action">
+        <argument
+            android:name="is_event"
+            android:defaultValue="false"
+            app:argType="boolean" />
+        <argument
+            android:name="id"
+            android:defaultValue="''"
+            app:argType="string" />
+    </fragment>
 
     <fragment
         android:id="@+id/editProjectFragment"
         android:name="ufes.grad.mobile.communitylink.view.fragments.EditProjectFragment"
         android:label="@string/edit_project"
-        tools:layout="@layout/fragment_edit_project" />
+        tools:layout="@layout/fragment_edit_project">
+        <argument
+            android:name="id"
+            android:defaultValue="''"
+            app:argType="string" />
+    </fragment>
 
     <fragment
         android:id="@+id/editSlotFragment"
         android:name="ufes.grad.mobile.communitylink.view.fragments.EditSlotFragment"
         android:label="@string/edit_slot"
-        tools:layout="@layout/fragment_edit_slot" />
+        tools:layout="@layout/fragment_edit_slot">
+        <argument
+            android:name="id"
+            android:defaultValue="''"
+            app:argType="string" />
+        <argument
+            android:name="new_slot"
+            android:defaultValue="false"
+            app:argType="boolean" />
+    </fragment>
 
     <fragment
         android:id="@+id/eventPageFragment"
         android:name="ufes.grad.mobile.communitylink.view.fragments.EventPageFragment"
         android:label="@string/event_page"
         tools:layout="@layout/fragment_event_page">
-        <action
-            android:id="@+id/action_eventPageFragment_to_projectPageFragment"
-            app:destination="@id/projectPageFragment" />
         <argument
             android:name="id"
             android:defaultValue='""'
@@ -193,6 +258,12 @@
             android:name="edit"
             android:defaultValue="false"
             app:argType="boolean" />
+        <action
+            android:id="@+id/action_eventPageFragment_to_projectPageFragment"
+            app:destination="@id/projectPageFragment" />
+        <action
+            android:id="@+id/action_eventPageFragment_to_editProjectFragment"
+            app:destination="@id/editProjectFragment" />
         <action
             android:id="@+id/action_eventPageFragment_to_pendingSlotsFragment"
             app:destination="@id/pendingSlotsFragment" />
@@ -209,6 +280,14 @@
         android:name="ufes.grad.mobile.communitylink.view.fragments.EventVolunteerSlotsFragment"
         android:label="@string/volunteer_slots"
         tools:layout="@layout/fragment_event_volunteer_slots">
+        <argument
+            android:name="event_id"
+            android:defaultValue="''"
+            app:argType="string" />
+        <argument
+            android:name="edit"
+            android:defaultValue="false"
+            app:argType="boolean" />
         <action
             android:id="@+id/action_eventVolunteerSlotsFragment_to_editSlotFragment"
             app:destination="@id/editSlotFragment" />
@@ -218,13 +297,26 @@
         android:id="@+id/manageGoalFragment"
         android:name="ufes.grad.mobile.communitylink.view.fragments.ManageGoalFragment"
         android:label="@string/goal"
-        tools:layout="@layout/fragment_manage_goal" />
+        tools:layout="@layout/fragment_manage_goal">
+        <argument
+            android:name="id"
+            android:defaultValue="''"
+            app:argType="string" />
+        <argument
+            android:name="is_project"
+            android:defaultValue="false"
+            app:argType="boolean" />
+    </fragment>
 
     <fragment
         android:id="@+id/projectActionsListFragment"
         android:name="ufes.grad.mobile.communitylink.view.fragments.ProjectActionsListFragment"
         android:label="@string/project_actions"
         tools:layout="@layout/fragment_project_actions_list">
+        <argument
+            android:name="project_id"
+            android:defaultValue="''"
+            app:argType="string" />
         <action
             android:id="@+id/action_projectActionsListFragment_to_donationPageFragment"
             app:destination="@id/donationPageFragment" />
@@ -237,30 +329,107 @@
         android:id="@+id/donationListFragment"
         android:name="ufes.grad.mobile.communitylink.view.fragments.DonationListFragment"
         android:label="@string/project_donations"
-        tools:layout="@layout/fragment_donation_list" />
+        tools:layout="@layout/fragment_donation_list">
+        <argument
+            android:name="is_project"
+            android:defaultValue="false"
+            app:argType="boolean" />
+        <argument
+            android:name="edit"
+            android:defaultValue="false"
+            app:argType="boolean" />
+        <argument
+            android:name="id"
+            android:defaultValue="''"
+            app:argType="string" />
+    </fragment>
 
     <fragment
         android:id="@+id/projectMembersFragment"
         android:name="ufes.grad.mobile.communitylink.view.fragments.ProjectMembersFragment"
         android:label="@string/members"
-        tools:layout="@layout/fragment_project_members" />
+        tools:layout="@layout/fragment_project_members">
+        <argument
+            android:name="id"
+            android:defaultValue="''"
+            app:argType="string" />
+        <argument
+            android:name="edit"
+            android:defaultValue="false"
+            app:argType="boolean" />
+        <action
+            android:id="@+id/action_projectMembersFragment_to_searchUsersFragment"
+            app:destination="@id/searchUsersFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/searchUsersFragment"
         android:name="ufes.grad.mobile.communitylink.view.fragments.SearchUsersFragment"
         android:label="@string/search"
-        tools:layout="@layout/fragment_search_users" />
+        tools:layout="@layout/fragment_search_users">
+        <argument
+            android:name="find_users"
+            android:defaultValue="true"
+            app:argType="boolean" />
+        <argument
+            android:name="id"
+            android:defaultValue="''"
+            app:argType="string" />
+    </fragment>
 
     <fragment
         android:id="@+id/pendingSlotsFragment"
         android:name="ufes.grad.mobile.communitylink.view.fragments.PendingSlotsFragment"
         android:label="@string/pending_requests"
-        tools:layout="@layout/fragment_pending_slots" />
+        tools:layout="@layout/fragment_pending_slots">
+        <argument
+            android:name="id"
+            android:defaultValue="''"
+            app:argType="string" />
+    </fragment>
 
     <fragment
         android:id="@+id/manageGoalsFragment"
         android:name="ufes.grad.mobile.communitylink.view.fragments.GoalListFragment"
         android:label="@string/manage_goals"
-        tools:layout="@layout/fragment_goal_list" />
+        tools:layout="@layout/fragment_goal_list">
+        <argument
+            android:name="id"
+            android:defaultValue="''"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="ufes.grad.mobile.communitylink.view.fragments.LoginFragment"
+        android:label="@string/login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_signupFragment"
+            app:destination="@id/signupFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_forgotPasswordFragment"
+            app:destination="@id/forgotPasswordFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/signupFragment"
+        android:name="ufes.grad.mobile.communitylink.view.fragments.SignupFragment"
+        android:label="@string/create_new_account"
+        tools:layout="@layout/fragment_register">
+        <action
+            android:id="@+id/action_signupFragment_to_loginFragment"
+            app:destination="@id/signupFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/forgotPasswordFragment"
+        android:name="ufes.grad.mobile.communitylink.view.fragments.ForgotPasswordFragment"
+        android:label="@string/forgot_password"
+        tools:layout="@layout/fragment_forgot_password">
+        <action
+            android:id="@+id/action_forgotPasswordFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
 
 </navigation>

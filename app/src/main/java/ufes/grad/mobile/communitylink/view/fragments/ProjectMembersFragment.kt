@@ -6,9 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import ufes.grad.mobile.communitylink.R
 import ufes.grad.mobile.communitylink.data.database.StaticData
+import ufes.grad.mobile.communitylink.data.model.ProjectModel
 import ufes.grad.mobile.communitylink.databinding.FragmentProjectMembersBinding
 import ufes.grad.mobile.communitylink.view.adapter.ListCommonCardAdapter
 import ufes.grad.mobile.communitylink.view.popups.UserDataPopup
@@ -19,14 +21,23 @@ class ProjectMembersFragment : Fragment(R.layout.fragment_project_members), View
     private val binding
         get() = _binding!!
 
-    private var edit: Boolean = false
+    private val args: ProjectMembersFragmentArgs by navArgs()
 
-    private val members_adapter: ListCommonCardAdapter = ListCommonCardAdapter()
-    private val responsible_adapter: ListCommonCardAdapter = ListCommonCardAdapter()
+    private lateinit var project: ProjectModel
+
+    private val membersAdapter: ListCommonCardAdapter = ListCommonCardAdapter()
+    private val responsibleAdapter: ListCommonCardAdapter = ListCommonCardAdapter()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        // TODO("Get real project")
+        project = StaticData.projects[0]
+    }
 
     init {
-        responsible_adapter.updateList(StaticData.users)
-        members_adapter.updateList(StaticData.users)
+        responsibleAdapter.updateList(StaticData.users)
+        membersAdapter.updateList(StaticData.users)
     }
 
     override fun onCreateView(
@@ -37,38 +48,38 @@ class ProjectMembersFragment : Fragment(R.layout.fragment_project_members), View
         super.onCreateView(inflater, container, savedInstanceState)
         _binding = FragmentProjectMembersBinding.inflate(inflater, container, false)
 
-        if (!edit) {
+        if (!args.edit) {
             binding.addMemberButton.setOnClickListener(this)
             binding.addMemberButton.visibility = View.GONE
         }
 
         val popup_type =
-            if (edit) UserDataPopup.UserPopupType.ADD_USER_AS_MEMBER
+            if (args.edit) UserDataPopup.UserPopupType.ADD_USER_AS_MEMBER
             else UserDataPopup.UserPopupType.VIEW_DATA
 
-        responsible_adapter.onItemClickListener = {
-            val popup = UserDataPopup(null, popup_type)
-            popup.onConfirm =
-                {
-                    // TODO("Remove member from project")
-                }
+        responsibleAdapter.onItemClickListener = { position ->
+            val popup = UserDataPopup(popup_type)
+            popup.onConfirm = {
+                // TODO("Remove member from project")
+                project.members.remove(responsibleAdapter.list[position])
+            }
             popup.show(childFragmentManager, "")
         }
 
         binding.recyclerListResponsible.layoutManager = LinearLayoutManager(context)
-        binding.recyclerListResponsible.adapter = responsible_adapter
+        binding.recyclerListResponsible.adapter = responsibleAdapter
 
-        members_adapter.onItemClickListener = {
-            val popup = UserDataPopup(null, popup_type)
-            popup.onConfirm =
-                {
-                    // TODO("Remove member from project")
-                }
+        membersAdapter.onItemClickListener = { position ->
+            val popup = UserDataPopup(popup_type)
+            popup.onConfirm = {
+                // TODO("Remove member from project")
+                project.members.remove(responsibleAdapter.list[position])
+            }
             popup.show(childFragmentManager, "")
         }
 
         binding.recyclerListMembers.layoutManager = LinearLayoutManager(context)
-        binding.recyclerListMembers.adapter = members_adapter
+        binding.recyclerListMembers.adapter = membersAdapter
 
         return binding.root
     }
@@ -81,6 +92,10 @@ class ProjectMembersFragment : Fragment(R.layout.fragment_project_members), View
     override fun onClick(v: View) {
         when (v.id) {
             binding.addMemberButton.id -> {
+                val search =
+                    ProjectMembersFragmentDirections
+                        .actionProjectMembersFragmentToSearchUsersFragment()
+                search.id = project.id
                 findNavController().navigate(R.id.searchUsersFragment)
             }
         }

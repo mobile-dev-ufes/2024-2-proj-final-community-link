@@ -135,30 +135,28 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), View.OnClickListene
             binding.excludeAccount.id -> {
                 val popup = BasePopup(BasePopup.PopupType.TWO_BUTTON, R.layout.popup_delete_user)
                 popup.onConfirm = {
-                    // TODO("Delete user")
+                    // TODO("Delete user from DB")
                     startActivity(Intent(context, LoginActivity::class.java))
                 }
                 popup.show(childFragmentManager, "")
                 requireActivity().finish()
             }
             binding.confirmAlterations.id -> {
-                val popup = UserDataPopup(null, UserPopupType.USER_DATA_UPDATE)
-                popup.onConfirm =
-                    {
-                        // TODO("Update user data")
-                    }
-                popup.show(childFragmentManager, "")
-                profileVM.changeUserData(
-                    UserModel(
-                        name = binding.name.editText.text.toString(),
-                        cpf = binding.cpf.editText.text.toString(),
-                        sex = binding.sex.editText.text.toString(),
-                        dob = binding.buttonDate.text.toString(),
-                        address = binding.addressForm.editText.text.toString(),
-                        phone = binding.phone.editText.text.toString(),
-                        email = binding.email.editText.text.toString(),
+                val popup = UserDataPopup(UserPopupType.USER_DATA_UPDATE)
+                popup.onConfirm = {
+                    profileVM.changeUserData(
+                        UserModel(
+                            name = binding.name.editText.text.toString(),
+                            cpf = binding.cpf.editText.text.toString(),
+                            sex = binding.sex.editText.text.toString(),
+                            dob = binding.buttonDate.text.toString(),
+                            address = binding.addressForm.editText.text.toString(),
+                            phone = binding.phone.editText.text.toString(),
+                            email = binding.email.editText.text.toString(),
+                        )
                     )
-                )
+                }
+                popup.show(childFragmentManager, "")
             }
         }
     }

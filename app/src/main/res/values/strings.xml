@@ -150,7 +150,9 @@
     <string name="manage_direct_donations">Gerenciar Doações Diretas</string>
     <string name="manage_actions">Gerenciar Ações</string>
     <string name="create_action">Criar Ação</string>
-    <string name="add_place">Adicionar Local</string>
+    <string name="add_place_one">Adicionar local 1</string>
+    <string name="add_place_two">Adicionar local 2</string>
+    <string name="add_place_three">Adicionar local 3</string>
     <string name="end_date">Data de fim</string>
     <string name="start_date">Data de início</string>
     <string name="volunteer_slot">Vaga de voluntário</string>
@@ -186,4 +188,15 @@
     <string name="error_save_project_data">Erro ao salvar dados do Projeto</string>
     <string name="sucess_saving_project_data">Sucesso ao criar Projeto!</string>
     <string name="error_creating_action">Erro ao criar ação</string>
+    <string name="male">Masculino</string>
+    <string name="female">Feminino</string>
+    <string name="other">Outro</string>
+    <string name="pix_to_clipboard">Chave Pix copiada para o clipboard!</string>
+    <string name="the_post_content_cannot_be_empty">O conteúdo do post não pode estar vazio.</string>
+    <string name="from_to">De %1$s até %2$s</string>
+    <string name="places_list">Locais: %1$s</string>
+    <string name="view_donations">Ver doações</string>
+    <string name="select_a_place">Selecione um local</string>
+    <string name="primary_representative">Representante primário</string>
+    <string name="secondary_representative">Representante secundário</string>
 </resources>

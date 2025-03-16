@@ -8,15 +8,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnClickListener
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.DatePicker
 import androidx.core.content.ContextCompat.getColor
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import java.util.Calendar
 import ufes.grad.mobile.communitylink.R
 import ufes.grad.mobile.communitylink.data.model.UserModel
 import ufes.grad.mobile.communitylink.databinding.FragmentRegisterBinding
+import ufes.grad.mobile.communitylink.ui.components.SpinnerAdapter
 import ufes.grad.mobile.communitylink.utils.Utilities
+import ufes.grad.mobile.communitylink.view.popups.BasePopup
 import ufes.grad.mobile.communitylink.viewmodel.SignupVM
 
 class SignupFragment : Fragment(R.layout.fragment_register), OnClickListener {
@@ -27,9 +31,12 @@ class SignupFragment : Fragment(R.layout.fragment_register), OnClickListener {
 
     private lateinit var signupVM: SignupVM
 
+    private var sex: String = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         signupVM = ViewModelProvider(this)[SignupVM::class.java]
+        sex = getString(R.string.sex)
     }
 
     override fun onClick(v: View) {
@@ -45,24 +52,42 @@ class SignupFragment : Fragment(R.layout.fragment_register), OnClickListener {
                     return
                 }
 
-                val user =
-                    UserModel(
-                        name = binding.name.editText.text.toString().trim(),
-                        email = binding.email.editText.text.toString().trim(),
-                        cpf = binding.cpf.editText.text.toString(),
-                        sex = binding.sex.editText.text.toString().trim(),
-                        dob = binding.buttonDate.text.toString(),
-                        address = binding.address.editText.text.toString().trim(),
-                        phone = binding.phone.editText.text.toString()
-                    )
-
-                try {
-                    signupVM.registerNewUser(email, password, user).addOnSuccessListener {
-                        Utilities.loadFragment(requireActivity(), LoginFragment())
-                    }
-                } catch (_: IllegalArgumentException) {
+                if (sex == getString(R.string.sex)) {
                     Utilities.notify(context, getString(R.string.preencha_todos_os_campos))
                     showMissingFields()
+                } else {
+                    val user =
+                        UserModel(
+                            name = binding.name.editText.text.toString().trim(),
+                            email = binding.email.editText.text.toString().trim(),
+                            cpf = binding.cpf.editText.text.toString(),
+                            sex = sex,
+                            dob = binding.buttonDate.text.toString(),
+                            address = binding.address.editText.text.toString().trim(),
+                            phone = binding.phone.editText.text.toString()
+                        )
+
+                    try {
+                        signupVM.registerNewUser(email, password, user).addOnSuccessListener {
+                            val popup =
+                                BasePopup(
+                                    BasePopup.PopupType.ONE_BUTTON,
+                                    R.layout.popup_new_account,
+                                    false
+                                )
+                            popup.onConfirm = {
+                                findNavController()
+                                    .navigate(
+                                        SignupFragmentDirections
+                                            .actionSignupFragmentToLoginFragment()
+                                    )
+                            }
+                            popup.show(childFragmentManager, "")
+                        }
+                    } catch (_: IllegalArgumentException) {
+                        Utilities.notify(context, getString(R.string.preencha_todos_os_campos))
+                        showMissingFields()
+                    }
                 }
             }
         }
@@ -80,6 +105,8 @@ class SignupFragment : Fragment(R.layout.fragment_register), OnClickListener {
         binding.cpf.editText.inputType = InputType.TYPE_CLASS_NUMBER
         binding.password.editText.transformationMethod = PasswordTransformationMethod()
         binding.repeat.editText.transformationMethod = PasswordTransformationMethod()
+
+        setupFilters()
 
         binding.buttonDate.setOnClickListener {
             val listener =
@@ -114,6 +141,32 @@ class SignupFragment : Fragment(R.layout.fragment_register), OnClickListener {
         _binding = null
     }
 
+    private fun setupFilters() {
+        val status =
+            listOf(
+                getString(R.string.sex),
+                getString(R.string.male),
+                getString(R.string.female),
+                getString(R.string.other)
+            )
+        binding.sex.adapter = SpinnerAdapter(requireContext(), status)
+        binding.sex.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long
+                ) {
+                    sex = status[position]
+                    val adapter = binding.sex.adapter as? SpinnerAdapter
+                    adapter?.setValid(true)
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>?) {}
+            }
+    }
+
     private fun showMissingFields() {
         if (binding.email.editText.text.toString().isEmpty()) {
             binding.email.editText.setHintTextColor(getColor(requireContext(), R.color.red))
@@ -136,8 +189,9 @@ class SignupFragment : Fragment(R.layout.fragment_register), OnClickListener {
         if (binding.address.editText.text.toString().isEmpty()) {
             binding.address.editText.setHintTextColor(getColor(requireContext(), R.color.red))
         }
-        if (binding.sex.editText.text.toString().isEmpty()) {
-            binding.sex.editText.setHintTextColor(getColor(requireContext(), R.color.red))
+        if (sex == getString(R.string.sex)) {
+            val adapter = binding.sex.adapter as? SpinnerAdapter
+            adapter?.setValid(false)
         }
         if (binding.buttonDate.text.toString() == getString(R.string.selecione_uma_data)) {
             binding.buttonDate.setTextColor(getColor(requireContext(), R.color.red))

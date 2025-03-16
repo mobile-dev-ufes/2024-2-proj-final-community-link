@@ -10,7 +10,7 @@ import ufes.grad.mobile.communitylink.data.model.UserModel
 import ufes.grad.mobile.communitylink.databinding.PopupUserDataBinding
 import ufes.grad.mobile.communitylink.ui.components.SpinnerAdapter
 
-class UserDataPopup(private val user: UserModel?, private val mode: UserPopupType) :
+class UserDataPopup(private val mode: UserPopupType) :
     BasePopup(PopupType.TWO_BUTTON, R.layout.popup_user_data) {
 
     /** Determines the layout of the popup. */
@@ -26,6 +26,12 @@ class UserDataPopup(private val user: UserModel?, private val mode: UserPopupTyp
     private var _binding: PopupUserDataBinding? = null
     private val binding
         get() = _binding!!
+
+    private lateinit var user: UserModel
+
+    fun setUser(user: UserModel) {
+        this.user = user
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -64,7 +70,6 @@ class UserDataPopup(private val user: UserModel?, private val mode: UserPopupTyp
     fun setupDropdown() {
         val status =
             listOf(
-                getString(R.string.status),
                 getString(R.string.active),
                 getString(R.string.responsible_singular),
                 getString(R.string.former)

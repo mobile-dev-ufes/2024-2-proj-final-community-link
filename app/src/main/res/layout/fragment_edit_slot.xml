@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingHorizontal="@dimen/border"
+    android:padding="@dimen/border"
     android:scrollbars="none"
     tools:context=".view.fragments.EditSlotFragment">
 
@@ -20,39 +20,87 @@
             android:layout_height="wrap_content"
             app:forms_title_text="@string/name" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
-            android:text="@string/period"
-            android:textSize="18sp" />
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:gravity="center"
             android:orientation="horizontal">
 
-            <ufes.grad.mobile.communitylink.ui.components.FormsLayout
+            <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
                 android:layout_weight="1"
-                app:forms_title_text="@string/start" />
+                android:orientation="vertical">
 
-            <ufes.grad.mobile.communitylink.ui.components.FormsLayout
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="6dp"
+                    android:text="@string/start_date"
+                    android:textSize="14sp" />
+
+                <Button
+                    android:id="@+id/start_date_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/style_edit_text"
+                    android:gravity="center_vertical"
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="12dp"
+                    android:text="@string/selecione_uma_data"
+                    android:textAllCaps="false"
+                    android:textColor="@color/gray_400"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_weight="1"
-                app:forms_title_text="@string/end" />
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="6dp"
+                    android:text="@string/end_date"
+                    android:textSize="14sp" />
+
+                <Button
+                    android:id="@+id/end_date_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/style_edit_text"
+                    android:gravity="center_vertical"
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="12dp"
+                    android:text="@string/selecione_uma_data"
+                    android:textAllCaps="false"
+                    android:textColor="@color/gray_400"
+                    android:textSize="14sp" />
+            </LinearLayout>
 
         </LinearLayout>
 
-        <ufes.grad.mobile.communitylink.ui.components.FormsLayout
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:forms_title_text="@string/place" />
+            android:paddingBottom="6dp"
+            android:text="@string/place"
+            android:textSize="14sp" />
+
+        <Spinner
+            android:id="@+id/place_dropdown"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/style_edit_text"
+            android:backgroundTint="@color/white"
+            android:spinnerMode="dropdown"
+            tools:listitem="@layout/layout_spinner" />
 
         <Button
             android:id="@+id/confirm_button"

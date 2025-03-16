@@ -13,36 +13,30 @@
         android:id="@+id/name_forms"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
         app:forms_title_text="@string/name" />
 
     <ufes.grad.mobile.communitylink.ui.components.FormsLayout
         android:id="@+id/description_forms"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
         app:forms_title_text="@string/description" />
 
     <ufes.grad.mobile.communitylink.ui.components.FormsLayout
         android:id="@+id/tags_forms"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
         app:forms_hint_text="@string/tags"
         app:forms_title_text="@string/tags_parenthesis" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:text="@string/action_type"
-        android:textSize="14dp" />
-
     <Spinner
+        android:id="@+id/dropdown"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:spinnerMode="dropdown" />
+        android:background="@drawable/style_edit_text"
+        android:backgroundTint="@color/white"
+        android:spinnerMode="dropdown"
+        tools:listitem="@layout/layout_spinner" />
 
     <TextView
         android:layout_width="match_parent"

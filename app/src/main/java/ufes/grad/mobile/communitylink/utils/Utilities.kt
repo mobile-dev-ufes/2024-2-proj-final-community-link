@@ -1,10 +1,12 @@
 package ufes.grad.mobile.communitylink.utils
 
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.net.Uri
 import android.widget.Toast
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
-import ufes.grad.mobile.communitylink.R
+import java.io.ByteArrayOutputStream
+import java.io.InputStream
 
 class Utilities {
     companion object {
@@ -12,12 +14,14 @@ class Utilities {
             Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
         }
 
-        fun loadFragment(fragmentActivity: FragmentActivity, fragment: Fragment) {
-            fragmentActivity.supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.fragment_container_view, fragment, null)
-                .addToBackStack(null)
-                .commit()
+        fun imageToBytes(context: Context, uri: Uri): ByteArray {
+            val inputStream: InputStream? = context.contentResolver.openInputStream(uri)
+            val bitmap = inputStream?.let { BitmapFactory.decodeStream(it) }
+            if (bitmap == null) throw Exception("Algo deu errado...")
+
+            val byteArrayOutputStream = ByteArrayOutputStream()
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream)
+            return byteArrayOutputStream.toByteArray()
         }
     }
 }

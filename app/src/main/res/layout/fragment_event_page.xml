@@ -5,8 +5,8 @@
     android:id="@+id/background_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:clipToPadding="false"
+    android:orientation="vertical"
     android:padding="@dimen/border"
     android:scrollbars="none"
     tools:context=".view.fragments.EventPageFragment">
@@ -105,16 +105,6 @@
         <ufes.grad.mobile.communitylink.ui.components.SeparatorLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-
-        <Spinner
-            android:id="@+id/date_dropdown"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/style_edit_text"
-            android:backgroundTint="@color/white"
-            android:spinnerMode="dropdown"
-            tools:listitem="@layout/layout_spinner" />
 
         <Button
             android:id="@+id/create_button"

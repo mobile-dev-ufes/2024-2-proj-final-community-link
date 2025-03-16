@@ -1,9 +1,9 @@
 package ufes.grad.mobile.communitylink.data.model
 
 interface DonationModel : BaseModel {
-    val value: Float
-    val objectName: String
-    val status: DonationStatusEnum
-    val date: String
-    val confirmationImage: String
+    var value: Float
+    var objectName: String
+    var status: DonationStatusEnum
+    var date: String
+    var confirmationImage: String
 }

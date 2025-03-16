@@ -19,14 +19,12 @@
             android:id="@+id/name_forms"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             app:forms_title_text="@string/name" />
 
         <ufes.grad.mobile.communitylink.ui.components.FormsLayout
             android:id="@+id/description_forms"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             app:forms_box_size="80dp"
             app:forms_title_text="@string/description" />
 
@@ -34,30 +32,93 @@
             android:id="@+id/tags_forms"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
             app:forms_box_size="80dp"
             app:forms_hint_text="@string/tags"
             app:forms_title_text="@string/tags_parenthesis" />
 
-        <ufes.grad.mobile.communitylink.ui.components.FormsLayout
-            android:id="@+id/start_date_forms"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            app:forms_title_text="@string/start_date" />
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="6dp"
+                    android:text="@string/start_date"
+                    android:textSize="14sp" />
+
+                <Button
+                    android:id="@+id/start_date_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/style_edit_text"
+                    android:gravity="center_vertical"
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="12dp"
+                    android:text="@string/selecione_uma_data"
+                    android:textAllCaps="false"
+                    android:textColor="@color/gray_400"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="6dp"
+                    android:text="@string/end_date"
+                    android:textSize="14sp" />
+
+                <Button
+                    android:id="@+id/end_date_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/style_edit_text"
+                    android:gravity="center_vertical"
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="12dp"
+                    android:text="@string/selecione_uma_data"
+                    android:textAllCaps="false"
+                    android:textColor="@color/gray_400"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+        </LinearLayout>
 
         <ufes.grad.mobile.communitylink.ui.components.FormsLayout
-            android:id="@+id/end_date_forms"
+            android:id="@+id/place_forms_one"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            app:forms_title_text="@string/end_date" />
+            app:forms_title_text="@string/add_place_one" />
 
         <ufes.grad.mobile.communitylink.ui.components.FormsLayout
+            android:id="@+id/place_forms_two"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            app:forms_title_text="@string/add_place" />
+            app:forms_title_text="@string/add_place_two" />
+
+        <ufes.grad.mobile.communitylink.ui.components.FormsLayout
+            android:id="@+id/place_forms_three"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            app:forms_title_text="@string/add_place_three" />
 
         <Button
             android:id="@+id/confirm_button"

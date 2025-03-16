@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import ufes.grad.mobile.communitylink.R
 import ufes.grad.mobile.communitylink.databinding.FragmentLoginBinding
 import ufes.grad.mobile.communitylink.utils.Utilities
@@ -56,10 +57,12 @@ class LoginFragment : Fragment(R.layout.fragment_login), View.OnClickListener {
                 }
             }
             binding.registerButton.id -> {
-                Utilities.loadFragment(requireActivity(), SignupFragment())
+                val action = LoginFragmentDirections.actionLoginFragmentToSignupFragment()
+                findNavController().navigate(action)
             }
             binding.forgotPasswordButton.id -> {
-                Utilities.loadFragment(requireActivity(), ForgotPasswordFragment())
+                val action = LoginFragmentDirections.actionLoginFragmentToForgotPasswordFragment()
+                findNavController().navigate(action)
             }
         }
     }

@@ -10,27 +10,16 @@ import ufes.grad.mobile.communitylink.data.serializer.ProjectDataSerializer
 class ProjectModel(
     override var id: String = "",
     var status: ProjectStatusEnum = ProjectStatusEnum.PENDING,
-
     @Serializable(with = ProjectDataSerializer::class)
     var currentData: ProjectDataModel = ProjectDataModel(),
-
-    @Serializable(with = ProjectDataSerializer::class)
-    var pendingData: ProjectDataModel? = null,
-
-    val actions: MutableList<
-        @Serializable(with = ActionSerializer::class)
-        ActionModel
-    > = mutableListOf(),
-
-    val members: MutableList<
-        @Serializable(with = MemberSerializer::class)
-        MemberModel
-    > = mutableListOf(),
-
-    val donations: MutableList<
-        @Serializable(with = DonationSerializer::class)
-        DonationForProjectModel
-    > = mutableListOf()
+    @Serializable(with = ProjectDataSerializer::class) var pendingData: ProjectDataModel? = null,
+    val actions: MutableList<@Serializable(with = ActionSerializer::class) ActionModel> =
+        mutableListOf(),
+    val members: MutableList<@Serializable(with = MemberSerializer::class) MemberModel> =
+        mutableListOf(),
+    val donations:
+        MutableList<@Serializable(with = DonationSerializer::class) DonationForProjectModel> =
+        mutableListOf()
 ) : BaseModel {
 
     override fun toMap(): Map<String, Any?> {

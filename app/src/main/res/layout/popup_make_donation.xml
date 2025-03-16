@@ -63,16 +63,18 @@
         android:layout_height="wrap_content"
         android:text="@string/make_donation_monetary_value" />
 
-
     <ufes.grad.mobile.communitylink.ui.components.FormsLayout
+        android:id="@+id/value_forms"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         app:forms_hint_text="@string/monetary_value_hint"
+        app:forms_input_type="decimal"
         app:forms_title_color="@color/white"
         app:forms_title_text="@string/monetary_value" />
 
     <Button
+        android:id="@+id/pix_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"

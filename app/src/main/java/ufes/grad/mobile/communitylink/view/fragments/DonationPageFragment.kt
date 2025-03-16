@@ -6,9 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import kotlin.getValue
 import ufes.grad.mobile.communitylink.R
 import ufes.grad.mobile.communitylink.data.database.StaticData
+import ufes.grad.mobile.communitylink.data.model.ActionDonationModel
+import ufes.grad.mobile.communitylink.data.model.DonationModel
+import ufes.grad.mobile.communitylink.data.model.GoalPostModel
 import ufes.grad.mobile.communitylink.data.model.PostModel
 import ufes.grad.mobile.communitylink.databinding.FragmentDonationPageBinding
 import ufes.grad.mobile.communitylink.view.adapter.DonationPostAdapter
@@ -21,11 +26,20 @@ class DonationPageFragment : Fragment(R.layout.fragment_donation_page), View.OnC
     private val binding
         get() = _binding!!
 
+    private val args: EventPageFragmentArgs by navArgs()
+
+    private lateinit var donation: ActionDonationModel
+
     private val adapter: DonationPostAdapter = DonationPostAdapter()
 
-    init {
-        // TODO("Get real data")
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        // TODO("Get data from BD")
+        donation = StaticData.donationActions[0]
         adapter.updateList(StaticData.posts + StaticData.goalPosts)
+
+        adapter.edit = args.edit
     }
 
     override fun onCreateView(
@@ -36,36 +50,54 @@ class DonationPageFragment : Fragment(R.layout.fragment_donation_page), View.OnC
         super.onCreateView(inflater, container, savedInstanceState)
         _binding = FragmentDonationPageBinding.inflate(inflater, container, false)
 
-        // TODO("Pass arguments")
-        // can the user edit this page? (are they one of the representatives?)
-        val edit = false
+        setupAdapter()
+        setupLayout()
 
-        adapter.edit = edit
+        return binding.root
+    }
+
+    fun setupAdapter() {
         adapter.onItemClickListener = { position ->
             val item = adapter.list[position]
             when (item) {
                 is PostModel -> {
                     val popup =
-                        PostPopup(if (edit) PostPopup.PostMode.EDIT else PostPopup.PostMode.VIEW)
-                    if (edit)
-                        popup.onConfirm =
-                            {
-                                // TODO("Update post")
-                            }
+                        PostPopup(
+                            item,
+                            donation,
+                            if (args.edit) PostPopup.PostMode.EDIT else PostPopup.PostMode.VIEW
+                        )
+                    if (args.edit)
+                        popup.onConfirm = {
+                            val post = popup.createPost()
+                            // TODO("Update post")
+                        }
                     popup.show(childFragmentManager, "")
+                }
+                is GoalPostModel -> {
+                    val action =
+                        DonationPageFragmentDirections
+                            .actionDonationPageFragmentToManageGoalFragment()
+                    action.id = adapter.list[position].id
+                    action.isProject = false
+                    findNavController().navigate(action)
                 }
             }
         }
 
         binding.recyclerList.layoutManager = LinearLayoutManager(context)
         binding.recyclerList.adapter = adapter
+    }
 
-        // TODO("Get project model")
+    fun setupLayout() {
+        binding.nameText.text = donation.name
+        binding.descriptionText.text = donation.description
+        binding.datesText.text = getString(R.string.from_to, donation.initDate, donation.finishDate)
 
         // TODO("Set project tag")
         // binding.projectTag.setValues(project.currentData.name, project.currentData.logo)
 
-        if (edit) {
+        if (args.edit) {
             binding.createPostButton.setOnClickListener(this)
             binding.createGoalButton.setOnClickListener(this)
             binding.manageButton.setOnClickListener(this)
@@ -80,8 +112,6 @@ class DonationPageFragment : Fragment(R.layout.fragment_donation_page), View.OnC
             binding.donationButton.setOnClickListener(this)
             binding.goalsButton.setOnClickListener(this)
         }
-
-        return binding.root
     }
 
     override fun onDestroyView() {
@@ -93,39 +123,59 @@ class DonationPageFragment : Fragment(R.layout.fragment_donation_page), View.OnC
         when (v.id) {
             binding.donationButton.id -> {
                 val popup = MakeDonationPopup()
-                popup.onConfirm =
-                    {
-                        // TODO("Make donation")
+                popup.onConfirmDismiss = false
+                popup.onConfirm = {
+                    val donation: DonationModel? = popup.makeDonation()
+                    if (donation != null) {
+                        // TODO("Register donation")
+                        popup.dismiss()
                     }
+                }
                 popup.show(childFragmentManager, "")
             }
             binding.manageButton.id -> {
-                // TODO("Add navigation args")
-                findNavController().navigate(R.id.donationListFragment)
+                val action =
+                    DonationPageFragmentDirections
+                        .actionDonationPageFragmentToDonationListFragment()
+                action.id = donation.project.id
+                action.isProject = false
+                findNavController().navigate(action)
             }
             binding.goalsButton.id -> {
-                // TODO("Add navigation args")
-                findNavController().navigate(R.id.donationListFragment)
+                val action =
+                    DonationPageFragmentDirections.actionDonationPageFragmentToManageGoalsFragment()
+                action.id = donation.project.id
+                findNavController().navigate(action)
             }
             binding.editButton.id -> {
-                // TODO("Add navigation args")
-                findNavController().navigate(R.id.editActionFragment)
+                val action =
+                    DonationPageFragmentDirections.actionDonationPageFragmentToEditProjectFragment()
+                action.id = donation.project.id
+                findNavController().navigate(action)
             }
             binding.createPostButton.id -> {
-                val popup = PostPopup(PostPopup.PostMode.NEW)
-                popup.onConfirm =
-                    {
-                        // TODO("Create post")
+                val popup = PostPopup(null, donation, PostPopup.PostMode.NEW)
+                popup.onConfirm = {
+                    val post: PostModel? = popup.createPost()
+                    if (post != null) {
+                        // TODO("Create new post")
+                        popup.dismiss()
                     }
+                }
                 popup.show(childFragmentManager, "")
             }
             binding.createGoalButton.id -> {
-                // TODO("Add navigation args")
-                findNavController().navigate(R.id.manageGoalFragment)
+                val action =
+                    DonationPageFragmentDirections.actionDonationPageFragmentToManageGoalFragment()
+                action.id = donation.project.id
+                action.isProject = true
+                findNavController().navigate(action)
             }
             binding.projectTag.id -> {
-                // TODO("Add navigation args")
-                findNavController().navigate(R.id.projectPageFragment)
+                val action =
+                    DonationPageFragmentDirections.actionDonationPageFragmentToProjectPageFragment()
+                action.id = donation.project.id
+                findNavController().navigate(action)
             }
         }
     }

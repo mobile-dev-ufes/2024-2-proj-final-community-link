@@ -10,7 +10,8 @@ import ufes.grad.mobile.communitylink.data.model.ProjectStatusEnum
 object ProjectService {
 
     suspend fun create(project: ProjectModel): Boolean {
-        if (project.currentData.id.isEmpty() && !ProjectDataDAO.insert(project.currentData)) return false
+        if (project.currentData.id.isEmpty() && !ProjectDataDAO.insert(project.currentData))
+            return false
 
         for (member in project.members) {
             if (member.id.isEmpty()) {
@@ -24,12 +25,17 @@ object ProjectService {
     }
 
     suspend fun update(project: ProjectModel): Boolean {
-        if (project.pendingData?.let {
-            return if (it.id.isEmpty()) {
-                project.status = ProjectStatusEnum.PENDING
-                !ProjectDataDAO.insert(it)
-            } else { false }
-        } ?: false) return false
+        if (
+            project.pendingData?.let {
+                return if (it.id.isEmpty()) {
+                    project.status = ProjectStatusEnum.PENDING
+                    !ProjectDataDAO.insert(it)
+                } else {
+                    false
+                }
+            } ?: false
+        )
+            return false
 
         for (member in project.members) {
             if (member.id.isEmpty()) {

@@ -12,7 +12,7 @@ open class GenericAdapter<T : GenericViewHolder>() : RecyclerView.Adapter<T>() {
     var list: List<BaseModel> = listOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): T {
-        TODO("Colocar um erro aqui")
+        throw Exception("Unimplemented function.")
     }
 
     override fun onBindViewHolder(holder: T, position: Int) {
@@ -25,6 +25,6 @@ open class GenericAdapter<T : GenericViewHolder>() : RecyclerView.Adapter<T>() {
 
     fun updateList(list_: List<BaseModel>) {
         list = list_
-        // notifyDatasetChanged()
+        notifyDataSetChanged()
     }
 }

@@ -7,23 +7,16 @@ import ufes.grad.mobile.communitylink.data.serializer.SlotRequestSerializer
 @Serializable
 class VolunteerSlotModel(
     override var id: String = "",
-    val position: String = "",
-    val initDate: String = "",
-    val finishDate: String = "",
-    val place: String = "",
-    val notes: String = "",
-    val status: ParticipationStatusEnum = ParticipationStatusEnum.ON_TIME,
-
-    @Serializable(with = ActionSerializer::class)
-    val action: ActionEventModel = ActionEventModel(),
-
-    @Serializable(with = SlotRequestSerializer::class)
-    val filledBy: SlotRequestModel? = null,
-
-    val slots: List<
-        @Serializable(with = SlotRequestSerializer::class)
-        SlotRequestModel
-    > = emptyList()
+    var position: String = "",
+    var initDate: String = "",
+    var finishDate: String = "",
+    var place: String = "",
+    var notes: String = "",
+    var status: ParticipationStatusEnum = ParticipationStatusEnum.ON_TIME,
+    @Serializable(with = ActionSerializer::class) var action: ActionEventModel = ActionEventModel(),
+    @Serializable(with = SlotRequestSerializer::class) var filledBy: SlotRequestModel? = null,
+    var slots: List<@Serializable(with = SlotRequestSerializer::class) SlotRequestModel> =
+        emptyList()
 ) : BaseModel {
 
     override fun toMap(): Map<String, Any?> {

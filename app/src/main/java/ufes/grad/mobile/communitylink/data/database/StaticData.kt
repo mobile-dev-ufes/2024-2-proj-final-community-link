@@ -5,6 +5,8 @@ import java.util.Date
 import java.util.Locale
 import ufes.grad.mobile.communitylink.data.model.ActionDonationModel
 import ufes.grad.mobile.communitylink.data.model.ActionEventModel
+import ufes.grad.mobile.communitylink.data.model.DonationForActionModel
+import ufes.grad.mobile.communitylink.data.model.DonationForProjectModel
 import ufes.grad.mobile.communitylink.data.model.GoalModel
 import ufes.grad.mobile.communitylink.data.model.GoalPostModel
 import ufes.grad.mobile.communitylink.data.model.GoalPostTypeEnum
@@ -24,6 +26,8 @@ object StaticData {
     val users = mutableListOf<UserModel>()
     val eventActions = mutableListOf<ActionEventModel>()
     val donationActions = mutableListOf<ActionDonationModel>()
+    val donationsToAction = mutableListOf<DonationForActionModel>()
+    val donationsToProject = mutableListOf<DonationForProjectModel>()
     val posts = mutableListOf<PostModel>()
     val goalPosts = mutableListOf<GoalPostModel>()
     val goals = mutableListOf<GoalModel>()
@@ -55,9 +59,9 @@ object StaticData {
                     ProjectStatusEnum.ACCEPTED,
                     projectDataList[i],
                     null,
-                    listOf(),
-                    listOf(),
-                    listOf()
+                    actions = mutableListOf(),
+                    mutableListOf(),
+                    mutableListOf()
                 )
             )
         }
@@ -152,6 +156,23 @@ object StaticData {
 
         for (i in 0..4) {
             slotRequests.add(SlotRequestModel("0$i", date = "12/02/2012"))
+        }
+
+        for (i in 0..4) {
+            donationsToAction.add(
+                DonationForActionModel("0$i", value = 12.00f, date = "12/02/2012")
+            )
+        }
+
+        for (i in 0..4) {
+            donationsToProject.add(
+                DonationForProjectModel(
+                    "0$i",
+                    value = 1.0f,
+                    objectName = "sofá",
+                    date = "12/02/2012"
+                )
+            )
         }
     }
 }

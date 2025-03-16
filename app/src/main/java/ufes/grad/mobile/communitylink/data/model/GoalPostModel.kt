@@ -6,13 +6,12 @@ import ufes.grad.mobile.communitylink.data.serializer.ActionSerializer
 @Serializable
 class GoalPostModel(
     override var id: String = "",
-    val type: GoalPostTypeEnum = GoalPostTypeEnum.NEW,
-    val description: String = "",
-    val amount: Float = 0.0f,
-    val date: String = "",
-
+    var type: GoalPostTypeEnum = GoalPostTypeEnum.NEW,
+    var description: String = "",
+    var amount: Float = 0.0f,
+    var date: String = "",
     @Serializable(with = ActionSerializer::class)
-    val actionDonation: ActionDonationModel = ActionDonationModel()
+    var actionDonation: ActionDonationModel = ActionDonationModel()
 ) : BaseModel {
 
     override fun toMap(): Map<String, Any?> {

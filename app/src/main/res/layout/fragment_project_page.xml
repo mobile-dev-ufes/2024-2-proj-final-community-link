@@ -11,6 +11,7 @@
     tools:context=".view.fragments.ProjectPageFragment">
 
     <ImageView
+        android:id="@+id/image"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginTop="20dp"
@@ -19,6 +20,7 @@
         android:src="@drawable/project_profile" />
 
     <TextView
+        android:id="@+id/name_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_slab_bold"
@@ -27,10 +29,25 @@
         android:textSize="24sp" />
 
     <TextView
+        android:id="@+id/description_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:lineHeight="24sp"
-        android:text="Descrição...\nEndereço: ...\nCNPJ: XX.XXX.XXX/XXXX-XX" />
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:maxLines="3"
+        android:text="Descrição..." />
+
+    <TextView
+        android:id="@+id/address_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Endereço: ..." />
+
+    <TextView
+        android:id="@+id/cnpj_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CNPJ" />
 
     <ufes.grad.mobile.communitylink.ui.components.SeparatorLayout
         android:layout_width="match_parent"

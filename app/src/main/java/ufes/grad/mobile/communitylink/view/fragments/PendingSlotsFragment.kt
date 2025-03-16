@@ -37,7 +37,7 @@ class PendingSlotsFragment : Fragment(R.layout.fragment_pending_slots) {
             // TODO("Reject volunteer")
         }
         adapter.onItemClickListener = { position ->
-            val popup = UserDataPopup(null, UserDataPopup.UserPopupType.SLOT_REQUEST)
+            val popup = UserDataPopup(UserDataPopup.UserPopupType.SLOT_REQUEST)
             popup.onConfirm =
                 {
                     // TODO("Accept volunteer in slot")

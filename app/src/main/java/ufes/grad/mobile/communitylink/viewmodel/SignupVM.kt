@@ -48,10 +48,16 @@ class SignupVM(application: Application) : AndroidViewModel(application) {
                     try {
                         saveUserData(user)
                     } catch (e: Exception) {
-                        Utilities.notify(app.applicationContext, app.getString(R.string.error_save_user_data))
+                        Utilities.notify(
+                            app.applicationContext,
+                            app.getString(R.string.error_save_user_data)
+                        )
                         throw Exception("Erro ao salvar dados no BD")
                     }
-                    Utilities.notify(app.applicationContext, app.getString(R.string.cadastro_realizado))
+                    Utilities.notify(
+                        app.applicationContext,
+                        app.getString(R.string.cadastro_realizado)
+                    )
                     // Vai pra tela de Login
                 }
         }

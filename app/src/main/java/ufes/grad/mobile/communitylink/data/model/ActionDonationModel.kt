@@ -10,36 +10,22 @@ import ufes.grad.mobile.communitylink.data.serializer.UserSerializer
 @Serializable
 class ActionDonationModel(
     override var id: String = "",
-    override val name: String = "",
-    override val description: String = "",
-    override val tags: List<String> = emptyList(),
-    override val initDate: String = "",
-    override val finishDate: String = "",
-    override val status: Boolean = false,
-
-    override val posts: List<
-        @Serializable(with = PostSerializer::class)
-        PostModel
-    > = emptyList(),
-
+    override var name: String = "",
+    override var description: String = "",
+    override var tags: List<String> = emptyList(),
+    override var initDate: String = "",
+    override var finishDate: String = "",
+    override var status: Boolean = false,
+    override var posts: List<@Serializable(with = PostSerializer::class) PostModel> = emptyList(),
     @Serializable(with = ProjectSerializer::class)
-    override val project: ProjectModel = ProjectModel(),
-
+    override var project: ProjectModel = ProjectModel(),
     @Serializable(with = UserSerializer::class)
-    override val primaryRepresentative: UserModel = UserModel(),
-
+    override var primaryRepresentative: UserModel = UserModel(),
     @Serializable(with = UserSerializer::class)
-    override val secondaryRepresentative: UserModel? = null,
-
-    val goals: List<
-        @Serializable(with = GoalSerializer::class)
-        GoalModel
-    > = emptyList(),
-
-    val donations: List<
-        @Serializable(with = DonationSerializer::class)
-        DonationForActionModel
-    > = emptyList()
+    override var secondaryRepresentative: UserModel? = null,
+    var goals: List<@Serializable(with = GoalSerializer::class) GoalModel> = emptyList(),
+    var donations: List<@Serializable(with = DonationSerializer::class) DonationForActionModel> =
+        emptyList()
 ) : ActionModel {
 
     override fun toMap(): Map<String, Any?> {

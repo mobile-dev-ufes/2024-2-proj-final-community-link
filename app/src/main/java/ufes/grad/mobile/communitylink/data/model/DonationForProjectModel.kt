@@ -6,14 +6,12 @@ import ufes.grad.mobile.communitylink.data.serializer.ProjectSerializer
 @Serializable
 class DonationForProjectModel(
     override var id: String = "",
-    override val value: Float = 0.0f,
-    override val objectName: String = "",
-    override val status: DonationStatusEnum = DonationStatusEnum.PENDING,
-    override val date: String = "",
-    override val confirmationImage: String = "",
-
-    @Serializable(with = ProjectSerializer::class)
-    val project: ProjectModel = ProjectModel()
+    override var value: Float = 0.0f,
+    override var objectName: String = "",
+    override var status: DonationStatusEnum = DonationStatusEnum.PENDING,
+    override var date: String = "",
+    override var confirmationImage: String = "",
+    @Serializable(with = ProjectSerializer::class) val project: ProjectModel = ProjectModel()
 ) : DonationModel {
 
     override fun toMap(): Map<String, Any?> {

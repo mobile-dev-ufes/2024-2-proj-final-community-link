@@ -16,31 +16,19 @@ class UserModel(
     var dob: String = "",
     var address: String = "",
     var phone: String = "",
-
-    val primaryRepresentative: MutableList<
-        @Serializable(with = ActionSerializer::class)
-        ActionModel
-    > = mutableListOf(),
-
-    val secondaryRepresentative: MutableList<
-        @Serializable(with = ActionSerializer::class)
-        ActionModel
-    > = mutableListOf(),
-
-    val memberTo: MutableList<
-        @Serializable(with = MemberSerializer::class)
-        MemberModel
-    > = mutableListOf(),
-
-    val slotRequests: MutableList<
-        @Serializable(with = SlotRequestSerializer::class)
-        SlotRequestModel
-    > = mutableListOf(),
-
-    val donations: MutableList<
-        @Serializable(with = DonationSerializer::class)
-        DonationModel
-    > = mutableListOf()
+    val primaryRepresentative:
+        MutableList<@Serializable(with = ActionSerializer::class) ActionModel> =
+        mutableListOf(),
+    val secondaryRepresentative:
+        MutableList<@Serializable(with = ActionSerializer::class) ActionModel> =
+        mutableListOf(),
+    val memberTo: MutableList<@Serializable(with = MemberSerializer::class) MemberModel> =
+        mutableListOf(),
+    val slotRequests:
+        MutableList<@Serializable(with = SlotRequestSerializer::class) SlotRequestModel> =
+        mutableListOf(),
+    val donations: MutableList<@Serializable(with = DonationSerializer::class) DonationModel> =
+        mutableListOf()
 ) : BaseModel {
 
     override fun toMap(): Map<String, Any?> {

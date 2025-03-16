@@ -6,14 +6,13 @@ import ufes.grad.mobile.communitylink.data.serializer.ActionSerializer
 @Serializable
 class DonationForActionModel(
     override var id: String = "",
-    override val value: Float = 0.0f,
-    override val objectName: String = "",
-    override val status: DonationStatusEnum = DonationStatusEnum.PENDING,
-    override val date: String = "",
-    override val confirmationImage: String = "",
-
+    override var value: Float = 0.0f,
+    override var objectName: String = "",
+    override var status: DonationStatusEnum = DonationStatusEnum.PENDING,
+    override var date: String = "",
+    override var confirmationImage: String = "",
     @Serializable(with = ActionSerializer::class)
-    val action: ActionDonationModel = ActionDonationModel()
+    var action: ActionDonationModel = ActionDonationModel()
 ) : DonationModel {
 
     override fun toMap(): Map<String, Any?> {

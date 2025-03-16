@@ -20,6 +20,7 @@ class ExploreCardAdapter(
     }
 
     var onButtonClickListener: (Int) -> Unit = {}
+    var onProjectClickListener: (Int) -> Unit = {}
 
     override fun getItemViewType(position: Int): Int {
         return if (list[position] is ProjectModel) ExploreCards.PROJECT.ordinal
@@ -48,6 +49,7 @@ class ExploreCardAdapter(
                     item,
                     onItemClickListener,
                     onButtonClickListener,
+                    onProjectClickListener,
                     content
                 )
             }

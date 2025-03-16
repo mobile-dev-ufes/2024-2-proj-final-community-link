@@ -34,7 +34,7 @@
             android:paddingHorizontal="20dp"
             android:text="@string/date"
             android:textAllCaps="false"
-            android:textSize="16sp"
+            android:textSize="14sp"
             tools:listitem="@layout/layout_spinner" />
 
         <Spinner

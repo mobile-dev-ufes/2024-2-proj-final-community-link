@@ -7,7 +7,7 @@
         <attr name="forms_box_size" format="dimension" />
         <attr name="forms_demand" format="boolean" />
         <attr name="forms_margin" format="boolean" />
-        <attr name="forms_maximum_lenght" format="integer" />
+        <attr name="forms_maximum_length" format="integer" />
         <attr name="forms_input_type" format="integer">
             <enum name="date" value="14" />
             <enum name="datetime" value="4" />
@@ -16,6 +16,7 @@
             <enum name="text" value="1" />
             <enum name="textEmailAddress" value="21" />
             <enum name="textPassword" value="81" />
+            <enum name="decimal" value="8192" />
         </attr>
     </declare-styleable>
     <declare-styleable name="InfoCardLayout">

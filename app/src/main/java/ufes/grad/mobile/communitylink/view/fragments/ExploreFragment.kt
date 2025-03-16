@@ -15,7 +15,7 @@ import ufes.grad.mobile.communitylink.data.model.ProjectModel
 import ufes.grad.mobile.communitylink.databinding.FragmentExploreBinding
 import ufes.grad.mobile.communitylink.view.adapter.ExploreCardAdapter
 
-class ExploreFragment : Fragment(R.layout.fragment_explore) {
+class ExploreFragment : Fragment(R.layout.fragment_explore), View.OnClickListener {
 
     private var _binding: FragmentExploreBinding? = null
     private val binding
@@ -23,12 +23,10 @@ class ExploreFragment : Fragment(R.layout.fragment_explore) {
 
     private val adapter: ExploreCardAdapter = ExploreCardAdapter()
 
-    init {
-        // TODO("Get real data")
-        // data includes actions close to happening and projects w/ actions close to happening
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
         adapter.updateList(StaticData.eventActions + StaticData.projects)
-        // update this list when searching
-        // update must contain actions and projects
     }
 
     override fun onCreateView(
@@ -40,24 +38,50 @@ class ExploreFragment : Fragment(R.layout.fragment_explore) {
         _binding = FragmentExploreBinding.inflate(inflater, container, false)
 
         // TODO("Make search work")
+        binding.searchBar.clearButton.setOnClickListener(this)
+        setupAdapter()
 
+        return binding.root
+    }
+
+    fun setupAdapter() {
         adapter.onItemClickListener = { position ->
-            // TODO("Add navigation args")
-            when (adapter.list[position]) {
-                is ProjectModel -> findNavController().navigate(R.id.projectPageFragment)
-                is ActionDonationModel -> findNavController().navigate(R.id.donationPageFragment)
-                is ActionEventModel -> findNavController().navigate(R.id.eventPageFragment)
+            val item = adapter.list[position]
+            when (item) {
+                is ProjectModel -> {
+                    val project =
+                        ExploreFragmentDirections.actionExploreFragmentToProjectPageFragment()
+                    project.id = item.id
+                    findNavController().navigate(project)
+                }
+                is ActionDonationModel -> {
+                    val donation =
+                        ExploreFragmentDirections.actionExploreFragmentToDonationPageFragment()
+                    donation.id = item.id
+                    findNavController().navigate(donation)
+                }
+                is ActionEventModel -> {
+                    val event = ExploreFragmentDirections.actionExploreFragmentToEventPageFragment()
+                    event.id = item.id
+                    findNavController().navigate(event)
+                }
             }
         }
 
         binding.recyclerList.layoutManager = LinearLayoutManager(context)
         binding.recyclerList.adapter = adapter
-
-        return binding.root
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onClick(v: View) {
+        when (v.id) {
+            binding.searchBar.clearButton.id -> {
+                binding.searchBar.editText.setText("")
+            }
+        }
     }
 }

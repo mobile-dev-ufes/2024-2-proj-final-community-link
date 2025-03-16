@@ -5,15 +5,15 @@ import kotlinx.serialization.Serializable
 @Serializable
 class ProjectDataModel(
     override var id: String = "",
-    val name: String = "",
-    val description: String = "",
-    val tags: List<String> = emptyList(),
-    val address: String = "",
-    val CNPJ: String = "",
-    val logo: String = "",
-    val changeDate: String = "",
-    val underReview: Boolean = false,
-    val pixKey: String = "",
+    var name: String = "",
+    var description: String = "",
+    var tags: List<String> = emptyList(),
+    var address: String = "",
+    var CNPJ: String = "",
+    var logo: String = "",
+    var changeDate: String = "",
+    var underReview: Boolean = false,
+    var pixKey: String = "",
 ) : BaseModel {
 
     override fun toMap(): Map<String, Any?> {
