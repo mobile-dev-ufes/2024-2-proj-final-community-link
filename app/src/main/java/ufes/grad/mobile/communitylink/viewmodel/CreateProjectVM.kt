@@ -19,6 +19,7 @@ import ufes.grad.mobile.communitylink.data.model.MemberModel
 import ufes.grad.mobile.communitylink.data.model.ProjectDataModel
 import ufes.grad.mobile.communitylink.data.model.ProjectModel
 import ufes.grad.mobile.communitylink.data.model.ProjectStatusEnum
+import ufes.grad.mobile.communitylink.data.service.ProjectService
 import ufes.grad.mobile.communitylink.utils.Utilities
 
 class CreateProjectVM(application: Application) : AndroidViewModel(application) {
@@ -39,13 +40,6 @@ class CreateProjectVM(application: Application) : AndroidViewModel(application) 
         val context = getApplication<Application>().applicationContext
         try {
             viewModelScope.launch {
-                if (ProjectDataDAO.insert(data)) {
-                    Log.d("Firebase", "Projeto data -> Salvo com sucesso")
-                } else {
-                    Log.d("Firebase", "Projeto data -> Problema ao salvar")
-                    throw Exception("Erro ao criar dados do projeto")
-                }
-
                 val member =
                     MemberModel(
                         isActive = true,
@@ -53,25 +47,13 @@ class CreateProjectVM(application: Application) : AndroidViewModel(application) 
                         isResponsible = true,
                         user = UserDAO.findById(auth.currentUser!!.uid)!!,
                     )
-                if (MemberDAO.insert(member)) {
-                    Log.d("Firebase", "Membro -> Salvo com sucesso")
-                } else {
-                    Log.d("Firebase", "Membro -> Problema ao salvar")
-                    throw Exception("Erro ao criar membro")
-                }
-
                 val project =
                     ProjectModel(
                         status = ProjectStatusEnum.PENDING,
                         pendingData = data,
                         members = mutableListOf(member)
                     )
-                if (ProjectDAO.insert(project)) {
-                    Log.d("Firebase", "Projeto -> Salvo com sucesso")
-                } else {
-                    Log.d("Firebase", "Projeto -> Problema ao salvar")
-                    throw Exception("Erro ao criar projeto")
-                }
+                ProjectService.create(project)
             }
             Utilities.notify(context, context.getString(R.string.sucess_saving_project_data))
         } catch (_: Exception) {

@@ -35,9 +35,6 @@ class EventPageFragment : Fragment(R.layout.fragment_event_page), View.OnClickLi
         super.onCreate(savedInstanceState)
         eventVM = ViewModelProvider(this)[EventPageVM::class.java]
         eventVM.getEventById(args.id)
-
-        // TODO("Get posts from event")
-        adapter.updateList(StaticData.posts)
         adapter.edit = args.edit
     }
 
@@ -91,10 +88,7 @@ class EventPageFragment : Fragment(R.layout.fragment_event_page), View.OnClickLi
                     binding.placesText.text =
                         getString(R.string.places_list, it.places.joinToString("\n"))
 
-                    // TODO("Set project tag")
-                    // binding.projectTag.setValues(project.currentData.name,
-                    // project.currentData.logo)
-
+                    binding.projectTag.setValues(it.project.currentData.name)
                     if (args.edit) {
                         binding.pendingButton.setOnClickListener(this)
                         binding.manageButton.setOnClickListener(this)
@@ -108,6 +102,7 @@ class EventPageFragment : Fragment(R.layout.fragment_event_page), View.OnClickLi
                         binding.editButton.visibility = View.GONE
                         binding.createButton.visibility = View.GONE
                     }
+                    adapter.updateList(it.posts)
                 }
             )
     }

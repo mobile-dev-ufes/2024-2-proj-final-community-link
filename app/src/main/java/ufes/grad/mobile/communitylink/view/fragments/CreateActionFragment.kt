@@ -37,7 +37,6 @@ class CreateActionFragment : Fragment(R.layout.fragment_create_action), View.OnC
     private lateinit var createActionVM: CreateActionVM
 
     private var actionType: ActionType = ActionType.NONE
-    private var clickedOnPrimary: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,40 +55,11 @@ class CreateActionFragment : Fragment(R.layout.fragment_create_action), View.OnC
         setupDropdown()
         setObserver()
 
-        val previousBackStackEntry =
-            findNavController().getBackStackEntry(R.id.createActionFragment)
-        previousBackStackEntry.savedStateHandle.getLiveData<UserModel>("user").observe(
-            viewLifecycleOwner
-        ) { result ->
-            val result_ = result as UserModel
-            if (clickedOnPrimary) createActionVM.changePrimaryRepresentative(result_)
-            else createActionVM.changeSecondaryRepresentative(result_)
-        }
         binding.createButton.setOnClickListener(this)
         return binding.root
     }
 
     fun setObserver() {
-        createActionVM
-            .getPrimaryRepresentative()
-            .observe(
-                viewLifecycleOwner,
-                Observer {
-                    binding.firstRepresentative.setValues(
-                        if (it == null) getString(R.string.primary_representative) else it.name
-                    )
-                }
-            )
-        createActionVM
-            .getSecondaryRepresentative()
-            .observe(
-                viewLifecycleOwner,
-                Observer {
-                    binding.secondRepresentative.setValues(
-                        if (it == null) getString(R.string.secondary_representative) else it.name
-                    )
-                }
-            )
         createActionVM.getProject().observe(viewLifecycleOwner, Observer {})
     }
 
@@ -127,8 +97,7 @@ class CreateActionFragment : Fragment(R.layout.fragment_create_action), View.OnC
                 val name = binding.nameForms.editText.text.toString().trim()
                 val description = binding.descriptionForms.editText.text.toString().trim()
                 val tags = binding.tagsForms.editText.text.toString().split(",")
-                // val primaryRepresentative = createActionVM.getPrimaryRepresentative().value
-                // val secondaryRepresentative = createActionVM.getSecondaryRepresentative().value
+                val primaryRepresentative = createActionVM.getUser().value
 
                 if (
                     name.isEmpty() ||
@@ -148,8 +117,7 @@ class CreateActionFragment : Fragment(R.layout.fragment_create_action), View.OnC
                             description = description,
                             tags = tags.toMutableList(),
                             status = false,
-                            // primaryRepresentative = primaryRepresentative!!,
-                            // secondaryRepresentative = secondaryRepresentative!!
+                            primaryRepresentative = primaryRepresentative!!,
                         )
                 } else {
                     action =
@@ -158,28 +126,12 @@ class CreateActionFragment : Fragment(R.layout.fragment_create_action), View.OnC
                             description = description,
                             tags = tags.toMutableList(),
                             status = false,
-                            // primaryRepresentative = primaryRepresentative!!,
-                            // secondaryRepresentative = secondaryRepresentative
+                            primaryRepresentative = primaryRepresentative!!,
                         )
                 }
                 createActionVM.createNewAction(action)
             }
-            binding.firstRepresentative.id -> {
-                createActionVM.changePrimaryRepresentative(null)
-                clickedOnPrimary = true
-                val search =
-                    CreateActionFragmentDirections.actionCreateActionFragmentToSearchUsersFragment()
-                search.findUsers = false
-                findNavController().navigate(search)
-            }
-            binding.secondRepresentative.id -> {
-                createActionVM.changePrimaryRepresentative(null)
-                clickedOnPrimary = false
-                val search =
-                    CreateActionFragmentDirections.actionCreateActionFragmentToSearchUsersFragment()
-                search.findUsers = false
-                findNavController().navigate(search)
-            }
+
         }
     }
 }

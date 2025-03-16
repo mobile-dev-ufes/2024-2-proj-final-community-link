@@ -6,11 +6,13 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.launch
 import ufes.grad.mobile.communitylink.R
 import ufes.grad.mobile.communitylink.data.dao.ActionDonationDAO
 import ufes.grad.mobile.communitylink.data.dao.ActionEventDAO
 import ufes.grad.mobile.communitylink.data.dao.ProjectDAO
+import ufes.grad.mobile.communitylink.data.dao.UserDAO
 import ufes.grad.mobile.communitylink.data.model.ActionDonationModel
 import ufes.grad.mobile.communitylink.data.model.ActionEventModel
 import ufes.grad.mobile.communitylink.data.model.ActionModel
@@ -21,28 +23,16 @@ import ufes.grad.mobile.communitylink.utils.Utilities
 
 class CreateActionVM(application: Application) : AndroidViewModel(application) {
 
-    private var primaryRepresentative = MutableLiveData<UserModel?>()
-    private var secondaryRepresentative = MutableLiveData<UserModel?>()
     private var project = MutableLiveData<ProjectModel?>()
-
-    fun getPrimaryRepresentative(): LiveData<UserModel?> {
-        return primaryRepresentative
-    }
-
-    fun getSecondaryRepresentative(): LiveData<UserModel?> {
-        return secondaryRepresentative
-    }
-
-    fun changePrimaryRepresentative(user: UserModel?) {
-        primaryRepresentative.value = user
-    }
-
-    fun changeSecondaryRepresentative(user: UserModel?) {
-        secondaryRepresentative.value = user
-    }
+    private var user = MutableLiveData<UserModel?>()
+    private var auth = FirebaseAuth.getInstance()
 
     fun getProject(): LiveData<ProjectModel?> {
         return project
+    }
+
+    fun getUser(): LiveData<UserModel?> {
+        return user
     }
 
     fun createNewAction(action: ActionModel) {
@@ -80,5 +70,9 @@ class CreateActionVM(application: Application) : AndroidViewModel(application) {
 
     fun getProjectById(projId: String) {
         viewModelScope.launch { project.postValue(ProjectDAO.findById(projId)) }
+    }
+
+    fun fetchUser() {
+        viewModelScope.launch { user.postValue(UserDAO.findById(auth.currentUser!!.uid)!!) }
     }
 }

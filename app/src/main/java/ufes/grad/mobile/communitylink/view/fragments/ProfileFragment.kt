@@ -96,7 +96,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), View.OnClickListene
 
     private fun setObserver() {
         profileVM
-            .userData()
+            .user()
             .observe(
                 viewLifecycleOwner,
                 Observer { it ->

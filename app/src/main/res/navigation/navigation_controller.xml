@@ -328,6 +328,9 @@
         <action
             android:id="@+id/action_projectActionsListFragment_to_eventPageFragment"
             app:destination="@id/eventPageFragment" />
+        <action
+            android:id="@+id/action_projectActionsListFragment_to_createActionFragment"
+            app:destination="@id/createActionFragment" />
     </fragment>
 
     <fragment

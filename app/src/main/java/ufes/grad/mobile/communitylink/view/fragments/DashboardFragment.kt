@@ -9,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import ufes.grad.mobile.communitylink.R
+import ufes.grad.mobile.communitylink.data.dao.UserDAO
 import ufes.grad.mobile.communitylink.data.database.StaticData
 import ufes.grad.mobile.communitylink.data.model.ActionDonationModel
 import ufes.grad.mobile.communitylink.data.model.ActionEventModel
@@ -50,9 +51,7 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
     fun setupAdapter() {
         adapter.onItemClickListener = { position ->
             val item = adapter.list[position]
-            // TODO("Get user model")
-            val userId = FirebaseAuth.getInstance().currentUser?.uid
-            val user: UserModel? = null
+            val user = FirebaseAuth.getInstance().currentUser?.uid
 
             when (item) {
                 is ActionDonationModel,
@@ -65,8 +64,8 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
                         if (item is GoalModel) item.actionDonation
                         else (item as ActionDonationModel)
                     donation.edit =
-                        action.primaryRepresentative.id == user?.id ||
-                            action.secondaryRepresentative?.id == user?.id
+                        action.primaryRepresentative.id == user ||
+                            action.secondaryRepresentative?.id == user
 
                     findNavController().navigate(donation)
                 }
@@ -75,8 +74,8 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
                         DashboardFragmentDirections.actionDashboardFragmentToEventPageFragment()
                     action.id = item.id
                     action.edit =
-                        item.primaryRepresentative.id == user?.id ||
-                            item.secondaryRepresentative?.id == user?.id
+                        item.primaryRepresentative.id == user ||
+                            item.secondaryRepresentative?.id == user
                     findNavController().navigate(action)
                 }
                 is PostModel -> {
@@ -85,8 +84,8 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
                             DashboardFragmentDirections.actionDashboardFragmentToEventPageFragment()
                         action.id = item.id
                         action.edit =
-                            item.action.primaryRepresentative.id == user?.id ||
-                                item.action.secondaryRepresentative?.id == user?.id
+                            item.action.primaryRepresentative.id == user ||
+                                item.action.secondaryRepresentative?.id == user
                         findNavController().navigate(action)
                     } else {
                         val donation =
@@ -94,8 +93,8 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
                                 .actionDashboardFragmentToDonationPageFragment()
                         donation.id = item.id
                         donation.edit =
-                            item.action.primaryRepresentative.id == user?.id ||
-                                item.action.secondaryRepresentative?.id == user?.id
+                            item.action.primaryRepresentative.id == user ||
+                                item.action.secondaryRepresentative?.id == user
                         findNavController().navigate(donation)
                     }
                 }
