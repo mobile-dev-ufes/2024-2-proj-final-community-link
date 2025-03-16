@@ -200,4 +200,6 @@
     <string name="primary_representative">Representante primário</string>
     <string name="secondary_representative">Representante secundário</string>
     <string name="sucess_saving_action">Sucesso ao criar Ação</string>
+    <string name="post_created">Post criado com sucesso!</string>
+    <string name="post_fail">Erro, post não criado!</string>
 </resources>

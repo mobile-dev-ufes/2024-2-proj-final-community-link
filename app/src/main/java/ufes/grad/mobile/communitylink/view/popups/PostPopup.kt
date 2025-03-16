@@ -109,7 +109,6 @@ class PostPopup(
                 id = post!!.id,
                 text = content,
                 date = post!!.date,
-                media = binding.image.drawable.toString(),
                 action = action
             )
         }
@@ -117,7 +116,6 @@ class PostPopup(
         return PostModel(
             text = content,
             date = dateFormatter.format(Date()),
-            media = binding.image.drawable.toString(),
             action = action
         )
     }

@@ -35,7 +35,7 @@ class EventPageFragment : Fragment(R.layout.fragment_event_page), View.OnClickLi
         super.onCreate(savedInstanceState)
         eventVM = ViewModelProvider(this)[EventPageVM::class.java]
         eventVM.getEventById(args.id)
-        adapter.edit = args.edit
+        adapter.edit = true
     }
 
     override fun onCreateView(
@@ -53,23 +53,23 @@ class EventPageFragment : Fragment(R.layout.fragment_event_page), View.OnClickLi
     }
 
     fun setupAdapter() {
-        adapter.onItemClickListener = { position ->
-            val item: PostModel? = adapter.list[position] as PostModel
-            val popup =
-                PostPopup(
-                    item,
-                    eventVM.getEvent().value!!,
-                    if (args.edit) PostPopup.PostMode.EDIT else PostPopup.PostMode.VIEW
-                )
-            popup.onConfirm = {
-                val post: PostModel? = popup.createPost()
-                if (post != null) {
-                    // TODO("Create or update post")
-                    popup.dismiss()
-                }
-            }
-            popup.show(childFragmentManager, "")
-        }
+//        adapter.onItemClickListener = { position ->
+//            val item: PostModel? = adapter.list[position] as PostModel
+//            val popup =
+//                PostPopup(
+//                    item,
+//                    eventVM.getEvent().value!!,
+//                    if (args.edit) PostPopup.PostMode.EDIT else PostPopup.PostMode.VIEW
+//                )
+//            popup.onConfirm = {
+//                val post: PostModel? = popup.createPost()
+//                if (post != null) {
+//
+//                    popup.dismiss()
+//                }
+//            }
+//            popup.show(childFragmentManager, "")
+//        }
 
         binding.recyclerList.layoutManager = LinearLayoutManager(context)
         binding.recyclerList.adapter = adapter
@@ -89,7 +89,7 @@ class EventPageFragment : Fragment(R.layout.fragment_event_page), View.OnClickLi
                         getString(R.string.places_list, it.places.joinToString("\n"))
 
                     binding.projectTag.setValues(it.project.currentData.name)
-                    if (args.edit) {
+                    if (true) {
                         binding.pendingButton.setOnClickListener(this)
                         binding.manageButton.setOnClickListener(this)
                         binding.editButton.setOnClickListener(this)
@@ -102,9 +102,16 @@ class EventPageFragment : Fragment(R.layout.fragment_event_page), View.OnClickLi
                         binding.editButton.visibility = View.GONE
                         binding.createButton.visibility = View.GONE
                     }
-                    adapter.updateList(it.posts)
+                    // eventVM.fetchPosts(it.posts)
+                    adapter.updateList(StaticData.posts)
                 }
             )
+        eventVM.getPosts().observe(
+            viewLifecycleOwner,
+            Observer {
+                adapter.updateList(it)
+            }
+        )
     }
 
     override fun onDestroyView() {
@@ -127,7 +134,7 @@ class EventPageFragment : Fragment(R.layout.fragment_event_page), View.OnClickLi
                 popup.onConfirm = {
                     val post: PostModel? = popup.createPost()
                     if (post != null) {
-                        // TODO("Create new post")
+                        eventVM.createNewPost(post)
                         popup.dismiss()
                     }
                 }
@@ -155,10 +162,8 @@ class EventPageFragment : Fragment(R.layout.fragment_event_page), View.OnClickLi
                 findNavController().navigate(action)
             }
             binding.projectTag.id -> {
-                // TODO("Check if user is responsible for the project")
                 val userId = FirebaseAuth.getInstance().currentUser?.uid
-                val responsible = false
-
+                val responsible = eventVM.getEvent().value!!.primaryRepresentative.id == userId
                 if (responsible) {
                     val action =
                         EventPageFragmentDirections.actionEventPageFragmentToEditProjectFragment()
