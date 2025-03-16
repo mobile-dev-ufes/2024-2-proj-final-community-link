@@ -12,20 +12,20 @@ class ActionDonationModel(
     override var id: String = "",
     override var name: String = "",
     override var description: String = "",
-    override var tags: List<String> = emptyList(),
+    override val tags: MutableList<String> = mutableListOf(),
     override var initDate: String = "",
     override var finishDate: String = "",
     override var status: Boolean = false,
-    override var posts: List<@Serializable(with = PostSerializer::class) PostModel> = emptyList(),
+    override val posts: MutableList<@Serializable(with = PostSerializer::class) PostModel> = mutableListOf(),
     @Serializable(with = ProjectSerializer::class)
     override var project: ProjectModel = ProjectModel(),
     @Serializable(with = UserSerializer::class)
     override var primaryRepresentative: UserModel = UserModel(),
     @Serializable(with = UserSerializer::class)
     override var secondaryRepresentative: UserModel? = null,
-    var goals: List<@Serializable(with = GoalSerializer::class) GoalModel> = emptyList(),
-    var donations: List<@Serializable(with = DonationSerializer::class) DonationForActionModel> =
-        emptyList()
+    val goals: MutableList<@Serializable(with = GoalSerializer::class) GoalModel> = mutableListOf(),
+    val donations: MutableList<@Serializable(with = DonationSerializer::class) DonationForActionModel> =
+        mutableListOf()
 ) : ActionModel {
 
     override fun toMap(): Map<String, Any?> {

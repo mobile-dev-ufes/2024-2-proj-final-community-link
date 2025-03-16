@@ -11,21 +11,21 @@ class ActionEventModel(
     override var id: String = "",
     override var name: String = "",
     override var description: String = "",
-    override var tags: List<String> = emptyList(),
+    override val tags: MutableList<String> = mutableListOf(),
     override var initDate: String = "",
     override var finishDate: String = "",
     override var status: Boolean = false,
-    override var posts: List<@Serializable(with = PostSerializer::class) PostModel> = emptyList(),
+    override val posts: MutableList<@Serializable(with = PostSerializer::class) PostModel> = mutableListOf(),
     @Serializable(with = ProjectSerializer::class)
     override var project: ProjectModel = ProjectModel(),
     @Serializable(with = UserSerializer::class)
     override var primaryRepresentative: UserModel = UserModel(),
     @Serializable(with = UserSerializer::class)
     override var secondaryRepresentative: UserModel? = null,
-    var places: List<String> = emptyList(),
-    var volunteerSlots:
-        List<@Serializable(with = VolunteerSlotSerializer::class) VolunteerSlotModel> =
-        emptyList()
+    val places: MutableList<String> = mutableListOf(),
+    val volunteerSlots:
+        MutableList<@Serializable(with = VolunteerSlotSerializer::class) VolunteerSlotModel> =
+        mutableListOf()
 ) : ActionModel {
 
     override fun toMap(): Map<String, Any?> {

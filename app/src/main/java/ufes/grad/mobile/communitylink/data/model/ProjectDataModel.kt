@@ -7,7 +7,7 @@ class ProjectDataModel(
     override var id: String = "",
     var name: String = "",
     var description: String = "",
-    var tags: List<String> = emptyList(),
+    val tags: MutableList<String> = mutableListOf(),
     var address: String = "",
     var CNPJ: String = "",
     var logo: String = "",

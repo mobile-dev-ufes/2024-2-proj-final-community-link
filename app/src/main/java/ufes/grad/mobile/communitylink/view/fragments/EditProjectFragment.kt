@@ -71,7 +71,7 @@ class EditProjectFragment : Fragment(R.layout.fragment_edit_project), View.OnCli
                         ProjectDataModel(
                             name = binding.nameForms.editText.text.toString().trim(),
                             description = binding.descriptionForms.editText.text.toString().trim(),
-                            tags = binding.tagsForms.editText.text.toString().trim().split(","),
+                            tags = binding.tagsForms.editText.text.toString().trim().split(",").toMutableList(),
                             address = binding.addressForms.editText.text.toString().trim(),
                             CNPJ = binding.cnpjForms.editText.text.toString().trim(),
                             pixKey = binding.pixForms.editText.text.toString().trim(),

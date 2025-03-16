@@ -75,7 +75,7 @@ class CreateProjectFragment : Fragment(R.layout.fragment_create_project), View.O
                     ProjectDataModel(
                         name = binding.nameForms.editText.text.toString().trim(),
                         description = binding.descriptionForms.editText.text.toString().trim(),
-                        tags = binding.tagsForms.editText.text.toString().split(','),
+                        tags = binding.tagsForms.editText.text.toString().split(',').toMutableList(),
                         address = binding.addressForms.editText.text.toString(),
                         CNPJ = binding.cnpjForms.editText.text.toString().trim(),
                         pixKey = binding.pixForms.editText.text.toString().trim(),

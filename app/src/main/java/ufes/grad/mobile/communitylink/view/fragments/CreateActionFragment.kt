@@ -152,7 +152,7 @@ class CreateActionFragment : Fragment(R.layout.fragment_create_action), View.OnC
                         ActionEventModel(
                             name = name,
                             description = description,
-                            tags = tags,
+                            tags = tags.toMutableList(),
                             status = false,
                             primaryRepresentative = primaryRepresentative,
                             secondaryRepresentative = secondaryRepresentative
@@ -162,7 +162,7 @@ class CreateActionFragment : Fragment(R.layout.fragment_create_action), View.OnC
                         ActionDonationModel(
                             name = name,
                             description = description,
-                            tags = tags,
+                            tags = tags.toMutableList(),
                             status = false,
                             primaryRepresentative = primaryRepresentative,
                             secondaryRepresentative = secondaryRepresentative

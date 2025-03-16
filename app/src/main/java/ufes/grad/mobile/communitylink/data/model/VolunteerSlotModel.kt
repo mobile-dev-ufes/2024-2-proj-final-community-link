@@ -15,8 +15,8 @@ class VolunteerSlotModel(
     var status: ParticipationStatusEnum = ParticipationStatusEnum.ON_TIME,
     @Serializable(with = ActionSerializer::class) var action: ActionEventModel = ActionEventModel(),
     @Serializable(with = SlotRequestSerializer::class) var filledBy: SlotRequestModel? = null,
-    var slots: List<@Serializable(with = SlotRequestSerializer::class) SlotRequestModel> =
-        emptyList()
+    val slots: MutableList<@Serializable(with = SlotRequestSerializer::class) SlotRequestModel> =
+        mutableListOf()
 ) : BaseModel {
 
     override fun toMap(): Map<String, Any?> {
