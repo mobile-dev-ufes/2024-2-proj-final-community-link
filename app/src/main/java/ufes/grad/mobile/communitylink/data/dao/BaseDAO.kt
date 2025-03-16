@@ -1,5 +1,6 @@
 package ufes.grad.mobile.communitylink.data.dao
 
+import android.util.Log
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.DocumentSnapshot
 import kotlinx.coroutines.tasks.await

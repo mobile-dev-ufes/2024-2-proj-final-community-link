@@ -18,25 +18,24 @@ import ufes.grad.mobile.communitylink.utils.Utilities
 
 class ProfileVM(application: Application) : AndroidViewModel(application) {
     private val auth = FirebaseAuth.getInstance()
-    private var userData = MutableLiveData<HashMap<String, String>>()
+    private var user = MutableLiveData<UserModel?>()
 
     fun getUserData() {
         val context = getApplication<Application>().applicationContext
         Log.d("USERDATA", "GETTING USER DATA")
         if (auth.currentUser != null) {
             viewModelScope.launch {
-                val user = UserDAO.findById(auth.currentUser!!.uid)
-                user?.let {
-                    userData.postValue(Json.decodeFromJsonElement(Json.encodeToJsonElement(user)))
-                } ?: Utilities.notify(context, context.getString(R.string.user_has_no_data))
+                val u = UserDAO.findById(auth.currentUser!!.uid)
+                Log.d("USERDATA", u!!.toMap().toString())
+                user.postValue(u)
             }
         } else {
             Utilities.notify(context, context.getString(R.string.erro_user))
         }
     }
 
-    fun userData(): LiveData<HashMap<String, String>> {
-        return userData
+    fun user(): LiveData<UserModel?> {
+        return user
     }
 
     fun logout() {

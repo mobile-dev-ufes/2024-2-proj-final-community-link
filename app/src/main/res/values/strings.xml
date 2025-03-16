@@ -199,4 +199,5 @@
     <string name="select_a_place">Selecione um local</string>
     <string name="primary_representative">Representante primário</string>
     <string name="secondary_representative">Representante secundário</string>
+    <string name="sucess_saving_action">Sucesso ao criar Ação</string>
 </resources>

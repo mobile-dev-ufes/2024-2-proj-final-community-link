@@ -85,21 +85,21 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), View.OnClickListene
 
     private fun setObserver() {
         profileVM
-            .userData()
+            .user()
             .observe(
                 viewLifecycleOwner,
                 Observer { it ->
-                    binding.name.editText.setText(it.get("name"))
-                    binding.email.editText.setText(it.get("email"))
+                    binding.name.editText.setText(it!!.name)
+                    binding.email.editText.setText(it.email)
                     binding.email.editText.isEnabled = false
                     binding.email.editText.keyListener = null
                     binding.email.editText.setTextColor(requireContext().getColor(R.color.gray_600))
-                    binding.cpf.editText.setText(it.get("cpf"))
-                    binding.buttonDate.text = (it.get("dob"))
+                    binding.cpf.editText.setText(it.cpf)
+                    binding.buttonDate.text = (it.dob)
                     binding.buttonDate.setTextColor(requireContext().getColor(R.color.black))
-                    binding.addressForm.editText.setText(it.get("address"))
-                    binding.phone.editText.setText(it.get("phone"))
-                    binding.sex.editText.setText(it.get("sex"))
+                    binding.addressForm.editText.setText(it.address)
+                    binding.phone.editText.setText(it.phone)
+                    binding.sex.editText.setText(it.sex)
                 }
             )
     }
@@ -113,11 +113,11 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), View.OnClickListene
         when (v.id) {
             binding.projectsButton.id -> {
                 // TODO("Add navigation args")
-                findNavController().navigate(R.id.createProjectFragment)
+                findNavController().navigate(R.id.myProjectsFragment)
             }
             binding.actionsButton.id -> {
                 // TODO("Add navigation args")
-                findNavController().navigate(R.id.createActionFragment)
+                findNavController().navigate(R.id.myActionsFragment)
             }
             binding.eventsButton.id -> {
                 // TODO("Add navigation args")

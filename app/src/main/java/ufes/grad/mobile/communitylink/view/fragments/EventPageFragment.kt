@@ -1,38 +1,40 @@
 package ufes.grad.mobile.communitylink.view.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import ufes.grad.mobile.communitylink.R
 import ufes.grad.mobile.communitylink.data.database.StaticData
-import ufes.grad.mobile.communitylink.data.model.ActionEventModel
 import ufes.grad.mobile.communitylink.data.model.PostModel
 import ufes.grad.mobile.communitylink.databinding.FragmentEventPageBinding
 import ufes.grad.mobile.communitylink.view.adapter.PostAdapter
 import ufes.grad.mobile.communitylink.view.popups.PostPopup
+import ufes.grad.mobile.communitylink.viewmodel.EventPageVM
 
 class EventPageFragment : Fragment(R.layout.fragment_event_page), View.OnClickListener {
 
     private var _binding: FragmentEventPageBinding? = null
     private val binding
         get() = _binding!!
+    private lateinit var eventVM: EventPageVM
 
     private val args: EventPageFragmentArgs by navArgs()
-
-    private lateinit var event: ActionEventModel
 
     private val adapter: PostAdapter = PostAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // TODO("Get event from DB")
-        event = StaticData.eventActions[1]
+        eventVM = ViewModelProvider(this)[EventPageVM::class.java]
+        eventVM.getEventById(args.id)
 
         // TODO("Get posts from event")
         adapter.updateList(StaticData.posts)
@@ -47,8 +49,8 @@ class EventPageFragment : Fragment(R.layout.fragment_event_page), View.OnClickLi
         super.onCreateView(inflater, container, savedInstanceState)
         _binding = FragmentEventPageBinding.inflate(inflater, container, false)
 
+        setObserver()
         setupAdapter()
-        setupData()
 
         return binding.root
     }
@@ -59,7 +61,7 @@ class EventPageFragment : Fragment(R.layout.fragment_event_page), View.OnClickLi
             val popup =
                 PostPopup(
                     item,
-                    event,
+                    eventVM.getEvent().value!!,
                     if (args.edit) PostPopup.PostMode.EDIT else PostPopup.PostMode.VIEW
                 )
             popup.onConfirm = {
@@ -76,28 +78,34 @@ class EventPageFragment : Fragment(R.layout.fragment_event_page), View.OnClickLi
         binding.recyclerList.adapter = adapter
     }
 
-    fun setupData() {
-        binding.nameText.text = event.name
-        binding.descriptionText.text = event.description
-        binding.datesText.text = getString(R.string.from_to, event.initDate, event.finishDate)
-        binding.placesText.text = getString(R.string.places_list, event.places.joinToString("\n"))
+    fun setObserver() {
 
-        // TODO("Set project tag")
-        // binding.projectTag.setValues(project.currentData.name, project.currentData.logo)
+        eventVM.getEvent().observe (
+            viewLifecycleOwner,
+            Observer {
+                binding.nameText.text = it.name
+                binding.descriptionText.text = it.description
+                binding.datesText.text = getString(R.string.from_to, it.initDate, it.finishDate)
+                binding.placesText.text = getString(R.string.places_list, it.places.joinToString("\n"))
 
-        if (args.edit) {
-            binding.pendingButton.setOnClickListener(this)
-            binding.manageButton.setOnClickListener(this)
-            binding.editButton.setOnClickListener(this)
-            binding.createButton.setOnClickListener(this)
-            binding.volunteersButton.visibility = View.GONE
-        } else {
-            binding.volunteersButton.setOnClickListener(this)
-            binding.pendingButton.visibility = View.GONE
-            binding.manageButton.visibility = View.GONE
-            binding.editButton.visibility = View.GONE
-            binding.createButton.visibility = View.GONE
-        }
+                // TODO("Set project tag")
+                // binding.projectTag.setValues(project.currentData.name, project.currentData.logo)
+
+                if (args.edit) {
+                    binding.pendingButton.setOnClickListener(this)
+                    binding.manageButton.setOnClickListener(this)
+                    binding.editButton.setOnClickListener(this)
+                    binding.createButton.setOnClickListener(this)
+                    binding.volunteersButton.visibility = View.GONE
+                } else {
+                    binding.volunteersButton.setOnClickListener(this)
+                    binding.pendingButton.visibility = View.GONE
+                    binding.manageButton.visibility = View.GONE
+                    binding.editButton.visibility = View.GONE
+                    binding.createButton.visibility = View.GONE
+                }
+            }
+        )
     }
 
     override fun onDestroyView() {
@@ -111,12 +119,12 @@ class EventPageFragment : Fragment(R.layout.fragment_event_page), View.OnClickLi
                 val action =
                     EventPageFragmentDirections
                         .actionEventPageFragmentToEventVolunteerSlotsFragment()
-                action.eventId = event.project.id
+                action.eventId = eventVM.getEvent().value!!.project.id
                 action.edit = false
                 findNavController().navigate(action)
             }
             binding.createButton.id -> {
-                val popup = PostPopup(null, event, PostPopup.PostMode.NEW)
+                val popup = PostPopup(null, eventVM.getEvent().value!!, PostPopup.PostMode.NEW)
                 popup.onConfirm = {
                     val post: PostModel? = popup.createPost()
                     if (post != null) {
@@ -129,13 +137,13 @@ class EventPageFragment : Fragment(R.layout.fragment_event_page), View.OnClickLi
             binding.pendingButton.id -> {
                 val action =
                     EventPageFragmentDirections.actionEventPageFragmentToPendingSlotsFragment()
-                action.id = event.project.id
+                action.id = eventVM.getEvent().value!!.project.id
                 findNavController().navigate(action)
             }
             binding.editButton.id -> {
                 val action =
                     EventPageFragmentDirections.actionEventPageFragmentToEditActionFragment()
-                action.id = event.project.id
+                action.id = eventVM.getEvent().value!!.project.id
                 action.isEvent = true
                 findNavController().navigate(action)
             }
@@ -143,7 +151,7 @@ class EventPageFragment : Fragment(R.layout.fragment_event_page), View.OnClickLi
                 val action =
                     EventPageFragmentDirections
                         .actionEventPageFragmentToEventVolunteerSlotsFragment()
-                action.eventId = event.project.id
+                action.eventId = eventVM.getEvent().value!!.project.id
                 action.edit = true
                 findNavController().navigate(action)
             }
@@ -155,12 +163,12 @@ class EventPageFragment : Fragment(R.layout.fragment_event_page), View.OnClickLi
                 if (responsible) {
                     val action =
                         EventPageFragmentDirections.actionEventPageFragmentToEditProjectFragment()
-                    action.id = event.project.id
+                    action.id = eventVM.getEvent().value!!.project.id
                     findNavController().navigate(action)
                 } else {
                     val action =
                         EventPageFragmentDirections.actionEventPageFragmentToProjectPageFragment()
-                    action.id = event.project.id
+                    action.id = eventVM.getEvent().value!!.project.id
                     findNavController().navigate(action)
                 }
             }

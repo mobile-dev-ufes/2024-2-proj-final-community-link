@@ -73,7 +73,7 @@ object StaticData {
         for (i in 0..4) {
             eventActions.add(
                 ActionEventModel(
-                    "0$i",
+                    "V6T3kVOvOXjxTsjoCDAe",
                     "Evento $i",
                     "Descrição do Evento $i",
                     mutableListOf(),
@@ -81,7 +81,7 @@ object StaticData {
                     dateFormatter.format(Date()),
                     true,
                     mutableListOf(),
-                    projects[i],
+                    ProjectModel("wL4SFYZIEAcf0ELI15gb"),
                     users[i],
                 )
             )

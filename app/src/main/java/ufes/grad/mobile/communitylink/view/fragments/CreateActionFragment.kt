@@ -1,6 +1,7 @@
 package ufes.grad.mobile.communitylink.view.fragments
 
 import android.os.Bundle
+import android.view.ActionMode
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,6 +23,7 @@ import ufes.grad.mobile.communitylink.ui.components.SpinnerAdapter
 import ufes.grad.mobile.communitylink.utils.Utilities
 import ufes.grad.mobile.communitylink.viewmodel.CreateActionVM
 
+
 class CreateActionFragment : Fragment(R.layout.fragment_create_action), View.OnClickListener {
 
     enum class ActionType {
@@ -38,17 +40,13 @@ class CreateActionFragment : Fragment(R.layout.fragment_create_action), View.OnC
 
     private lateinit var createActionVM: CreateActionVM
 
-    private lateinit var project: ProjectModel
-
     private var actionType: ActionType = ActionType.NONE
     private var clickedOnPrimary: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         createActionVM = ViewModelProvider(this)[CreateActionVM::class.java]
-
-        // TODO("Get project")
-        project = StaticData.projects[0]
+        createActionVM.getProjectById(args.projectId)
     }
 
     override fun onCreateView(
@@ -71,7 +69,7 @@ class CreateActionFragment : Fragment(R.layout.fragment_create_action), View.OnC
             if (clickedOnPrimary) createActionVM.changePrimaryRepresentative(result_)
             else createActionVM.changeSecondaryRepresentative(result_)
         }
-
+        binding.createButton.setOnClickListener(this)
         return binding.root
     }
 
@@ -96,6 +94,11 @@ class CreateActionFragment : Fragment(R.layout.fragment_create_action), View.OnC
                     )
                 }
             )
+        createActionVM.getProject().observe(
+            viewLifecycleOwner,
+            Observer {
+            }
+        )
     }
 
     fun setupDropdown() {
@@ -114,7 +117,7 @@ class CreateActionFragment : Fragment(R.layout.fragment_create_action), View.OnC
                     position: Int,
                     id: Long
                 ) {
-                    actionType = ActionType.entries.toTypedArray()[position - 1]
+                    actionType = ActionType.entries.toTypedArray()[position]
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {}
@@ -132,15 +135,14 @@ class CreateActionFragment : Fragment(R.layout.fragment_create_action), View.OnC
                 val name = binding.nameForms.editText.text.toString().trim()
                 val description = binding.descriptionForms.editText.text.toString().trim()
                 val tags = binding.tagsForms.editText.text.toString().split(",")
-                val primaryRepresentative = createActionVM.getPrimaryRepresentative().value
-                val secondaryRepresentative = createActionVM.getSecondaryRepresentative().value
+                //val primaryRepresentative = createActionVM.getPrimaryRepresentative().value
+                //val secondaryRepresentative = createActionVM.getSecondaryRepresentative().value
 
                 if (
                     name.isEmpty() ||
                         description.isEmpty() ||
                         tags.isEmpty() ||
-                        actionType == ActionType.NONE ||
-                        primaryRepresentative == null
+                        actionType == ActionType.NONE
                 ) {
                     Utilities.notify(context, getString(R.string.preencha_todos_os_campos))
                     return
@@ -154,8 +156,8 @@ class CreateActionFragment : Fragment(R.layout.fragment_create_action), View.OnC
                             description = description,
                             tags = tags.toMutableList(),
                             status = false,
-                            primaryRepresentative = primaryRepresentative,
-                            secondaryRepresentative = secondaryRepresentative
+                            //primaryRepresentative = primaryRepresentative!!,
+                           // secondaryRepresentative = secondaryRepresentative!!
                         )
                 } else {
                     action =
@@ -164,8 +166,8 @@ class CreateActionFragment : Fragment(R.layout.fragment_create_action), View.OnC
                             description = description,
                             tags = tags.toMutableList(),
                             status = false,
-                            primaryRepresentative = primaryRepresentative,
-                            secondaryRepresentative = secondaryRepresentative
+                            //primaryRepresentative = primaryRepresentative!!,
+                           // secondaryRepresentative = secondaryRepresentative
                         )
                 }
                 createActionVM.createNewAction(action)
