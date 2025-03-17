@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="@dimen/border"
+    tools:context=".view.fragments.CreateActionFragment">
+
+    <ufes.grad.mobile.communitylink.ui.components.FormsLayout
+        android:id="@+id/name_forms"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:forms_title_text="@string/name" />
+
+    <ufes.grad.mobile.communitylink.ui.components.FormsLayout
+        android:id="@+id/description_forms"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:forms_title_text="@string/description" />
+
+    <ufes.grad.mobile.communitylink.ui.components.FormsLayout
+        android:id="@+id/tags_forms"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:forms_hint_text="@string/tags"
+        app:forms_title_text="@string/tags_parenthesis" />
+
+    <Button
+        android:id="@+id/create_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/style_button"
+        android:backgroundTint="@color/black"
+        android:paddingHorizontal="30dp"
+        android:text="@string/create_action"
+        android:textColor="@color/white" />
+
+</LinearLayout>

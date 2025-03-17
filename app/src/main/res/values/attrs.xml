@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="FormsLayout">
+        <attr name="forms_title_text" format="string" />
+        <attr name="forms_title_color" format="color" />
+        <attr name="forms_hint_text" format="string" />
+        <attr name="forms_box_size" format="dimension" />
+        <attr name="forms_demand" format="boolean" />
+        <attr name="forms_margin" format="boolean" />
+        <attr name="forms_maximum_length" format="integer" />
+        <attr name="forms_input_type" format="integer">
+            <enum name="date" value="14" />
+            <enum name="datetime" value="4" />
+            <enum name="number" value="2" />
+            <enum name="phone" value="3" />
+            <enum name="text" value="1" />
+            <enum name="textEmailAddress" value="21" />
+            <enum name="textPassword" value="81" />
+            <enum name="decimal" value="8192" />
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="InfoCardLayout">
+        <attr name="tag_type" format="enum">
+            <enum name="DEFAULT" value="0" />
+            <enum name="DONATION" value="1" />
+            <enum name="EVENT" value="2" />
+            <enum name="FILLED" value="3" />
+            <enum name="EMPTY" value="4" />
+            <enum name="GOAL" value="5" />
+        </attr>
+        <attr name="project_text" format="string" />
+        <attr name="lower_text" format="string" />
+        <attr name="date_text" format="string" />
+        <attr name="title_text" format="string" />
+        <attr name="description_text" format="string" />
+        <attr name="second_title_text" format="string" />
+        <attr name="second_description_text" format="string" />
+        <attr name="cancel_button" format="boolean" />
+        <attr name="show_alert" format="boolean" />
+    </declare-styleable>
+    <declare-styleable name="IconButtonLayout">
+        <attr name="button_icon" format="reference" />
+        <attr name="button_text" format="string" />
+        <attr name="button_text_size" format="dimension" />
+        <attr name="button_icon_size" format="dimension" />
+    </declare-styleable>
+    <declare-styleable name="CommonCardLayout">
+        <attr name="card_upper_text" format="string" />
+        <attr name="card_lower_text" format="string" />
+    </declare-styleable>
+    <declare-styleable name="ProjectCardLayout">
+        <attr name="project_name" format="string" />
+        <attr name="project_description" format="string" />
+    </declare-styleable>
+    <declare-styleable name="SearchBarLayout">
+        <attr name="fix_top" format="boolean" />
+    </declare-styleable>
+    <declare-styleable name="DonationCardLayout">
+        <attr name="donation_name" format="string" />
+        <attr name="donation_date" format="string" />
+        <attr name="donation_pending" format="boolean" />
+    </declare-styleable>
+    <declare-styleable name="PostLayout">
+        <attr name="post_text" format="string" />
+        <attr name="post_date" format="string" />
+    </declare-styleable>
+    <declare-styleable name="ProjectTagLayout">
+        <attr name="project_tag_name" format="string" />
+    </declare-styleable>
+    <declare-styleable name="SeparatorLayout">
+        <attr name="separator_color" format="color" />
+    </declare-styleable>
+    <declare-styleable name="GoalPostLayout">
+        <attr name="goal_post_type" format="enum">
+            <enum name="HIT" value="0" />
+            <enum name="MODIFIED" value="1" />
+            <enum name="NEW" value="2" />
+        </attr>
+        <attr name="goal_post_description" format="string" />
+        <attr name="goal_post_footnote" format="string" />
+        <attr name="goal_post_date" format="string" />
+    </declare-styleable>
+</resources>

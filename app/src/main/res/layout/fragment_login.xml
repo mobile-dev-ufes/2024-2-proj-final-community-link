@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+    android:orientation="vertical"
+    android:padding="@dimen/border"
+    tools:context=".view.fragments.LoginFragment">
+
+    <ufes.grad.mobile.communitylink.ui.components.CommunityLinkTitle
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ufes.grad.mobile.communitylink.ui.components.FormsLayout
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            app:forms_title_text="@string/email"
+            app:forms_input_type="textEmailAddress"/>
+
+        <ufes.grad.mobile.communitylink.ui.components.FormsLayout
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:forms_title_text="@string/password"
+            app:forms_input_type="textPassword"/>
+
+        <Button
+            android:id="@+id/forgot_password_button"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:layout_gravity="center"
+            android:background="@drawable/style_button"
+            android:backgroundTint="@color/blue"
+            android:text="@string/forgot_password"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/login_button"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/style_button"
+            android:backgroundTint="@color/black"
+            android:elevation="20dp"
+            android:paddingHorizontal="40dp"
+            android:text="@string/login"
+            android:textColor="@color/white" />
+
+        <ufes.grad.mobile.communitylink.ui.components.SeparatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/register_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/login_create_account_text"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/register_button"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/style_button"
+            android:backgroundTint="@color/purple"
+            android:elevation="20dp"
+            android:text="@string/create_new_account"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/change_language"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/style_button"
+        android:backgroundTint="@color/black"
+        android:text="@string/change_language"
+        android:textColor="@color/white" />
+
+</LinearLayout>

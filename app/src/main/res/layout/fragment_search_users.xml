@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center|top"
+    android:orientation="vertical"
+    android:padding="@dimen/border"
+    tools:context=".view.fragments.SearchUsersFragment">
+
+    <ufes.grad.mobile.communitylink.ui.components.FormsLayout
+        android:id="@+id/name_forms"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        app:forms_title_text="@string/name" />
+
+    <ufes.grad.mobile.communitylink.ui.components.FormsLayout
+        android:id="@+id/cpf_forms"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        app:forms_title_text="@string/cpf" />
+
+    <ufes.grad.mobile.communitylink.ui.components.FormsLayout
+        android:id="@+id/email_forms"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        app:forms_title_text="@string/email" />
+
+    <Button
+        android:id="@+id/search_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/style_button"
+        android:backgroundTint="@color/black"
+        android:paddingHorizontal="30dp"
+        android:text="@string/search"
+        android:textColor="@color/white" />
+
+    <ufes.grad.mobile.communitylink.ui.components.SeparatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="true" />
+
+</LinearLayout>

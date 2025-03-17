@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:maxHeight="200dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/project_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingVertical="12dp">
+
+        <TextView
+            android:id="@+id/project_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_slab_bold"
+            android:maxLines="1"
+            android:paddingBottom="2dp"
+            android:text="@string/project_name"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/lower_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_slab_regular"
+            android:maxLines="1"
+            android:text="@string/shared_new_action"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/style_dashboard_card"
+        android:backgroundTint="@color/white"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="10dp">
+
+        <ufes.grad.mobile.communitylink.ui.components.TagLayout
+            android:id="@+id/tag"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="8dp" />
+
+        <TextView
+            android:id="@+id/date_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_slab_regular"
+            android:maxLines="1"
+            android:paddingHorizontal="10dp"
+            android:text="XX/XX/XXXX"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/name_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_slab_bold"
+            android:maxLines="1"
+            android:paddingHorizontal="10dp"
+            android:text="Nome da Ação"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/description_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_slab_regular"
+            android:maxLines="3"
+            android:paddingHorizontal="10dp"
+            android:paddingBottom="10dp"
+            android:text="Descrição..."
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/second_name_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_slab_bold"
+            android:maxLines="1"
+            android:paddingHorizontal="10dp"
+            android:text="Nome da Ação"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/second_description_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_slab_regular"
+            android:maxLines="3"
+            android:paddingHorizontal="10dp"
+            android:paddingBottom="10dp"
+            android:singleLine="false"
+            android:text="Descrição..."
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/cancel_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/style_button"
+            android:backgroundTint="@color/red"
+            android:text="@string/cancel_volunteer"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+</LinearLayout>
