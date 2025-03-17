@@ -66,7 +66,6 @@ class LoginFragment : Fragment(R.layout.fragment_login), View.OnClickListener {
                 val action = LoginFragmentDirections.actionLoginFragmentToForgotPasswordFragment()
                 findNavController().navigate(action)
             }
-
             binding.changeLanguage.id -> {
                 toggleLanguage()
             }

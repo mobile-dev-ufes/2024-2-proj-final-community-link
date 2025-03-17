@@ -9,12 +9,9 @@ import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.launch
 import ufes.grad.mobile.communitylink.R
-import ufes.grad.mobile.communitylink.data.dao.ActionDonationDAO
 import ufes.grad.mobile.communitylink.data.dao.ActionEventDAO
 import ufes.grad.mobile.communitylink.data.dao.ProjectDAO
 import ufes.grad.mobile.communitylink.data.dao.UserDAO
-import ufes.grad.mobile.communitylink.data.model.ActionDonationModel
-import ufes.grad.mobile.communitylink.data.model.ActionEventModel
 import ufes.grad.mobile.communitylink.data.model.ActionModel
 import ufes.grad.mobile.communitylink.data.model.ProjectModel
 import ufes.grad.mobile.communitylink.data.model.UserModel
@@ -38,22 +35,12 @@ class CreateActionVM(application: Application) : AndroidViewModel(application) {
         val context = getApplication<Application>().applicationContext
         try {
             viewModelScope.launch {
-                when (action) {
-                    is ActionEventModel -> {
-                        if (ActionEventDAO.insert(action)) {
-                            Log.d("Firebase", "Ação criada com sucesso")
-                        } else {
-                            throw Exception("Erro ao criar ação de evento")
-                        }
-                    }
-                    is ActionDonationModel -> {
-                        if (ActionDonationDAO.insert(action)) {
-                            Log.d("Firebase", "Ação criada com sucesso")
-                        } else {
-                            throw Exception("Erro ao criar ação de doacao")
-                        }
-                    }
-                }
+                if (ActionEventDAO.insert(action)) Log.d("Firebase", "Ação criada com sucesso")
+                else throw Exception("Erro ao criar ação de evento")
+
+                getProject()
+                if (project.value == null) throw Exception("Criou ação mas sem projeto")
+
                 Utilities.notify(context, context.getString(R.string.sucess_saving_action))
             }
         } catch (_: Exception) {

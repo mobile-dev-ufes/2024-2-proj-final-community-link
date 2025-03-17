@@ -23,14 +23,12 @@
         android:layout_height="wrap_content"
         android:background="@drawable/style_button"
         android:backgroundTint="@color/white"
-        android:drawableStart="@drawable/ic_plus"
-        android:drawablePadding="10dp"
         android:drawableTint="@color/purple"
-        android:text="@string/attach_image"
+        android:text="@string/confirmar_entrega"
         android:textColor="@color/purple"
         android:textSize="16sp" />
 
-    <ufes.grad.mobile.communitylink.components.SeparatorLayout
+    <ufes.grad.mobile.communitylink.ui.components.SeparatorLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:separator_color="@color/white" />

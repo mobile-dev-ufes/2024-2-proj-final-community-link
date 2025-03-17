@@ -2,13 +2,10 @@ package ufes.grad.mobile.communitylink.data.model
 
 import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.Serializable
-import ufes.grad.mobile.communitylink.data.dao.GoalDAO
 import ufes.grad.mobile.communitylink.data.dao.PostDAO
 import ufes.grad.mobile.communitylink.data.dao.VolunteerSlotDAO
-import ufes.grad.mobile.communitylink.data.serializer.PostSerializer
 import ufes.grad.mobile.communitylink.data.serializer.ProjectSerializer
 import ufes.grad.mobile.communitylink.data.serializer.UserSerializer
-import ufes.grad.mobile.communitylink.data.serializer.VolunteerSlotSerializer
 
 @Serializable
 class ActionEventModel(
@@ -19,17 +16,13 @@ class ActionEventModel(
     override var initDate: String = "",
     override var finishDate: String = "",
     override var status: Boolean = false,
-
     @Serializable(with = ProjectSerializer::class)
     override var project: ProjectModel = ProjectModel(),
-
     @Serializable(with = UserSerializer::class)
     override var primaryRepresentative: UserModel = UserModel(),
-
     @Serializable(with = UserSerializer::class)
     override var secondaryRepresentative: UserModel? = null,
-
-    val places: MutableList<String> = mutableListOf(),
+    val places: String = "",
 ) : ActionModel {
 
     val posts: List<PostModel>
@@ -47,10 +40,12 @@ class ActionEventModel(
             "initDate" to initDate,
             "finishDate" to finishDate,
             "status" to status,
+            "posts" to posts.map { it.id },
             "project" to project.id,
             "primaryRepresentative" to primaryRepresentative.id,
             "secondaryRepresentative" to secondaryRepresentative?.id,
-            "places" to places
+            "places" to places,
+            "volunteerSlots" to volunteerSlots.map { it.id }
         )
     }
 }

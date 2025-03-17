@@ -10,16 +10,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import ufes.grad.mobile.communitylink.R
-import ufes.grad.mobile.communitylink.data.database.StaticData
-import ufes.grad.mobile.communitylink.data.model.ActionEventModel
 import ufes.grad.mobile.communitylink.data.model.ProjectModel
 import ufes.grad.mobile.communitylink.databinding.FragmentMyProjectsBinding
 import ufes.grad.mobile.communitylink.ui.components.SpinnerAdapter
 import ufes.grad.mobile.communitylink.view.adapter.ListCommonCardAdapter
-import ufes.grad.mobile.communitylink.viewmodel.CreateActionVM
 import ufes.grad.mobile.communitylink.viewmodel.MyProjectsVM
 
 class MyProjectsFragment : Fragment(R.layout.fragment_my_projects), View.OnClickListener {
@@ -40,10 +36,7 @@ class MyProjectsFragment : Fragment(R.layout.fragment_my_projects), View.OnClick
     }
 
     fun setObserver() {
-        myProjectsVM.getProjects().observe(
-            viewLifecycleOwner,
-            Observer { adapter.updateList(it) }
-        )
+        myProjectsVM.getProjects().observe(viewLifecycleOwner, Observer { adapter.updateList(it) })
     }
 
     override fun onCreateView(

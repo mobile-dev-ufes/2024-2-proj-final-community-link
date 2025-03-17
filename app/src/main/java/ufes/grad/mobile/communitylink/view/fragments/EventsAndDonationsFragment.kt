@@ -9,8 +9,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import ufes.grad.mobile.communitylink.R
 import ufes.grad.mobile.communitylink.data.database.StaticData
-import ufes.grad.mobile.communitylink.data.model.ActionDonationModel
-import ufes.grad.mobile.communitylink.data.model.ActionEventModel
 import ufes.grad.mobile.communitylink.databinding.FragmentEventsAndDonationsBinding
 import ufes.grad.mobile.communitylink.view.adapter.ListInfoCardAdapter
 
@@ -26,7 +24,7 @@ class EventsAndDonationsFragment : Fragment(R.layout.fragment_events_and_donatio
         super.onCreate(savedInstanceState)
 
         // TODO("Get content from DB")
-        adapter.updateList(StaticData.eventActions + StaticData.donationActions)
+        adapter.updateList(StaticData.eventActions)
     }
 
     override fun onCreateView(
@@ -44,23 +42,11 @@ class EventsAndDonationsFragment : Fragment(R.layout.fragment_events_and_donatio
 
     fun setupAdapters() {
         adapter.onItemClickListener = { position ->
-            val item = adapter.list[position]
-            when (item) {
-                is ActionDonationModel -> {
-                    val action =
-                        EventsAndDonationsFragmentDirections
-                            .actionEventsAndDonationsFragmentToDonationPageFragment()
-                    action.id = item.id
-                    findNavController().navigate(action)
-                }
-                is ActionEventModel -> {
-                    val action =
-                        EventsAndDonationsFragmentDirections
-                            .actionEventsAndDonationsFragmentToEventPageFragment()
-                    action.id = item.id
-                    findNavController().navigate(action)
-                }
-            }
+            val action =
+                EventsAndDonationsFragmentDirections
+                    .actionEventsAndDonationsFragmentToEventPageFragment()
+            action.id = adapter.list[position].id
+            findNavController().navigate(action)
         }
 
         binding.recyclerList.layoutManager = LinearLayoutManager(context)

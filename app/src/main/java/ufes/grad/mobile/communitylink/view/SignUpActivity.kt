@@ -6,7 +6,7 @@ import ufes.grad.mobile.communitylink.R
 import ufes.grad.mobile.communitylink.databinding.ActivitySignupBinding
 import ufes.grad.mobile.communitylink.view.fragments.SignupFragment
 
-class SignUpActivity: AppCompatActivity() {
+class SignUpActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignupBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,5 +19,4 @@ class SignUpActivity: AppCompatActivity() {
             .addToBackStack(null)
             .commit()
     }
-
 }

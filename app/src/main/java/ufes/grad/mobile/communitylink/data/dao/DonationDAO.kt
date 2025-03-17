@@ -2,11 +2,8 @@ package ufes.grad.mobile.communitylink.data.dao
 
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.coroutines.tasks.await
 import ufes.grad.mobile.communitylink.data.model.BaseModel
-import ufes.grad.mobile.communitylink.data.model.DonationForActionModel
 import ufes.grad.mobile.communitylink.data.model.DonationModel
-import ufes.grad.mobile.communitylink.data.serializer.JsonManager
 
 object DonationDAO : BaseDAO() {
 
@@ -28,10 +25,10 @@ object DonationDAO : BaseDAO() {
     }
 
     override suspend fun findById(id: String): DonationModel? {
-        return DonationForActionDAO.findById(id) ?: DonationForProjectDAO.findById(id)
+        return DonationForProjectDAO.findById(id)
     }
 
     suspend fun findByUserId(id: String): List<DonationModel> {
-        return DonationForActionDAO.findByUserId(id) + DonationForProjectDAO.findByUserId(id)
+        return DonationForProjectDAO.findByUserId(id)
     }
 }

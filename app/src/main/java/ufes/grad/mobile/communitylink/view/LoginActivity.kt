@@ -19,5 +19,4 @@ class LoginActivity : AppCompatActivity() {
             .addToBackStack(null)
             .commit()
     }
-
 }

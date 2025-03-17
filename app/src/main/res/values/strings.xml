@@ -57,7 +57,7 @@
     <string name="erro_get_user_data">Erro ao buscar dados do Usuário, tente novamente.</string>
     <string name="user_has_no_data">Um erro ocorreu!</string>
     <string name="erro_update_user_data">Erro ao atualizar os dados, tente novamente!</string>
-    <string name="success_updating_user_data">Sucesso ao atualizar seu dados!</string>
+    <string name="success_updating_user_data">Sucesso ao atualizar seus dados!</string>
     <string name="create_new_project">Cadastrar novo projeto</string>
     <string name="description">Descrição</string>
     <string name="tags_parenthesis">Tags (separe em vírgulas)*</string>
@@ -118,7 +118,7 @@
     <string name="manage_slots">Gerenciar Vagas</string>
     <string name="pending_requests">Pedidos Pendentes</string>
     <string name="confirm_donation_bottom_popup_content">Caso não tenha recebido esta doação, clique no botão abaixo para notificar o usuário.</string>
-    <string name="confirm_donation_top_popup_content">Para confirmar a doação, anexe uma imagem que comprove o envio do objeto ou valor monetário.</string>
+    <string name="confirm_donation_top_popup_content">Para confirmar a doação, aperte o botão abaixo.</string>
     <string name="confirm_donation">Confirmar doação</string>
     <string name="attach_image">Anexar imagem</string>
     <string name="i_didnt_receive_this_donation">Não recebi esta doação</string>
@@ -150,9 +150,7 @@
     <string name="manage_direct_donations">Gerenciar Doações Diretas</string>
     <string name="manage_actions">Gerenciar Ações</string>
     <string name="create_action">Criar Ação</string>
-    <string name="add_place_one">Adicionar local 1</string>
-    <string name="add_place_two">Adicionar local 2</string>
-    <string name="add_place_three">Adicionar local 3</string>
+    <string name="add_place">Adicionar local</string>
     <string name="end_date">Data de fim</string>
     <string name="start_date">Data de início</string>
     <string name="volunteer_slot">Vaga de voluntário</string>
@@ -205,4 +203,11 @@
     <string name="an_error_occured">Um erro ocorreu!</string>
     <string name="sucesso">Sucesso!</string>
     <string name="change_language">English</string>
+    <string name="place_colon">Local: %1$s</string>
+    <string name="hit_a_goal">bateu uma meta!</string>
+    <string name="modified_a_goal">modificou uma meta!</string>
+    <string name="created_a_new_goal">criou uma nova meta!</string>
+    <string name="made_a_new_post">fez uma nova publicação</string>
+    <string name="volunteer_slot_description">%1$s\nHorário de início: %2$s\n</string>
+    <string name="confirmar_entrega">Confirmar entrega</string>
 </resources>
