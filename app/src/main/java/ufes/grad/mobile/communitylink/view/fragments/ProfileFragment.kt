@@ -53,7 +53,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), View.OnClickListene
         binding.projectsButton.setOnClickListener(this)
         binding.actionsButton.setOnClickListener(this)
         binding.eventsButton.setOnClickListener(this)
-        binding.pendingButton.setOnClickListener(this)
         binding.logoutButton.setOnClickListener(this)
         binding.confirmAlterations.setOnClickListener(this)
         binding.excludeAccount.setOnClickListener(this)
@@ -97,9 +96,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), View.OnClickListene
         when (v.id) {
             binding.projectsButton.id -> {
                 val actions =
-                    ProfileFragmentDirections.actionProfileFragmentToMyProjectsFragment(
-                        profileVM.user().value?.id!!
-                    )
+                    ProfileFragmentDirections.actionProfileFragmentToMyProjectsFragment()
                 findNavController().navigate(actions)
             }
             binding.actionsButton.id -> {
@@ -109,11 +106,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), View.OnClickListene
             binding.eventsButton.id -> {
                 val actions =
                     ProfileFragmentDirections.actionProfileFragmentToEventsAndDonationsFragment()
-                findNavController().navigate(actions)
-            }
-            binding.pendingButton.id -> {
-                val actions =
-                    ProfileFragmentDirections.actionProfileFragmentToPendingActionsFragment()
                 findNavController().navigate(actions)
             }
             binding.logoutButton.id -> {
