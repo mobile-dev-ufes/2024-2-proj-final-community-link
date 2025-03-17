@@ -4,6 +4,8 @@
 O **CommunityLink** é um sistema desenvolvido para auxiliar projetos e ações sociais, proporcionando maior visibilidade por meio de uma plataforma digital.
 Com o CommunityLink, organizações e indivíduos podem divulgar seus projetos, gerenciar ações e facilitar o engajamento da comunidade.
 
+Um vídeo demonstrativo do projeto pode ser visto em: https://youtu.be/pFeKg9TDjLc?feature=shared
+
 ## 🎯 Público-Alvo
 O CommunityLink é voltado para:
 - Organizações não governamentais (ONGs);
