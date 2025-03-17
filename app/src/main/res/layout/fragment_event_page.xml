@@ -22,7 +22,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            app:project_tag_image="@drawable/ic_explore"
             app:project_tag_name="@string/placeholder" />
 
         <TextView

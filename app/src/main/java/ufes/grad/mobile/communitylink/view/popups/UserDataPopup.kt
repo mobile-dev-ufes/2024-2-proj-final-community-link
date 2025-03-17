@@ -5,12 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import ufes.grad.mobile.communitylink.R
-import ufes.grad.mobile.communitylink.data.model.UserModel
 import ufes.grad.mobile.communitylink.databinding.PopupUserDataBinding
 import ufes.grad.mobile.communitylink.ui.components.SpinnerAdapter
+import ufes.grad.mobile.communitylink.viewmodel.UserDataVM
 
-class UserDataPopup(private val mode: UserPopupType) :
+class UserDataPopup(private val userId: String, private val mode: UserPopupType) :
     BasePopup(PopupType.TWO_BUTTON, R.layout.popup_user_data) {
 
     /** Determines the layout of the popup. */
@@ -27,10 +29,12 @@ class UserDataPopup(private val mode: UserPopupType) :
     private val binding
         get() = _binding!!
 
-    private lateinit var user: UserModel
+    private lateinit var userVM: UserDataVM
 
-    fun setUser(user: UserModel) {
-        this.user = user
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        userVM = ViewModelProvider(this)[UserDataVM::class.java]
+        userVM.getUserData(userId)
     }
 
     override fun onCreateView(
@@ -40,6 +44,8 @@ class UserDataPopup(private val mode: UserPopupType) :
     ): View? {
         val root = super.onCreateView(inflater, container, savedInstanceState)
         _binding = PopupUserDataBinding.inflate(inflater, container, false)
+
+        setObserver()
 
         when (mode) {
             UserPopupType.ADD_USER_AS_MEMBER -> {
@@ -65,6 +71,23 @@ class UserDataPopup(private val mode: UserPopupType) :
         }
 
         return root
+    }
+
+    fun setObserver() {
+        userVM
+            .getUser()
+            .observe(
+                viewLifecycleOwner,
+                Observer {
+                    binding.nameText.text = it.name
+                    binding.emailText.text = it.email
+                    binding.cpfText.text = it.cpf
+                    binding.phoneText.text = it.phone
+                    binding.sexText.text = it.sex
+                    binding.dateText.text = it.dob
+                    binding.addressText.text = it.address
+                }
+            )
     }
 
     fun setupDropdown() {

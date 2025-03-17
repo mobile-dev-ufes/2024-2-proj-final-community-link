@@ -12,8 +12,8 @@ import ufes.grad.mobile.communitylink.data.model.ActionModel
 import ufes.grad.mobile.communitylink.utils.Utilities
 
 /**
- * ViewModel responsible for handling action editing operations.
- * It retrieves and updates action data while providing user feedback.
+ * ViewModel responsible for handling action editing operations. It retrieves and updates action
+ * data while providing user feedback.
  *
  * @param application The application context.
  */

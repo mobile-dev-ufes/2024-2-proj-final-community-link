@@ -20,15 +20,6 @@
         android:drawablePadding="10dp"
         android:text="@string/create_new_project" />
 
-    <Spinner
-        android:id="@+id/filter"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/style_edit_text"
-        android:backgroundTint="@color/white"
-        android:spinnerMode="dropdown"
-        tools:listitem="@layout/layout_spinner" />
-
     <ufes.grad.mobile.communitylink.ui.components.SeparatorLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

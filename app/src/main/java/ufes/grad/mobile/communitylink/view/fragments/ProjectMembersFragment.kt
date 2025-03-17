@@ -81,7 +81,7 @@ class ProjectMembersFragment : Fragment(R.layout.fragment_project_members), View
             else UserDataPopup.UserPopupType.VIEW_DATA
 
         responsibleAdapter.onItemClickListener = { position ->
-            val popup = UserDataPopup(popup_type)
+            val popup = UserDataPopup(responsibleAdapter.list[position].id, popup_type)
             popup.onConfirm =
                 {
                     // TODO("Remove member from project")
@@ -93,7 +93,7 @@ class ProjectMembersFragment : Fragment(R.layout.fragment_project_members), View
         binding.recyclerListResponsible.adapter = responsibleAdapter
 
         membersAdapter.onItemClickListener = { position ->
-            val popup = UserDataPopup(popup_type)
+            val popup = UserDataPopup(membersAdapter.list[position].id, popup_type)
             popup.onConfirm =
                 {
                     // TODO("Remove member from project")

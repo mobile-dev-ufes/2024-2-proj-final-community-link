@@ -10,8 +10,8 @@ import ufes.grad.mobile.communitylink.data.dao.DonationForProjectDAO
 import ufes.grad.mobile.communitylink.data.model.DonationForProjectModel
 
 /**
- * ViewModel responsible for managing the list of donations associated with projects.
- * It retrieves donation data from the database and updates the LiveData accordingly.
+ * ViewModel responsible for managing the list of donations associated with projects. It retrieves
+ * donation data from the database and updates the LiveData accordingly.
  *
  * @param application The application context.
  */

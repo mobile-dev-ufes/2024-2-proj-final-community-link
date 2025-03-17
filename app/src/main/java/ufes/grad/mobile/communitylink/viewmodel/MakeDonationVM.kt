@@ -13,8 +13,8 @@ import ufes.grad.mobile.communitylink.data.model.DonationForProjectModel
 import ufes.grad.mobile.communitylink.utils.Utilities
 
 /**
- * ViewModel responsible for managing donations for a project.
- * It allows creating donations and copying donation details to the clipboard.
+ * ViewModel responsible for managing donations for a project. It allows creating donations and
+ * copying donation details to the clipboard.
  *
  * @param application The application context.
  */

@@ -41,33 +41,27 @@ class ListInfoCardViewHolder(
         binding.nameText.text = model.action.name
 
         binding.descriptionText.text = model.text
-        binding.postImage.visibility = GONE
     }
 
     fun setActionCard(model: ActionModel) {
         val binding: LayoutInfoCardBinding = binding_
 
-        binding.projectText.text = model.project.currentData.name
+        if (content != ListInfoCardAdapter.InfoCardContent.MY_ACTIONS)
+            binding.projectText.text = model.project.currentData.name
 
         binding.tag.setType(TagLayout.TagType.EVENT)
 
-        binding.dateText.text = model.initDate
+        if (model.initDate.isNotEmpty()) binding.dateText.text = model.initDate
+        else binding.dateText.visibility = GONE
+
         binding.nameText.text = model.name
         binding.descriptionText.text = model.description
 
-        binding.postImage.visibility = GONE
-
-        if (content != ListInfoCardAdapter.InfoCardContent.PAST) {
-            binding.secondDescriptionText.visibility = GONE
-            binding.secondNameText.visibility = GONE
-        }
+        binding.secondDescriptionText.visibility = GONE
+        binding.secondNameText.visibility = GONE
 
         if (content != ListInfoCardAdapter.InfoCardContent.CANCELLABLE) {
             binding.cancelButton.visibility = GONE
-        }
-
-        if (content != ListInfoCardAdapter.InfoCardContent.MY_ACTIONS || model.status) {
-            binding.alertText.visibility = GONE
         }
     }
 }

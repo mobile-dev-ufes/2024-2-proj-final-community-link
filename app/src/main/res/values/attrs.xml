@@ -47,12 +47,10 @@
     <declare-styleable name="CommonCardLayout">
         <attr name="card_upper_text" format="string" />
         <attr name="card_lower_text" format="string" />
-        <attr name="card_image" format="reference" />
     </declare-styleable>
     <declare-styleable name="ProjectCardLayout">
         <attr name="project_name" format="string" />
         <attr name="project_description" format="string" />
-        <attr name="project_icon" format="reference" />
     </declare-styleable>
     <declare-styleable name="SearchBarLayout">
         <attr name="fix_top" format="boolean" />
@@ -65,11 +63,9 @@
     <declare-styleable name="PostLayout">
         <attr name="post_text" format="string" />
         <attr name="post_date" format="string" />
-        <attr name="post_image" format="reference" />
     </declare-styleable>
     <declare-styleable name="ProjectTagLayout">
         <attr name="project_tag_name" format="string" />
-        <attr name="project_tag_image" format="reference" />
     </declare-styleable>
     <declare-styleable name="SeparatorLayout">
         <attr name="separator_color" format="color" />

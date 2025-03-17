@@ -11,44 +11,27 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:paddingVertical="12dp">
 
-        <ImageView
-            android:id="@+id/project_image"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginEnd="10dp"
-            android:background="@drawable/mask_circle"
-            android:clipToOutline="true"
-            android:src="@drawable/project_profile" />
-
-        <LinearLayout
+        <TextView
+            android:id="@+id/project_text"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_slab_bold"
+            android:maxLines="1"
+            android:paddingBottom="2dp"
+            android:text="@string/project_name"
+            android:textSize="16sp" />
 
-            <TextView
-                android:id="@+id/project_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_slab_bold"
-                android:maxLines="1"
-                android:paddingBottom="2dp"
-                android:text="@string/project_name"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/lower_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_slab_regular"
-                android:maxLines="1"
-                android:text="@string/shared_new_action"
-                android:textSize="12sp" />
-
-        </LinearLayout>
+        <TextView
+            android:id="@+id/lower_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_slab_regular"
+            android:maxLines="1"
+            android:text="@string/shared_new_action"
+            android:textSize="12sp" />
 
     </LinearLayout>
 
@@ -89,33 +72,16 @@
             android:text="Nome da Ação"
             android:textSize="18sp" />
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/description_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:orientation="horizontal"
-            android:paddingHorizontal="10dp">
-
-            <ImageView
-                android:id="@+id/post_image"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_marginEnd="10dp"
-                android:background="@drawable/mask_rounded_rectangle"
-                android:cropToPadding="true"
-                android:src="@drawable/project_profile" />
-
-            <TextView
-                android:id="@+id/description_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_slab_regular"
-                android:maxLines="3"
-                android:paddingBottom="10dp"
-                android:text="Descrição..."
-                android:textSize="12sp" />
-
-        </LinearLayout>
+            android:fontFamily="@font/roboto_slab_regular"
+            android:maxLines="3"
+            android:paddingHorizontal="10dp"
+            android:paddingBottom="10dp"
+            android:text="Descrição..."
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/second_name_text"
@@ -147,18 +113,6 @@
             android:backgroundTint="@color/red"
             android:text="@string/cancel_volunteer"
             android:textColor="@color/white" />
-
-        <TextView
-            android:id="@+id/alert_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/ic_alert"
-            android:drawablePadding="10dp"
-            android:drawableTint="@color/gray"
-            android:gravity="center|start"
-            android:maxLines="1"
-            android:text="@string/to_be_confirmed"
-            android:textColor="@color/gray" />
 
     </LinearLayout>
 

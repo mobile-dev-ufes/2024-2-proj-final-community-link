@@ -13,8 +13,8 @@ import ufes.grad.mobile.communitylink.data.model.PostModel
 import ufes.grad.mobile.communitylink.utils.Utilities
 
 /**
- * ViewModel responsible for managing post data and operations such as fetching, updating, and creating new posts.
- * It interacts with the PostDAO to retrieve or modify post data.
+ * ViewModel responsible for managing post data and operations such as fetching, updating, and
+ * creating new posts. It interacts with the PostDAO to retrieve or modify post data.
  *
  * @param application The application context.
  */
@@ -32,8 +32,8 @@ class PostVM(application: Application) : AndroidViewModel(application) {
     }
 
     /**
-     * Fetches the post by its ID and updates the LiveData with the post data.
-     * If the postId is null, an empty post model is set.
+     * Fetches the post by its ID and updates the LiveData with the post data. If the postId is
+     * null, an empty post model is set.
      *
      * @param postId The ID of the post to fetch.
      */
@@ -43,7 +43,8 @@ class PostVM(application: Application) : AndroidViewModel(application) {
     }
 
     /**
-     * Updates an existing post in the database and provides feedback to the user based on the result.
+     * Updates an existing post in the database and provides feedback to the user based on the
+     * result.
      *
      * @param post The post data to update.
      * @return True if the update was successful, otherwise false.

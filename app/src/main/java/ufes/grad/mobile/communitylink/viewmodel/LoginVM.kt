@@ -12,9 +12,8 @@ import ufes.grad.mobile.communitylink.R
 import ufes.grad.mobile.communitylink.utils.Utilities
 
 /**
- * ViewModel responsible for managing user login.
- * It uses Firebase Authentication to sign in the user with email and password,
- * and provides feedback based on the login outcome.
+ * ViewModel responsible for managing user login. It uses Firebase Authentication to sign in the
+ * user with email and password, and provides feedback based on the login outcome.
  *
  * @param application The application context.
  */
@@ -22,8 +21,8 @@ class LoginVM(application: Application) : AndroidViewModel(application) {
     private val auth = FirebaseAuth.getInstance()
 
     /**
-     * Attempts to sign in a user with the provided email and password.
-     * Notifies the user with an appropriate message based on the result.
+     * Attempts to sign in a user with the provided email and password. Notifies the user with an
+     * appropriate message based on the result.
      *
      * @param email The email address of the user.
      * @param password The password of the user.

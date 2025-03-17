@@ -10,8 +10,8 @@ import ufes.grad.mobile.communitylink.data.dao.ProjectDAO
 import ufes.grad.mobile.communitylink.data.model.ProjectModel
 
 /**
- * ViewModel responsible for managing project data and retrieving project details.
- * It provides functionality to fetch a project by its ID.
+ * ViewModel responsible for managing project data and retrieving project details. It provides
+ * functionality to fetch a project by its ID.
  *
  * @param application The application context.
  */

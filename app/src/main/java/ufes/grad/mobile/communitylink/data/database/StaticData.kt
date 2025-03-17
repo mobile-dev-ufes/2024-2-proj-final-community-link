@@ -71,8 +71,7 @@ object StaticData {
                     "0$i",
                     text =
                         "Postagem $i... Esta postagem é muito boa.\nTestando os limites\nSim, testando\nUau asdaaaaaaaa jasdjajd afassjnanj asdkankdsknka askdnakdknaksdk askdkansdkna",
-                    date = dateFormatter.format(Date()),
-                    media = "listOf()"
+                    date = dateFormatter.format(Date())
                 )
             )
         }

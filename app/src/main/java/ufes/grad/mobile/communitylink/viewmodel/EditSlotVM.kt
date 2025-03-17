@@ -20,8 +20,8 @@ import ufes.grad.mobile.communitylink.data.model.VolunteerSlotModel
 import ufes.grad.mobile.communitylink.utils.Utilities
 
 /**
- * ViewModel responsible for managing volunteer slots.
- * Handles slot retrieval, creation, updates, and volunteer removal.
+ * ViewModel responsible for managing volunteer slots. Handles slot retrieval, creation, updates,
+ * and volunteer removal.
  *
  * @param application The application context.
  */
@@ -94,9 +94,7 @@ class EditSlotVM(application: Application) : AndroidViewModel(application) {
         return startTime <= LocalDateTime.now()
     }
 
-    /**
-     * Removes the volunteer assigned to the slot.
-     */
+    /** Removes the volunteer assigned to the slot. */
     fun removeVolunteer() {
         slot.value?.filledBy = null
     }

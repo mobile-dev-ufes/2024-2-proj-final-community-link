@@ -43,6 +43,8 @@ class MakeDonationPopup(private val projectId: String) :
         val root = super.onCreateView(inflater, container, savedInstanceState)
         _binding = PopupMakeDonationBinding.inflate(inflater, container, false)
         binding.pixButton.setOnClickListener(this)
+        binding.cancelButton.setOnClickListener(this)
+        binding.confirmButton.setOnClickListener(this)
         return root
     }
 

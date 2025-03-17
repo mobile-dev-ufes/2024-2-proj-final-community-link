@@ -74,8 +74,13 @@ class EventPageFragment : Fragment(R.layout.fragment_event_page), View.OnClickLi
                 Observer {
                     binding.nameText.text = it.name
                     binding.descriptionText.text = it.description
-                    binding.datesText.text = getString(R.string.from_to, it.initDate, it.finishDate)
-                    binding.placesText.text = getString(R.string.places_list, it.places)
+                    if (it.initDate.isEmpty() || it.finishDate.isEmpty())
+                        binding.datesText.visibility = View.GONE
+                    else
+                        binding.datesText.text =
+                            getString(R.string.from_to, it.initDate, it.finishDate)
+                    if (it.places.isEmpty()) binding.placesText.visibility = View.GONE
+                    else binding.placesText.text = getString(R.string.places_list, it.places)
 
                     binding.projectTag.setValues(it.project.currentData.name)
                     if (args.edit) {

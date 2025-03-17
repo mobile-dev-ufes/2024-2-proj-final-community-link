@@ -10,11 +10,9 @@ import android.view.View
 import android.view.View.OnClickListener
 import android.view.ViewGroup
 import android.widget.AdapterView
-import android.widget.DatePicker
 import androidx.core.content.ContextCompat.getColor
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import java.util.Calendar
 import ufes.grad.mobile.communitylink.R
 import ufes.grad.mobile.communitylink.data.model.UserModel
@@ -34,6 +32,7 @@ class SignupFragment : Fragment(R.layout.fragment_register), OnClickListener {
     private lateinit var signupVM: SignupVM
 
     private var sex: String = ""
+    private var date: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,8 +42,28 @@ class SignupFragment : Fragment(R.layout.fragment_register), OnClickListener {
 
     override fun onClick(v: View) {
         when (v.id) {
-            R.id.create_button -> {
-                val email = binding.email.editText.text.toString().trim()
+            binding.buttonDate.id -> {
+                val cal = Calendar.getInstance()
+                val datePicker =
+                    DatePickerDialog(
+                        requireContext(),
+                        { _, year, month, day ->
+                            {
+                                date = "$day/${month + 1}/$year"
+                                binding.buttonDate.setTextColor(
+                                    getColor(requireContext(), R.color.black)
+                                )
+                            }
+                        },
+                        cal.get(Calendar.YEAR),
+                        cal.get(Calendar.MONTH),
+                        cal.get(Calendar.DAY_OF_MONTH)
+                    )
+                binding.buttonDate.text = date
+                datePicker.datePicker.maxDate = cal.timeInMillis
+                datePicker.show()
+            }
+            binding.createButton.id -> {
                 val password = binding.password.editText.text.toString()
                 val confirmPassword = binding.repeat.editText.text.toString()
                 if (password != confirmPassword) {
@@ -54,19 +73,26 @@ class SignupFragment : Fragment(R.layout.fragment_register), OnClickListener {
                     return
                 }
 
+                val name = binding.name.editText.text.toString().trim()
+                val email = binding.email.editText.text.toString().trim()
+                val cpf = binding.cpf.editText.text.toString()
+                val address = binding.address.editText.text.toString().trim()
+                val dob = binding.buttonDate.text.toString()
+                val phone = binding.phone.editText.text.toString()
+
                 if (sex == getString(R.string.sex)) {
                     Utilities.notify(context, getString(R.string.preencha_todos_os_campos))
                     showMissingFields()
                 } else {
                     val user =
                         UserModel(
-                            name = binding.name.editText.text.toString().trim(),
-                            email = binding.email.editText.text.toString().trim(),
-                            cpf = binding.cpf.editText.text.toString(),
+                            name = name,
+                            email = email,
+                            cpf = cpf,
                             sex = sex,
-                            dob = binding.buttonDate.text.toString(),
-                            address = binding.address.editText.text.toString().trim(),
-                            phone = binding.phone.editText.text.toString()
+                            dob = dob,
+                            address = address,
+                            phone = phone
                         )
 
                     try {
@@ -78,11 +104,8 @@ class SignupFragment : Fragment(R.layout.fragment_register), OnClickListener {
                                     false
                                 )
                             popup.onConfirm = {
-                                findNavController()
-                                    .navigate(
-                                        SignupFragmentDirections
-                                            .actionSignupFragmentToLoginFragment()
-                                    )
+                                startActivity(Intent(context, LoginActivity::class.java))
+                                requireActivity().finish()
                             }
                             popup.show(childFragmentManager, "")
                         }
@@ -91,8 +114,6 @@ class SignupFragment : Fragment(R.layout.fragment_register), OnClickListener {
                         showMissingFields()
                     }
                 }
-                startActivity(Intent(context, LoginActivity::class.java))
-                requireActivity().finish()
             }
         }
     }
@@ -112,30 +133,7 @@ class SignupFragment : Fragment(R.layout.fragment_register), OnClickListener {
 
         setupFilters()
 
-        binding.buttonDate.setOnClickListener {
-            val listener =
-                object : DatePickerDialog.OnDateSetListener {
-                    override fun onDateSet(dp: DatePicker?, year: Int, month: Int, day: Int) {
-                        binding.buttonDate.text = buildString {
-                            append(day)
-                            append("/")
-                            append(month + 1)
-                            append("/")
-                            append(year)
-                        }
-                        binding.buttonDate.setTextColor(getColor(requireContext(), R.color.black))
-                    }
-                }
-            val cal = Calendar.getInstance()
-            DatePickerDialog(
-                    requireContext(),
-                    listener,
-                    cal.get(Calendar.YEAR),
-                    cal.get(Calendar.MONTH),
-                    cal.get(Calendar.DAY_OF_MONTH)
-                )
-                .show()
-        }
+        binding.buttonDate.setOnClickListener(this)
 
         return binding.root
     }

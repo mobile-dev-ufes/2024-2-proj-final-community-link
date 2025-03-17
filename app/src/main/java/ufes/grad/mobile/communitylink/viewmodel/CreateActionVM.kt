@@ -18,8 +18,8 @@ import ufes.grad.mobile.communitylink.data.model.UserModel
 import ufes.grad.mobile.communitylink.utils.Utilities
 
 /**
- * ViewModel responsible for handling the creation of actions within a project.
- * Manages user and project data and interacts with the Firebase database.
+ * ViewModel responsible for handling the creation of actions within a project. Manages user and
+ * project data and interacts with the Firebase database.
  *
  * @param application The application context.
  */
@@ -48,8 +48,8 @@ class CreateActionVM(application: Application) : AndroidViewModel(application) {
     }
 
     /**
-     * Creates a new action event and inserts it into the database.
-     * Notifies the user of success or failure.
+     * Creates a new action event and inserts it into the database. Notifies the user of success or
+     * failure.
      *
      * @param action The action event to be created.
      */
@@ -79,9 +79,7 @@ class CreateActionVM(application: Application) : AndroidViewModel(application) {
         viewModelScope.launch { project.postValue(ProjectDAO.findById(projId)) }
     }
 
-    /**
-     * Fetches the currently authenticated user and updates LiveData.
-     */
+    /** Fetches the currently authenticated user and updates LiveData. */
     fun fetchUser() {
         viewModelScope.launch { user.postValue(UserDAO.findById(auth.currentUser!!.uid)!!) }
     }

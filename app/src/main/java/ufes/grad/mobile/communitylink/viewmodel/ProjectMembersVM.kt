@@ -10,8 +10,8 @@ import ufes.grad.mobile.communitylink.data.dao.MemberDAO
 import ufes.grad.mobile.communitylink.data.model.MemberModel
 
 /**
- * ViewModel responsible for managing project members' data.
- * It provides functionality for fetching common members and responsible members of a project.
+ * ViewModel responsible for managing project members' data. It provides functionality for fetching
+ * common members and responsible members of a project.
  *
  * @param application The application context.
  */
@@ -39,7 +39,8 @@ class ProjectMembersVM(application: Application) : AndroidViewModel(application)
     }
 
     /**
-     * Fetches the common members of a project based on a list of member IDs and updates the LiveData.
+     * Fetches the common members of a project based on a list of member IDs and updates the
+     * LiveData.
      *
      * @param memberIds List of unique member identifiers.
      */
@@ -52,7 +53,8 @@ class ProjectMembersVM(application: Application) : AndroidViewModel(application)
     }
 
     /**
-     * Fetches the responsible members of a project based on a list of member IDs and updates the LiveData.
+     * Fetches the responsible members of a project based on a list of member IDs and updates the
+     * LiveData.
      *
      * @param memberIds List of unique member identifiers.
      */

@@ -11,8 +11,8 @@ import ufes.grad.mobile.communitylink.data.model.ActionEventModel
 import ufes.grad.mobile.communitylink.data.model.PostModel
 
 /**
- * ViewModel responsible for managing event details and associated posts.
- * It fetches the event data and posts related to a specific event.
+ * ViewModel responsible for managing event details and associated posts. It fetches the event data
+ * and posts related to a specific event.
  *
  * @param application The application context.
  */

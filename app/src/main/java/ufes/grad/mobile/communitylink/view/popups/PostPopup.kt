@@ -83,7 +83,12 @@ class PostPopup(
             .post()
             .observe(
                 viewLifecycleOwner,
-                Observer { it -> binding.contentForms.editText.setText(it.text) }
+                Observer {
+                    binding.contentForms.editText.setText(it.text)
+                    binding.contentText.text = it.text
+                    if (it.date.isEmpty()) binding.dateText.visibility = View.GONE
+                    else binding.dateText.text = it.date
+                }
             )
     }
 

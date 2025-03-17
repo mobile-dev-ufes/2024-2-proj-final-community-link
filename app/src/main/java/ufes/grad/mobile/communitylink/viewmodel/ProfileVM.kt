@@ -14,8 +14,8 @@ import ufes.grad.mobile.communitylink.data.model.UserModel
 import ufes.grad.mobile.communitylink.utils.Utilities
 
 /**
- * ViewModel responsible for managing user profile data.
- * It provides functionality for fetching user data, logging out, and updating user information.
+ * ViewModel responsible for managing user profile data. It provides functionality for fetching user
+ * data, logging out, and updating user information.
  *
  * @param application The application context.
  */
@@ -24,8 +24,8 @@ class ProfileVM(application: Application) : AndroidViewModel(application) {
     private var user = MutableLiveData<UserModel?>()
 
     /**
-     * Fetches the current user's data and updates the LiveData with the user information.
-     * If the user is not logged in, it shows an error message.
+     * Fetches the current user's data and updates the LiveData with the user information. If the
+     * user is not logged in, it shows an error message.
      */
     fun getUserData() {
         val context = getApplication<Application>().applicationContext
@@ -50,9 +50,7 @@ class ProfileVM(application: Application) : AndroidViewModel(application) {
         return user
     }
 
-    /**
-     * Logs the user out by signing them out using Firebase Authentication.
-     */
+    /** Logs the user out by signing them out using Firebase Authentication. */
     fun logout() {
         auth.signOut()
     }

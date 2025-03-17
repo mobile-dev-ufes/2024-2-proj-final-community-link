@@ -10,8 +10,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import java.text.SimpleDateFormat
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 import java.util.Calendar
 import java.util.Locale
 import kotlin.getValue
@@ -88,15 +86,13 @@ class EditActionFragment : Fragment(R.layout.fragment_edit_action), View.OnClick
                 var year: Int = calendar.get(Calendar.YEAR)
                 var month: Int = calendar.get(Calendar.MONTH)
                 var day: Int = calendar.get(Calendar.DAY_OF_MONTH)
-                if (binding.startDateButton.text != null) {
-                    val startTime =
-                        LocalDate.parse(
-                            binding.startDateButton.text.toString(),
-                            DateTimeFormatter.ofPattern("dd/MM/yyyy")
-                        )
-                    day = startTime.dayOfMonth
-                    month = startTime.monthValue
-                    year = startTime.year
+                if (binding.startDateButton.text.isNotEmpty()) {
+                    try {
+                        val startTime = formatDate.parse(binding.startDateButton.text.toString())
+                        day = startTime.day
+                        month = startTime.month
+                        year = startTime.year
+                    } catch (_: Exception) {}
                 }
 
                 val datePickerDialog =
@@ -114,21 +110,6 @@ class EditActionFragment : Fragment(R.layout.fragment_edit_action), View.OnClick
                         day
                     )
 
-                if (binding.endDateButton.text != null) {
-                    val startTime =
-                        LocalDate.parse(
-                            binding.endDateButton.text.toString(),
-                            DateTimeFormatter.ofPattern("dd/MM/yyyy")
-                        )
-                    val selectedDate = Calendar.getInstance()
-                    selectedDate.set(Calendar.YEAR, startTime.year)
-                    selectedDate.set(Calendar.MONTH, startTime.monthValue)
-                    selectedDate.set(Calendar.DAY_OF_MONTH, startTime.dayOfMonth)
-
-                    datePickerDialog.datePicker.maxDate = selectedDate.timeInMillis
-                    datePickerDialog.show()
-                }
-
                 datePickerDialog.datePicker.minDate = calendar.timeInMillis
                 datePickerDialog.show()
             }
@@ -139,15 +120,13 @@ class EditActionFragment : Fragment(R.layout.fragment_edit_action), View.OnClick
                 var year: Int = calendar.get(Calendar.YEAR)
                 var month: Int = calendar.get(Calendar.MONTH)
                 var day: Int = calendar.get(Calendar.DAY_OF_MONTH)
-                if (binding.endDateButton.text != null) {
-                    val startTime =
-                        LocalDate.parse(
-                            binding.endDateButton.text.toString(),
-                            DateTimeFormatter.ofPattern("dd/MM/yyyy")
-                        )
-                    day = startTime.dayOfMonth
-                    month = startTime.monthValue
-                    year = startTime.year
+                if (binding.endDateButton.text.isNotEmpty()) {
+                    try {
+                        val startTime = formatDate.parse(binding.endDateButton.text.toString())
+                        day = startTime.day
+                        month = startTime.month
+                        year = startTime.year
+                    } catch (_: Exception) {}
                 }
 
                 val datePickerDialog =
@@ -165,18 +144,7 @@ class EditActionFragment : Fragment(R.layout.fragment_edit_action), View.OnClick
                         day
                     )
 
-                var minDate = Calendar.getInstance()
-                if (binding.startDateButton.text != null) {
-                    val startTime =
-                        LocalDate.parse(
-                            binding.startDateButton.text.toString(),
-                            DateTimeFormatter.ofPattern("dd/MM/yyyy")
-                        )
-                    minDate.set(Calendar.YEAR, startTime.year)
-                    minDate.set(Calendar.MONTH, startTime.monthValue)
-                    minDate.set(Calendar.DAY_OF_MONTH, startTime.dayOfMonth)
-                }
-                datePickerDialog.datePicker.minDate = minDate.timeInMillis
+                datePickerDialog.datePicker.minDate = calendar.timeInMillis
                 datePickerDialog.show()
             }
             binding.confirmButton.id -> {

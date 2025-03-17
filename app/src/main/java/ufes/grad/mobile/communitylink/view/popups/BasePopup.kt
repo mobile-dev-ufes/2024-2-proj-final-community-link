@@ -45,10 +45,7 @@ open class BasePopup(
 
     /** Sets the possible button combinations for a popup. */
     fun setupPopupButtons() {
-        if (!is_purple) {
-            binding.closeButton.setTextColor(requireContext().getColor(R.color.blue))
-            binding.cancelButton.setTextColor(requireContext().getColor(R.color.blue))
-        }
+        if (!is_purple) binding.cancelButton.setTextColor(requireContext().getColor(R.color.blue))
 
         when (type) {
             PopupType.ONE_BUTTON -> {

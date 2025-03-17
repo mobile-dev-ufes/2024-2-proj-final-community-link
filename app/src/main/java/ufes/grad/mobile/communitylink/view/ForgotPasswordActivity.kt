@@ -6,7 +6,7 @@ import ufes.grad.mobile.communitylink.R
 import ufes.grad.mobile.communitylink.databinding.ActivityForgotPasswordBinding
 import ufes.grad.mobile.communitylink.view.fragments.ForgotPasswordFragment
 
-class ForgotPasswordActivity: AppCompatActivity() {
+class ForgotPasswordActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityForgotPasswordBinding
 
@@ -20,5 +20,4 @@ class ForgotPasswordActivity: AppCompatActivity() {
             .addToBackStack(null)
             .commit()
     }
-
 }

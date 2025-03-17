@@ -38,13 +38,4 @@ object ActionEventDAO : BaseDAO() {
             emptyList()
         }
     }
-
-    suspend fun findBySecondaryRepresentativeId(id: String): List<ActionEventModel> {
-        return try {
-            val document = getCollection().whereEqualTo("secondaryRepresentative", id).get().await()
-            document.documents.mapNotNull { JsonManager.decode(it) }
-        } catch (e: Exception) {
-            emptyList()
-        }
-    }
 }

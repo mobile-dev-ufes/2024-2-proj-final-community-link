@@ -18,7 +18,6 @@ import ufes.grad.mobile.communitylink.data.model.UserModel
 import ufes.grad.mobile.communitylink.databinding.FragmentProfileBinding
 import ufes.grad.mobile.communitylink.utils.Utilities.Companion.setLocale
 import ufes.grad.mobile.communitylink.view.LoginActivity
-import ufes.grad.mobile.communitylink.view.popups.BasePopup
 import ufes.grad.mobile.communitylink.viewmodel.ProfileVM
 
 class ProfileFragment : Fragment(R.layout.fragment_profile), View.OnClickListener {
@@ -93,8 +92,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), View.OnClickListene
     override fun onClick(v: View) {
         when (v.id) {
             binding.projectsButton.id -> {
-                val actions =
-                    ProfileFragmentDirections.actionProfileFragmentToMyProjectsFragment()
+                val actions = ProfileFragmentDirections.actionProfileFragmentToMyProjectsFragment()
                 findNavController().navigate(actions)
             }
             binding.actionsButton.id -> {

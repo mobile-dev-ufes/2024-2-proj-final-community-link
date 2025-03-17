@@ -1,7 +1,6 @@
 package ufes.grad.mobile.communitylink.ui.components
 
 import android.content.Context
-import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -13,9 +12,7 @@ class ProjectCardLayout(context: Context, attrs: AttributeSet) : ConstraintLayou
         LayoutProjectCardBinding.inflate(LayoutInflater.from(context), this, true)
 
     init {
-        isClickable = true
         setAttributes(context, attrs)
-        setOnClickListener { performClick() }
     }
 
     private fun setAttributes(context: Context, attrs: AttributeSet) {
@@ -24,17 +21,14 @@ class ProjectCardLayout(context: Context, attrs: AttributeSet) : ConstraintLayou
         val name = customAttributesStyle.getString(R.styleable.ProjectCardLayout_project_name)
         val description =
             customAttributesStyle.getString(R.styleable.ProjectCardLayout_project_description)
-        val image = customAttributesStyle.getDrawable(R.styleable.ProjectCardLayout_project_icon)
 
         customAttributesStyle.recycle()
 
-        setValues(name!!, description!!, image)
+        setValues(name!!, description!!)
     }
 
-    fun setValues(name: String, description: String, icon: Drawable?) {
+    fun setValues(name: String, description: String) {
         binding.name.text = name
         binding.description.text = description
-
-        if (icon != null) binding.image.setImageDrawable(icon) else binding.image.visibility = GONE
     }
 }

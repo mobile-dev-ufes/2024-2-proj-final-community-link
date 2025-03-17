@@ -11,7 +11,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import ufes.grad.mobile.communitylink.R
-import ufes.grad.mobile.communitylink.data.database.StaticData
 import ufes.grad.mobile.communitylink.data.model.ActionEventModel
 import ufes.grad.mobile.communitylink.data.model.BaseModel
 import ufes.grad.mobile.communitylink.data.model.PostModel
@@ -32,9 +31,6 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProvider(this)[DashboardVM::class.java]
         viewModel.setListActions()
-
-        // TODO("Get from BD")
-        adapter.updateList(StaticData.eventActions)
     }
 
     override fun onCreateView(
@@ -55,7 +51,6 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
         viewModel
             .getListActions()
             .observe(viewLifecycleOwner, Observer { adapter.updateList(it as List<BaseModel>) })
-        // adapter.updateList(StaticData.eventActions + StaticData.donationActions)
     }
 
     fun setupAdapter() {

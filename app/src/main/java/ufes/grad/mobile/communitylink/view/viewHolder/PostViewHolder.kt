@@ -13,7 +13,8 @@ class PostViewHolder(
 ) : GenericViewHolder(binding_) {
 
     init {
-        itemView.setOnClickListener { onItemClickListener(adapterPosition) }
+        binding_.background.setOnClickListener { onItemClickListener(adapterPosition) }
+        binding_.deleteButton.setOnClickListener { onButtonClickListener(adapterPosition) }
     }
 
     override fun <T> bindVH(model_: BaseModel) {
@@ -28,11 +29,5 @@ class PostViewHolder(
         binding.post.text = model.text
 
         if (!edit) binding.deleteButton.visibility = GONE
-        else binding.deleteButton.setOnClickListener { onButtonClickListener(adapterPosition) }
-
-        if (model.media.isEmpty()) binding.image.visibility = GONE
-        // TODO("Set image from model")
-        //        else
-        //            binding.image.setImageDrawable(model.media)
     }
 }

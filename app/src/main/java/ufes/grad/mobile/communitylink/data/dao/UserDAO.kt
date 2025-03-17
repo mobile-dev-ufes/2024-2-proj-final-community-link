@@ -13,6 +13,10 @@ object UserDAO : BaseDAO() {
         return db.collection("users")
     }
 
+    fun getCollectionPublic(): CollectionReference {
+        return getCollection()
+    }
+
     override suspend fun insert(model: BaseModel): Boolean {
         return update(model)
     }

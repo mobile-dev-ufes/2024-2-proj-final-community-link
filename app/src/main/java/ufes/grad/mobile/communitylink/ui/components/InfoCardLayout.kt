@@ -64,7 +64,6 @@ class InfoCardLayout(context: Context, attrs: AttributeSet) : LinearLayout(conte
         cancel_button: Boolean = false,
         tag_type: TagLayout.TagType = TagLayout.TagType.DEFAULT
     ) {
-        binding.projectImage.visibility = GONE
         if (project_name.isNullOrEmpty() || lower_text.isNullOrEmpty())
             binding.projectInfo.visibility = GONE
         else {

@@ -10,16 +10,16 @@ import ufes.grad.mobile.communitylink.data.model.DonationModel
 import ufes.grad.mobile.communitylink.utils.Utilities
 
 /**
- * ViewModel responsible for handling donation-related operations.
- * It manages the creation of new donations and provides user feedback.
+ * ViewModel responsible for handling donation-related operations. It manages the creation of new
+ * donations and provides user feedback.
  *
  * @param application The application context.
  */
 class DonationVM(application: Application) : AndroidViewModel(application) {
 
     /**
-     * Creates a new donation and inserts it into the database.
-     * Displays a notification based on the operation's success.
+     * Creates a new donation and inserts it into the database. Displays a notification based on the
+     * operation's success.
      *
      * @param donation The donation data to be inserted.
      * @return Boolean indicating whether the operation was successful.

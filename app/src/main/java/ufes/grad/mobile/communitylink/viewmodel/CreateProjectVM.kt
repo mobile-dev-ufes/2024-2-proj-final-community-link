@@ -18,8 +18,8 @@ import ufes.grad.mobile.communitylink.data.model.ProjectStatusEnum
 import ufes.grad.mobile.communitylink.utils.Utilities
 
 /**
- * ViewModel responsible for handling the creation of new projects.
- * It manages authentication, project creation, and member association.
+ * ViewModel responsible for handling the creation of new projects. It manages authentication,
+ * project creation, and member association.
  *
  * @param application The application context.
  */
@@ -28,8 +28,8 @@ class CreateProjectVM(application: Application) : AndroidViewModel(application) 
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
 
     /**
-     * Creates a new project and inserts it into the database.
-     * Also associates the current user as a responsible member of the project.
+     * Creates a new project and inserts it into the database. Also associates the current user as a
+     * responsible member of the project.
      *
      * @param data The project data to be used for creation.
      */

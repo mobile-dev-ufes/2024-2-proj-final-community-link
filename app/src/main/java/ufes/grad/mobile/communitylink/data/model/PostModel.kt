@@ -8,17 +8,10 @@ class PostModel(
     override var id: String = "",
     var text: String = "",
     var date: String = "",
-    var media: String = "",
     @Serializable(with = ActionSerializer::class) var action: ActionModel = ActionEventModel()
 ) : BaseModel {
 
     override fun toMap(): Map<String, Any?> {
-        return mapOf(
-            "id" to id,
-            "text" to text,
-            "date" to date,
-            "media" to media,
-            "action" to action.id
-        )
+        return mapOf("id" to id, "text" to text, "date" to date, "action" to action.id)
     }
 }

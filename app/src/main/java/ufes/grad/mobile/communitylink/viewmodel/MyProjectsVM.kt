@@ -1,7 +1,6 @@
 package ufes.grad.mobile.communitylink.viewmodel
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -13,8 +12,8 @@ import ufes.grad.mobile.communitylink.data.model.ProjectModel
 import ufes.grad.mobile.communitylink.utils.Utilities
 
 /**
- * ViewModel responsible for managing the list of projects associated with the current user.
- * It retrieves projects the user is involved in and whether the user is responsible for any project.
+ * ViewModel responsible for managing the list of projects associated with the current user. It
+ * retrieves projects the user is involved in and whether the user is responsible for any project.
  *
  * @param application The application context.
  */
@@ -34,8 +33,8 @@ class MyProjectsVM(application: Application) : AndroidViewModel(application) {
     }
 
     /**
-     * Fetches the list of projects the current user is associated with,
-     * including the projects they are responsible for. Updates the LiveData with the results.
+     * Fetches the list of projects the current user is associated with, including the projects they
+     * are responsible for. Updates the LiveData with the results.
      */
     fun listProjects() {
         val context = getApplication<Application>().applicationContext
@@ -43,7 +42,8 @@ class MyProjectsVM(application: Application) : AndroidViewModel(application) {
             viewModelScope.launch {
                 val user = UserDAO.findById(auth.currentUser!!.uid) ?: return@launch
                 projects.postValue(user.memberTo.map { it.project })
-                responsibleProjects = user.memberTo.filter{ it.isResponsible }.map { it.project.id }
+                responsibleProjects =
+                    user.memberTo.filter { it.isResponsible }.map { it.project.id }
             }
         } catch (e: Exception) {
             Utilities.notify(context, context.getString(R.string.an_error_occured))
