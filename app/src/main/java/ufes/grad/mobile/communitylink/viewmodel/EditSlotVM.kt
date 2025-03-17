@@ -27,16 +27,21 @@ class EditSlotVM(application: Application) : AndroidViewModel(application) {
     }
 
     fun changeStartDate() {
-        val datePickerDialog = showDatePicker(startDate.value, { time -> startDate.value = time })
+        val datePickerDialog =
+            showDatePicker(startDate.value.toString(), { time -> startDate.value = time })
         val calendar = Calendar.getInstance()
         datePickerDialog.datePicker.minDate = calendar.timeInMillis
         datePickerDialog.show()
     }
 
     fun changeEndDate() {
-        val datePickerDialog = showDatePicker(endDate.value, { time -> endDate.value = time })
+        val datePickerDialog =
+            showDatePicker(endDate.value.toString(), { time -> endDate.value = time })
         val startTime =
-            LocalDateTime.parse(startDate.value, DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"))
+            LocalDateTime.parse(
+                startDate.value.toString(),
+                DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")
+            )
         datePickerDialog.datePicker.minDate = startTime.toEpochSecond(ZoneOffset.UTC)
         datePickerDialog.show()
     }
@@ -45,19 +50,13 @@ class EditSlotVM(application: Application) : AndroidViewModel(application) {
         val formatDate = SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault())
 
         val calendar = Calendar.getInstance()
-        var year: Int
-        var month: Int
-        var day: Int
-        var hour: Int
-        var minute: Int
+        var year: Int = calendar.get(Calendar.YEAR)
+        var month: Int = calendar.get(Calendar.MONTH)
+        var day: Int = calendar.get(Calendar.DAY_OF_MONTH)
+        var hour: Int = 0
+        var minute: Int = 0
 
-        if (date == null) {
-            year = calendar.get(Calendar.YEAR)
-            month = calendar.get(Calendar.MONTH)
-            day = calendar.get(Calendar.DAY_OF_MONTH)
-            hour = 0
-            minute = 0
-        } else {
+        if (date != null) {
             val startTime =
                 LocalDateTime.parse(date, DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"))
             day = startTime.dayOfMonth

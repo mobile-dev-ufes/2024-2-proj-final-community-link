@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:clipToPadding="false"
     android:orientation="vertical"
-    android:padding="@dimen/border"
+    android:paddingHorizontal="@dimen/border"
+    android:paddingTop="@dimen/border"
     tools:context=".view.fragments.DonationListFragment">
 
     <ufes.grad.mobile.communitylink.ui.components.SearchBarLayout

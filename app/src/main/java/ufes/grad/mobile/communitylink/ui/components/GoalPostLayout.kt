@@ -19,7 +19,9 @@ class GoalPostLayout(context: Context, attrs: AttributeSet) : LinearLayout(conte
         LayoutGoalPostBinding.inflate(LayoutInflater.from(context), this, true)
 
     init {
+        isClickable = true
         setAttributes(context, attrs)
+        setOnClickListener { performClick() }
     }
 
     private fun setAttributes(context: Context, attrs: AttributeSet) {

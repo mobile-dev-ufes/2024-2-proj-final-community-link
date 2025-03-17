@@ -11,8 +11,8 @@ import ufes.grad.mobile.communitylink.R
 import ufes.grad.mobile.communitylink.data.database.StaticData
 import ufes.grad.mobile.communitylink.data.model.ActionDonationModel
 import ufes.grad.mobile.communitylink.data.model.ActionEventModel
+import ufes.grad.mobile.communitylink.data.model.SlotRequestModel
 import ufes.grad.mobile.communitylink.databinding.FragmentPendingActionsBinding
-import ufes.grad.mobile.communitylink.utils.Utilities
 import ufes.grad.mobile.communitylink.view.adapter.ListInfoCardAdapter
 import ufes.grad.mobile.communitylink.view.popups.BasePopup
 
@@ -25,7 +25,10 @@ class PendingActionsFragment : Fragment(R.layout.fragment_pending_actions) {
     private val adapter: ListInfoCardAdapter =
         ListInfoCardAdapter(ListInfoCardAdapter.InfoCardContent.CANCELLABLE)
 
-    init {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        // TODO("Get content from DB")
         adapter.updateList(StaticData.eventActions)
     }
 
@@ -37,7 +40,14 @@ class PendingActionsFragment : Fragment(R.layout.fragment_pending_actions) {
         super.onCreateView(inflater, container, savedInstanceState)
         _binding = FragmentPendingActionsBinding.inflate(inflater, container, false)
 
+        setupAdapter()
+
+        return binding.root
+    }
+
+    fun setupAdapter() {
         adapter.onButtonClickListener = { position ->
+            val slot = adapter.list[position] as SlotRequestModel
             val popup = BasePopup(BasePopup.PopupType.TWO_BUTTON, R.layout.popup_cancel_slot)
             popup.onConfirm =
                 {
@@ -46,20 +56,27 @@ class PendingActionsFragment : Fragment(R.layout.fragment_pending_actions) {
             popup.show(childFragmentManager, "")
         }
         adapter.onItemClickListener = { position ->
-            // TODO("Add navigation args")
-            if (adapter.list[position] is ActionEventModel)
-                findNavController().navigate(R.id.eventPageFragment)
-            else if (adapter.list[position] is ActionDonationModel)
-                findNavController().navigate(R.id.donationPageFragment)
-            else Utilities.notify(requireContext(), "Unknown card type")
+            val item = adapter.list[position]
+            when (item) {
+                is ActionEventModel -> {
+                    val event =
+                        PendingActionsFragmentDirections
+                            .actionPendingActionsFragmentToEventPageFragment()
+                    event.id = item.id
+                    findNavController().navigate(event)
+                }
+                is ActionDonationModel -> {
+                    val donation =
+                        PendingActionsFragmentDirections
+                            .actionPendingActionsFragmentToEventPageFragment()
+                    donation.id = item.id
+                    findNavController().navigate(donation)
+                }
+            }
         }
-
-        // TODO("Get real user pending actions")
 
         binding.recyclerList.layoutManager = LinearLayoutManager(context)
         binding.recyclerList.adapter = adapter
-
-        return binding.root
     }
 
     override fun onDestroyView() {

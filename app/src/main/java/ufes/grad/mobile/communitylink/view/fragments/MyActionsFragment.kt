@@ -9,6 +9,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import ufes.grad.mobile.communitylink.R
 import ufes.grad.mobile.communitylink.data.database.StaticData
+import ufes.grad.mobile.communitylink.data.model.ActionDonationModel
+import ufes.grad.mobile.communitylink.data.model.ActionEventModel
+import ufes.grad.mobile.communitylink.data.model.ActionModel
 import ufes.grad.mobile.communitylink.databinding.FragmentMyActionsBinding
 import ufes.grad.mobile.communitylink.view.adapter.ListInfoCardAdapter
 
@@ -21,8 +24,10 @@ class MyActionsFragment : Fragment(R.layout.fragment_my_actions) {
     private val adapter: ListInfoCardAdapter =
         ListInfoCardAdapter(ListInfoCardAdapter.InfoCardContent.MY_ACTIONS)
 
-    init {
-        // TODO("Get real data")
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        // TODO("Get content from BD")
         adapter.updateList(StaticData.eventActions + StaticData.donationActions)
     }
 
@@ -34,16 +39,32 @@ class MyActionsFragment : Fragment(R.layout.fragment_my_actions) {
         super.onCreateView(inflater, container, savedInstanceState)
         _binding = FragmentMyActionsBinding.inflate(inflater, container, false)
 
+        setupAdapter()
+
+        return binding.root
+    }
+
+    fun setupAdapter() {
         adapter.onItemClickListener = { position ->
-            val model = adapter.list[position]
-            // TODO("Add navigation args")
-            findNavController().navigate(R.id.editActionFragment)
+            val item = adapter.list[position] as ActionModel
+            when (item) {
+                is ActionDonationModel -> {
+                    val donation =
+                        MyActionsFragmentDirections.actionMyActionsFragmentToDonationPageFragment()
+                    donation.id = item.id
+                    findNavController().navigate(donation)
+                }
+                is ActionEventModel -> {
+                    val event =
+                        MyActionsFragmentDirections.actionMyActionsFragmentToDonationPageFragment()
+                    event.id = item.id
+                    findNavController().navigate(event)
+                }
+            }
         }
 
         binding.recyclerList.layoutManager = LinearLayoutManager(context)
         binding.recyclerList.adapter = adapter
-
-        return binding.root
     }
 
     override fun onDestroyView() {

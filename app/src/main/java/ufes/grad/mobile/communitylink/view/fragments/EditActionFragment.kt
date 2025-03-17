@@ -175,7 +175,12 @@ class EditActionFragment : Fragment(R.layout.fragment_edit_action), View.OnClick
                             id = action.id,
                             name = binding.nameForms.editText.text.toString().trim(),
                             description = binding.descriptionForms.editText.text.toString().trim(),
-                            tags = binding.tagsForms.editText.text.toString().trim().split(",").toMutableList(),
+                            tags =
+                                binding.tagsForms.editText.text
+                                    .toString()
+                                    .trim()
+                                    .split(",")
+                                    .toMutableList(),
                             initDate = binding.startDateButton.text.toString(),
                             finishDate = binding.endDateButton.text.toString(),
                             status = true,
@@ -200,7 +205,12 @@ class EditActionFragment : Fragment(R.layout.fragment_edit_action), View.OnClick
                             id = action.id,
                             name = binding.nameForms.editText.text.toString().trim(),
                             description = binding.descriptionForms.editText.text.toString().trim(),
-                            tags = binding.tagsForms.editText.text.toString().trim().split(",").toMutableList(),
+                            tags =
+                                binding.tagsForms.editText.text
+                                    .toString()
+                                    .trim()
+                                    .split(",")
+                                    .toMutableList(),
                             initDate = binding.startDateButton.text.toString(),
                             finishDate = binding.endDateButton.text.toString(),
                             places = places.toMutableList(),

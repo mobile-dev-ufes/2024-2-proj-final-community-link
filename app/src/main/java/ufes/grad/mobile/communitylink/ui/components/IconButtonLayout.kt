@@ -3,6 +3,7 @@ package ufes.grad.mobile.communitylink.ui.components
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import ufes.grad.mobile.communitylink.R
 import ufes.grad.mobile.communitylink.databinding.LayoutIconButtonBinding
@@ -11,6 +12,8 @@ class IconButtonLayout(context: Context, attrs: AttributeSet) : ConstraintLayout
 
     private var binding: LayoutIconButtonBinding =
         LayoutIconButtonBinding.inflate(LayoutInflater.from(context), this, true)
+
+    var text: TextView = binding.text
 
     init {
         isClickable = true

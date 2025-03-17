@@ -16,7 +16,8 @@ class ActionDonationModel(
     override var initDate: String = "",
     override var finishDate: String = "",
     override var status: Boolean = false,
-    override val posts: MutableList<@Serializable(with = PostSerializer::class) PostModel> = mutableListOf(),
+    override val posts: MutableList<@Serializable(with = PostSerializer::class) PostModel> =
+        mutableListOf(),
     @Serializable(with = ProjectSerializer::class)
     override var project: ProjectModel = ProjectModel(),
     @Serializable(with = UserSerializer::class)
@@ -24,7 +25,8 @@ class ActionDonationModel(
     @Serializable(with = UserSerializer::class)
     override var secondaryRepresentative: UserModel? = null,
     val goals: MutableList<@Serializable(with = GoalSerializer::class) GoalModel> = mutableListOf(),
-    val donations: MutableList<@Serializable(with = DonationSerializer::class) DonationForActionModel> =
+    val donations:
+        MutableList<@Serializable(with = DonationSerializer::class) DonationForActionModel> =
         mutableListOf()
 ) : ActionModel {
 

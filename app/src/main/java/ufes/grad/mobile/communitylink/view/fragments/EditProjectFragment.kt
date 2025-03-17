@@ -71,7 +71,12 @@ class EditProjectFragment : Fragment(R.layout.fragment_edit_project), View.OnCli
                         ProjectDataModel(
                             name = binding.nameForms.editText.text.toString().trim(),
                             description = binding.descriptionForms.editText.text.toString().trim(),
-                            tags = binding.tagsForms.editText.text.toString().trim().split(",").toMutableList(),
+                            tags =
+                                binding.tagsForms.editText.text
+                                    .toString()
+                                    .trim()
+                                    .split(",")
+                                    .toMutableList(),
                             address = binding.addressForms.editText.text.toString().trim(),
                             CNPJ = binding.cnpjForms.editText.text.toString().trim(),
                             pixKey = binding.pixForms.editText.text.toString().trim(),
@@ -84,23 +89,32 @@ class EditProjectFragment : Fragment(R.layout.fragment_edit_project), View.OnCli
                 val popup =
                     BasePopup(BasePopup.PopupType.TWO_BUTTON, R.layout.popup_discontinue_project)
                 popup.onConfirm = {
-                    // TODO("De PENDING ele vai pra onde?")
+                    // TODO("De DEPRECATED ele vai pra onde?")
                     if (project.status == ProjectStatusEnum.DEPRECATED)
                         project.status = ProjectStatusEnum.PENDING
                 }
                 popup.show(childFragmentManager, "")
             }
             binding.actionsButton.id -> {
-                TODO("Add navigation args")
-                findNavController().navigate(R.id.projectActionsListFragment)
+                val action =
+                    EditProjectFragmentDirections
+                        .actionEditProjectFragmentToProjectActionsListFragment()
+                action.projectId = project.id
+                findNavController().navigate(action)
             }
             binding.membersButton.id -> {
-                TODO("Add navigation args")
-                findNavController().navigate(R.id.projectMembersFragment)
+                val action =
+                    EditProjectFragmentDirections
+                        .actionEditProjectFragmentToProjectMembersFragment()
+                action.id = project.id
+                findNavController().navigate(action)
             }
             binding.donationsButton.id -> {
-                TODO("Add navigation args")
-                findNavController().navigate(R.id.donationListFragment)
+                val action =
+                    EditProjectFragmentDirections.actionEditProjectFragmentToDonationListFragment()
+                action.id = project.id
+                action.isProject = true
+                findNavController().navigate(action)
             }
         }
     }

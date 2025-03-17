@@ -2,11 +2,12 @@ package ufes.grad.mobile.communitylink.viewmodel
 
 import android.app.Application
 import android.app.DatePickerDialog
+import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import java.text.SimpleDateFormat
-import java.time.LocalDateTime
+import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.Calendar
 import java.util.Locale
@@ -19,20 +20,19 @@ class DonationListVM(application: Application) : AndroidViewModel(application) {
         return dateFilter
     }
 
-    fun showDatePicker() {
+    fun showDatePicker(context: Context) {
         val formatDate = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
 
         val calendar = Calendar.getInstance()
-        var year: Int
-        var month: Int
-        var day: Int
-        if (dateFilter.value == "") {
-            year = calendar.get(Calendar.YEAR)
-            month = calendar.get(Calendar.MONTH)
-            day = calendar.get(Calendar.DAY_OF_MONTH)
-        } else {
+        var year: Int = calendar.get(Calendar.YEAR)
+        var month: Int = calendar.get(Calendar.MONTH)
+        var day: Int = calendar.get(Calendar.DAY_OF_MONTH)
+        if (dateFilter.value != null) {
             val startTime =
-                LocalDateTime.parse(dateFilter.value, DateTimeFormatter.ofPattern("dd/MM/yyyy"))
+                LocalDate.parse(
+                    dateFilter.value.toString(),
+                    DateTimeFormatter.ofPattern("dd/MM/yyyy")
+                )
             day = startTime.dayOfMonth
             month = startTime.monthValue
             year = startTime.year
@@ -40,12 +40,13 @@ class DonationListVM(application: Application) : AndroidViewModel(application) {
 
         val datePickerDialog =
             DatePickerDialog(
-                getApplication<Application>().applicationContext,
+                context,
                 { _, selectedYear, selectedMonth, selectedDay ->
                     val selectedDate = Calendar.getInstance()
                     selectedDate.set(Calendar.YEAR, selectedYear)
                     selectedDate.set(Calendar.MONTH, selectedMonth)
                     selectedDate.set(Calendar.DAY_OF_MONTH, selectedDay)
+
                     dateFilter.value = formatDate.format(selectedDate.time)
                 },
                 year,

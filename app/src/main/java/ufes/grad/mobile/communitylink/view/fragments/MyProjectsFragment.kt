@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import ufes.grad.mobile.communitylink.R
 import ufes.grad.mobile.communitylink.data.database.StaticData
+import ufes.grad.mobile.communitylink.data.model.ProjectModel
 import ufes.grad.mobile.communitylink.databinding.FragmentMyProjectsBinding
 import ufes.grad.mobile.communitylink.ui.components.SpinnerAdapter
 import ufes.grad.mobile.communitylink.view.adapter.ListCommonCardAdapter
@@ -20,12 +21,14 @@ class MyProjectsFragment : Fragment(R.layout.fragment_my_projects), View.OnClick
     private val binding
         get() = _binding!!
 
-    private var filter: String? = null
+    private var filter: String = ""
 
     private val adapter: ListCommonCardAdapter = ListCommonCardAdapter()
 
-    init {
-        // TODO("Get real data")
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        // TODO("Get content from DB")
         adapter.updateList(StaticData.eventActions + StaticData.donationActions)
     }
 
@@ -39,18 +42,34 @@ class MyProjectsFragment : Fragment(R.layout.fragment_my_projects), View.OnClick
 
         // TODO("Make filter work")
         setupFilters()
-
-        adapter.onItemClickListener = { position ->
-            // TODO("Add navigation args")
-            findNavController().navigate(R.id.editProjectFragment)
-        }
-
-        binding.recyclerList.layoutManager = LinearLayoutManager(context)
-        binding.recyclerList.adapter = adapter
+        setupAdapter()
 
         binding.createButton.setOnClickListener(this)
 
         return binding.root
+    }
+
+    fun setupAdapter() {
+        adapter.onItemClickListener = { position ->
+            val item = adapter.list[position] as ProjectModel
+            // TODO("Conferir se o usuário é responsável ou membro")
+            val is_responsible = false
+
+            if (is_responsible) {
+                val project =
+                    MyProjectsFragmentDirections.actionMyProjectsFragmentToEditProjectFragment()
+                project.id = item.id
+                findNavController().navigate(project)
+            } else {
+                val project =
+                    MyProjectsFragmentDirections.actionMyProjectsFragmentToProjectPageFragment()
+                project.id = item.id
+                findNavController().navigate(project)
+            }
+        }
+
+        binding.recyclerList.layoutManager = LinearLayoutManager(context)
+        binding.recyclerList.adapter = adapter
     }
 
     fun setupFilters() {
@@ -58,7 +77,6 @@ class MyProjectsFragment : Fragment(R.layout.fragment_my_projects), View.OnClick
             listOf(
                 getString(R.string.status),
                 getString(R.string.actives),
-                getString(R.string.im_a_member),
                 getString(R.string.discontinued)
             )
         binding.filter.adapter = SpinnerAdapter(requireContext(), status)
@@ -70,7 +88,7 @@ class MyProjectsFragment : Fragment(R.layout.fragment_my_projects), View.OnClick
                     position: Int,
                     id: Long
                 ) {
-                    filter = if (position == 0) null else status[position]
+                    filter = if (position == 0) "" else status[position]
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {}
@@ -80,8 +98,9 @@ class MyProjectsFragment : Fragment(R.layout.fragment_my_projects), View.OnClick
     override fun onClick(v: View) {
         when (v.id) {
             binding.createButton.id -> {
-                // TODO("Add navigation args")
-                findNavController().navigate(R.id.createProjectFragment)
+                val project =
+                    MyProjectsFragmentDirections.actionMyProjectsFragmentToCreateProjectFragment()
+                findNavController().navigate(project)
             }
         }
     }

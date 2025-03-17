@@ -66,7 +66,7 @@ class CreateActionVM(application: Application) : AndroidViewModel(application) {
                     }
                 }
                 getProject()
-                if(project.value == null){
+                if (project.value == null) {
                     throw Exception("Criou ação mas sem projeto")
                 }
                 project.value!!.actions += action
@@ -79,8 +79,6 @@ class CreateActionVM(application: Application) : AndroidViewModel(application) {
     }
 
     fun getProjectById(projId: String) {
-        viewModelScope.launch {
-            project.postValue(ProjectDAO.findById(projId))
-        }
+        viewModelScope.launch { project.postValue(ProjectDAO.findById(projId)) }
     }
 }

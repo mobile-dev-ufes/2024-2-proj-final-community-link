@@ -1,7 +1,6 @@
 package ufes.grad.mobile.communitylink.view.fragments
 
 import android.os.Bundle
-import android.view.ActionMode
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,17 +11,14 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import ufes.grad.mobile.communitylink.R
-import ufes.grad.mobile.communitylink.data.database.StaticData
 import ufes.grad.mobile.communitylink.data.model.ActionDonationModel
 import ufes.grad.mobile.communitylink.data.model.ActionEventModel
 import ufes.grad.mobile.communitylink.data.model.ActionModel
-import ufes.grad.mobile.communitylink.data.model.ProjectModel
 import ufes.grad.mobile.communitylink.data.model.UserModel
 import ufes.grad.mobile.communitylink.databinding.FragmentCreateActionBinding
 import ufes.grad.mobile.communitylink.ui.components.SpinnerAdapter
 import ufes.grad.mobile.communitylink.utils.Utilities
 import ufes.grad.mobile.communitylink.viewmodel.CreateActionVM
-
 
 class CreateActionFragment : Fragment(R.layout.fragment_create_action), View.OnClickListener {
 
@@ -94,11 +90,7 @@ class CreateActionFragment : Fragment(R.layout.fragment_create_action), View.OnC
                     )
                 }
             )
-        createActionVM.getProject().observe(
-            viewLifecycleOwner,
-            Observer {
-            }
-        )
+        createActionVM.getProject().observe(viewLifecycleOwner, Observer {})
     }
 
     fun setupDropdown() {
@@ -135,8 +127,8 @@ class CreateActionFragment : Fragment(R.layout.fragment_create_action), View.OnC
                 val name = binding.nameForms.editText.text.toString().trim()
                 val description = binding.descriptionForms.editText.text.toString().trim()
                 val tags = binding.tagsForms.editText.text.toString().split(",")
-                //val primaryRepresentative = createActionVM.getPrimaryRepresentative().value
-                //val secondaryRepresentative = createActionVM.getSecondaryRepresentative().value
+                // val primaryRepresentative = createActionVM.getPrimaryRepresentative().value
+                // val secondaryRepresentative = createActionVM.getSecondaryRepresentative().value
 
                 if (
                     name.isEmpty() ||
@@ -156,8 +148,8 @@ class CreateActionFragment : Fragment(R.layout.fragment_create_action), View.OnC
                             description = description,
                             tags = tags.toMutableList(),
                             status = false,
-                            //primaryRepresentative = primaryRepresentative!!,
-                           // secondaryRepresentative = secondaryRepresentative!!
+                            // primaryRepresentative = primaryRepresentative!!,
+                            // secondaryRepresentative = secondaryRepresentative!!
                         )
                 } else {
                     action =
@@ -166,8 +158,8 @@ class CreateActionFragment : Fragment(R.layout.fragment_create_action), View.OnC
                             description = description,
                             tags = tags.toMutableList(),
                             status = false,
-                            //primaryRepresentative = primaryRepresentative!!,
-                           // secondaryRepresentative = secondaryRepresentative
+                            // primaryRepresentative = primaryRepresentative!!,
+                            // secondaryRepresentative = secondaryRepresentative
                         )
                 }
                 createActionVM.createNewAction(action)

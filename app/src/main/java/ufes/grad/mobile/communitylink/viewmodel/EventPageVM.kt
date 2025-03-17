@@ -9,7 +9,7 @@ import kotlinx.coroutines.launch
 import ufes.grad.mobile.communitylink.data.dao.ActionEventDAO
 import ufes.grad.mobile.communitylink.data.model.ActionEventModel
 
-class EventPageVM(application: Application) : AndroidViewModel(application)  {
+class EventPageVM(application: Application) : AndroidViewModel(application) {
     private var event = MutableLiveData<ActionEventModel>()
 
     fun getEvent(): MutableLiveData<ActionEventModel> {

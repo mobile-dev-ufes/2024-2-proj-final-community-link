@@ -1,7 +1,6 @@
 package ufes.grad.mobile.communitylink.view.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,6 +24,7 @@ class EventPageFragment : Fragment(R.layout.fragment_event_page), View.OnClickLi
     private var _binding: FragmentEventPageBinding? = null
     private val binding
         get() = _binding!!
+
     private lateinit var eventVM: EventPageVM
 
     private val args: EventPageFragmentArgs by navArgs()
@@ -80,32 +80,36 @@ class EventPageFragment : Fragment(R.layout.fragment_event_page), View.OnClickLi
 
     fun setObserver() {
 
-        eventVM.getEvent().observe (
-            viewLifecycleOwner,
-            Observer {
-                binding.nameText.text = it.name
-                binding.descriptionText.text = it.description
-                binding.datesText.text = getString(R.string.from_to, it.initDate, it.finishDate)
-                binding.placesText.text = getString(R.string.places_list, it.places.joinToString("\n"))
+        eventVM
+            .getEvent()
+            .observe(
+                viewLifecycleOwner,
+                Observer {
+                    binding.nameText.text = it.name
+                    binding.descriptionText.text = it.description
+                    binding.datesText.text = getString(R.string.from_to, it.initDate, it.finishDate)
+                    binding.placesText.text =
+                        getString(R.string.places_list, it.places.joinToString("\n"))
 
-                // TODO("Set project tag")
-                // binding.projectTag.setValues(project.currentData.name, project.currentData.logo)
+                    // TODO("Set project tag")
+                    // binding.projectTag.setValues(project.currentData.name,
+                    // project.currentData.logo)
 
-                if (args.edit) {
-                    binding.pendingButton.setOnClickListener(this)
-                    binding.manageButton.setOnClickListener(this)
-                    binding.editButton.setOnClickListener(this)
-                    binding.createButton.setOnClickListener(this)
-                    binding.volunteersButton.visibility = View.GONE
-                } else {
-                    binding.volunteersButton.setOnClickListener(this)
-                    binding.pendingButton.visibility = View.GONE
-                    binding.manageButton.visibility = View.GONE
-                    binding.editButton.visibility = View.GONE
-                    binding.createButton.visibility = View.GONE
+                    if (args.edit) {
+                        binding.pendingButton.setOnClickListener(this)
+                        binding.manageButton.setOnClickListener(this)
+                        binding.editButton.setOnClickListener(this)
+                        binding.createButton.setOnClickListener(this)
+                        binding.volunteersButton.visibility = View.GONE
+                    } else {
+                        binding.volunteersButton.setOnClickListener(this)
+                        binding.pendingButton.visibility = View.GONE
+                        binding.manageButton.visibility = View.GONE
+                        binding.editButton.visibility = View.GONE
+                        binding.createButton.visibility = View.GONE
+                    }
                 }
-            }
-        )
+            )
     }
 
     override fun onDestroyView() {

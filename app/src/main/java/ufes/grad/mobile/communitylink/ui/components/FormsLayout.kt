@@ -18,7 +18,9 @@ class FormsLayout(context: Context, attrs: AttributeSet) : LinearLayout(context,
     var editText = binding.formsEditText
 
     init {
+        isClickable = true
         setAttributes(context, attrs)
+        setOnClickListener { performClick() }
     }
 
     private fun setAttributes(context: Context, attrs: AttributeSet) {

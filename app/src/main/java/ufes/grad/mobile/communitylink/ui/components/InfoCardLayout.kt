@@ -13,7 +13,9 @@ class InfoCardLayout(context: Context, attrs: AttributeSet) : LinearLayout(conte
         LayoutInfoCardBinding.inflate(LayoutInflater.from(context), this, true)
 
     init {
+        isClickable = true
         setAttributes(context, attrs)
+        setOnClickListener { performClick() }
     }
 
     private fun setAttributes(context: Context, attrs: AttributeSet) {

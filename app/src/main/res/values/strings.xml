@@ -53,7 +53,7 @@
     <string name="events_and_donations">Eventos e Doações</string>
     <string name="pending_actions">Ações Pendentes</string>
     <string name="my_projects">Meus Projetos</string>
-    <string name="erro_user">usuário não logado</string>
+    <string name="erro_user">Usuário não logado</string>
     <string name="erro_get_user_data">Erro ao buscar dados do Usuário, tente novamente.</string>
     <string name="user_has_no_data">Um erro ocorreu!</string>
     <string name="erro_update_user_data">Erro ao atualizar os dados, tente novamente!</string>

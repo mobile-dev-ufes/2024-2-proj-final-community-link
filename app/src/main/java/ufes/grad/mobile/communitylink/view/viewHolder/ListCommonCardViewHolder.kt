@@ -29,7 +29,7 @@ class ListCommonCardViewHolder(private val binding_: LayoutCommonCardBinding) :
         if (description.isNullOrEmpty()) binding.statusText.visibility = GONE
         else binding.statusText.text = description
 
-        if (description.isNullOrEmpty()) binding.nameText.visibility = GONE
+        if (title.isNullOrEmpty()) binding.nameText.visibility = GONE
         else binding.nameText.text = title
 
         if (image == null) binding.image.visibility = GONE

@@ -79,7 +79,7 @@ class DonationPageFragment : Fragment(R.layout.fragment_donation_page), View.OnC
                         DonationPageFragmentDirections
                             .actionDonationPageFragmentToManageGoalFragment()
                     action.id = adapter.list[position].id
-                    action.isProject = false
+                    action.isDonation = false
                     findNavController().navigate(action)
                 }
             }
@@ -97,20 +97,22 @@ class DonationPageFragment : Fragment(R.layout.fragment_donation_page), View.OnC
         // TODO("Set project tag")
         // binding.projectTag.setValues(project.currentData.name, project.currentData.logo)
 
+        binding.donationsButton.setOnClickListener(this)
+
         if (args.edit) {
             binding.createPostButton.setOnClickListener(this)
             binding.createGoalButton.setOnClickListener(this)
-            binding.manageButton.setOnClickListener(this)
             binding.goalsButton.setOnClickListener(this)
             binding.editButton.setOnClickListener(this)
+            binding.donationsButton.text.text = getString(R.string.manage_donations)
             binding.donationButton.visibility = View.GONE
         } else {
             binding.createPostButton.visibility = View.GONE
             binding.createGoalButton.visibility = View.GONE
-            binding.manageButton.visibility = View.GONE
-            binding.editButton.visibility = View.GONE
-            binding.donationButton.setOnClickListener(this)
             binding.goalsButton.setOnClickListener(this)
+            binding.editButton.visibility = View.GONE
+            binding.donationsButton.text.text = getString(R.string.view_donations)
+            binding.donationButton.setOnClickListener(this)
         }
     }
 
@@ -133,17 +135,18 @@ class DonationPageFragment : Fragment(R.layout.fragment_donation_page), View.OnC
                 }
                 popup.show(childFragmentManager, "")
             }
-            binding.manageButton.id -> {
+            binding.donationsButton.id -> {
                 val action =
                     DonationPageFragmentDirections
                         .actionDonationPageFragmentToDonationListFragment()
                 action.id = donation.project.id
                 action.isProject = false
+                action.edit = args.edit
                 findNavController().navigate(action)
             }
             binding.goalsButton.id -> {
                 val action =
-                    DonationPageFragmentDirections.actionDonationPageFragmentToManageGoalsFragment()
+                    DonationPageFragmentDirections.actionDonationPageFragmentToGoalListFragment()
                 action.id = donation.project.id
                 findNavController().navigate(action)
             }
@@ -168,7 +171,7 @@ class DonationPageFragment : Fragment(R.layout.fragment_donation_page), View.OnC
                 val action =
                     DonationPageFragmentDirections.actionDonationPageFragmentToManageGoalFragment()
                 action.id = donation.project.id
-                action.isProject = true
+                action.isDonation = true
                 findNavController().navigate(action)
             }
             binding.projectTag.id -> {

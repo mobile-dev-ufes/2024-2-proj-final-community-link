@@ -75,7 +75,7 @@ class DonationListFragment : Fragment(R.layout.fragment_donation_list), View.OnC
                 viewLifecycleOwner,
                 Observer {
                     binding.dateFilter.text =
-                        if (it == null) getString(R.string.selecione_uma_data) else it
+                        if (it.isEmpty()) getString(R.string.selecione_uma_data) else it
                 }
             )
     }
@@ -118,7 +118,7 @@ class DonationListFragment : Fragment(R.layout.fragment_donation_list), View.OnC
     override fun onClick(v: View) {
         when (v.id) {
             binding.dateFilter.id -> {
-                viewModel.showDatePicker()
+                viewModel.showDatePicker(requireContext())
             }
         }
     }

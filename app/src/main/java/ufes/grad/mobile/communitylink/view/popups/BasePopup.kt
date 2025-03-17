@@ -43,21 +43,6 @@ open class BasePopup(
         dialog?.window?.attributes = params
     }
 
-    private fun setupDoubleButtons() {
-        binding.confirmButton.setOnClickListener(this)
-        binding.cancelButton.setOnClickListener(this)
-
-        if (binding.confirmButton.lineCount > 1) {
-            binding.buttonParent.orientation = VERTICAL
-
-            val params = LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT)
-            params.setMargins(0, 0, 0, 10)
-
-            binding.confirmButton.layoutParams = params
-            binding.cancelButton.layoutParams = params
-        }
-    }
-
     /** Sets the possible button combinations for a popup. */
     fun setupPopupButtons() {
         if (!is_purple) {
@@ -73,14 +58,16 @@ open class BasePopup(
             }
             PopupType.TWO_BUTTON -> {
                 binding.closeButton.visibility = GONE
-                setupDoubleButtons()
+                binding.confirmButton.setOnClickListener(this)
+                binding.cancelButton.setOnClickListener(this)
             }
             PopupType.REMOVE_BUTTON -> {
                 binding.closeButton.visibility = GONE
                 binding.confirmButton.setBackgroundColor(requireContext().getColor(R.color.red))
                 binding.confirmButton.text = getString(R.string.remove)
                 binding.cancelButton.text = getString(R.string.close)
-                setupDoubleButtons()
+                binding.confirmButton.setOnClickListener(this)
+                binding.cancelButton.setOnClickListener(this)
             }
         }
     }

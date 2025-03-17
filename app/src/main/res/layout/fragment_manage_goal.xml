@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    android:paddingHorizontal="@dimen/border"
+    android:clipToPadding="false"
+    android:padding="@dimen/border"
     tools:context=".view.fragments.ManageGoalFragment">
 
     <ufes.grad.mobile.communitylink.ui.components.FormsLayout

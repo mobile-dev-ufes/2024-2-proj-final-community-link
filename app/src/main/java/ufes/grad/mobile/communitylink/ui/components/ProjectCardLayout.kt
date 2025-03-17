@@ -13,7 +13,9 @@ class ProjectCardLayout(context: Context, attrs: AttributeSet) : ConstraintLayou
         LayoutProjectCardBinding.inflate(LayoutInflater.from(context), this, true)
 
     init {
+        isClickable = true
         setAttributes(context, attrs)
+        setOnClickListener { performClick() }
     }
 
     private fun setAttributes(context: Context, attrs: AttributeSet) {

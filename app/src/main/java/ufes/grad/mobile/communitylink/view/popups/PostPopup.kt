@@ -1,13 +1,9 @@
 package ufes.grad.mobile.communitylink.view.popups
 
-import android.app.Activity
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import java.text.SimpleDateFormat
@@ -44,21 +40,18 @@ class PostPopup(
 
     private lateinit var viewModel: PostVM
 
-    var resultLauncher =
-        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            if (result.resultCode == Activity.RESULT_OK) {
-                viewModel.setImage(result.data?.data)
-            }
-        }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProvider(this)[PostVM::class.java]
-        setObserver()
     }
 
-    fun setObserver() {
-        viewModel.getImage().observe(this, Observer { binding.image.setImageURI(it) })
+    private fun setObserver() {
+        viewModel
+            .postData()
+            .observe(
+                viewLifecycleOwner,
+                Observer { it -> binding.contentForms.editText.setText(it.get("content")) }
+            )
     }
 
     override fun onCreateView(
@@ -69,13 +62,20 @@ class PostPopup(
         val root = super.onCreateView(inflater, container, savedInstanceState)
         _binding = PopupPostBinding.inflate(inflater, container, false)
 
+        setObserver()
+        setupLayout()
+
+        return root
+    }
+
+    fun setupLayout() {
         when (mode) {
             PostMode.VIEW -> {
                 binding.contentForms.visibility = View.GONE
                 binding.imageButton.visibility = View.GONE
                 binding.titleText.text = getString(R.string.post)
                 binding.contentText.text = post?.text
-                viewModel.setImage(Uri.parse(post?.media))
+                binding.image.visibility = View.GONE
                 type = PopupType.ONE_BUTTON
             }
             PostMode.NEW -> {
@@ -83,20 +83,18 @@ class PostPopup(
                 binding.contentText.visibility = View.GONE
                 binding.titleText.text = getString(R.string.new_post)
                 onConfirmDismiss = false
+                binding.image.visibility = View.GONE
                 type = PopupType.TWO_BUTTON
             }
             PostMode.EDIT -> {
                 binding.contentText.visibility = View.GONE
                 binding.titleText.text = getString(R.string.edit_post)
-                viewModel.setImage(Uri.parse(post?.media))
                 onConfirmDismiss = false
+                binding.image.visibility = View.GONE
                 type = PopupType.TWO_BUTTON
             }
         }
-
         setupPopupButtons()
-
-        return root
     }
 
     fun createPost(): PostModel? {
@@ -127,16 +125,5 @@ class PostPopup(
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    override fun onClick(v: View) {
-        super.onClick(v)
-        when (v.id) {
-            binding.imageButton.id -> {
-                val intent = Intent(Intent.ACTION_PICK)
-                intent.type = "image/*"
-                resultLauncher.launch(intent)
-            }
-        }
     }
 }

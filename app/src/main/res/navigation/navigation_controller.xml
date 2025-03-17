@@ -109,10 +109,6 @@
         android:name="ufes.grad.mobile.communitylink.view.fragments.EventsAndDonationsFragment"
         android:label="@string/events_and_donations"
         tools:layout="@layout/fragment_events_and_donations">
-        <argument
-            android:name="id"
-            android:defaultValue="''"
-            app:argType="string" />
         <action
             android:id="@+id/action_eventsAndDonationsFragment_to_eventPageFragment"
             app:destination="@id/eventPageFragment" />
@@ -194,8 +190,8 @@
             android:id="@+id/action_donationPageFragment_to_projectPageFragment"
             app:destination="@id/projectPageFragment" />
         <action
-            android:id="@+id/action_donationPageFragment_to_manageGoalsFragment"
-            app:destination="@id/manageGoalsFragment" />
+            android:id="@+id/action_donationPageFragment_to_goalListFragment"
+            app:destination="@id/goalListFragment" />
         <action
             android:id="@+id/action_donationPageFragment_to_manageGoalFragment"
             app:destination="@id/manageGoalFragment" />
@@ -228,6 +224,15 @@
             android:name="id"
             android:defaultValue="''"
             app:argType="string" />
+        <action
+            android:id="@+id/action_editProjectFragment_to_projectMembersFragment"
+            app:destination="@id/projectMembersFragment" />
+        <action
+            android:id="@+id/action_editProjectFragment_to_donationListFragment"
+            app:destination="@id/donationListFragment" />
+        <action
+            android:id="@+id/action_editProjectFragment_to_projectActionsListFragment"
+            app:destination="@id/projectActionsListFragment" />
     </fragment>
 
     <fragment
@@ -303,7 +308,7 @@
             android:defaultValue="''"
             app:argType="string" />
         <argument
-            android:name="is_project"
+            android:name="is_donation"
             android:defaultValue="false"
             app:argType="boolean" />
     </fragment>
@@ -389,7 +394,7 @@
     </fragment>
 
     <fragment
-        android:id="@+id/manageGoalsFragment"
+        android:id="@+id/goalListFragment"
         android:name="ufes.grad.mobile.communitylink.view.fragments.GoalListFragment"
         android:label="@string/manage_goals"
         tools:layout="@layout/fragment_goal_list">
@@ -397,6 +402,9 @@
             android:name="id"
             android:defaultValue="''"
             app:argType="string" />
+        <action
+            android:id="@+id/action_goalListFragment_to_manageGoalFragment"
+            app:destination="@+id/manageGoalFragment" />
     </fragment>
 
     <fragment

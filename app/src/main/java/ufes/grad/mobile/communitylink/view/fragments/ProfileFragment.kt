@@ -31,6 +31,11 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), View.OnClickListene
 
     private lateinit var profileVM: ProfileVM
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        profileVM = ViewModelProvider(this)[ProfileVM::class.java]
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -38,17 +43,9 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), View.OnClickListene
     ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
-        binding.projectsButton.setOnClickListener(this)
-        binding.actionsButton.setOnClickListener(this)
-        binding.eventsButton.setOnClickListener(this)
-        binding.pendingButton.setOnClickListener(this)
-        binding.logoutButton.setOnClickListener(this)
-        binding.confirmAlterations.setOnClickListener(this)
-        binding.excludeAccount.setOnClickListener(this)
-        profileVM = ViewModelProvider(this)[ProfileVM::class.java]
+
         setObserver()
-        binding.cpf.editText.inputType = InputType.TYPE_CLASS_NUMBER
-        binding.phone.editText.inputType = InputType.TYPE_CLASS_PHONE
+        setupLayout()
 
         binding.buttonDate.setOnClickListener {
             val listener =
@@ -65,17 +62,31 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), View.OnClickListene
                     }
                 }
             val cal = Calendar.getInstance()
-            DatePickerDialog(
+            val datePicker =
+                DatePickerDialog(
                     requireContext(),
                     listener,
                     cal.get(Calendar.YEAR),
                     cal.get(Calendar.MONTH),
                     cal.get(Calendar.DAY_OF_MONTH)
                 )
-                .show()
+            datePicker.datePicker.maxDate = cal.timeInMillis
+            datePicker.show()
         }
 
         return binding.root
+    }
+
+    fun setupLayout() {
+        binding.projectsButton.setOnClickListener(this)
+        binding.actionsButton.setOnClickListener(this)
+        binding.eventsButton.setOnClickListener(this)
+        binding.pendingButton.setOnClickListener(this)
+        binding.logoutButton.setOnClickListener(this)
+        binding.confirmAlterations.setOnClickListener(this)
+        binding.excludeAccount.setOnClickListener(this)
+        binding.cpf.editText.inputType = InputType.TYPE_CLASS_NUMBER
+        binding.phone.editText.inputType = InputType.TYPE_CLASS_PHONE
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -85,7 +96,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), View.OnClickListene
 
     private fun setObserver() {
         profileVM
-            .user()
+            .userData()
             .observe(
                 viewLifecycleOwner,
                 Observer { it ->
@@ -112,20 +123,22 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), View.OnClickListene
     override fun onClick(v: View) {
         when (v.id) {
             binding.projectsButton.id -> {
-                // TODO("Add navigation args")
-                findNavController().navigate(R.id.myProjectsFragment)
+                val project = ProfileFragmentDirections.actionProfileFragmentToMyProjectsFragment()
+                findNavController().navigate(project)
             }
             binding.actionsButton.id -> {
-                // TODO("Add navigation args")
-                findNavController().navigate(R.id.myActionsFragment)
+                val actions = ProfileFragmentDirections.actionProfileFragmentToMyActionsFragment()
+                findNavController().navigate(actions)
             }
             binding.eventsButton.id -> {
-                // TODO("Add navigation args")
-                findNavController().navigate(R.id.eventsAndDonationsFragment)
+                val actions =
+                    ProfileFragmentDirections.actionProfileFragmentToEventsAndDonationsFragment()
+                findNavController().navigate(actions)
             }
             binding.pendingButton.id -> {
-                // TODO("Add navigation args")
-                findNavController().navigate(R.id.pendingActionsFragment)
+                val actions =
+                    ProfileFragmentDirections.actionProfileFragmentToPendingActionsFragment()
+                findNavController().navigate(actions)
             }
             binding.logoutButton.id -> {
                 profileVM.logout()
