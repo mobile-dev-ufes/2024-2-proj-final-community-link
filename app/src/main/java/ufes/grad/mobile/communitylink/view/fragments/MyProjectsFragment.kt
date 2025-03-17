@@ -59,13 +59,10 @@ class MyProjectsFragment : Fragment(R.layout.fragment_my_projects), View.OnClick
     }
 
     fun setupAdapter() {
-        Log.d("DEBUG-TEST", "FODASSSSS")
         adapter.onItemClickListener = { position ->
             val item = adapter.list[position] as ProjectModel
             // TODO("Conferir se o usuário é responsável ou membro")
-            val is_responsible = false
-
-            Log.d("DEBUG-TEST", "FODASSSSS")
+            val is_responsible = myProjectsVM.isResponsible(item.id)
 
             if (is_responsible) {
                 val project =
