@@ -183,10 +183,10 @@ class EditActionFragment : Fragment(R.layout.fragment_edit_action), View.OnClick
                             finishDate = binding.endDateButton.text.toString(),
                             status = true,
                             project = viewModel.getAction().value!!.project,
-                            posts = viewModel.getAction().value!!.posts,
+//                            posts = viewModel.getAction().value!!.posts,
                             primaryRepresentative = viewModel.getAction().value!!.primaryRepresentative,
-                            goals = (viewModel.getAction().value!! as ActionDonationModel).goals,
-                            donations = (viewModel.getAction().value!! as ActionDonationModel).donations
+//                            goals = (viewModel.getAction().value!! as ActionDonationModel).goals,
+//                            donations = (viewModel.getAction().value!! as ActionDonationModel).donations
                         )
                 } else {
                     var places = listOf<String>()
@@ -213,7 +213,7 @@ class EditActionFragment : Fragment(R.layout.fragment_edit_action), View.OnClick
                             places = places.toMutableList(),
                             status = true,
                             project = viewModel.getAction().value!!.project,
-                            posts = viewModel.getAction().value!!.posts,
+//                            posts = viewModel.getAction().value!!.posts,
                             primaryRepresentative = viewModel.getAction().value!!.primaryRepresentative,
                         )
                 }

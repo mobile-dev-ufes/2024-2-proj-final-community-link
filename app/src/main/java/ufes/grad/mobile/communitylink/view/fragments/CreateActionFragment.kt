@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import ufes.grad.mobile.communitylink.R
+import ufes.grad.mobile.communitylink.data.dao.ProjectDAO
 import ufes.grad.mobile.communitylink.data.model.ActionDonationModel
 import ufes.grad.mobile.communitylink.data.model.ActionEventModel
 import ufes.grad.mobile.communitylink.data.model.ActionModel
@@ -104,28 +105,26 @@ class CreateActionFragment : Fragment(R.layout.fragment_create_action), View.OnC
                     return
                 }
 
-                val action: ActionModel = if (actionType == ActionType.EVENT) {
-                    ActionEventModel(
+                val action: ActionModel = ActionEventModel(
                         name = name,
                         description = description,
                         tags = tags.toMutableList(),
                         status = false,
+                        project = createActionVM.getProject().value!!,
                         primaryRepresentative = primaryRepresentative
-                    )
-                } else {
-                    ActionDonationModel(
-                        name = name,
-                        description = description,
-                        tags = tags.toMutableList(),
-                        status = false,
-                        primaryRepresentative = primaryRepresentative
-                    )
-                }
-                if (action == null)
-                    Utilities.notify(context, getString(R.string.an_error_occured))
+                )
+
+//                else {
+//                    ActionDonationModel(
+//                        name = name,
+//                        description = description,
+//                        tags = tags.toMutableList(),
+//                        status = false,
+//                        primaryRepresentative = primaryRepresentative
+//                    )
+//                }
                 createActionVM.createNewAction(action)
             }
-
         }
     }
 }

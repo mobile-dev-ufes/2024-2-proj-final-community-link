@@ -17,9 +17,6 @@ class ProjectModel(
 
     @Serializable(with = ProjectDataSerializer::class)
     var currentData: ProjectDataModel = ProjectDataModel(),
-
-    @Serializable(with = ProjectDataSerializer::class)
-    var pendingData: ProjectDataModel? = null,
 ) : BaseModel {
 
     val actions: List<ActionModel>
@@ -35,8 +32,7 @@ class ProjectModel(
         return mapOf(
             "id" to id,
             "status" to status,
-            "currentData" to currentData.id,
-            "pendingData" to pendingData?.id
+            "currentData" to currentData.id
         )
     }
 }

@@ -123,8 +123,8 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), View.OnClickListene
     override fun onClick(v: View) {
         when (v.id) {
             binding.projectsButton.id -> {
-                val project = ProfileFragmentDirections.actionProfileFragmentToMyProjectsFragment()
-                findNavController().navigate(project)
+                val actions = ProfileFragmentDirections.actionProfileFragmentToMyProjectsFragment()
+                findNavController().navigate(actions)
             }
             binding.actionsButton.id -> {
                 val actions = ProfileFragmentDirections.actionProfileFragmentToMyActionsFragment()

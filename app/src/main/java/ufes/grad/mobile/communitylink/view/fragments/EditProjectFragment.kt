@@ -81,7 +81,7 @@ class EditProjectFragment : Fragment(R.layout.fragment_edit_project), View.OnCli
                             CNPJ = binding.cnpjForms.editText.text.toString().trim(),
                             pixKey = binding.pixForms.editText.text.toString().trim(),
                         )
-                    project.pendingData = newData
+                    project.currentData = newData
                 }
                 popup.show(childFragmentManager, "")
             }

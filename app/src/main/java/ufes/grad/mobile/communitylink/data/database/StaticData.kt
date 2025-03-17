@@ -57,8 +57,7 @@ object StaticData {
                 ProjectModel(
                     "0$i",
                     ProjectStatusEnum.ACCEPTED,
-                    projectDataList[i],
-                    null,
+                    projectDataList[i]
                 )
             )
         }

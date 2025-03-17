@@ -55,12 +55,6 @@ class CreateActionVM(application: Application) : AndroidViewModel(application) {
                         }
                     }
                 }
-                getProject()
-                if (project.value == null) {
-                    throw Exception("Criou ação mas sem projeto")
-                }
-                project.value!!.actions += action
-                ProjectService.update(project.value!!)
                 Utilities.notify(context, context.getString(R.string.sucess_saving_action))
             }
         } catch (_: Exception) {

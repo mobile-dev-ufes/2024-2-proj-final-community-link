@@ -89,6 +89,9 @@
         <action
             android:id="@+id/action_myProjectsFragment_to_editProjectFragment"
             app:destination="@id/editProjectFragment" />
+        <argument
+            android:name="id"
+            app:argType="string" />
     </fragment>
 
     <fragment

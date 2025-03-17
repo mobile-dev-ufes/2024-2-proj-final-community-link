@@ -9,7 +9,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import ufes.grad.mobile.communitylink.R
+import ufes.grad.mobile.communitylink.data.dao.MemberDAO
 import ufes.grad.mobile.communitylink.data.database.StaticData
+import ufes.grad.mobile.communitylink.data.model.MemberModel
 import ufes.grad.mobile.communitylink.data.model.ProjectModel
 import ufes.grad.mobile.communitylink.databinding.FragmentProjectMembersBinding
 import ufes.grad.mobile.communitylink.view.adapter.ListCommonCardAdapter
@@ -61,7 +63,7 @@ class ProjectMembersFragment : Fragment(R.layout.fragment_project_members), View
             val popup = UserDataPopup(popup_type)
             popup.onConfirm = {
                 // TODO("Remove member from project")
-                project.members.remove(responsibleAdapter.list[position])
+//                project.members.remove(responsibleAdapter.list[position])
             }
             popup.show(childFragmentManager, "")
         }
@@ -73,7 +75,7 @@ class ProjectMembersFragment : Fragment(R.layout.fragment_project_members), View
             val popup = UserDataPopup(popup_type)
             popup.onConfirm = {
                 // TODO("Remove member from project")
-                project.members.remove(responsibleAdapter.list[position])
+//                project.members.remove(responsibleAdapter.list[position])
             }
             popup.show(childFragmentManager, "")
         }
