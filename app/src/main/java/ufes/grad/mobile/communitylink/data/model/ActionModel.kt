@@ -7,7 +7,6 @@ interface ActionModel : BaseModel {
     var initDate: String
     var finishDate: String
     var status: Boolean
-    val posts: MutableList<PostModel>
     var project: ProjectModel
     var primaryRepresentative: UserModel
     var secondaryRepresentative: UserModel?

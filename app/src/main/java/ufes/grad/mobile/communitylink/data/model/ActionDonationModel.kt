@@ -1,9 +1,10 @@
 package ufes.grad.mobile.communitylink.data.model
 
+import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.Serializable
-import ufes.grad.mobile.communitylink.data.serializer.DonationSerializer
-import ufes.grad.mobile.communitylink.data.serializer.GoalSerializer
-import ufes.grad.mobile.communitylink.data.serializer.PostSerializer
+import ufes.grad.mobile.communitylink.data.dao.DonationForActionDAO
+import ufes.grad.mobile.communitylink.data.dao.GoalDAO
+import ufes.grad.mobile.communitylink.data.dao.PostDAO
 import ufes.grad.mobile.communitylink.data.serializer.ProjectSerializer
 import ufes.grad.mobile.communitylink.data.serializer.UserSerializer
 
@@ -16,19 +17,25 @@ class ActionDonationModel(
     override var initDate: String = "",
     override var finishDate: String = "",
     override var status: Boolean = false,
-    override val posts: MutableList<@Serializable(with = PostSerializer::class) PostModel> =
-        mutableListOf(),
+
     @Serializable(with = ProjectSerializer::class)
     override var project: ProjectModel = ProjectModel(),
+
     @Serializable(with = UserSerializer::class)
     override var primaryRepresentative: UserModel = UserModel(),
+
     @Serializable(with = UserSerializer::class)
     override var secondaryRepresentative: UserModel? = null,
-    val goals: MutableList<@Serializable(with = GoalSerializer::class) GoalModel> = mutableListOf(),
-    val donations:
-        MutableList<@Serializable(with = DonationSerializer::class) DonationForActionModel> =
-        mutableListOf()
 ) : ActionModel {
+
+    val posts: List<PostModel>
+        get() = runBlocking { PostDAO.findByActionId(id) }
+
+    val goals: List<GoalModel>
+        get() = runBlocking { GoalDAO.findByActionId(id) }
+
+    val donations: List<DonationForActionModel>
+        get() = runBlocking { DonationForActionDAO.findByActionId(id) }
 
     override fun toMap(): Map<String, Any?> {
         return mapOf(
@@ -39,12 +46,9 @@ class ActionDonationModel(
             "initDate" to initDate,
             "finishDate" to finishDate,
             "status" to status,
-            "posts" to posts.map { it.id },
             "project" to project.id,
             "primaryRepresentative" to primaryRepresentative.id,
             "secondaryRepresentative" to secondaryRepresentative?.id,
-            "goal" to goals.map { it.id },
-            "donations" to donations.map { it.id }
         )
     }
 }

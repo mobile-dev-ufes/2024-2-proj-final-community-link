@@ -59,9 +59,6 @@ object StaticData {
                     ProjectStatusEnum.ACCEPTED,
                     projectDataList[i],
                     null,
-                    actions = mutableListOf(),
-                    mutableListOf(),
-                    mutableListOf()
                 )
             )
         }
@@ -80,7 +77,6 @@ object StaticData {
                     dateFormatter.format(Date()),
                     dateFormatter.format(Date()),
                     true,
-                    mutableListOf(),
                     ProjectModel("wL4SFYZIEAcf0ELI15gb"),
                     users[i],
                 )
@@ -109,7 +105,6 @@ object StaticData {
                     dateFormatter.format(Date()),
                     dateFormatter.format(Date()),
                     true,
-                    mutableListOf(),
                     ProjectModel("wL4SFYZIEAcf0ELI15gb"),
                     users[i],
                 )

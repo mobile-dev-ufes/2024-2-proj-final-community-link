@@ -2,6 +2,7 @@ package ufes.grad.mobile.communitylink.data.model
 
 import kotlinx.serialization.Serializable
 import ufes.grad.mobile.communitylink.data.serializer.ActionSerializer
+import ufes.grad.mobile.communitylink.data.serializer.UserSerializer
 
 @Serializable
 class DonationForActionModel(
@@ -11,6 +12,10 @@ class DonationForActionModel(
     override var status: DonationStatusEnum = DonationStatusEnum.PENDING,
     override var date: String = "",
     override var confirmationImage: String = "",
+
+    @Serializable(with = UserSerializer::class)
+    override var user: UserModel = UserModel(),
+
     @Serializable(with = ActionSerializer::class)
     var action: ActionDonationModel = ActionDonationModel()
 ) : DonationModel {
@@ -23,6 +28,7 @@ class DonationForActionModel(
             "status" to status,
             "date" to date,
             "confirmationImage" to confirmationImage,
+            "user" to user.id,
             "action" to action.id
         )
     }

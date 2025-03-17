@@ -6,4 +6,5 @@ interface DonationModel : BaseModel {
     var status: DonationStatusEnum
     var date: String
     var confirmationImage: String
+    var user: UserModel
 }

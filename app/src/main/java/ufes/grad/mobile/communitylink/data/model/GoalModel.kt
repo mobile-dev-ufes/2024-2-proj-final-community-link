@@ -9,6 +9,7 @@ data class GoalModel(
     var description: String = "",
     var minimalQuantity: Float = 0.0f,
     var actualQuantity: Float = 0.0f,
+
     @Serializable(with = ActionSerializer::class)
     var actionDonation: ActionDonationModel = ActionDonationModel()
 ) : BaseModel {

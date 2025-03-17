@@ -1,6 +1,10 @@
 package ufes.grad.mobile.communitylink.data.model
 
+import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.Serializable
+import ufes.grad.mobile.communitylink.data.dao.GoalDAO
+import ufes.grad.mobile.communitylink.data.dao.PostDAO
+import ufes.grad.mobile.communitylink.data.dao.VolunteerSlotDAO
 import ufes.grad.mobile.communitylink.data.serializer.PostSerializer
 import ufes.grad.mobile.communitylink.data.serializer.ProjectSerializer
 import ufes.grad.mobile.communitylink.data.serializer.UserSerializer
@@ -15,19 +19,24 @@ class ActionEventModel(
     override var initDate: String = "",
     override var finishDate: String = "",
     override var status: Boolean = false,
-    override val posts: MutableList<@Serializable(with = PostSerializer::class) PostModel> =
-        mutableListOf(),
+
     @Serializable(with = ProjectSerializer::class)
     override var project: ProjectModel = ProjectModel(),
+
     @Serializable(with = UserSerializer::class)
     override var primaryRepresentative: UserModel = UserModel(),
+
     @Serializable(with = UserSerializer::class)
     override var secondaryRepresentative: UserModel? = null,
+
     val places: MutableList<String> = mutableListOf(),
-    val volunteerSlots:
-        MutableList<@Serializable(with = VolunteerSlotSerializer::class) VolunteerSlotModel> =
-        mutableListOf()
 ) : ActionModel {
+
+    val posts: List<PostModel>
+        get() = runBlocking { PostDAO.findByActionId(id) }
+
+    val volunteerSlots: List<VolunteerSlotModel>
+        get() = runBlocking { VolunteerSlotDAO.findByActionEventId(id) }
 
     override fun toMap(): Map<String, Any?> {
         return mapOf(
@@ -38,12 +47,10 @@ class ActionEventModel(
             "initDate" to initDate,
             "finishDate" to finishDate,
             "status" to status,
-            "posts" to posts.map { it.id },
             "project" to project.id,
             "primaryRepresentative" to primaryRepresentative.id,
             "secondaryRepresentative" to secondaryRepresentative?.id,
-            "places" to places,
-            "volunteerSlots" to volunteerSlots.map { it.id }
+            "places" to places
         )
     }
 }

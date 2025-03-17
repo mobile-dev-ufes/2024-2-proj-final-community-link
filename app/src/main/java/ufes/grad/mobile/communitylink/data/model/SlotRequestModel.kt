@@ -9,9 +9,12 @@ class SlotRequestModel(
     override var id: String = "",
     var date: String,
     var isSelected: Boolean = false,
+
     @Serializable(with = VolunteerSlotSerializer::class)
     var slot: VolunteerSlotModel = VolunteerSlotModel(),
-    @Serializable(with = UserSerializer::class) var user: UserModel = UserModel()
+
+    @Serializable(with = UserSerializer::class)
+    var user: UserModel = UserModel()
 ) : BaseModel {
 
     override fun toMap(): Map<String, Any?> {

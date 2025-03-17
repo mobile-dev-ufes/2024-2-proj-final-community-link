@@ -9,7 +9,9 @@ class PostModel(
     var text: String = "",
     var date: String = "",
     var media: String = "",
-    @Serializable(with = ActionSerializer::class) var action: ActionModel = ActionDonationModel()
+
+    @Serializable(with = ActionSerializer::class)
+    var action: ActionModel = ActionDonationModel()
 ) : BaseModel {
 
     override fun toMap(): Map<String, Any?> {

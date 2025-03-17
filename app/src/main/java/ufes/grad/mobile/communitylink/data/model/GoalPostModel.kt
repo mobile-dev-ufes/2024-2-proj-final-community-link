@@ -10,6 +10,7 @@ class GoalPostModel(
     var description: String = "",
     var amount: Float = 0.0f,
     var date: String = "",
+
     @Serializable(with = ActionSerializer::class)
     var actionDonation: ActionDonationModel = ActionDonationModel()
 ) : BaseModel {
