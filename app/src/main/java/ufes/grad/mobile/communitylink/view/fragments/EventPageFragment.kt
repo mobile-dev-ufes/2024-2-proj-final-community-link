@@ -79,15 +79,9 @@ class EventPageFragment : Fragment(R.layout.fragment_event_page), View.OnClickLi
 
                     binding.projectTag.setValues(it.project.currentData.name)
                     if (args.edit) {
-                        binding.pendingButton.setOnClickListener(this)
-                        binding.manageButton.setOnClickListener(this)
                         binding.editButton.setOnClickListener(this)
                         binding.createButton.setOnClickListener(this)
-                        binding.volunteersButton.visibility = View.GONE
                     } else {
-                        binding.volunteersButton.setOnClickListener(this)
-                        binding.pendingButton.visibility = View.GONE
-                        binding.manageButton.visibility = View.GONE
                         binding.editButton.visibility = View.GONE
                         binding.createButton.visibility = View.GONE
                     }
@@ -105,23 +99,9 @@ class EventPageFragment : Fragment(R.layout.fragment_event_page), View.OnClickLi
 
     override fun onClick(v: View) {
         when (v.id) {
-            binding.volunteersButton.id -> {
-                val action =
-                    EventPageFragmentDirections
-                        .actionEventPageFragmentToEventVolunteerSlotsFragment()
-                action.eventId = eventVM.getEvent().value!!.project.id
-                action.edit = false
-                findNavController().navigate(action)
-            }
             binding.createButton.id -> {
                 PostPopup(null, eventVM.getEvent().value!!.id, PostPopup.PostMode.NEW)
                     .show(childFragmentManager, "")
-            }
-            binding.pendingButton.id -> {
-                val action =
-                    EventPageFragmentDirections.actionEventPageFragmentToPendingSlotsFragment()
-                action.id = eventVM.getEvent().value!!.id
-                findNavController().navigate(action)
             }
             binding.editButton.id -> {
                 val action =
@@ -129,14 +109,6 @@ class EventPageFragment : Fragment(R.layout.fragment_event_page), View.OnClickLi
                         eventVM.getEvent().value!!.id
                     )
                 action.isEvent = true
-                findNavController().navigate(action)
-            }
-            binding.manageButton.id -> {
-                val action =
-                    EventPageFragmentDirections
-                        .actionEventPageFragmentToEventVolunteerSlotsFragment()
-                action.eventId = eventVM.getEvent().value!!.id
-                action.edit = true
                 findNavController().navigate(action)
             }
             binding.projectTag.id -> {
