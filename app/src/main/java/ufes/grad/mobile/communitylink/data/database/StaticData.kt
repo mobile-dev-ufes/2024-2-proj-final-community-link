@@ -42,14 +42,7 @@ object StaticData {
         }
 
         for (i in 0..4) {
-            projects.add(
-                ProjectModel(
-                    "0$i",
-                    ProjectStatusEnum.ACCEPTED,
-                    projectDataList[i],
-                    null,
-                )
-            )
+            projects.add(ProjectModel("0$i", ProjectStatusEnum.ACCEPTED, projectDataList[i]))
         }
 
         for (i in 0..4) {

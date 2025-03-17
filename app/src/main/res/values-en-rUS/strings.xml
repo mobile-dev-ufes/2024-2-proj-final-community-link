@@ -156,6 +156,7 @@
     <string name="manage_actions">Manage Actions</string>
     <string name="create_action">Create Actions</string>
     <string name="add_place">Add place</string>
+    <string name="add_place_three">Add place</string>
     <string name="end_date">End date</string>
     <string name="start_date">Start date</string>
     <string name="volunteer_slot">Vonlunteer Slot</string>
@@ -186,4 +187,23 @@
     <string name="error_save_user_data">Error while saving data, try again!</string>
     <string name="error_save_project_data">Error while saving project data!</string>
     <string name="sucess_saving_project_data">Project created with sucess!</string>
+    <string name="add_place_one">Add place</string>
+    <string name="add_place_two">Add place</string>
+    <string name="error_creating_action">Error while creating Action!</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="other">Other</string>
+    <string name="pix_to_clipboard">Pix copied to clipboard</string>
+    <string name="the_post_content_cannot_be_empty">The Post content cannot be empty!</string>
+    <string name="from_to">"From  %1$s to %2$s "</string>
+    <string name="places_list">Places: %1$s</string>
+    <string name="view_donations">See donations</string>
+    <string name="select_a_place">Select a place</string>
+    <string name="primary_representative">Primary representative</string>
+    <string name="sucess_saving_action">Action created!</string>
+    <string name="post_created">Posted!</string>
+    <string name="post_fail">Error post not created</string>
+    <string name="an_error_occured">An error occured</string>
+    <string name="sucesso">Sucess</string>
+    <string name="change_language">Português</string>
 </resources>

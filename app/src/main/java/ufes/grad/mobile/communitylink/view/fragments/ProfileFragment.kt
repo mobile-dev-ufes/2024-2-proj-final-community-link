@@ -16,6 +16,7 @@ import java.util.Calendar
 import ufes.grad.mobile.communitylink.R
 import ufes.grad.mobile.communitylink.data.model.UserModel
 import ufes.grad.mobile.communitylink.databinding.FragmentProfileBinding
+import ufes.grad.mobile.communitylink.utils.Utilities.Companion.setLocale
 import ufes.grad.mobile.communitylink.view.LoginActivity
 import ufes.grad.mobile.communitylink.view.popups.BasePopup
 import ufes.grad.mobile.communitylink.viewmodel.ProfileVM
@@ -56,6 +57,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), View.OnClickListene
         binding.logoutButton.setOnClickListener(this)
         binding.confirmAlterations.setOnClickListener(this)
         binding.excludeAccount.setOnClickListener(this)
+        binding.changeLanguage.setOnClickListener(this)
         binding.cpf.editText.inputType = InputType.TYPE_CLASS_NUMBER
         binding.phone.editText.inputType = InputType.TYPE_CLASS_PHONE
     }
@@ -94,8 +96,8 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), View.OnClickListene
     override fun onClick(v: View) {
         when (v.id) {
             binding.projectsButton.id -> {
-                val project = ProfileFragmentDirections.actionProfileFragmentToMyProjectsFragment()
-                findNavController().navigate(project)
+                val actions = ProfileFragmentDirections.actionProfileFragmentToMyProjectsFragment()
+                findNavController().navigate(actions)
             }
             binding.actionsButton.id -> {
                 val actions = ProfileFragmentDirections.actionProfileFragmentToMyActionsFragment()
@@ -158,6 +160,19 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), View.OnClickListene
                 datePicker.datePicker.maxDate = cal.timeInMillis
                 datePicker.show()
             }
+            binding.changeLanguage.id -> {
+                toggleLanguage()
+            }
         }
+    }
+
+    private fun getCurrentLanguage(): String {
+        return resources.configuration.locales[0].language
+    }
+
+    private fun toggleLanguage() {
+        val newLang = if (getCurrentLanguage() == "en") "pt" else "en"
+        setLocale(requireContext(), newLang)
+        requireActivity().recreate() // Restart activity to apply changes
     }
 }

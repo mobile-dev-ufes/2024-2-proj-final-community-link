@@ -13,7 +13,6 @@ class ProjectModel(
     var status: ProjectStatusEnum = ProjectStatusEnum.PENDING,
     @Serializable(with = ProjectDataSerializer::class)
     var currentData: ProjectDataModel = ProjectDataModel(),
-    @Serializable(with = ProjectDataSerializer::class) var pendingData: ProjectDataModel? = null,
 ) : BaseModel {
 
     val actions: List<ActionModel>
@@ -26,11 +25,6 @@ class ProjectModel(
         get() = runBlocking { DonationForProjectDAO.findByProjectId(id) }
 
     override fun toMap(): Map<String, Any?> {
-        return mapOf(
-            "id" to id,
-            "status" to status,
-            "currentData" to currentData.id,
-            "pendingData" to pendingData?.id
-        )
+        return mapOf("id" to id, "status" to status, "currentData" to currentData.id)
     }
 }

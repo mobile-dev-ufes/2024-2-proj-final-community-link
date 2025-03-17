@@ -1,6 +1,7 @@
 package ufes.grad.mobile.communitylink.view.fragments
 
 import android.app.DatePickerDialog
+import android.content.Intent
 import android.os.Bundle
 import android.text.InputType
 import android.text.method.PasswordTransformationMethod
@@ -20,6 +21,7 @@ import ufes.grad.mobile.communitylink.data.model.UserModel
 import ufes.grad.mobile.communitylink.databinding.FragmentRegisterBinding
 import ufes.grad.mobile.communitylink.ui.components.SpinnerAdapter
 import ufes.grad.mobile.communitylink.utils.Utilities
+import ufes.grad.mobile.communitylink.view.LoginActivity
 import ufes.grad.mobile.communitylink.view.popups.BasePopup
 import ufes.grad.mobile.communitylink.viewmodel.SignupVM
 
@@ -89,6 +91,8 @@ class SignupFragment : Fragment(R.layout.fragment_register), OnClickListener {
                         showMissingFields()
                     }
                 }
+                startActivity(Intent(context, LoginActivity::class.java))
+                requireActivity().finish()
             }
         }
     }

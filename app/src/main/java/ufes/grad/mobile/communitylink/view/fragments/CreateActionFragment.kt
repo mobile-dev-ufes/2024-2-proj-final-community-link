@@ -70,6 +70,7 @@ class CreateActionFragment : Fragment(R.layout.fragment_create_action), View.OnC
                         description = description,
                         tags = tags.toMutableList(),
                         status = false,
+                        project = createActionVM.getProject().value!!,
                         primaryRepresentative = primaryRepresentative
                     )
 

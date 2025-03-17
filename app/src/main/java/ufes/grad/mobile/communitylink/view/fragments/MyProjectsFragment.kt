@@ -6,14 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import ufes.grad.mobile.communitylink.R
-import ufes.grad.mobile.communitylink.data.database.StaticData
 import ufes.grad.mobile.communitylink.data.model.ProjectModel
 import ufes.grad.mobile.communitylink.databinding.FragmentMyProjectsBinding
 import ufes.grad.mobile.communitylink.ui.components.SpinnerAdapter
 import ufes.grad.mobile.communitylink.view.adapter.ListCommonCardAdapter
+import ufes.grad.mobile.communitylink.viewmodel.MyProjectsVM
 
 class MyProjectsFragment : Fragment(R.layout.fragment_my_projects), View.OnClickListener {
 
@@ -21,15 +23,19 @@ class MyProjectsFragment : Fragment(R.layout.fragment_my_projects), View.OnClick
     private val binding
         get() = _binding!!
 
+    private lateinit var myProjectsVM: MyProjectsVM
+
     private var filter: String = ""
 
     private val adapter: ListCommonCardAdapter = ListCommonCardAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        myProjectsVM = ViewModelProvider(this)[MyProjectsVM::class.java]
+    }
 
-        // TODO("Get content from DB")
-        adapter.updateList(StaticData.eventActions)
+    fun setObserver() {
+        myProjectsVM.getProjects().observe(viewLifecycleOwner, Observer { adapter.updateList(it) })
     }
 
     override fun onCreateView(
@@ -46,6 +52,8 @@ class MyProjectsFragment : Fragment(R.layout.fragment_my_projects), View.OnClick
 
         binding.createButton.setOnClickListener(this)
 
+        setObserver()
+        myProjectsVM.listProjects()
         return binding.root
     }
 

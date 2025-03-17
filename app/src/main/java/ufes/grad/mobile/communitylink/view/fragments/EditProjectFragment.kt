@@ -80,8 +80,7 @@ class EditProjectFragment : Fragment(R.layout.fragment_edit_project), View.OnCli
                             CNPJ = binding.cnpjForms.editText.text.toString().trim(),
                             pixKey = binding.pixForms.editText.text.toString().trim(),
                         )
-                    project.pendingData = newData
-                    project.status = ProjectStatusEnum.PENDING
+                    project.currentData = newData
                 }
                 popup.show(childFragmentManager, "")
             }
@@ -91,7 +90,7 @@ class EditProjectFragment : Fragment(R.layout.fragment_edit_project), View.OnCli
                 popup.onConfirm = {
                     project.status =
                         if (project.status == ProjectStatusEnum.DEPRECATED)
-                            ProjectStatusEnum.PENDING
+                            ProjectStatusEnum.ACCEPTED
                         else ProjectStatusEnum.DEPRECATED
                 }
                 popup.show(childFragmentManager, "")

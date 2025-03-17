@@ -202,6 +202,7 @@
     <string name="post_fail">Erro, post não criado!</string>
     <string name="an_error_occured">Um erro ocorreu!</string>
     <string name="sucesso">Sucesso!</string>
+    <string name="change_language">English</string>
     <string name="place_colon">Local: %1$s</string>
     <string name="hit_a_goal">bateu uma meta!</string>
     <string name="modified_a_goal">modificou uma meta!</string>
