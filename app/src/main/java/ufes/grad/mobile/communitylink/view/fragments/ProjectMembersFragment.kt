@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import ufes.grad.mobile.communitylink.R
+import ufes.grad.mobile.communitylink.data.model.MemberModel
 import ufes.grad.mobile.communitylink.databinding.FragmentProjectMembersBinding
 import ufes.grad.mobile.communitylink.view.adapter.ListCommonCardAdapter
 import ufes.grad.mobile.communitylink.view.popups.UserDataPopup
@@ -46,10 +47,8 @@ class ProjectMembersFragment : Fragment(R.layout.fragment_project_members), View
         super.onCreateView(inflater, container, savedInstanceState)
         _binding = FragmentProjectMembersBinding.inflate(inflater, container, false)
 
-        if (!args.edit) {
-            binding.addMemberButton.setOnClickListener(this)
-            binding.addMemberButton.visibility = View.GONE
-        }
+        if (args.edit) binding.addMemberButton.setOnClickListener(this)
+        else binding.addMemberButton.visibility = View.GONE
 
         setupAdapters()
         setObserver()
@@ -60,13 +59,7 @@ class ProjectMembersFragment : Fragment(R.layout.fragment_project_members), View
     fun setObserver() {
         projectVM
             .getProject()
-            .observe(
-                viewLifecycleOwner,
-                Observer {
-                    membersVM.fetchCommonMembers(it.members.map { it.id })
-                    membersVM.fetchResponsibleMembers(it.members.map { it.id })
-                }
-            )
+            .observe(viewLifecycleOwner, Observer { membersVM.fetchMembers(it.id) })
         membersVM
             .getCommon()
             .observe(viewLifecycleOwner, Observer { membersAdapter.updateList(it) })
@@ -81,11 +74,9 @@ class ProjectMembersFragment : Fragment(R.layout.fragment_project_members), View
             else UserDataPopup.UserPopupType.VIEW_DATA
 
         responsibleAdapter.onItemClickListener = { position ->
-            val popup = UserDataPopup(responsibleAdapter.list[position].id, popup_type)
-            popup.onConfirm =
-                {
-                    // TODO("Remove member from project")
-                }
+            val item = (responsibleAdapter.list[position].id as MemberModel)
+            val popup = UserDataPopup(item.id, true, popup_type)
+            popup.onConfirm = { membersVM.deleteMember(item) }
             popup.show(childFragmentManager, "")
         }
 
@@ -93,11 +84,9 @@ class ProjectMembersFragment : Fragment(R.layout.fragment_project_members), View
         binding.recyclerListResponsible.adapter = responsibleAdapter
 
         membersAdapter.onItemClickListener = { position ->
-            val popup = UserDataPopup(membersAdapter.list[position].id, popup_type)
-            popup.onConfirm =
-                {
-                    // TODO("Remove member from project")
-                }
+            val item = (responsibleAdapter.list[position].id as MemberModel)
+            val popup = UserDataPopup(item.id, true, popup_type)
+            popup.onConfirm = { membersVM.deleteMember(item) }
             popup.show(childFragmentManager, "")
         }
 

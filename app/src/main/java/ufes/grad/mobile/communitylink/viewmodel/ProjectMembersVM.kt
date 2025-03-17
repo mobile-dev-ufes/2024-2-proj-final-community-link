@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import ufes.grad.mobile.communitylink.data.dao.MemberDAO
+import ufes.grad.mobile.communitylink.data.dao.ProjectDAO
 import ufes.grad.mobile.communitylink.data.model.MemberModel
 
 /**
@@ -42,27 +43,21 @@ class ProjectMembersVM(application: Application) : AndroidViewModel(application)
      * Fetches the common members of a project based on a list of member IDs and updates the
      * LiveData.
      *
-     * @param memberIds List of unique member identifiers.
+     * @param projectId Project identifier.
      */
-    fun fetchCommonMembers(memberIds: List<String>) {
+    fun fetchMembers(projectId: String) {
         viewModelScope.launch {
-            var list = mutableListOf<MemberModel>()
-            for (id in memberIds) list += MemberDAO.findById(id)!!
-            common.postValue(list)
+            var listR = mutableListOf<MemberModel>()
+            var listC = mutableListOf<MemberModel>()
+            ProjectDAO.findById(projectId)?.members?.forEach {
+                if (it.isResponsible) listR += it else listC += it
+            }
+            common.postValue(listC)
+            responsible.postValue(listR)
         }
     }
 
-    /**
-     * Fetches the responsible members of a project based on a list of member IDs and updates the
-     * LiveData.
-     *
-     * @param memberIds List of unique member identifiers.
-     */
-    fun fetchResponsibleMembers(memberIds: List<String>) {
-        viewModelScope.launch {
-            var list = mutableListOf<MemberModel>()
-            for (id in memberIds) list += MemberDAO.findById(id)!!
-            responsible.postValue(list)
-        }
+    fun deleteMember(member: MemberModel) {
+        viewModelScope.launch { MemberDAO.delete(member) }
     }
 }

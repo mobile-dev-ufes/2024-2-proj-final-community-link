@@ -47,8 +47,8 @@ class SearchUsersFragment : Fragment(R.layout.fragment_search_users), View.OnCli
             var popup =
                 UserDataPopup(
                     adapter.list[position].id,
-                    if (args.findUsers) UserDataPopup.UserPopupType.ADD_USER_AS_MEMBER
-                    else UserDataPopup.UserPopupType.ADD_MEMBER_AS_REPRESENTATIVE
+                    false,
+                    UserDataPopup.UserPopupType.ADD_USER_AS_MEMBER
                 )
             popup.onConfirm = {
                 findNavController()

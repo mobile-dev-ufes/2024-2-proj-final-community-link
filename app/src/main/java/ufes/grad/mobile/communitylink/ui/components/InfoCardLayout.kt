@@ -89,6 +89,5 @@ class InfoCardLayout(context: Context, attrs: AttributeSet) : LinearLayout(conte
         else binding.secondNameText.visibility = GONE
 
         binding.cancelButton.visibility = if (cancel_button) VISIBLE else GONE
-        binding.alertText.visibility = if (show_alert) VISIBLE else GONE
     }
 }

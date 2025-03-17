@@ -3,6 +3,7 @@ package ufes.grad.mobile.communitylink.view.viewHolder
 import android.graphics.drawable.Drawable
 import android.view.View.GONE
 import ufes.grad.mobile.communitylink.data.model.BaseModel
+import ufes.grad.mobile.communitylink.data.model.MemberModel
 import ufes.grad.mobile.communitylink.data.model.ProjectModel
 import ufes.grad.mobile.communitylink.data.model.UserModel
 import ufes.grad.mobile.communitylink.databinding.LayoutCommonCardBinding
@@ -23,6 +24,9 @@ class ListCommonCardViewHolder(
         val project = model_ as? ProjectModel
         if (project != null)
             setValues(project.currentData.name, project.currentData.description, null)
+
+        val member = model_ as? MemberModel
+        if (member != null) setValues(member.user.name)
     }
 
     fun setValues(title: String? = null, description: String? = null, image: Drawable? = null) {
