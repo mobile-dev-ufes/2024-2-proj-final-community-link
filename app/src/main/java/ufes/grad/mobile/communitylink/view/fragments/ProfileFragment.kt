@@ -96,7 +96,10 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), View.OnClickListene
     override fun onClick(v: View) {
         when (v.id) {
             binding.projectsButton.id -> {
-                val actions = ProfileFragmentDirections.actionProfileFragmentToMyProjectsFragment()
+                val actions =
+                    ProfileFragmentDirections.actionProfileFragmentToMyProjectsFragment(
+                        profileVM.user().value?.id!!
+                    )
                 findNavController().navigate(actions)
             }
             binding.actionsButton.id -> {
