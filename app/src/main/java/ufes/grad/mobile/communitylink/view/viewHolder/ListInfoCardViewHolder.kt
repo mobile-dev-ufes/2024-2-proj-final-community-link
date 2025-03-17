@@ -1,5 +1,6 @@
 package ufes.grad.mobile.communitylink.view.viewHolder
 
+import android.util.Log
 import android.view.View.GONE
 import ufes.grad.mobile.communitylink.data.model.ActionEventModel
 import ufes.grad.mobile.communitylink.data.model.ActionModel

@@ -5,15 +5,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import ufes.grad.mobile.communitylink.R
 import ufes.grad.mobile.communitylink.data.database.StaticData
 import ufes.grad.mobile.communitylink.data.model.ActionEventModel
+import ufes.grad.mobile.communitylink.data.model.BaseModel
 import ufes.grad.mobile.communitylink.data.model.PostModel
 import ufes.grad.mobile.communitylink.databinding.FragmentDashboardBinding
 import ufes.grad.mobile.communitylink.view.adapter.ListInfoCardAdapter
+import ufes.grad.mobile.communitylink.viewmodel.DashboardVM
 
 class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
 
@@ -22,9 +26,12 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
         get() = _binding!!
 
     private var adapter: ListInfoCardAdapter = ListInfoCardAdapter()
+    private lateinit var viewModel: DashboardVM
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        viewModel = ViewModelProvider(this)[DashboardVM::class.java]
+        viewModel.setListActions()
 
         // TODO("Get from BD")
         adapter.updateList(StaticData.eventActions)
@@ -38,9 +45,19 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
         super.onCreateView(inflater, container, savedInstanceState)
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
 
+        setObserver()
         setupAdapter()
 
         return binding.root
+    }
+
+    private fun setObserver() {
+        viewModel.getListActions().observe(
+            viewLifecycleOwner, Observer {
+                adapter.updateList(it as List<BaseModel>)
+            }
+        )
+       // adapter.updateList(StaticData.eventActions + StaticData.donationActions)
     }
 
     fun setupAdapter() {
