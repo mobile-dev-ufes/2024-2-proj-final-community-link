@@ -30,6 +30,9 @@
         <activity
             android:name=".view.SignUpActivity"
             android:exported="false" />
+        <activity
+            android:name=".view.ForgotPasswordActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
