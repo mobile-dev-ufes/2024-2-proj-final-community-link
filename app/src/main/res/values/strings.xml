@@ -202,4 +202,6 @@
     <string name="sucess_saving_action">Sucesso ao criar Ação</string>
     <string name="post_created">Post criado com sucesso!</string>
     <string name="post_fail">Erro, post não criado!</string>
+    <string name="an_error_occured">Um erro ocorreu!</string>
+    <string name="sucesso">Sucesso!</string>
 </resources>

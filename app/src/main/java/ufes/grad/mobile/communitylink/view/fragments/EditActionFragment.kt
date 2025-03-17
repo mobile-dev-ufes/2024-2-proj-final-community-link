@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import java.util.Calendar
@@ -30,18 +31,10 @@ class EditActionFragment : Fragment(R.layout.fragment_edit_action), View.OnClick
 
     private val args: EditActionFragmentArgs by navArgs()
 
-    private lateinit var action: ActionModel
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProvider(this)[EditActionVM::class.java]
-
-        // TODO("Get event or donation from BD")
-        if (args.isEvent) {
-            action = StaticData.eventActions[0]
-        } else {
-            action = StaticData.donationActions[0]
-        }
+        viewModel.fetchAction(args.id, args.isEvent)
     }
 
     override fun onCreateView(
@@ -51,33 +44,38 @@ class EditActionFragment : Fragment(R.layout.fragment_edit_action), View.OnClick
     ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
         _binding = FragmentEditActionBinding.inflate(inflater, container, false)
-
-        setupLayout()
+        binding.confirmButton.setOnClickListener(this)
+        setObserver()
 
         return binding.root
     }
 
-    fun setupLayout() {
-        binding.confirmButton.setOnClickListener(this)
-        binding.startDateButton.setOnClickListener(this)
-        binding.endDateButton.setOnClickListener(this)
+    fun setObserver() {
+        viewModel.getAction().observe(
+            viewLifecycleOwner,
+            Observer {
+                binding.confirmButton.setOnClickListener(this)
+                binding.startDateButton.setOnClickListener(this)
+                binding.endDateButton.setOnClickListener(this)
 
-        if (action.secondaryRepresentative == null)
-            binding.secondaryRepresentative.visibility = View.GONE
+                if (it.secondaryRepresentative == null)
+                    binding.secondaryRepresentative.visibility = View.GONE
 
-        binding.nameForms.editText.setText(action.name)
-        binding.descriptionForms.editText.setText(action.description)
-        binding.tagsForms.editText.setText(action.tags.joinToString(","))
+                binding.nameForms.editText.setText(it.name)
+                binding.descriptionForms.editText.setText(it.description)
+                binding.tagsForms.editText.setText(it.tags.joinToString(","))
 
-        binding.startDateButton.text = action.initDate
-        binding.endDateButton.text = action.finishDate
+                binding.startDateButton.text = it.initDate
+                binding.endDateButton.text = it.finishDate
 
-        if (action is ActionEventModel) {
-            val places = (action as ActionEventModel).places
-            binding.placeFormsOne.editText.setText(if (places[0].isNotEmpty()) places[0] else "")
-            binding.placeFormsTwo.editText.setText(if (places[1].isNotEmpty()) places[1] else "")
-            binding.placeFormsThree.editText.setText(if (places[2].isNotEmpty()) places[2] else "")
-        }
+                if (it is ActionEventModel) {
+                    val places = it.places
+//                    binding.placeFormsOne.editText.setText(if (places[0].isNotEmpty()) places[0] else "")
+//                    binding.placeFormsTwo.editText.setText(if (places[1].isNotEmpty()) places[1] else "")
+//                    binding.placeFormsThree.editText.setText(if (places[2].isNotEmpty()) places[2] else "")
+                }
+            }
+        )
     }
 
     override fun onDestroyView() {
@@ -167,12 +165,12 @@ class EditActionFragment : Fragment(R.layout.fragment_edit_action), View.OnClick
                 datePickerDialog.show()
             }
             binding.confirmButton.id -> {
-                // TODO("Update action data")
+
                 val updatedAction: ActionModel
-                if (action is ActionDonationModel) {
+                if (viewModel.getAction().value is ActionDonationModel) {
                     updatedAction =
                         ActionDonationModel(
-                            id = action.id,
+                            id = viewModel.getAction().value!!.id,
                             name = binding.nameForms.editText.text.toString().trim(),
                             description = binding.descriptionForms.editText.text.toString().trim(),
                             tags =
@@ -184,12 +182,11 @@ class EditActionFragment : Fragment(R.layout.fragment_edit_action), View.OnClick
                             initDate = binding.startDateButton.text.toString(),
                             finishDate = binding.endDateButton.text.toString(),
                             status = true,
-                            project = action.project,
-                            posts = action.posts,
-                            primaryRepresentative = action.primaryRepresentative,
-                            secondaryRepresentative = action.secondaryRepresentative,
-                            goals = (action as ActionDonationModel).goals,
-                            donations = (action as ActionDonationModel).donations
+                            project = viewModel.getAction().value!!.project,
+                            posts = viewModel.getAction().value!!.posts,
+                            primaryRepresentative = viewModel.getAction().value!!.primaryRepresentative,
+                            goals = (viewModel.getAction().value!! as ActionDonationModel).goals,
+                            donations = (viewModel.getAction().value!! as ActionDonationModel).donations
                         )
                 } else {
                     var places = listOf<String>()
@@ -202,7 +199,7 @@ class EditActionFragment : Fragment(R.layout.fragment_edit_action), View.OnClick
 
                     updatedAction =
                         ActionEventModel(
-                            id = action.id,
+                            id = viewModel.getAction().value!!.id,
                             name = binding.nameForms.editText.text.toString().trim(),
                             description = binding.descriptionForms.editText.text.toString().trim(),
                             tags =
@@ -215,23 +212,23 @@ class EditActionFragment : Fragment(R.layout.fragment_edit_action), View.OnClick
                             finishDate = binding.endDateButton.text.toString(),
                             places = places.toMutableList(),
                             status = true,
-                            project = action.project,
-                            posts = action.posts,
-                            primaryRepresentative = action.primaryRepresentative,
-                            secondaryRepresentative = action.secondaryRepresentative,
+                            project = viewModel.getAction().value!!.project,
+                            posts = viewModel.getAction().value!!.posts,
+                            primaryRepresentative = viewModel.getAction().value!!.primaryRepresentative,
                         )
                 }
+                viewModel.updateAction(updatedAction)
             }
             binding.primaryRepresentative.id -> {
                 val popup = UserDataPopup(UserPopupType.VIEW_DATA)
-                popup.setUser(action.primaryRepresentative)
+                popup.setUser(viewModel.getAction().value!!.primaryRepresentative)
                 popup.show(childFragmentManager, "")
             }
-            binding.secondaryRepresentative.id -> {
-                val popup = UserDataPopup(UserPopupType.VIEW_DATA)
-                popup.setUser(action.secondaryRepresentative!!)
-                popup.show(childFragmentManager, "")
-            }
+//            binding.secondaryRepresentative.id -> {
+//                val popup = UserDataPopup(UserPopupType.VIEW_DATA)
+//                popup.setUser(viewModel.getAction().value!!.secondaryRepresentative!!)
+//                popup.show(childFragmentManager, "")
+//            }
         }
     }
 }

@@ -1,6 +1,7 @@
 package ufes.grad.mobile.communitylink.view.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -42,6 +43,7 @@ class CreateActionFragment : Fragment(R.layout.fragment_create_action), View.OnC
         super.onCreate(savedInstanceState)
         createActionVM = ViewModelProvider(this)[CreateActionVM::class.java]
         createActionVM.getProjectById(args.projectId)
+        createActionVM.fetchUser()
     }
 
     override fun onCreateView(
@@ -53,14 +55,8 @@ class CreateActionFragment : Fragment(R.layout.fragment_create_action), View.OnC
         _binding = FragmentCreateActionBinding.inflate(inflater, container, false)
 
         setupDropdown()
-        setObserver()
-
         binding.createButton.setOnClickListener(this)
         return binding.root
-    }
-
-    fun setObserver() {
-        createActionVM.getProject().observe(viewLifecycleOwner, Observer {})
     }
 
     fun setupDropdown() {
@@ -94,41 +90,39 @@ class CreateActionFragment : Fragment(R.layout.fragment_create_action), View.OnC
     override fun onClick(v: View) {
         when (v.id) {
             binding.createButton.id -> {
-                val name = binding.nameForms.editText.text.toString().trim()
-                val description = binding.descriptionForms.editText.text.toString().trim()
-                val tags = binding.tagsForms.editText.text.toString().split(",")
+                val name = binding.nameForms.editText.text?.toString()?.trim() ?: ""
+                val description = binding.descriptionForms.editText.text?.toString()?.trim() ?: ""
+                val tags = binding.tagsForms.editText.text?.toString()?.split(",") ?: listOf()
                 val primaryRepresentative = createActionVM.getUser().value
 
-                if (
-                    name.isEmpty() ||
-                        description.isEmpty() ||
-                        tags.isEmpty() ||
-                        actionType == ActionType.NONE
-                ) {
+                if (primaryRepresentative == null) {
+                    Utilities.notify(context, getString(R.string.erro_get_user_data))
+                    return
+                }
+                if (name.isEmpty() || description.isEmpty() || tags.isEmpty() || actionType == ActionType.NONE) {
                     Utilities.notify(context, getString(R.string.preencha_todos_os_campos))
                     return
                 }
 
-                var action: ActionModel? = null
-                if (actionType == ActionType.EVENT) {
-                    action =
-                        ActionEventModel(
-                            name = name,
-                            description = description,
-                            tags = tags.toMutableList(),
-                            status = false,
-                            primaryRepresentative = primaryRepresentative!!,
-                        )
+                val action: ActionModel = if (actionType == ActionType.EVENT) {
+                    ActionEventModel(
+                        name = name,
+                        description = description,
+                        tags = tags.toMutableList(),
+                        status = false,
+                        primaryRepresentative = primaryRepresentative
+                    )
                 } else {
-                    action =
-                        ActionDonationModel(
-                            name = name,
-                            description = description,
-                            tags = tags.toMutableList(),
-                            status = false,
-                            primaryRepresentative = primaryRepresentative!!,
-                        )
+                    ActionDonationModel(
+                        name = name,
+                        description = description,
+                        tags = tags.toMutableList(),
+                        status = false,
+                        primaryRepresentative = primaryRepresentative
+                    )
                 }
+                if (action == null)
+                    Utilities.notify(context, getString(R.string.an_error_occured))
                 createActionVM.createNewAction(action)
             }
 

@@ -206,13 +206,11 @@
         android:label="@string/edit_action"
         tools:layout="@layout/fragment_edit_action">
         <argument
-            android:name="is_event"
-            android:defaultValue="false"
-            app:argType="boolean" />
-        <argument
             android:name="id"
-            android:defaultValue="''"
             app:argType="string" />
+        <argument
+            android:name="isEvent"
+            android:defaultValue="true" />
     </fragment>
 
     <fragment

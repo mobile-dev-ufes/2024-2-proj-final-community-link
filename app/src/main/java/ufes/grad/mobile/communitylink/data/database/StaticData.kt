@@ -102,7 +102,7 @@ object StaticData {
         for (i in 0..4) {
             donationActions.add(
                 ActionDonationModel(
-                    "0$i",
+                    "5adAZTHPthmQ1HQGid5a",
                     "Doação $i",
                     "Descrição da doação $i",
                     mutableListOf(),
@@ -110,7 +110,7 @@ object StaticData {
                     dateFormatter.format(Date()),
                     true,
                     mutableListOf(),
-                    projects[i],
+                    ProjectModel("wL4SFYZIEAcf0ELI15gb"),
                     users[i],
                 )
             )

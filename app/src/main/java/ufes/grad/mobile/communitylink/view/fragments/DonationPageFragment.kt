@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,6 +21,8 @@ import ufes.grad.mobile.communitylink.databinding.FragmentDonationPageBinding
 import ufes.grad.mobile.communitylink.view.adapter.DonationPostAdapter
 import ufes.grad.mobile.communitylink.view.popups.MakeDonationPopup
 import ufes.grad.mobile.communitylink.view.popups.PostPopup
+import ufes.grad.mobile.communitylink.viewmodel.DonationPageVM
+import ufes.grad.mobile.communitylink.viewmodel.EventPageVM
 
 class DonationPageFragment : Fragment(R.layout.fragment_donation_page), View.OnClickListener {
 
@@ -28,17 +32,17 @@ class DonationPageFragment : Fragment(R.layout.fragment_donation_page), View.OnC
 
     private val args: EventPageFragmentArgs by navArgs()
 
-    private lateinit var donation: ActionDonationModel
+    private lateinit var donationVM: DonationPageVM
 
     private val adapter: DonationPostAdapter = DonationPostAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // TODO("Get data from BD")
-        donation = StaticData.donationActions[0]
-        adapter.updateList(StaticData.posts + StaticData.goalPosts)
+        donationVM = ViewModelProvider(this)[DonationPageVM::class.java]
+        donationVM.getDonationById(args.id)
 
+        adapter.updateList(StaticData.posts + StaticData.goalPosts)
         adapter.edit = args.edit
     }
 
@@ -51,7 +55,7 @@ class DonationPageFragment : Fragment(R.layout.fragment_donation_page), View.OnC
         _binding = FragmentDonationPageBinding.inflate(inflater, container, false)
 
         setupAdapter()
-        setupLayout()
+        setObserver()
 
         return binding.root
     }
@@ -64,7 +68,7 @@ class DonationPageFragment : Fragment(R.layout.fragment_donation_page), View.OnC
                     val popup =
                         PostPopup(
                             item,
-                            donation,
+                            donationVM.getDonation().value!!,
                             if (args.edit) PostPopup.PostMode.EDIT else PostPopup.PostMode.VIEW
                         )
                     if (args.edit)
@@ -89,31 +93,35 @@ class DonationPageFragment : Fragment(R.layout.fragment_donation_page), View.OnC
         binding.recyclerList.adapter = adapter
     }
 
-    fun setupLayout() {
-        binding.nameText.text = donation.name
-        binding.descriptionText.text = donation.description
-        binding.datesText.text = getString(R.string.from_to, donation.initDate, donation.finishDate)
+    fun setObserver() {
+        donationVM.getDonation().observe(
+            viewLifecycleOwner,
+            Observer{
+                binding.nameText.text = it.name
+                binding.descriptionText.text = it.description
+                binding.datesText.text = getString(
+                    R.string.from_to, it.initDate, it.finishDate)
 
-        // TODO("Set project tag")
-        // binding.projectTag.setValues(project.currentData.name, project.currentData.logo)
+                binding.projectTag.setValues(it.project.currentData.name)
+                binding.donationsButton.setOnClickListener(this)
+                if (args.edit) {
+                    binding.createPostButton.setOnClickListener(this)
+                    binding.createGoalButton.setOnClickListener(this)
+                    binding.goalsButton.setOnClickListener(this)
+                    binding.editButton.setOnClickListener(this)
+                    binding.donationsButton.text.text = getString(R.string.manage_donations)
+                    binding.donationButton.visibility = View.GONE
+                } else {
+                    binding.createPostButton.visibility = View.GONE
+                    binding.createGoalButton.visibility = View.GONE
+                    binding.goalsButton.setOnClickListener(this)
+                    binding.editButton.visibility = View.GONE
+                    binding.donationsButton.text.text = getString(R.string.view_donations)
+                    binding.donationButton.setOnClickListener(this)
+                }
+            }
+        )
 
-        binding.donationsButton.setOnClickListener(this)
-
-        if (args.edit) {
-            binding.createPostButton.setOnClickListener(this)
-            binding.createGoalButton.setOnClickListener(this)
-            binding.goalsButton.setOnClickListener(this)
-            binding.editButton.setOnClickListener(this)
-            binding.donationsButton.text.text = getString(R.string.manage_donations)
-            binding.donationButton.visibility = View.GONE
-        } else {
-            binding.createPostButton.visibility = View.GONE
-            binding.createGoalButton.visibility = View.GONE
-            binding.goalsButton.setOnClickListener(this)
-            binding.editButton.visibility = View.GONE
-            binding.donationsButton.text.text = getString(R.string.view_donations)
-            binding.donationButton.setOnClickListener(this)
-        }
     }
 
     override fun onDestroyView() {
@@ -139,7 +147,7 @@ class DonationPageFragment : Fragment(R.layout.fragment_donation_page), View.OnC
                 val action =
                     DonationPageFragmentDirections
                         .actionDonationPageFragmentToDonationListFragment()
-                action.id = donation.project.id
+                action.id = donationVM.getDonation().value!!.project.id
                 action.isProject = false
                 action.edit = args.edit
                 findNavController().navigate(action)
@@ -147,17 +155,17 @@ class DonationPageFragment : Fragment(R.layout.fragment_donation_page), View.OnC
             binding.goalsButton.id -> {
                 val action =
                     DonationPageFragmentDirections.actionDonationPageFragmentToGoalListFragment()
-                action.id = donation.project.id
+                action.id = donationVM.getDonation().value!!.project.id
                 findNavController().navigate(action)
             }
             binding.editButton.id -> {
                 val action =
                     DonationPageFragmentDirections.actionDonationPageFragmentToEditProjectFragment()
-                action.id = donation.project.id
+                action.id = donationVM.getDonation().value!!.project.id
                 findNavController().navigate(action)
             }
             binding.createPostButton.id -> {
-                val popup = PostPopup(null, donation, PostPopup.PostMode.NEW)
+                val popup = PostPopup(null, donationVM.getDonation().value!!, PostPopup.PostMode.NEW)
                 popup.onConfirm = {
                     val post: PostModel? = popup.createPost()
                     if (post != null) {
@@ -170,14 +178,14 @@ class DonationPageFragment : Fragment(R.layout.fragment_donation_page), View.OnC
             binding.createGoalButton.id -> {
                 val action =
                     DonationPageFragmentDirections.actionDonationPageFragmentToManageGoalFragment()
-                action.id = donation.project.id
+                action.id = donationVM.getDonation().value!!.project.id
                 action.isDonation = true
                 findNavController().navigate(action)
             }
             binding.projectTag.id -> {
                 val action =
                     DonationPageFragmentDirections.actionDonationPageFragmentToProjectPageFragment()
-                action.id = donation.project.id
+                action.id = donationVM.getDonation().value!!.project.id
                 findNavController().navigate(action)
             }
         }

@@ -6,15 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import kotlin.getValue
 import ufes.grad.mobile.communitylink.R
-import ufes.grad.mobile.communitylink.data.database.StaticData
 import ufes.grad.mobile.communitylink.data.model.DonationModel
-import ufes.grad.mobile.communitylink.data.model.ProjectModel
 import ufes.grad.mobile.communitylink.databinding.FragmentProjectPageBinding
 import ufes.grad.mobile.communitylink.view.popups.MakeDonationPopup
+import ufes.grad.mobile.communitylink.viewmodel.ProjectPageVM
 
 class ProjectPageFragment : Fragment(R.layout.fragment_project_page), View.OnClickListener {
 
@@ -24,13 +25,13 @@ class ProjectPageFragment : Fragment(R.layout.fragment_project_page), View.OnCli
 
     private val args: ProjectPageFragmentArgs by navArgs()
 
-    private lateinit var project: ProjectModel
+    private lateinit var projectVM: ProjectPageVM
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // TODO("Load project from DB")
-        project = StaticData.projects[0]
+        projectVM = ViewModelProvider(this)[ProjectPageVM::class.java]
+        projectVM.getProjectById(args.id)
     }
 
     override fun onCreateView(
@@ -41,24 +42,26 @@ class ProjectPageFragment : Fragment(R.layout.fragment_project_page), View.OnCli
         super.onCreateView(inflater, container, savedInstanceState)
         _binding = FragmentProjectPageBinding.inflate(inflater, container, false)
 
-        setupLayout()
+        setObserver()
 
         return binding.root
     }
 
-    fun setupLayout() {
-        binding.nameText.text = project.currentData.name
-        binding.descriptionText.text = project.currentData.description
-        binding.addressText.text = project.currentData.address
-        binding.cnpjText.text = project.currentData.CNPJ
+    fun setObserver() {
+        projectVM.getProject().observe(viewLifecycleOwner, Observer{
+            binding.nameText.text = it.currentData.name
+            binding.descriptionText.text = it.currentData.description
+            binding.addressText.text = it.currentData.address
+            binding.cnpjText.text = it.currentData.CNPJ
 
-        if (project.currentData.logo.isNotEmpty())
-            binding.image.setImageURI(Uri.parse(project.currentData.logo))
+            if (it.currentData.logo.isNotEmpty())
+                binding.image.setImageURI(Uri.parse(it.currentData.logo))
 
-        binding.actionsButton.setOnClickListener(this)
-        binding.membersButton.setOnClickListener(this)
-        binding.donationsButton.setOnClickListener(this)
-        binding.donationButton.setOnClickListener(this)
+            binding.actionsButton.setOnClickListener(this)
+            binding.membersButton.setOnClickListener(this)
+            binding.donationsButton.setOnClickListener(this)
+            binding.donationButton.setOnClickListener(this)
+        })
     }
 
     override fun onDestroyView() {
@@ -82,7 +85,7 @@ class ProjectPageFragment : Fragment(R.layout.fragment_project_page), View.OnCli
             }
             binding.donationButton.id -> {
                 val popup = MakeDonationPopup()
-                popup.setModel(project)
+                popup.setModel(projectVM.getProject().value!!)
                 popup.onConfirm = {
                     val donation: DonationModel? = popup.makeDonation()
                     if (donation != null) {

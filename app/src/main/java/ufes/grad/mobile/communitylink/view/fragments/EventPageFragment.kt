@@ -143,13 +143,12 @@ class EventPageFragment : Fragment(R.layout.fragment_event_page), View.OnClickLi
             binding.pendingButton.id -> {
                 val action =
                     EventPageFragmentDirections.actionEventPageFragmentToPendingSlotsFragment()
-                action.id = eventVM.getEvent().value!!.project.id
+                action.id = eventVM.getEvent().value!!.id
                 findNavController().navigate(action)
             }
             binding.editButton.id -> {
                 val action =
-                    EventPageFragmentDirections.actionEventPageFragmentToEditActionFragment()
-                action.id = eventVM.getEvent().value!!.project.id
+                    EventPageFragmentDirections.actionEventPageFragmentToEditActionFragment(eventVM.getEvent().value!!.id)
                 action.isEvent = true
                 findNavController().navigate(action)
             }
@@ -157,7 +156,7 @@ class EventPageFragment : Fragment(R.layout.fragment_event_page), View.OnClickLi
                 val action =
                     EventPageFragmentDirections
                         .actionEventPageFragmentToEventVolunteerSlotsFragment()
-                action.eventId = eventVM.getEvent().value!!.project.id
+                action.eventId = eventVM.getEvent().value!!.id
                 action.edit = true
                 findNavController().navigate(action)
             }

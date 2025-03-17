@@ -2,7 +2,6 @@ package ufes.grad.mobile.communitylink.viewmodel
 
 import android.app.Application
 import android.net.Uri
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -11,9 +10,6 @@ import com.google.firebase.auth.FirebaseAuth
 import java.util.Date
 import kotlinx.coroutines.launch
 import ufes.grad.mobile.communitylink.R
-import ufes.grad.mobile.communitylink.data.dao.MemberDAO
-import ufes.grad.mobile.communitylink.data.dao.ProjectDAO
-import ufes.grad.mobile.communitylink.data.dao.ProjectDataDAO
 import ufes.grad.mobile.communitylink.data.dao.UserDAO
 import ufes.grad.mobile.communitylink.data.model.MemberModel
 import ufes.grad.mobile.communitylink.data.model.ProjectDataModel
