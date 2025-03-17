@@ -4,7 +4,6 @@ import android.app.Application
 import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.viewModelScope
 import com.google.android.gms.tasks.Task
 import com.google.firebase.FirebaseNetworkException
 import com.google.firebase.auth.AuthResult
@@ -12,7 +11,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import ufes.grad.mobile.communitylink.R
 import ufes.grad.mobile.communitylink.data.dao.UserDAO
 import ufes.grad.mobile.communitylink.data.model.UserModel
@@ -69,7 +68,7 @@ class SignupVM(application: Application) : AndroidViewModel(application) {
         if (currUserId != null) {
             user.id = currUserId
 
-            viewModelScope.launch {
+            runBlocking {
                 if (UserDAO.insert(user)) {
                     Log.d("Firebase", "Salvo com sucesso")
                 } else {
