@@ -54,6 +54,7 @@ class MyActionsFragment : Fragment(R.layout.fragment_my_actions) {
         adapter.onItemClickListener = { position ->
             val event = MyActionsFragmentDirections.actionMyActionsFragmentToEventPageFragment()
             event.id = (adapter.list[position] as ActionEventModel).id
+            event.edit = true
             findNavController().navigate(event)
         }
 
