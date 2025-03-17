@@ -54,7 +54,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), View.OnClickListene
         binding.actionsButton.setOnClickListener(this)
         binding.logoutButton.setOnClickListener(this)
         binding.confirmAlterations.setOnClickListener(this)
-        binding.excludeAccount.setOnClickListener(this)
         binding.changeLanguage.setOnClickListener(this)
         binding.cpf.editText.inputType = InputType.TYPE_CLASS_NUMBER
         binding.phone.editText.inputType = InputType.TYPE_CLASS_PHONE
@@ -105,15 +104,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), View.OnClickListene
             binding.logoutButton.id -> {
                 profileVM.logout()
                 startActivity(Intent(context, LoginActivity::class.java))
-                requireActivity().finish()
-            }
-            binding.excludeAccount.id -> {
-                val popup = BasePopup(BasePopup.PopupType.TWO_BUTTON, R.layout.popup_delete_user)
-                popup.onConfirm = {
-                    // TODO("Delete user from DB")
-                    startActivity(Intent(context, LoginActivity::class.java))
-                }
-                popup.show(childFragmentManager, "")
                 requireActivity().finish()
             }
             binding.confirmAlterations.id -> {

@@ -165,15 +165,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <Button
-            android:id="@+id/exclude_account"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/style_button"
-            android:backgroundTint="@color/red"
-            android:text="@string/delete_user"
-            android:textColor="@color/white" />
-
         <ufes.grad.mobile.communitylink.ui.components.SeparatorLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />

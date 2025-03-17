@@ -29,7 +29,6 @@ class ExploreFragment : Fragment(R.layout.fragment_explore), View.OnClickListene
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProvider(this)[ExploreVM::class.java]
-        adapter.updateList(StaticData.eventActions + StaticData.projects)
     }
 
     override fun onCreateView(
