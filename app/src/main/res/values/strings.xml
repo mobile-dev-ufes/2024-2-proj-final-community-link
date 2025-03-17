@@ -192,7 +192,7 @@
     <string name="pix_to_clipboard">Chave Pix copiada para o clipboard!</string>
     <string name="the_post_content_cannot_be_empty">O conteúdo do post não pode estar vazio.</string>
     <string name="from_to">De %1$s até %2$s</string>
-    <string name="places_list">Locais: %1$s</string>
+    <string name="places_list">Local: %1$s</string>
     <string name="view_donations">Ver doações</string>
     <string name="select_a_place">Selecione um local</string>
     <string name="primary_representative">Representante primário</string>
@@ -208,6 +208,6 @@
     <string name="modified_a_goal">modificou uma meta!</string>
     <string name="created_a_new_goal">criou uma nova meta!</string>
     <string name="made_a_new_post">fez uma nova publicação</string>
-    <string name="volunteer_slot_description">%1$s\nHorário de início: %2$s\n</string>
+    <string name="volunteer_slot_description">"%1$s Horário de início: %2$s "</string>
     <string name="confirmar_entrega">Confirmar entrega</string>
 </resources>

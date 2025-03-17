@@ -196,14 +196,22 @@
     <string name="pix_to_clipboard">Pix copied to clipboard</string>
     <string name="the_post_content_cannot_be_empty">The Post content cannot be empty!</string>
     <string name="from_to">"From  %1$s to %2$s "</string>
-    <string name="places_list">Places: %1$s</string>
+    <string name="places_list">Place: %1$s</string>
     <string name="view_donations">See donations</string>
     <string name="select_a_place">Select a place</string>
     <string name="primary_representative">Primary representative</string>
+    <string name="secondary_representative">Secondary representative</string>
     <string name="sucess_saving_action">Action created!</string>
     <string name="post_created">Posted!</string>
     <string name="post_fail">Error post not created</string>
     <string name="an_error_occured">An error occured</string>
     <string name="sucesso">Sucess</string>
     <string name="change_language">Português</string>
+    <string name="place_colon">Place: %1$s</string>
+    <string name="hit_a_goal">hit a goal!</string>
+    <string name="modified_a_goal">modified a goal!</string>
+    <string name="created_a_new_goal">created a new goal!</string>
+    <string name="made_a_new_post">made a new post</string>
+    <string name="volunteer_slot_description">"%1$s Starting time: %2$s "</string>
+    <string name="confirmar_entrega">Confirm delivery</string>
 </resources>
