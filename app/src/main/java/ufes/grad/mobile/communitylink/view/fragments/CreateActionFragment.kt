@@ -1,6 +1,7 @@
 package ufes.grad.mobile.communitylink.view.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,7 +28,8 @@ class CreateActionFragment : Fragment(R.layout.fragment_create_action), View.OnC
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         createActionVM = ViewModelProvider(this)[CreateActionVM::class.java]
-        createActionVM.getProjectById(args.projectId)
+        Log.d("DEBUG", args.id)
+        createActionVM.getProjectById(args.id)
         createActionVM.fetchUser()
     }
 

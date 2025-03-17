@@ -29,7 +29,7 @@ class DashboardVM(application: Application) : AndroidViewModel(application) {
                     actionsList += action
                 }
             }
-            listActions.postValue(actionsList.sortedBy { it.initDate } + StaticData.eventActions)
+            listActions.postValue(actionsList.sortedBy { it.initDate } )
         }
     }
 }

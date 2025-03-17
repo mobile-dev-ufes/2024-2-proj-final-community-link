@@ -162,8 +162,8 @@
         android:label="@string/create_action"
         tools:layout="@layout/fragment_create_action">
         <argument
-            android:name="project_id"
-            android:defaultValue="''"
+            android:name="id"
+            android:defaultValue="&quot;&quot;"
             app:argType="string" />
         <action
             android:id="@+id/action_createActionFragment_to_searchUsersFragment"
@@ -317,8 +317,8 @@
         android:label="@string/project_actions"
         tools:layout="@layout/fragment_project_actions_list">
         <argument
-            android:name="project_id"
-            android:defaultValue="''"
+            android:name="id"
+            android:defaultValue="&quot;''"
             app:argType="string" />
         <action
             android:id="@+id/action_projectActionsListFragment_to_donationPageFragment"
