@@ -10,8 +10,7 @@ import ufes.grad.mobile.communitylink.databinding.LayoutCommonCardBinding
 class ListCommonCardViewHolder(
     private val binding_: LayoutCommonCardBinding,
     private val onItemClickListener: (Int) -> Unit
-) :
-    GenericViewHolder(binding_) {
+) : GenericViewHolder(binding_) {
 
     init {
         binding_.background.setOnClickListener { onItemClickListener(adapterPosition) }

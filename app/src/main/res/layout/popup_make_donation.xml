@@ -30,7 +30,6 @@
         app:forms_title_color="@color/white"
         app:forms_title_text="@string/object" />
 
-
     <TextView
         android:id="@+id/place_text"
         style="@style/PopupTextStyle"
