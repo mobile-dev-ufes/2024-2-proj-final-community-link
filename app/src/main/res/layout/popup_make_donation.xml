@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/background"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/style_button"
+    android:backgroundTint="@color/purple"
     android:gravity="center_horizontal"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="20dp">
 
     <TextView
         style="@style/PopupTitleStyle"
@@ -18,33 +22,17 @@
         android:layout_height="wrap_content"
         android:text="@string/make_donation_object" />
 
-    <LinearLayout
+
+    <ufes.grad.mobile.communitylink.ui.components.FormsLayout
+        android:id="@+id/object_forms"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:baselineAligned="false"
-        android:orientation="horizontal">
+        app:forms_title_color="@color/white"
+        app:forms_title_text="@string/object" />
 
-        <ufes.grad.mobile.communitylink.ui.components.FormsLayout
-            android:id="@+id/quantity_forms"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:layout_weight="1"
-            app:forms_title_color="@color/white"
-            app:forms_title_text="@string/qtd" />
-
-        <ufes.grad.mobile.communitylink.ui.components.FormsLayout
-            android:id="@+id/object_forms"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="4"
-            app:forms_title_color="@color/white"
-            app:forms_title_text="@string/object" />
-
-    </LinearLayout>
 
     <TextView
+        android:id="@+id/place_text"
         style="@style/PopupTextStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -77,11 +65,48 @@
         android:id="@+id/pix_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
         android:background="@drawable/style_button"
         android:backgroundTint="@color/white"
         android:text="@string/copy_pix_key"
         android:textColor="@color/purple"
         android:textSize="16sp" />
+
+    <LinearLayout
+        android:id="@+id/button_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/cancel_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/style_button"
+            android:backgroundTint="@color/white"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/cancel"
+            android:textColor="@color/purple"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/confirm_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/style_button"
+            android:backgroundTint="@color/black"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/confirm"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+    </LinearLayout>
 
 </LinearLayout>

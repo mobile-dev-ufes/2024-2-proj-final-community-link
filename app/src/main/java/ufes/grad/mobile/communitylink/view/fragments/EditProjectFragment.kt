@@ -66,7 +66,6 @@ class EditProjectFragment : Fragment(R.layout.fragment_edit_project), View.OnCli
                 val popup =
                     BasePopup(BasePopup.PopupType.TWO_BUTTON, R.layout.popup_project_revision)
                 popup.onConfirm = {
-                    // TODO("Send project to revision")
                     val newData =
                         ProjectDataModel(
                             name = binding.nameForms.editText.text.toString().trim(),
@@ -82,6 +81,7 @@ class EditProjectFragment : Fragment(R.layout.fragment_edit_project), View.OnCli
                             pixKey = binding.pixForms.editText.text.toString().trim(),
                         )
                     project.pendingData = newData
+                    project.status = ProjectStatusEnum.PENDING
                 }
                 popup.show(childFragmentManager, "")
             }
@@ -89,9 +89,10 @@ class EditProjectFragment : Fragment(R.layout.fragment_edit_project), View.OnCli
                 val popup =
                     BasePopup(BasePopup.PopupType.TWO_BUTTON, R.layout.popup_discontinue_project)
                 popup.onConfirm = {
-                    // TODO("De DEPRECATED ele vai pra onde?")
-                    if (project.status == ProjectStatusEnum.DEPRECATED)
-                        project.status = ProjectStatusEnum.PENDING
+                    project.status =
+                        if (project.status == ProjectStatusEnum.DEPRECATED)
+                            ProjectStatusEnum.PENDING
+                        else ProjectStatusEnum.DEPRECATED
                 }
                 popup.show(childFragmentManager, "")
             }

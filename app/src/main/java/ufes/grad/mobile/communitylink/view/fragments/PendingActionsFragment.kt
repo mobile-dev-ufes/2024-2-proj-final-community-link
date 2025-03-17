@@ -9,9 +9,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import ufes.grad.mobile.communitylink.R
 import ufes.grad.mobile.communitylink.data.database.StaticData
-import ufes.grad.mobile.communitylink.data.model.ActionDonationModel
-import ufes.grad.mobile.communitylink.data.model.ActionEventModel
-import ufes.grad.mobile.communitylink.data.model.SlotRequestModel
 import ufes.grad.mobile.communitylink.databinding.FragmentPendingActionsBinding
 import ufes.grad.mobile.communitylink.view.adapter.ListInfoCardAdapter
 import ufes.grad.mobile.communitylink.view.popups.BasePopup
@@ -47,7 +44,7 @@ class PendingActionsFragment : Fragment(R.layout.fragment_pending_actions) {
 
     fun setupAdapter() {
         adapter.onButtonClickListener = { position ->
-            val slot = adapter.list[position] as SlotRequestModel
+            val item = adapter.list[position]
             val popup = BasePopup(BasePopup.PopupType.TWO_BUTTON, R.layout.popup_cancel_slot)
             popup.onConfirm =
                 {
@@ -55,24 +52,12 @@ class PendingActionsFragment : Fragment(R.layout.fragment_pending_actions) {
                 }
             popup.show(childFragmentManager, "")
         }
+
         adapter.onItemClickListener = { position ->
-            val item = adapter.list[position]
-            when (item) {
-                is ActionEventModel -> {
-                    val event =
-                        PendingActionsFragmentDirections
-                            .actionPendingActionsFragmentToEventPageFragment()
-                    event.id = item.id
-                    findNavController().navigate(event)
-                }
-                is ActionDonationModel -> {
-                    val donation =
-                        PendingActionsFragmentDirections
-                            .actionPendingActionsFragmentToEventPageFragment()
-                    donation.id = item.id
-                    findNavController().navigate(donation)
-                }
-            }
+            val event =
+                PendingActionsFragmentDirections.actionPendingActionsFragmentToEventPageFragment()
+            event.id = adapter.list[position].id
+            findNavController().navigate(event)
         }
 
         binding.recyclerList.layoutManager = LinearLayoutManager(context)

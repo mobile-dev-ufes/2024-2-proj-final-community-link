@@ -12,7 +12,6 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import ufes.grad.mobile.communitylink.R
-import ufes.grad.mobile.communitylink.data.database.StaticData
 import ufes.grad.mobile.communitylink.data.model.PostModel
 import ufes.grad.mobile.communitylink.databinding.FragmentEventPageBinding
 import ufes.grad.mobile.communitylink.view.adapter.PostAdapter
@@ -35,7 +34,7 @@ class EventPageFragment : Fragment(R.layout.fragment_event_page), View.OnClickLi
         super.onCreate(savedInstanceState)
         eventVM = ViewModelProvider(this)[EventPageVM::class.java]
         eventVM.getEventById(args.id)
-        adapter.edit = true
+        adapter.edit = args.edit
     }
 
     override fun onCreateView(
@@ -53,30 +52,21 @@ class EventPageFragment : Fragment(R.layout.fragment_event_page), View.OnClickLi
     }
 
     fun setupAdapter() {
-//        adapter.onItemClickListener = { position ->
-//            val item: PostModel? = adapter.list[position] as PostModel
-//            val popup =
-//                PostPopup(
-//                    item,
-//                    eventVM.getEvent().value!!,
-//                    if (args.edit) PostPopup.PostMode.EDIT else PostPopup.PostMode.VIEW
-//                )
-//            popup.onConfirm = {
-//                val post: PostModel? = popup.createPost()
-//                if (post != null) {
-//
-//                    popup.dismiss()
-//                }
-//            }
-//            popup.show(childFragmentManager, "")
-//        }
+        adapter.onItemClickListener = { position ->
+            val item: PostModel = adapter.list[position] as PostModel
+            PostPopup(
+                    item.id,
+                    eventVM.getEvent().value!!.id,
+                    if (args.edit) PostPopup.PostMode.EDIT else PostPopup.PostMode.VIEW
+                )
+                .show(childFragmentManager, "")
+        }
 
         binding.recyclerList.layoutManager = LinearLayoutManager(context)
         binding.recyclerList.adapter = adapter
     }
 
     fun setObserver() {
-
         eventVM
             .getEvent()
             .observe(
@@ -85,11 +75,10 @@ class EventPageFragment : Fragment(R.layout.fragment_event_page), View.OnClickLi
                     binding.nameText.text = it.name
                     binding.descriptionText.text = it.description
                     binding.datesText.text = getString(R.string.from_to, it.initDate, it.finishDate)
-                    binding.placesText.text =
-                        getString(R.string.places_list, it.places.joinToString("\n"))
+                    binding.placesText.text = getString(R.string.places_list, it.places)
 
                     binding.projectTag.setValues(it.project.currentData.name)
-                    if (true) {
+                    if (args.edit) {
                         binding.pendingButton.setOnClickListener(this)
                         binding.manageButton.setOnClickListener(this)
                         binding.editButton.setOnClickListener(this)
@@ -102,16 +91,11 @@ class EventPageFragment : Fragment(R.layout.fragment_event_page), View.OnClickLi
                         binding.editButton.visibility = View.GONE
                         binding.createButton.visibility = View.GONE
                     }
-                    // eventVM.fetchPosts(it.posts)
-                    adapter.updateList(StaticData.posts)
+
+                    eventVM.fetchPosts(it.posts.map { it.id })
                 }
             )
-        eventVM.getPosts().observe(
-            viewLifecycleOwner,
-            Observer {
-                adapter.updateList(it)
-            }
-        )
+        eventVM.getPosts().observe(viewLifecycleOwner, Observer { adapter.updateList(it) })
     }
 
     override fun onDestroyView() {
@@ -130,15 +114,8 @@ class EventPageFragment : Fragment(R.layout.fragment_event_page), View.OnClickLi
                 findNavController().navigate(action)
             }
             binding.createButton.id -> {
-                val popup = PostPopup(null, eventVM.getEvent().value!!, PostPopup.PostMode.NEW)
-                popup.onConfirm = {
-                    val post: PostModel? = popup.createPost()
-                    if (post != null) {
-                        eventVM.createNewPost(post)
-                        popup.dismiss()
-                    }
-                }
-                popup.show(childFragmentManager, "")
+                PostPopup(null, eventVM.getEvent().value!!.id, PostPopup.PostMode.NEW)
+                    .show(childFragmentManager, "")
             }
             binding.pendingButton.id -> {
                 val action =
@@ -148,7 +125,9 @@ class EventPageFragment : Fragment(R.layout.fragment_event_page), View.OnClickLi
             }
             binding.editButton.id -> {
                 val action =
-                    EventPageFragmentDirections.actionEventPageFragmentToEditActionFragment(eventVM.getEvent().value!!.id)
+                    EventPageFragmentDirections.actionEventPageFragmentToEditActionFragment(
+                        eventVM.getEvent().value!!.id
+                    )
                 action.isEvent = true
                 findNavController().navigate(action)
             }

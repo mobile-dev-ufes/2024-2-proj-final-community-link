@@ -60,7 +60,11 @@ class FormsLayout(context: Context, attrs: AttributeSet) : LinearLayout(context,
         editText.filters += InputFilter.LengthFilter(max_length)
         editText.inputType = input_type
 
-        if (box_size > 0) editText.height = box_size.toInt()
+        if (box_size > 0) {
+            editText.height = box_size.toInt()
+            editText.maxLines = (box_size / editText.textSize).toInt()
+            editText.isSingleLine = false
+        }
 
         if (!margin) {
             val params = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT)

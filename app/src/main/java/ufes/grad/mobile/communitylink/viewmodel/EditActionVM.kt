@@ -6,12 +6,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import ufes.grad.mobile.communitylink.data.dao.ActionDonationDAO
+import ufes.grad.mobile.communitylink.R
 import ufes.grad.mobile.communitylink.data.dao.ActionEventDAO
-import ufes.grad.mobile.communitylink.data.model.ActionEventModel
 import ufes.grad.mobile.communitylink.data.model.ActionModel
 import ufes.grad.mobile.communitylink.utils.Utilities
-import ufes.grad.mobile.communitylink.R
 
 class EditActionVM(application: Application) : AndroidViewModel(application) {
 
@@ -21,34 +19,18 @@ class EditActionVM(application: Application) : AndroidViewModel(application) {
         return action
     }
 
-    fun fetchAction(actionId: String, isEvent: Boolean) {
-        viewModelScope.launch{
-            if(isEvent) {
-                action.postValue(ActionEventDAO.findById(actionId)!!)
-            } else{
-                action.postValue(ActionDonationDAO.findById(actionId)!!)
-            }
-        }
+    fun fetchAction(actionId: String) {
+        viewModelScope.launch { action.postValue(ActionEventDAO.findById(actionId)!!) }
     }
 
     fun updateAction(action: ActionModel) {
         val cont = getApplication<Application>().applicationContext
-        viewModelScope.launch{
-            if(action is ActionEventModel) {
-                if (ActionEventDAO.update(action)) {
-                    Utilities.notify(cont, cont.getString(R.string.sucesso))
-                }
-                else {
-                    Utilities.notify(cont, cont.getString(R.string.an_error_occured))
-                }
-            } else{
-                if (ActionEventDAO.update(action)) {
-                    Utilities.notify(cont, cont.getString(R.string.sucesso))
-                }
-                else{
-                    Utilities.notify(cont, cont.getString(R.string.an_error_occured))
-                }
-            }
+        viewModelScope.launch {
+            Utilities.notify(
+                cont,
+                if (ActionEventDAO.update(action)) cont.getString(R.string.sucesso)
+                else cont.getString(R.string.an_error_occured)
+            )
         }
     }
 }

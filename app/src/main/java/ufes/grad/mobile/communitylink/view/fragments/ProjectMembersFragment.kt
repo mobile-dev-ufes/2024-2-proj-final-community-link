@@ -5,15 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import ufes.grad.mobile.communitylink.R
-import ufes.grad.mobile.communitylink.data.database.StaticData
-import ufes.grad.mobile.communitylink.data.model.ProjectModel
 import ufes.grad.mobile.communitylink.databinding.FragmentProjectMembersBinding
 import ufes.grad.mobile.communitylink.view.adapter.ListCommonCardAdapter
 import ufes.grad.mobile.communitylink.view.popups.UserDataPopup
+import ufes.grad.mobile.communitylink.viewmodel.ProjectMembersVM
+import ufes.grad.mobile.communitylink.viewmodel.ProjectPageVM
 
 class ProjectMembersFragment : Fragment(R.layout.fragment_project_members), View.OnClickListener {
 
@@ -23,21 +25,17 @@ class ProjectMembersFragment : Fragment(R.layout.fragment_project_members), View
 
     private val args: ProjectMembersFragmentArgs by navArgs()
 
-    private lateinit var project: ProjectModel
+    private lateinit var projectVM: ProjectPageVM
+    private lateinit var membersVM: ProjectMembersVM
 
     private val membersAdapter: ListCommonCardAdapter = ListCommonCardAdapter()
     private val responsibleAdapter: ListCommonCardAdapter = ListCommonCardAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        // TODO("Get real project")
-        project = StaticData.projects[0]
-    }
-
-    init {
-        responsibleAdapter.updateList(StaticData.users)
-        membersAdapter.updateList(StaticData.users)
+        projectVM = ViewModelProvider(this)[ProjectPageVM::class.java]
+        membersVM = ViewModelProvider(this)[ProjectMembersVM::class.java]
+        projectVM.getProjectById(args.id)
     }
 
     override fun onCreateView(
@@ -53,16 +51,41 @@ class ProjectMembersFragment : Fragment(R.layout.fragment_project_members), View
             binding.addMemberButton.visibility = View.GONE
         }
 
+        setupAdapters()
+        setObserver()
+
+        return binding.root
+    }
+
+    fun setObserver() {
+        projectVM
+            .getProject()
+            .observe(
+                viewLifecycleOwner,
+                Observer {
+                    membersVM.fetchCommonMembers(it.members.map { it.id })
+                    membersVM.fetchResponsibleMembers(it.members.map { it.id })
+                }
+            )
+        membersVM
+            .getCommon()
+            .observe(viewLifecycleOwner, Observer { membersAdapter.updateList(it) })
+        membersVM
+            .getResponsible()
+            .observe(viewLifecycleOwner, Observer { responsibleAdapter.updateList(it) })
+    }
+
+    fun setupAdapters() {
         val popup_type =
             if (args.edit) UserDataPopup.UserPopupType.ADD_USER_AS_MEMBER
             else UserDataPopup.UserPopupType.VIEW_DATA
 
         responsibleAdapter.onItemClickListener = { position ->
             val popup = UserDataPopup(popup_type)
-            popup.onConfirm = {
-                // TODO("Remove member from project")
-                project.members.remove(responsibleAdapter.list[position])
-            }
+            popup.onConfirm =
+                {
+                    // TODO("Remove member from project")
+                }
             popup.show(childFragmentManager, "")
         }
 
@@ -71,17 +94,15 @@ class ProjectMembersFragment : Fragment(R.layout.fragment_project_members), View
 
         membersAdapter.onItemClickListener = { position ->
             val popup = UserDataPopup(popup_type)
-            popup.onConfirm = {
-                // TODO("Remove member from project")
-                project.members.remove(responsibleAdapter.list[position])
-            }
+            popup.onConfirm =
+                {
+                    // TODO("Remove member from project")
+                }
             popup.show(childFragmentManager, "")
         }
 
         binding.recyclerListMembers.layoutManager = LinearLayoutManager(context)
         binding.recyclerListMembers.adapter = membersAdapter
-
-        return binding.root
     }
 
     override fun onDestroyView() {
@@ -95,7 +116,7 @@ class ProjectMembersFragment : Fragment(R.layout.fragment_project_members), View
                 val search =
                     ProjectMembersFragmentDirections
                         .actionProjectMembersFragmentToSearchUsersFragment()
-                search.id = project.id
+                search.id = projectVM.getProject().value!!.id
                 findNavController().navigate(R.id.searchUsersFragment)
             }
         }

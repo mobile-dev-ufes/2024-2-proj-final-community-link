@@ -1,7 +1,6 @@
 package ufes.grad.mobile.communitylink.ui.components
 
 import android.content.Context
-import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
@@ -23,17 +22,11 @@ class ProjectTagLayout(context: Context, attrs: AttributeSet) : LinearLayout(con
         val customAttributesStyle =
             context.obtainStyledAttributes(attrs, R.styleable.ProjectTagLayout)
         val text = customAttributesStyle.getString(R.styleable.ProjectTagLayout_project_tag_name)
-        val image =
-            customAttributesStyle.getDrawable(R.styleable.ProjectTagLayout_project_tag_image)
-
         customAttributesStyle.recycle()
-
-        setValues(text!!, image)
+        setValues(text!!)
     }
 
-    fun setValues(text: String, image: Drawable? = null) {
+    fun setValues(text: String) {
         binding.name.text = text
-        if (image == null) binding.image.visibility = GONE
-        else binding.image.setImageDrawable(image)
     }
 }

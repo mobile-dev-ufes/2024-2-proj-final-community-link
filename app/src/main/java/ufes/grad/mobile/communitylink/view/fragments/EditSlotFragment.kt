@@ -4,22 +4,21 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import java.time.LocalDateTime
+import java.time.ZoneOffset
 import java.time.format.DateTimeFormatter
+import java.util.Calendar
 import ufes.grad.mobile.communitylink.R
-import ufes.grad.mobile.communitylink.data.database.StaticData
-import ufes.grad.mobile.communitylink.data.model.ActionEventModel
 import ufes.grad.mobile.communitylink.data.model.VolunteerSlotModel
 import ufes.grad.mobile.communitylink.databinding.FragmentEditSlotBinding
-import ufes.grad.mobile.communitylink.ui.components.SpinnerAdapter
 import ufes.grad.mobile.communitylink.utils.Utilities
 import ufes.grad.mobile.communitylink.view.popups.BasePopup
 import ufes.grad.mobile.communitylink.viewmodel.EditSlotVM
+import ufes.grad.mobile.communitylink.viewmodel.EventPageVM
 
 class EditSlotFragment : Fragment(R.layout.fragment_edit_slot), View.OnClickListener {
 
@@ -27,33 +26,22 @@ class EditSlotFragment : Fragment(R.layout.fragment_edit_slot), View.OnClickList
     private val binding
         get() = _binding!!
 
-    private lateinit var viewModel: EditSlotVM
+    private lateinit var slotVM: EditSlotVM
+    private lateinit var eventVM: EventPageVM
 
     private val args: EditSlotFragmentArgs by navArgs()
 
-    private var slot: VolunteerSlotModel? = null
-    private lateinit var event: ActionEventModel
-    private var slotDone: Boolean = false
-
-    private var selectedPlace: String = ""
+    private var afterInit: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(this)[EditSlotVM::class.java]
-
-        // TODO("Get slot from BD")
+        slotVM = ViewModelProvider(this)[EditSlotVM::class.java]
+        eventVM = ViewModelProvider(this)[EventPageVM::class.java]
         if (args.newSlot) {
-            event = StaticData.eventActions[0]
-            slotDone = false
+            eventVM.getEventById(args.id)
         } else {
-            slot = StaticData.slots[0]
-            event = slot!!.action
-            val startTime =
-                LocalDateTime.parse(
-                    slot!!.initDate,
-                    DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")
-                )
-            slotDone = startTime <= LocalDateTime.now()
+            slotVM.fetchSlot(args.id)
+            eventVM.getEventById(slotVM.getSlot().value?.action?.id!!)
         }
     }
 
@@ -67,48 +55,43 @@ class EditSlotFragment : Fragment(R.layout.fragment_edit_slot), View.OnClickList
 
         setObserver()
         setupLayout()
-        setupDropdown()
 
         return binding.root
     }
 
     fun setObserver() {
-        viewModel
-            .getStartDate()
+        slotVM
+            .getSlot()
             .observe(
                 viewLifecycleOwner,
                 Observer {
-                    binding.startDateButton.text =
-                        if (it == null) getString(R.string.selecione_uma_data) else it
-                }
-            )
-        viewModel
-            .getEndDate()
-            .observe(
-                viewLifecycleOwner,
-                Observer {
-                    binding.endDateButton.text =
-                        if (it == null) getString(R.string.selecione_uma_data) else it
+                    binding.nameForms.editText.setText(it?.position)
+                    binding.startDateButton.text = it?.initDate
+                    binding.endDateButton.text = it?.finishDate
+                    binding.notesForms.editText.setText(it?.notes)
+                    afterInit = slotVM.checkIfAfterStart()
                 }
             )
     }
 
     fun setupLayout() {
-        if (slot == null) {
+        binding.startDateButton.setOnClickListener(this)
+        binding.endDateButton.setOnClickListener(this)
+
+        if (slotVM.getSlot().value == null) {
             binding.filledParent.visibility = View.GONE
-            binding.notesParent.visibility = View.GONE
             binding.emptyParent.visibility = View.GONE
             binding.confirmButton.text = getString(R.string.create_new_slot)
         } else {
-            if (slotDone) {
+            if (afterInit) {
                 binding.filledParent.visibility = View.GONE
                 binding.emptyParent.visibility = View.GONE
-            } else if (slot!!.filledBy == null) {
+            } else if (slotVM.getSlot().value?.filledBy == null) {
                 binding.filledParent.visibility = View.GONE
-                binding.notesParent.visibility = View.GONE
+                binding.notesForms.visibility = View.GONE
             } else {
                 binding.emptyParent.visibility = View.GONE
-                binding.notesParent.visibility = View.GONE
+                binding.notesForms.visibility = View.GONE
             }
         }
     }
@@ -124,81 +107,62 @@ class EditSlotFragment : Fragment(R.layout.fragment_edit_slot), View.OnClickList
                 val position = binding.nameForms.editText.text.toString().trim()
                 val startDate = binding.startDateButton.text.toString()
                 val endDate = binding.startDateButton.text.toString()
-                val place = selectedPlace
 
-                if (
-                    place.isEmpty() ||
-                        position.isEmpty() ||
-                        startDate.isEmpty() ||
-                        endDate.isEmpty()
-                ) {
+                if (position.isEmpty() || startDate.isEmpty() || endDate.isEmpty()) {
                     Utilities.notify(requireContext(), getString(R.string.preencha_todos_os_campos))
                     return
                 }
 
-                TODO("Create or modify slot")
-                val slot: VolunteerSlotModel
-                if (this.slot == null) {
-                    slot =
-                        VolunteerSlotModel(
-                            position = position,
-                            initDate = startDate,
-                            finishDate = endDate,
-                            place = place,
-                            action = event
-                        )
-                } else {
-                    this.slot!!.position = position
-                    this.slot!!.initDate = startDate
-                    this.slot!!.finishDate = endDate
-                    this.slot!!.place = place
-                }
+                val slot =
+                    VolunteerSlotModel(
+                        position = position,
+                        initDate = startDate,
+                        finishDate = endDate,
+                        place = eventVM.getEvent().value?.places!!,
+                        action = eventVM.getEvent().value!!
+                    )
+
+                if (slotVM.getSlot().value == null) slotVM.createSlot(slot)
+                else slotVM.updateSlot(slot)
             }
             binding.deleteButton.id -> {
                 val popup = BasePopup(BasePopup.PopupType.TWO_BUTTON, R.layout.popup_delete_slot)
-                popup.onConfirm = {
-                    // TODO("Delete slot")
-                    this.slot!!
-                }
+                popup.onConfirm =
+                    {
+                        // TODO("Delete slot")
+                    }
                 popup.show(childFragmentManager, "")
             }
             binding.removeButton.id -> {
                 val popup =
                     BasePopup(BasePopup.PopupType.TWO_BUTTON, R.layout.popup_remove_volunteer)
-                popup.onConfirm = {
-                    // TODO("Remove volunteer")
-                    this.slot?.filledBy = null
-                }
+                popup.onConfirm = { slotVM.removeVolunteer() }
                 popup.show(childFragmentManager, "")
             }
-            binding.notesButton.id -> {
-                // TODO("Modify slot data")
-                this.slot?.notes = binding.notesForms.editText.text.toString().trim()
-            }
             binding.startDateButton.id -> {
-                viewModel.changeStartDate()
+                val datePickerDialog =
+                    slotVM.showDatePicker(
+                        binding.startDateButton.text.toString(),
+                        { time -> binding.startDateButton.text = time }
+                    )
+                val calendar = Calendar.getInstance()
+                datePickerDialog.datePicker.minDate = calendar.timeInMillis
+                datePickerDialog.show()
             }
             binding.endDateButton.id -> {
-                viewModel.changeEndDate()
+                val datePickerDialog =
+                    slotVM.showDatePicker(
+                        binding.endDateButton.text.toString(),
+                        { time -> binding.endDateButton.text = time }
+                    )
+                val startTime =
+                    LocalDateTime.parse(
+                        binding.startDateButton.text.toString(),
+                        DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")
+                    )
+                datePickerDialog.datePicker.minDate = startTime.toEpochSecond(ZoneOffset.UTC)
+                datePickerDialog.show()
             }
         }
-    }
-
-    fun setupDropdown() {
-        val status = listOf(getString(R.string.select_a_place)) + event.places
-        binding.placeDropdown.adapter = SpinnerAdapter(requireContext(), status)
-        binding.placeDropdown.onItemSelectedListener =
-            object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(
-                    parent: AdapterView<*>?,
-                    view: View?,
-                    position: Int,
-                    id: Long
-                ) {
-                    selectedPlace = if (position > 1) status[position - 1] else ""
-                }
-
-                override fun onNothingSelected(parent: AdapterView<*>?) {}
-            }
     }
 }

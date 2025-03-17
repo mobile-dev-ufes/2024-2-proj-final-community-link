@@ -123,7 +123,7 @@
     <string name="manage_slots">Manage Slots</string>
     <string name="pending_requests">Pending Requests</string>
     <string name="confirm_donation_bottom_popup_content">If you have not received this donation, click on the button below to notify the user.</string>
-    <string name="confirm_donation_top_popup_content">To confirm the donation, attach a picture showing that the object or monetary value has been sent.</string>
+    <string name="confirm_donation_top_popup_content">To confirm the donation, press the button below.</string>
     <string name="confirm_donation">Confirm Donation</string>
     <string name="attach_image">Attach image</string>
     <string name="i_didnt_receive_this_donation">I didn\'t recieve this donation</string>

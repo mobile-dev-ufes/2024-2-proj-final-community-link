@@ -9,7 +9,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import ufes.grad.mobile.communitylink.R
 import ufes.grad.mobile.communitylink.data.database.StaticData
-import ufes.grad.mobile.communitylink.data.model.ActionDonationModel
 import ufes.grad.mobile.communitylink.data.model.ActionEventModel
 import ufes.grad.mobile.communitylink.data.model.ProjectModel
 import ufes.grad.mobile.communitylink.databinding.FragmentExploreBinding
@@ -53,12 +52,6 @@ class ExploreFragment : Fragment(R.layout.fragment_explore), View.OnClickListene
                         ExploreFragmentDirections.actionExploreFragmentToProjectPageFragment()
                     project.id = item.id
                     findNavController().navigate(project)
-                }
-                is ActionDonationModel -> {
-                    val donation =
-                        ExploreFragmentDirections.actionExploreFragmentToDonationPageFragment()
-                    donation.id = item.id
-                    findNavController().navigate(donation)
                 }
                 is ActionEventModel -> {
                     val event = ExploreFragmentDirections.actionExploreFragmentToEventPageFragment()

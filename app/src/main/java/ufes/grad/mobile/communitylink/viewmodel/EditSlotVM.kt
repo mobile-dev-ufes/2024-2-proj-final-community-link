@@ -6,44 +6,65 @@ import android.app.TimePickerDialog
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import java.text.SimpleDateFormat
 import java.time.LocalDateTime
-import java.time.ZoneOffset
 import java.time.format.DateTimeFormatter
 import java.util.Calendar
 import java.util.Locale
+import kotlin.collections.plus
+import kotlinx.coroutines.launch
+import ufes.grad.mobile.communitylink.R
+import ufes.grad.mobile.communitylink.data.dao.VolunteerSlotDAO
+import ufes.grad.mobile.communitylink.data.model.VolunteerSlotModel
+import ufes.grad.mobile.communitylink.utils.Utilities
 
 class EditSlotVM(application: Application) : AndroidViewModel(application) {
 
-    private val startDate = MutableLiveData<String>()
-    private val endDate = MutableLiveData<String>()
+    private val slot = MutableLiveData<VolunteerSlotModel?>()
 
-    fun getStartDate(): LiveData<String?> {
-        return startDate
+    fun getSlot(): LiveData<VolunteerSlotModel?> {
+        return slot
     }
 
-    fun getEndDate(): LiveData<String?> {
-        return endDate
+    fun fetchSlot(id: String?) {
+        if (id == null) slot.value = null
+        else viewModelScope.launch { slot.value = VolunteerSlotDAO.findById(id)!! }
     }
 
-    fun changeStartDate() {
-        val datePickerDialog =
-            showDatePicker(startDate.value.toString(), { time -> startDate.value = time })
-        val calendar = Calendar.getInstance()
-        datePickerDialog.datePicker.minDate = calendar.timeInMillis
-        datePickerDialog.show()
+    fun createSlot(slot: VolunteerSlotModel) {
+        val cont = getApplication<Application>().applicationContext
+        viewModelScope.launch {
+            Utilities.notify(
+                cont,
+                if (VolunteerSlotDAO.insert(slot)) cont.getString(R.string.sucesso)
+                else cont.getString(R.string.an_error_occured)
+            )
+        }
     }
 
-    fun changeEndDate() {
-        val datePickerDialog =
-            showDatePicker(endDate.value.toString(), { time -> endDate.value = time })
+    fun updateSlot(slot: VolunteerSlotModel) {
+        val cont = getApplication<Application>().applicationContext
+        viewModelScope.launch {
+            Utilities.notify(
+                cont,
+                if (VolunteerSlotDAO.update(slot)) cont.getString(R.string.sucesso)
+                else cont.getString(R.string.an_error_occured)
+            )
+        }
+    }
+
+    fun checkIfAfterStart(): Boolean {
         val startTime =
             LocalDateTime.parse(
-                startDate.value.toString(),
+                slot.value?.initDate,
                 DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")
             )
-        datePickerDialog.datePicker.minDate = startTime.toEpochSecond(ZoneOffset.UTC)
-        datePickerDialog.show()
+        return startTime <= LocalDateTime.now()
+    }
+
+    fun removeVolunteer() {
+        slot.value?.filledBy = null
     }
 
     fun showDatePicker(date: String?, onSelect: (String) -> Any?): DatePickerDialog {

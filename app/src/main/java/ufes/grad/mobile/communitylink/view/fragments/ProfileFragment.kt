@@ -7,7 +7,6 @@ import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.DatePicker
 import androidx.core.content.ContextCompat.getColor
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -19,8 +18,6 @@ import ufes.grad.mobile.communitylink.data.model.UserModel
 import ufes.grad.mobile.communitylink.databinding.FragmentProfileBinding
 import ufes.grad.mobile.communitylink.view.LoginActivity
 import ufes.grad.mobile.communitylink.view.popups.BasePopup
-import ufes.grad.mobile.communitylink.view.popups.UserDataPopup
-import ufes.grad.mobile.communitylink.view.popups.UserDataPopup.UserPopupType
 import ufes.grad.mobile.communitylink.viewmodel.ProfileVM
 
 class ProfileFragment : Fragment(R.layout.fragment_profile), View.OnClickListener {
@@ -47,37 +44,11 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), View.OnClickListene
         setObserver()
         setupLayout()
 
-        binding.buttonDate.setOnClickListener {
-            val listener =
-                object : DatePickerDialog.OnDateSetListener {
-                    override fun onDateSet(dp: DatePicker?, year: Int, month: Int, day: Int) {
-                        binding.buttonDate.text = buildString {
-                            append(day)
-                            append("/")
-                            append(month + 1)
-                            append("/")
-                            append(year)
-                        }
-                        binding.buttonDate.setTextColor(getColor(requireContext(), R.color.black))
-                    }
-                }
-            val cal = Calendar.getInstance()
-            val datePicker =
-                DatePickerDialog(
-                    requireContext(),
-                    listener,
-                    cal.get(Calendar.YEAR),
-                    cal.get(Calendar.MONTH),
-                    cal.get(Calendar.DAY_OF_MONTH)
-                )
-            datePicker.datePicker.maxDate = cal.timeInMillis
-            datePicker.show()
-        }
-
         return binding.root
     }
 
     fun setupLayout() {
+        binding.buttonDate.setOnClickListener(this)
         binding.projectsButton.setOnClickListener(this)
         binding.actionsButton.setOnClickListener(this)
         binding.eventsButton.setOnClickListener(this)
@@ -155,21 +126,37 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), View.OnClickListene
                 requireActivity().finish()
             }
             binding.confirmAlterations.id -> {
-                val popup = UserDataPopup(UserPopupType.USER_DATA_UPDATE)
-                popup.onConfirm = {
-                    profileVM.changeUserData(
-                        UserModel(
-                            name = binding.name.editText.text.toString(),
-                            cpf = binding.cpf.editText.text.toString(),
-                            sex = binding.sex.editText.text.toString(),
-                            dob = binding.buttonDate.text.toString(),
-                            address = binding.addressForm.editText.text.toString(),
-                            phone = binding.phone.editText.text.toString(),
-                            email = binding.email.editText.text.toString(),
-                        )
+                profileVM.changeUserData(
+                    UserModel(
+                        name = binding.name.editText.text.toString(),
+                        cpf = binding.cpf.editText.text.toString(),
+                        sex = binding.sex.editText.text.toString(),
+                        dob = binding.buttonDate.text.toString(),
+                        address = binding.addressForm.editText.text.toString(),
+                        phone = binding.phone.editText.text.toString(),
+                        email = binding.email.editText.text.toString(),
                     )
-                }
-                popup.show(childFragmentManager, "")
+                )
+            }
+            binding.buttonDate.id -> {
+                val cal = Calendar.getInstance()
+                val datePicker =
+                    DatePickerDialog(
+                        requireContext(),
+                        { _, year, month, day ->
+                            {
+                                binding.buttonDate.text = "$day/${month + 1}/$year"
+                                binding.buttonDate.setTextColor(
+                                    getColor(requireContext(), R.color.black)
+                                )
+                            }
+                        },
+                        cal.get(Calendar.YEAR),
+                        cal.get(Calendar.MONTH),
+                        cal.get(Calendar.DAY_OF_MONTH)
+                    )
+                datePicker.datePicker.maxDate = cal.timeInMillis
+                datePicker.show()
             }
         }
     }

@@ -9,14 +9,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import ufes.grad.mobile.communitylink.R
-import ufes.grad.mobile.communitylink.data.dao.UserDAO
 import ufes.grad.mobile.communitylink.data.database.StaticData
-import ufes.grad.mobile.communitylink.data.model.ActionDonationModel
 import ufes.grad.mobile.communitylink.data.model.ActionEventModel
-import ufes.grad.mobile.communitylink.data.model.ActionModel
-import ufes.grad.mobile.communitylink.data.model.GoalModel
 import ufes.grad.mobile.communitylink.data.model.PostModel
-import ufes.grad.mobile.communitylink.data.model.UserModel
 import ufes.grad.mobile.communitylink.databinding.FragmentDashboardBinding
 import ufes.grad.mobile.communitylink.view.adapter.ListInfoCardAdapter
 
@@ -32,7 +27,7 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
         super.onCreate(savedInstanceState)
 
         // TODO("Get from BD")
-        adapter.updateList(StaticData.eventActions + StaticData.donationActions)
+        adapter.updateList(StaticData.eventActions)
     }
 
     override fun onCreateView(
@@ -54,28 +49,11 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
             val user = FirebaseAuth.getInstance().currentUser?.uid
 
             when (item) {
-                is ActionDonationModel,
-                is GoalModel -> {
-                    val donation =
-                        DashboardFragmentDirections.actionDashboardFragmentToDonationPageFragment()
-                    donation.id = item.id
-
-                    val action: ActionModel =
-                        if (item is GoalModel) item.actionDonation
-                        else (item as ActionDonationModel)
-                    donation.edit =
-                        action.primaryRepresentative.id == user ||
-                            action.secondaryRepresentative?.id == user
-
-                    findNavController().navigate(donation)
-                }
                 is ActionEventModel -> {
                     val action =
                         DashboardFragmentDirections.actionDashboardFragmentToEventPageFragment()
                     action.id = item.id
-                    action.edit =
-                        item.primaryRepresentative.id == user ||
-                            item.secondaryRepresentative?.id == user
+                    action.edit = item.primaryRepresentative.id == user
                     findNavController().navigate(action)
                 }
                 is PostModel -> {
@@ -83,18 +61,14 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
                         val action =
                             DashboardFragmentDirections.actionDashboardFragmentToEventPageFragment()
                         action.id = item.id
-                        action.edit =
-                            item.action.primaryRepresentative.id == user ||
-                                item.action.secondaryRepresentative?.id == user
+                        action.edit = item.action.primaryRepresentative.id == user
                         findNavController().navigate(action)
                     } else {
                         val donation =
                             DashboardFragmentDirections
                                 .actionDashboardFragmentToDonationPageFragment()
                         donation.id = item.id
-                        donation.edit =
-                            item.action.primaryRepresentative.id == user ||
-                                item.action.secondaryRepresentative?.id == user
+                        donation.edit = item.action.primaryRepresentative.id == user
                         findNavController().navigate(donation)
                     }
                 }
@@ -106,12 +80,8 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
             val project = DashboardFragmentDirections.actionDashboardFragmentToProjectPageFragment()
 
             when (item) {
-                is ActionDonationModel,
                 is ActionEventModel -> {
                     project.id = item.project.id
-                }
-                is GoalModel -> {
-                    project.id = item.actionDonation.project.id
                 }
                 is PostModel -> {
                     project.id = item.action.project.id

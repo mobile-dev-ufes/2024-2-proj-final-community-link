@@ -85,22 +85,17 @@
 
         </LinearLayout>
 
-        <TextView
+        <ufes.grad.mobile.communitylink.ui.components.FormsLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="6dp"
-            android:text="@string/place"
-            android:textSize="14sp" />
+            app:forms_title_text="@string/punctuality" />
 
-        <Spinner
-            android:id="@+id/place_dropdown"
+        <ufes.grad.mobile.communitylink.ui.components.FormsLayout
+            android:id="@+id/notes_forms"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/style_edit_text"
-            android:backgroundTint="@color/white"
-            android:spinnerMode="dropdown"
-            tools:listitem="@layout/layout_spinner" />
+            app:forms_box_size="80dp"
+            app:forms_title_text="@string/notes" />
 
         <Button
             android:id="@+id/confirm_button"
@@ -115,37 +110,6 @@
         <ufes.grad.mobile.communitylink.ui.components.SeparatorLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-
-        <LinearLayout
-            android:id="@+id/notes_parent"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="vertical">
-
-            <ufes.grad.mobile.communitylink.ui.components.FormsLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:forms_title_text="@string/punctuality" />
-
-            <ufes.grad.mobile.communitylink.ui.components.FormsLayout
-                android:id="@+id/notes_forms"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:forms_box_size="80dp"
-                app:forms_title_text="@string/notes" />
-
-            <Button
-                android:id="@+id/notes_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/style_button"
-                android:backgroundTint="@color/black"
-                android:text="@string/confirm_changes"
-                android:textColor="@color/white" />
-
-        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/filled_parent"

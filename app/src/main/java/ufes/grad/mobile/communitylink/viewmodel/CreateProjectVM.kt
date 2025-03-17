@@ -1,10 +1,7 @@
 package ufes.grad.mobile.communitylink.viewmodel
 
 import android.app.Application
-import android.net.Uri
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseAuth
 import java.util.Date
@@ -20,17 +17,7 @@ import ufes.grad.mobile.communitylink.utils.Utilities
 
 class CreateProjectVM(application: Application) : AndroidViewModel(application) {
 
-    private val imageSelected = MutableLiveData<Uri?>()
-
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
-
-    fun getImageSelected(): LiveData<Uri?> {
-        return imageSelected
-    }
-
-    fun setImage(img: Uri?) {
-        imageSelected.value = img
-    }
 
     fun createNewProject(data: ProjectDataModel) {
         val context = getApplication<Application>().applicationContext
@@ -43,12 +30,8 @@ class CreateProjectVM(application: Application) : AndroidViewModel(application) 
                         isResponsible = true,
                         user = UserDAO.findById(auth.currentUser!!.uid)!!,
                     )
-                val project =
-                    ProjectModel(
-                        status = ProjectStatusEnum.PENDING,
-                        pendingData = data,
-                        members = mutableListOf(member)
-                    )
+                val project = ProjectModel(status = ProjectStatusEnum.ACCEPTED)
+
                 ProjectService.create(project)
             }
             Utilities.notify(context, context.getString(R.string.sucess_saving_project_data))

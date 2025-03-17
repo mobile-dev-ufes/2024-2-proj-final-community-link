@@ -29,7 +29,7 @@ class MyProjectsFragment : Fragment(R.layout.fragment_my_projects), View.OnClick
         super.onCreate(savedInstanceState)
 
         // TODO("Get content from DB")
-        adapter.updateList(StaticData.eventActions + StaticData.donationActions)
+        adapter.updateList(StaticData.eventActions)
     }
 
     override fun onCreateView(

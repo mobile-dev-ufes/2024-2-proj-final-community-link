@@ -11,12 +11,8 @@ class MemberModel(
     var initDate: String = "",
     var finishDate: String = "",
     var isResponsible: Boolean = false,
-
-    @Serializable(with = UserSerializer::class)
-    var user: UserModel = UserModel(),
-
-    @Serializable(with = ProjectSerializer::class)
-    var project: ProjectModel = ProjectModel()
+    @Serializable(with = UserSerializer::class) var user: UserModel = UserModel(),
+    @Serializable(with = ProjectSerializer::class) var project: ProjectModel = ProjectModel()
 ) : BaseModel {
 
     override fun toMap(): Map<String, Any?> {

@@ -27,7 +27,7 @@ class EventVolunteerSlotsFragment :
     private lateinit var event: ActionEventModel
 
     private val adapter: ListInfoCardAdapter =
-        ListInfoCardAdapter(ListInfoCardAdapter.InfoCardContent.CANCELLABLE)
+        ListInfoCardAdapter(ListInfoCardAdapter.InfoCardContent.VIEW)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +46,7 @@ class EventVolunteerSlotsFragment :
         _binding = FragmentEventVolunteerSlotsBinding.inflate(inflater, container, false)
 
         setupAdapter()
+        setupLayout()
 
         return binding.root
     }
@@ -72,6 +73,10 @@ class EventVolunteerSlotsFragment :
 
         binding.recyclerList.layoutManager = LinearLayoutManager(context)
         binding.recyclerList.adapter = adapter
+    }
+
+    fun setupLayout() {
+        binding.createButton.setOnClickListener(this)
     }
 
     override fun onDestroyView() {

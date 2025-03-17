@@ -102,23 +102,11 @@
         </LinearLayout>
 
         <ufes.grad.mobile.communitylink.ui.components.FormsLayout
-            android:id="@+id/place_forms_one"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:forms_title_text="@string/add_place_one" />
-
-        <ufes.grad.mobile.communitylink.ui.components.FormsLayout
-            android:id="@+id/place_forms_two"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:forms_title_text="@string/add_place_two" />
-
-        <ufes.grad.mobile.communitylink.ui.components.FormsLayout
-            android:id="@+id/place_forms_three"
+            android:id="@+id/place_forms"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            app:forms_title_text="@string/add_place_three" />
+            app:forms_title_text="@string/add_place" />
 
         <Button
             android:id="@+id/confirm_button"
@@ -128,30 +116,6 @@
             android:backgroundTint="@color/black"
             android:text="@string/confirm_changes"
             android:textColor="@color/white" />
-
-        <ufes.grad.mobile.communitylink.ui.components.SeparatorLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:text="@string/representatives"
-            android:textSize="16sp" />
-
-        <ufes.grad.mobile.communitylink.ui.components.CommonCardLayout
-            android:id="@+id/primary_representative"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            app:card_upper_text="Representante primário" />
-
-        <ufes.grad.mobile.communitylink.ui.components.CommonCardLayout
-            android:id="@+id/secondary_representative"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:card_upper_text="Representante secundário" />
 
     </LinearLayout>
 

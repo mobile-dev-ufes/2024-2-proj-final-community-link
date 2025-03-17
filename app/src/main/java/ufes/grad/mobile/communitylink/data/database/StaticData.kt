@@ -3,18 +3,12 @@ package ufes.grad.mobile.communitylink.data.database
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
-import ufes.grad.mobile.communitylink.data.model.ActionDonationModel
 import ufes.grad.mobile.communitylink.data.model.ActionEventModel
-import ufes.grad.mobile.communitylink.data.model.DonationForActionModel
 import ufes.grad.mobile.communitylink.data.model.DonationForProjectModel
-import ufes.grad.mobile.communitylink.data.model.GoalModel
-import ufes.grad.mobile.communitylink.data.model.GoalPostModel
-import ufes.grad.mobile.communitylink.data.model.GoalPostTypeEnum
 import ufes.grad.mobile.communitylink.data.model.PostModel
 import ufes.grad.mobile.communitylink.data.model.ProjectDataModel
 import ufes.grad.mobile.communitylink.data.model.ProjectModel
 import ufes.grad.mobile.communitylink.data.model.ProjectStatusEnum
-import ufes.grad.mobile.communitylink.data.model.SlotRequestModel
 import ufes.grad.mobile.communitylink.data.model.UserModel
 import ufes.grad.mobile.communitylink.data.model.VolunteerSlotModel
 
@@ -25,13 +19,8 @@ object StaticData {
     val projects = mutableListOf<ProjectModel>()
     val users = mutableListOf<UserModel>()
     val eventActions = mutableListOf<ActionEventModel>()
-    val donationActions = mutableListOf<ActionDonationModel>()
-    val donationsToAction = mutableListOf<DonationForActionModel>()
     val donationsToProject = mutableListOf<DonationForProjectModel>()
     val posts = mutableListOf<PostModel>()
-    val goalPosts = mutableListOf<GoalPostModel>()
-    val goals = mutableListOf<GoalModel>()
-    val slotRequests = mutableListOf<SlotRequestModel>()
     val slots = mutableListOf<VolunteerSlotModel>()
 
     init {
@@ -96,48 +85,6 @@ object StaticData {
         }
 
         for (i in 0..4) {
-            donationActions.add(
-                ActionDonationModel(
-                    "5adAZTHPthmQ1HQGid5a",
-                    "Doação $i",
-                    "Descrição da doação $i",
-                    mutableListOf(),
-                    dateFormatter.format(Date()),
-                    dateFormatter.format(Date()),
-                    true,
-                    ProjectModel("wL4SFYZIEAcf0ELI15gb"),
-                    users[i],
-                )
-            )
-        }
-
-        for (i in 0..4) {
-            goalPosts.add(
-                GoalPostModel(
-                    "0$i",
-                    type = GoalPostTypeEnum.MODIFIED,
-                    description =
-                        "Esta meta $i foi feita para bla bla bla...\nMais coisa aqui...\nMais coisa ainda...\nTexto",
-                    amount = 10.0f,
-                    date = dateFormatter.format(Date()),
-                    actionDonation = donationActions[i]
-                )
-            )
-        }
-
-        for (i in 0..4) {
-            goals.add(
-                GoalModel(
-                    "0$i",
-                    description =
-                        "Esta meta $i foi feita para bla bla bla...\nMais coisa aqui...\nMais coisa ainda...\nTexto",
-                    minimalQuantity = 0.0f,
-                    actualQuantity = 0.0f
-                )
-            )
-        }
-
-        for (i in 0..4) {
             slots.add(
                 VolunteerSlotModel(
                     "0$i",
@@ -146,16 +93,6 @@ object StaticData {
                     finishDate = "00/00/2021",
                     place = "Minha casa"
                 )
-            )
-        }
-
-        for (i in 0..4) {
-            slotRequests.add(SlotRequestModel("0$i", date = "12/02/2012"))
-        }
-
-        for (i in 0..4) {
-            donationsToAction.add(
-                DonationForActionModel("0$i", value = 12.00f, date = "12/02/2012")
             )
         }
 

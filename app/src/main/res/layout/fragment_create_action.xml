@@ -28,38 +28,6 @@
         app:forms_hint_text="@string/tags"
         app:forms_title_text="@string/tags_parenthesis" />
 
-    <Spinner
-        android:id="@+id/dropdown"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/style_edit_text"
-        android:backgroundTint="@color/white"
-        android:spinnerMode="dropdown"
-        tools:listitem="@layout/layout_spinner" />
-    <!--
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:text="@string/representatives"
-            android:textSize="14dp" />
-
-        <ufes.grad.mobile.communitylink.ui.components.CommonCardLayout
-            android:id="@+id/first_representative"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            app:card_upper_text="@string/placeholder" />
-
-        <ufes.grad.mobile.communitylink.ui.components.CommonCardLayout
-            android:id="@+id/second_representative"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            app:card_upper_text="@string/placeholder" />
-    -->
-
     <Button
         android:id="@+id/create_button"
         android:layout_width="wrap_content"
