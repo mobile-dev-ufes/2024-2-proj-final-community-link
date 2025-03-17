@@ -17,9 +17,25 @@ import ufes.grad.mobile.communitylink.data.dao.UserDAO
 import ufes.grad.mobile.communitylink.data.model.UserModel
 import ufes.grad.mobile.communitylink.utils.Utilities
 
+/**
+ * ViewModel responsible for handling user registration (sign-up) functionality.
+ * It allows users to register with their email, password, and other user details.
+ *
+ * @param application The application context.
+ */
 class SignupVM(application: Application) : AndroidViewModel(application) {
     private val auth = FirebaseAuth.getInstance()
 
+    /**
+     * Registers a new user by creating an account with the provided email and password.
+     * If registration is successful, it saves the user data to the database.
+     * If any error occurs during registration, an appropriate message is displayed.
+     *
+     * @param email The email address of the user.
+     * @param password The password for the user account.
+     * @param user The UserModel object containing the user's information to be saved.
+     * @return A Task representing the result of the user registration operation.
+     */
     fun registerNewUser(email: String, password: String, user: UserModel): Task<AuthResult?> {
         if (email.isNotBlank() and password.isNotBlank()) {
             return auth
@@ -63,6 +79,11 @@ class SignupVM(application: Application) : AndroidViewModel(application) {
         throw IllegalArgumentException("Email e Senha são necessários")
     }
 
+    /**
+     * Saves the user data to the database after successful registration.
+     *
+     * @param user The UserModel object containing the user's details to be saved.
+     */
     private fun saveUserData(user: UserModel) {
         val currUserId = auth.currentUser?.uid
         if (currUserId != null) {

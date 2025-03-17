@@ -11,9 +11,25 @@ import com.google.firebase.auth.FirebaseAuthInvalidUserException
 import ufes.grad.mobile.communitylink.R
 import ufes.grad.mobile.communitylink.utils.Utilities
 
+/**
+ * ViewModel responsible for managing user login.
+ * It uses Firebase Authentication to sign in the user with email and password,
+ * and provides feedback based on the login outcome.
+ *
+ * @param application The application context.
+ */
 class LoginVM(application: Application) : AndroidViewModel(application) {
     private val auth = FirebaseAuth.getInstance()
 
+    /**
+     * Attempts to sign in a user with the provided email and password.
+     * Notifies the user with an appropriate message based on the result.
+     *
+     * @param email The email address of the user.
+     * @param password The password of the user.
+     * @return A Task containing the result of the login attempt.
+     * @throws IllegalArgumentException If the email or password is blank.
+     */
     fun loginUser(email: String, password: String): Task<AuthResult?> {
         val app = getApplication<Application>()
         if (email.isNotBlank() and password.isNotBlank()) {
@@ -35,6 +51,11 @@ class LoginVM(application: Application) : AndroidViewModel(application) {
         throw IllegalArgumentException("Email ou senha faltando")
     }
 
+    /**
+     * Checks if the user is logged in.
+     *
+     * @return True if a user is currently logged in, otherwise false.
+     */
     fun userLogedIn(): Boolean {
         return auth.currentUser != null
     }

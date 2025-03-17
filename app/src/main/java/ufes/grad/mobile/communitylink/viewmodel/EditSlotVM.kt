@@ -19,19 +19,40 @@ import ufes.grad.mobile.communitylink.data.dao.VolunteerSlotDAO
 import ufes.grad.mobile.communitylink.data.model.VolunteerSlotModel
 import ufes.grad.mobile.communitylink.utils.Utilities
 
+/**
+ * ViewModel responsible for managing volunteer slots.
+ * Handles slot retrieval, creation, updates, and volunteer removal.
+ *
+ * @param application The application context.
+ */
 class EditSlotVM(application: Application) : AndroidViewModel(application) {
 
     private val slot = MutableLiveData<VolunteerSlotModel?>()
 
+    /**
+     * Retrieves the current volunteer slot as LiveData.
+     *
+     * @return LiveData containing the slot details.
+     */
     fun getSlot(): LiveData<VolunteerSlotModel?> {
         return slot
     }
 
+    /**
+     * Fetches a slot by its ID and updates LiveData.
+     *
+     * @param id The ID of the slot to be retrieved.
+     */
     fun fetchSlot(id: String?) {
         if (id == null) slot.value = null
         else viewModelScope.launch { slot.value = VolunteerSlotDAO.findById(id)!! }
     }
 
+    /**
+     * Creates a new volunteer slot and notifies the user about the result.
+     *
+     * @param slot The volunteer slot model to be created.
+     */
     fun createSlot(slot: VolunteerSlotModel) {
         val cont = getApplication<Application>().applicationContext
         viewModelScope.launch {
@@ -43,6 +64,11 @@ class EditSlotVM(application: Application) : AndroidViewModel(application) {
         }
     }
 
+    /**
+     * Updates an existing volunteer slot and notifies the user about the result.
+     *
+     * @param slot The volunteer slot model with updated information.
+     */
     fun updateSlot(slot: VolunteerSlotModel) {
         val cont = getApplication<Application>().applicationContext
         viewModelScope.launch {
@@ -54,6 +80,11 @@ class EditSlotVM(application: Application) : AndroidViewModel(application) {
         }
     }
 
+    /**
+     * Checks if the slot start time has already passed.
+     *
+     * @return True if the slot start time is before or equal to the current time, otherwise false.
+     */
     fun checkIfAfterStart(): Boolean {
         val startTime =
             LocalDateTime.parse(
@@ -63,10 +94,20 @@ class EditSlotVM(application: Application) : AndroidViewModel(application) {
         return startTime <= LocalDateTime.now()
     }
 
+    /**
+     * Removes the volunteer assigned to the slot.
+     */
     fun removeVolunteer() {
         slot.value?.filledBy = null
     }
 
+    /**
+     * Displays a date and time picker dialog for selecting a date.
+     *
+     * @param date The initial date to display in the picker, if available.
+     * @param onSelect Callback function to handle the selected date and time.
+     * @return A DatePickerDialog instance.
+     */
     fun showDatePicker(date: String?, onSelect: (String) -> Any?): DatePickerDialog {
         val formatDate = SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault())
 
