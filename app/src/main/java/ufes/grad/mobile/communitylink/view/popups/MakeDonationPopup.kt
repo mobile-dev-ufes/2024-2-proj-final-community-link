@@ -4,13 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 import ufes.grad.mobile.communitylink.R
 import ufes.grad.mobile.communitylink.data.model.DonationForProjectModel
-import ufes.grad.mobile.communitylink.data.model.DonationModel
 import ufes.grad.mobile.communitylink.data.model.DonationStatusEnum
 import ufes.grad.mobile.communitylink.databinding.PopupMakeDonationBinding
 import ufes.grad.mobile.communitylink.utils.Utilities
@@ -18,7 +18,7 @@ import ufes.grad.mobile.communitylink.viewmodel.MakeDonationVM
 import ufes.grad.mobile.communitylink.viewmodel.ProjectPageVM
 
 class MakeDonationPopup(private val projectId: String) :
-    BasePopup(PopupType.TWO_BUTTON, R.layout.popup_make_donation), View.OnClickListener {
+    DialogFragment(R.layout.popup_make_donation), View.OnClickListener {
 
     private var _binding: PopupMakeDonationBinding? = null
     private val binding
@@ -31,6 +31,8 @@ class MakeDonationPopup(private val projectId: String) :
         super.onCreate(savedInstanceState)
         donationVM = ViewModelProvider(this)[MakeDonationVM::class.java]
         projectVM = ViewModelProvider(this)[ProjectPageVM::class.java]
+
+        projectVM.getProjectById(projectId)
     }
 
     override fun onCreateView(
@@ -45,7 +47,7 @@ class MakeDonationPopup(private val projectId: String) :
     }
 
     /** Returns a DonationModel with the content input by the user */
-    fun makeDonation(): DonationModel? {
+    fun makeDonation(): DonationForProjectModel? {
         var objectName = binding.objectForms.editText.text.toString().trim()
         var value = binding.valueForms.editText.text.toString().toFloatOrNull()
 
@@ -74,11 +76,14 @@ class MakeDonationPopup(private val projectId: String) :
     }
 
     override fun onClick(v: View) {
-        super.onClick(v)
         when (v.id) {
             binding.pixButton.id -> {
                 donationVM.copyToClipboard(projectVM.getProject().value!!.currentData.pixKey)
                 Utilities.notify(context, getString(R.string.pix_to_clipboard))
+            }
+            binding.confirmButton.id -> {
+                val donation = makeDonation()
+                if (donation != null) donationVM.createDonation(donation)
             }
         }
     }

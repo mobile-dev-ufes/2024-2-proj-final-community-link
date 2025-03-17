@@ -52,12 +52,10 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
     }
 
     private fun setObserver() {
-        viewModel.getListActions().observe(
-            viewLifecycleOwner, Observer {
-                adapter.updateList(it as List<BaseModel>)
-            }
-        )
-       // adapter.updateList(StaticData.eventActions + StaticData.donationActions)
+        viewModel
+            .getListActions()
+            .observe(viewLifecycleOwner, Observer { adapter.updateList(it as List<BaseModel>) })
+        // adapter.updateList(StaticData.eventActions + StaticData.donationActions)
     }
 
     fun setupAdapter() {

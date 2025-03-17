@@ -97,7 +97,9 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), View.OnClickListene
         when (v.id) {
             binding.projectsButton.id -> {
                 val actions =
-                    ProfileFragmentDirections.actionProfileFragmentToMyProjectsFragment()
+                    ProfileFragmentDirections.actionProfileFragmentToMyProjectsFragment(
+                        profileVM.user().value?.id!!
+                    )
                 findNavController().navigate(actions)
             }
             binding.actionsButton.id -> {

@@ -1,6 +1,7 @@
 package ufes.grad.mobile.communitylink.view.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnClickListener
@@ -66,7 +67,8 @@ class ProjectActionsListFragment :
                 val action =
                     ProjectActionsListFragmentDirections
                         .actionProjectActionsListFragmentToCreateActionFragment()
-                action.projectId = args.id
+                Log.d("ARGS", args.id)
+                action.id = args.id
                 findNavController().navigate(action)
             }
         }

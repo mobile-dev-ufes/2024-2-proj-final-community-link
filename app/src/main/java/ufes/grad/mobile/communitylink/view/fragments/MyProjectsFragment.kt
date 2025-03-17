@@ -67,9 +67,12 @@ class MyProjectsFragment : Fragment(R.layout.fragment_my_projects), View.OnClick
             if (is_responsible) {
                 val project =
                     MyProjectsFragmentDirections.actionMyProjectsFragmentToEditProjectFragment()
+                Log.d("My projects", item.id)
                 project.id = item.id
                 findNavController().navigate(project)
             } else {
+                Log.d("My projects", item.id)
+
                 val project =
                     MyProjectsFragmentDirections.actionMyProjectsFragmentToProjectPageFragment()
                 project.id = item.id

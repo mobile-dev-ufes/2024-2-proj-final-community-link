@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseAuth
+import java.util.Date
 import kotlinx.coroutines.launch
 import ufes.grad.mobile.communitylink.R
 import ufes.grad.mobile.communitylink.data.dao.MemberDAO
@@ -15,7 +16,6 @@ import ufes.grad.mobile.communitylink.data.model.ProjectDataModel
 import ufes.grad.mobile.communitylink.data.model.ProjectModel
 import ufes.grad.mobile.communitylink.data.model.ProjectStatusEnum
 import ufes.grad.mobile.communitylink.utils.Utilities
-import java.util.Date
 
 class CreateProjectVM(application: Application) : AndroidViewModel(application) {
 

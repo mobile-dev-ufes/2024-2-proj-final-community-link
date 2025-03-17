@@ -15,6 +15,7 @@ import ufes.grad.mobile.communitylink.R
 import ufes.grad.mobile.communitylink.databinding.FragmentLoginBinding
 import ufes.grad.mobile.communitylink.utils.Utilities
 import ufes.grad.mobile.communitylink.utils.Utilities.Companion.setLocale
+import ufes.grad.mobile.communitylink.view.ForgotPasswordActivity
 import ufes.grad.mobile.communitylink.view.FragmentControllerActivity
 import ufes.grad.mobile.communitylink.view.SignUpActivity
 import ufes.grad.mobile.communitylink.viewmodel.LoginVM
@@ -63,8 +64,7 @@ class LoginFragment : Fragment(R.layout.fragment_login), View.OnClickListener {
                 startActivity(Intent(context, SignUpActivity::class.java))
             }
             binding.forgotPasswordButton.id -> {
-                val action = LoginFragmentDirections.actionLoginFragmentToForgotPasswordFragment()
-                findNavController().navigate(action)
+                startActivity(Intent(context, ForgotPasswordActivity::class.java))
             }
             binding.changeLanguage.id -> {
                 toggleLanguage()

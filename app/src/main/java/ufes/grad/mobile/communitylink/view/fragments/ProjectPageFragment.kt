@@ -87,7 +87,7 @@ class ProjectPageFragment : Fragment(R.layout.fragment_project_page), View.OnCli
                 val actions =
                     ProjectPageFragmentDirections
                         .actionsProjectPageFragmentToProjectActionsListFragment()
-                actions.projectId = projectVM.getProject().value?.id!!
+                actions.id = args.id
                 findNavController().navigate(actions)
             }
             binding.donationsButton.id -> {

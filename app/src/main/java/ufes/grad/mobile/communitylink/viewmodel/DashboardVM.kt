@@ -7,7 +7,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.launch
-import ufes.grad.mobile.communitylink.data.dao.ProjectDAO
 import ufes.grad.mobile.communitylink.data.dao.UserDAO
 import ufes.grad.mobile.communitylink.data.database.StaticData
 import ufes.grad.mobile.communitylink.data.model.ActionModel
@@ -20,7 +19,7 @@ class DashboardVM(application: Application) : AndroidViewModel(application) {
         return listActions
     }
 
-    fun setListActions(){
+    fun setListActions() {
         viewModelScope.launch {
             var actionsList = listOf<ActionModel>()
             val user = UserDAO.findById(auth.currentUser!!.uid) ?: return@launch
@@ -30,7 +29,7 @@ class DashboardVM(application: Application) : AndroidViewModel(application) {
                     actionsList += action
                 }
             }
-            listActions.postValue(actionsList.sortedBy { it.initDate } + StaticData.eventActions)
+            listActions.postValue(actionsList.sortedBy { it.initDate } )
         }
     }
 }
