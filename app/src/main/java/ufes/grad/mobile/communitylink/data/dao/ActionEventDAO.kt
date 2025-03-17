@@ -13,6 +13,10 @@ object ActionEventDAO : BaseDAO() {
         return db.collection("actionEvent")
     }
 
+    fun getCollectionPublic(): CollectionReference {
+        return getCollection()
+    }
+
     override suspend fun findById(id: String): ActionEventModel? {
         return findById(id, JsonManager::decode)
     }

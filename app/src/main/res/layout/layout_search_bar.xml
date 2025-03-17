@@ -35,7 +35,7 @@
             android:layout_height="match_parent"
             android:layout_marginVertical="10dp"
             android:backgroundTint="@color/white"
-            android:src="@drawable/ic_close"
+            android:src="@drawable/ic_search"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="W,1:1"
             app:layout_constraintEnd_toEndOf="parent"

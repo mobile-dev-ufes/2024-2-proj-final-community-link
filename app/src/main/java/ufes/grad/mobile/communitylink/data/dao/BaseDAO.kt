@@ -6,7 +6,7 @@ import kotlinx.coroutines.tasks.await
 import ufes.grad.mobile.communitylink.data.model.BaseModel
 
 abstract class BaseDAO {
-    protected abstract fun getCollection(): CollectionReference
+    abstract fun getCollection(): CollectionReference
 
     open suspend fun insert(model: BaseModel): Boolean {
         return try {

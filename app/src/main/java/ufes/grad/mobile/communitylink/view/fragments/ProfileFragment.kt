@@ -52,7 +52,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), View.OnClickListene
         binding.buttonDate.setOnClickListener(this)
         binding.projectsButton.setOnClickListener(this)
         binding.actionsButton.setOnClickListener(this)
-        binding.eventsButton.setOnClickListener(this)
         binding.logoutButton.setOnClickListener(this)
         binding.confirmAlterations.setOnClickListener(this)
         binding.excludeAccount.setOnClickListener(this)
@@ -101,11 +100,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), View.OnClickListene
             }
             binding.actionsButton.id -> {
                 val actions = ProfileFragmentDirections.actionProfileFragmentToMyActionsFragment()
-                findNavController().navigate(actions)
-            }
-            binding.eventsButton.id -> {
-                val actions =
-                    ProfileFragmentDirections.actionProfileFragmentToEventsAndDonationsFragment()
                 findNavController().navigate(actions)
             }
             binding.logoutButton.id -> {

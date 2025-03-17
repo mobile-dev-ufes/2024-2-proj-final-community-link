@@ -65,15 +65,6 @@
             app:button_text="@string/my_actions"
             app:button_text_size="6sp" />
 
-        <ufes.grad.mobile.communitylink.ui.components.IconButtonLayout
-            android:id="@+id/events_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="10dp"
-            app:button_icon="@drawable/ic_zap"
-            app:button_icon_size="24dp"
-            app:button_text="@string/events_and_donations"
-            app:button_text_size="6sp" />
 
 
         <ufes.grad.mobile.communitylink.ui.components.SeparatorLayout
