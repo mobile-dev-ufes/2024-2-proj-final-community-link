@@ -36,7 +36,7 @@ class ExploreCardAdapter(
                         parent,
                         false
                     )
-                return ListCommonCardViewHolder(item)
+                return ListCommonCardViewHolder(item, onItemClickListener)
             }
             else -> {
                 val item =

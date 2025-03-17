@@ -1,6 +1,7 @@
 package ufes.grad.mobile.communitylink.view.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -65,10 +66,13 @@ class MyProjectsFragment : Fragment(R.layout.fragment_my_projects), View.OnClick
     }
 
     fun setupAdapter() {
+        Log.d("DEBUG-TEST", "FODASSSSS")
         adapter.onItemClickListener = { position ->
             val item = adapter.list[position] as ProjectModel
             // TODO("Conferir se o usuário é responsável ou membro")
             val is_responsible = false
+
+            Log.d("DEBUG-TEST", "FODASSSSS")
 
             if (is_responsible) {
                 val project =

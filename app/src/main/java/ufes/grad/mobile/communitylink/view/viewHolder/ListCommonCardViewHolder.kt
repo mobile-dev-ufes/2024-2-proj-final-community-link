@@ -8,8 +8,15 @@ import ufes.grad.mobile.communitylink.data.model.ProjectModel
 import ufes.grad.mobile.communitylink.data.model.UserModel
 import ufes.grad.mobile.communitylink.databinding.LayoutCommonCardBinding
 
-class ListCommonCardViewHolder(private val binding_: LayoutCommonCardBinding) :
+class ListCommonCardViewHolder(
+    private val binding_: LayoutCommonCardBinding,
+    private val onItemClickListener: (Int) -> Unit
+) :
     GenericViewHolder(binding_) {
+
+    init {
+        binding_.background.setOnClickListener { onItemClickListener(adapterPosition) }
+    }
 
     override fun <T> bindVH(model_: BaseModel) {
         val user: UserModel? = model_ as? UserModel

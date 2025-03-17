@@ -10,6 +10,6 @@ class ListCommonCardAdapter : GenericAdapter<ListCommonCardViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListCommonCardViewHolder {
         val item =
             LayoutCommonCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ListCommonCardViewHolder(item)
+        return ListCommonCardViewHolder(item, onItemClickListener)
     }
 }

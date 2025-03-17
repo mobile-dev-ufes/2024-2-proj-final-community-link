@@ -18,7 +18,6 @@ import ufes.grad.mobile.communitylink.data.model.ActionEventModel
 import ufes.grad.mobile.communitylink.data.model.ActionModel
 import ufes.grad.mobile.communitylink.data.model.ProjectModel
 import ufes.grad.mobile.communitylink.data.model.UserModel
-import ufes.grad.mobile.communitylink.data.service.ProjectService
 import ufes.grad.mobile.communitylink.utils.Utilities
 
 class CreateActionVM(application: Application) : AndroidViewModel(application) {
